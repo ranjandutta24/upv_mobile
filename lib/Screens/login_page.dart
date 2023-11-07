@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:upv_mobile/Screens/overview_page.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 
 class LoginPage extends StatefulWidget {
@@ -27,6 +28,11 @@ class _LoginPageState extends State<LoginPage> {
     if (response.statusCode == 200) {
       jsonMap = json.decode(response.body);
       print(jsonMap);
+      Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (ctx) => const OverviewScreen(),
+        ),
+      );
     } else {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).clearSnackBars();
