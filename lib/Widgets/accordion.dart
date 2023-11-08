@@ -52,7 +52,8 @@ class _AccordionPageState extends State<AccordionPage> {
         children: [
           AccordionSection(
             isOpen: true,
-            contentVerticalPadding: 20,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
             leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
             header:
                 const Text('BLAST FURNACE', style: AccordionPage.headerStyle),
@@ -89,6 +90,19 @@ class ColState extends State<Col> {
     fun();
   }
 
+  Color _containerColor = Color.fromARGB(255, 17, 156, 43);
+  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  Color _textColor = Color.fromARGB(255, 44, 44, 44);
+
+  _changeColor(no) {
+    setState(() {
+      for (int i = 0; i < rows.length; i++) {
+        rows[i]["selected"] = false;
+      }
+      rows[no]["selected"] = true;
+    });
+  }
+
   fun() {
     blastfurnacedata();
     var duration = const Duration(seconds: 5);
@@ -96,6 +110,8 @@ class ColState extends State<Col> {
       blastfurnacedata();
     });
   }
+
+  List<dynamic> rows = [];
 
   blastfurnacedata() async {
     // setState(() {
@@ -105,6 +121,157 @@ class ColState extends State<Col> {
     if (response.statusCode == 200) {
       setState(() {
         blastData = json.decode(response.body);
+        rows = [
+          {
+            "head": "Blast Volume [Nm3/min]",
+            "data": blastData["BF_COLDF"].toStringAsFixed(0),
+            "selected": false,
+            "i": 0,
+          },
+          {
+            "head": "O2 Enrich [Nm3/hr]",
+            "data": blastData["OF"].toStringAsFixed(2),
+            "selected": false,
+            "i": 1
+          },
+          {
+            "head": "CDI Rate [TPH] PV/SV",
+            "data":
+                "${blastData["CDI_INJRATE"].toStringAsFixed(2)}/${blastData["CDISP"].toString()}",
+            "selected": false,
+            "i": 2
+          },
+          {
+            "head": "Blast Pressure [Kg/cm2]",
+            "data": "${blastData["BF_COLDP"].toStringAsFixed(2)}",
+            "selected": false,
+            "i": 3
+          },
+          {
+            "head": "Top Pressure [Kg/cm2]",
+            "data": "${blastData["BF_TOPP"].toStringAsFixed(2)}",
+            "selected": false,
+            "i": 4
+          },
+          {
+            "head": "Delta P [Kg/cm2]",
+            "data": "${blastData["DELTAP"].toStringAsFixed(2)}",
+            "selected": false,
+            "i": 5
+          },
+          {
+            "head": "Top Temperature [DegC]",
+            "data": "${blastData["BF_TOPT"].toStringAsFixed(0)}",
+            "selected": false,
+            "i": 6
+          },
+          {
+            "head": "Blast Temp [DegC] PV/SV",
+            "data":
+                "${blastData["HBTAVG"].toStringAsFixed(0)}/${blastData["BTSP"].toStringAsFixed(0)}",
+            "selected": false,
+            "i": 7
+          },
+          {
+            "head": "Raft [DegC]",
+            "data": "${blastData["RAFT"].toStringAsFixed(0)}",
+            "selected": false,
+            "i": 8
+          },
+          {
+            "head": "ETA CO [%]",
+            "data": "${blastData["BF_CO"].toStringAsFixed(2)}",
+            "selected": false,
+            "i": 9
+          },
+          {
+            "head": "Heat Load[Mcal]",
+            "data": "${blastData["TOTAL_HEAT_LOAD"].toStringAsFixed(2)}",
+            "selected": false,
+            "i": 10
+          },
+          {
+            "head": "Charge Count",
+            "data": "${blastData["BF_CHARGE"].toStringAsFixed(2)}",
+            "selected": false,
+            "i": 11
+          },
+          {
+            "head": "Charge Volume[m3]",
+            "data": "${blastData["BURDENREPORT_CHRGVOL"]}",
+            "selected": false,
+            "i": 12
+          },
+          {
+            "head": "Exp. HM/Charge[Ton]/Cumm.",
+            "data":
+                "${blastData["BURDENREPORT_HM"].toStringAsFixed(0)}/${blastData["BURDENREPORT_CHARGE"].toStringAsFixed(0)}",
+            "selected": false,
+            "i": 13
+          },
+          {
+            "head": "Last Day HM Prod [Ton]",
+            "data": "${blastData["LADLE_BFTLMSPROD"].toStringAsFixed(2)}",
+            "selected": false,
+            "i": 14
+          },
+          {
+            "head": "Curr. Day HM Prod[Ton] A/B/C",
+            "data":
+                "${blastData["LADLE_BOFA"].toStringAsFixed(2)}/${blastData["LADLE_BOFB"].toStringAsFixed(0) ?? "0"}/${blastData["LADLE_BOFC"] ?? "0"}",
+            "selected": false,
+            "i": 15
+          },
+          {
+            "head": "Silicon[%]@ Sample time",
+            "data":
+                "${blastData["LAB_SI"].toStringAsFixed(2)}@${blastData["LAB_HR"] ?? "0"}:${blastData["LAB_MIN"] ?? "0"}",
+            "selected": false,
+            "i": 16
+          },
+          {
+            "head": "Runner#1 Hot Metal Temp [DegC]",
+            "data": "${blastData["NRUNNERBF_RUNNERTEMP1"]}",
+            "selected": false,
+            "i": 17
+          },
+          {
+            "head": "Runner#2 Hot Metal Temp [DegC]",
+            "data": "${blastData["NRUNNERBF_RUNNERTEMP2"]}",
+            "selected": false,
+            "i": 18
+          },
+          {
+            "head": "Runner#3 Hot Metal Temp [DegC]",
+            "data": "${blastData["NRUNNERBF_RUNNERTEMP3"]}",
+            "selected": false,
+            "i": 19
+          },
+          {
+            "head": "Runner#4 Hot Metal Temp [DegC]",
+            "data": "${blastData["NRUNNERBF_RUNNERTEMP4"]}",
+            "selected": false,
+            "i": 20
+          },
+          {
+            "head": "Flare Stack Flow [Nm3/hr]",
+            "data": "${blastData["BF_FLAREF"].toStringAsFixed(0)}",
+            "selected": false,
+            "i": 21
+          },
+          {
+            "head": "Flare Stack Pressure [mmwc]",
+            "data": "${blastData["BF_FLAREP"].toStringAsFixed(0)}",
+            "selected": false,
+            "i": 22
+          },
+          {
+            "head": "O2 Enriched [%]",
+            "data": "${blastData["O2PER"].toStringAsFixed(2)}",
+            "selected": false,
+            "i": 23
+          },
+        ];
         loading = false;
       });
 
@@ -137,7 +304,7 @@ class ColState extends State<Col> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color.fromARGB(255, 109, 109, 109), // Border color
+                      color: Color.fromARGB(255, 136, 137, 143), // Border color
                       width: 2.0, // Border width
                     ),
                   ),
@@ -159,172 +326,43 @@ class ColState extends State<Col> {
                     ],
                   ),
                 ),
-                _row(
-                  "Blast Volume [Nm3/min]",
-                  blastData["BF_COLDF"].toStringAsFixed(0),
-                ),
-                _row(
-                  "O2 Enrich [Nm3/hr]",
-                  blastData["OF"].toStringAsFixed(2),
-                ),
-                _row(
-                  "CDI Rate [TPH] PV/SV",
-                  "${blastData["CDI_INJRATE"].toStringAsFixed(2)}/${blastData["CDISP"].toString()}",
-                ),
-                _row(
-                  "Blast Pressure [Kg/cm2]",
-                  "${blastData["BF_COLDP"].toStringAsFixed(2)}",
-                ),
-                _row(
-                  "Top Pressure [Kg/cm2]",
-                  "${blastData["BF_TOPP"].toStringAsFixed(2)}",
-                ),
-                _row(
-                  "Delta P [Kg/cm2]",
-                  "${blastData["DELTAP"].toStringAsFixed(2)}",
-                ),
-                _row(
-                  "Top Temperature [DegC]",
-                  "${blastData["BF_TOPT"].toStringAsFixed(0)}",
-                ),
-                _row(
-                  "Blast Temp [DegC] PV/SV",
-                  "${blastData["HBTAVG"].toStringAsFixed(0)}/${blastData["BTSP"].toStringAsFixed(0)}",
-                ),
-                _row(
-                  "Raft [DegC]",
-                  "${blastData["RAFT"].toStringAsFixed(0)}",
-                ),
-                _row(
-                  "ETA CO [%]",
-                  "${blastData["BF_CO"].toStringAsFixed(2)}",
-                ),
-                _row(
-                  "Heat Load[Mcal]",
-                  "${blastData["TOTAL_HEAT_LOAD"].toStringAsFixed(2)}",
-                ),
-                _row(
-                  "Charge Count",
-                  "${blastData["BF_CHARGE"].toStringAsFixed(2)}",
-                ),
-                _row(
-                  "Charge Volume[m3]",
-                  "${blastData["BURDENREPORT_CHRGVOL"]}",
-                ),
-                _row(
-                  "Exp. HM/Charge[Ton]/Cumm.",
-                  "${blastData["BURDENREPORT_HM"].toStringAsFixed(0)}/${blastData["BURDENREPORT_CHARGE"].toStringAsFixed(0)}",
-                ),
-                _row(
-                  "Last Day HM Prod [Ton]",
-                  "${blastData["LADLE_BFTLMSPROD"].toStringAsFixed(2)}",
-                ),
-                _row(
-                  "Curr. Day HM Prod[Ton] A/B/C",
-                  "${blastData["LADLE_BOFA"].toStringAsFixed(2)}/${blastData["LADLE_BOFB"] ?? "0"}/${blastData["LADLE_BOFC"] ?? "0"}",
-                ),
-                _row(
-                  "Silicon[%]@ Sample time",
-                  "${blastData["LAB_SI"].toStringAsFixed(2)}@${blastData["LAB_HR"] ?? "0"}:${blastData["LAB_MIN"] ?? "0"}",
-                ),
-                _row(
-                  "Runner#1 Hot Metal Temp [DegC]",
-                  "${blastData["NRUNNERBF_RUNNERTEMP1"]}",
-                ),
-                _row(
-                  "Runner#2 Hot Metal Temp [DegC]",
-                  "${blastData["NRUNNERBF_RUNNERTEMP2"]}",
-                ),
-                _row(
-                  "Runner#3 Hot Metal Temp [DegC]",
-                  "${blastData["NRUNNERBF_RUNNERTEMP3"]}",
-                ),
-                _row(
-                  "Runner#4 Hot Metal Temp [DegC]",
-                  "${blastData["NRUNNERBF_RUNNERTEMP4"]}",
-                ),
-                _row(
-                  "Flare Stack Flow [Nm3/hr]",
-                  "${blastData["BF_FLAREF"].toStringAsFixed(0)}",
-                ),
-                _row(
-                  "Flare Stack Pressure [mmwc]",
-                  "${blastData["BF_FLAREP"].toStringAsFixed(0)}",
-                ),
-                _row(
-                  "O2 Enriched [%]",
-                  "${blastData["O2PER"].toStringAsFixed(2)}",
-                ),
+                for (final Map r in rows)
+                  GestureDetector(
+                    onTap: () {
+                      _changeColor(r["i"]);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: r["selected"] == true
+                            ? _containerColor
+                            : _containerColora,
+                        border: Border.all(
+                          color: const Color.fromARGB(
+                              255, 165, 165, 165), // Border color
+                          width: 1.0, // Border width
+                        ),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 3),
+                      child: _row(
+                        r["head"],
+                        r["data"],
+                        r["selected"] == true ? _containerColora : _textColor,
+                      ),
+                    ),
+                  ),
               ],
             ),
     );
   }
 }
 
-Widget _row(
-  h,
-  d,
-) {
-  return GestureDetector(
-    onTap: () {},
-    child: Container(
-        decoration: BoxDecoration(
-          color: Color.fromARGB(255, 255, 255, 255),
-          border: Border.all(
-            color: const Color.fromARGB(255, 165, 165, 165), // Border color
-            width: 1.0, // Border width
-          ),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(h, style: TextStyle(color: Color.fromARGB(255, 57, 57, 57))),
-            Text(d),
-          ],
-        )),
+Widget _row(h, d, color) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Text(h, style: TextStyle(color: color)),
+      Text(d, style: TextStyle(color: color)),
+    ],
   );
-}
-
-class _Row extends StatefulWidget {
-  const _Row({super.key});
-  @override
-  State<_Row> createState() {
-    return _RowState();
-  }
-}
-
-class _RowState extends State<_Row> {
-  Color _containerColor = Colors.blue; // Initial background color
-
-  void _changeColor() {
-    setState(() {
-      // Change the background color to a different color when pressed
-      _containerColor = Colors.red;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: _changeColor,
-      child: Container(
-          decoration: BoxDecoration(
-            color: _containerColor,
-            border: Border.all(
-              color: const Color.fromARGB(255, 165, 165, 165), // Border color
-              width: 1.0, // Border width
-            ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("h",
-                  style: TextStyle(color: Color.fromARGB(255, 57, 57, 57))),
-              Text("d"),
-            ],
-          )),
-    );
-  }
 }
