@@ -84,6 +84,7 @@ class Col extends StatefulWidget {
 class ColState extends State<Col> {
   late dynamic blastData;
   var loading = true;
+  var num = -1;
   @override
   void initState() {
     super.initState();
@@ -100,6 +101,7 @@ class ColState extends State<Col> {
         rows[i]["selected"] = false;
       }
       rows[no]["selected"] = true;
+      num = no;
     });
   }
 
@@ -272,6 +274,9 @@ class ColState extends State<Col> {
             "i": 23
           },
         ];
+        if (num != -1) {
+          rows[num]["selected"] = true;
+        }
         loading = false;
       });
 
