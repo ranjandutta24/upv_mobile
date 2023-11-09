@@ -13,7 +13,7 @@ class Mills extends StatefulWidget {
 }
 
 class MillsState extends State<Mills> {
-  late dynamic blastData;
+  late dynamic millsData;
   var loading = true;
   var num = -1;
   @override
@@ -49,17 +49,113 @@ class MillsState extends State<Mills> {
   BOFService() async {
     await mills().then((data) {
       if (mounted) {
-        // print(data.body);
+        print(data.body);
         setState(() {
-          blastData = json.decode(data.body);
+          millsData = json.decode(data.body);
           rows = [
             {
-              "head": "Heat A/B/C",
-              "data1": "12",
-              "data2": "dd",
-              "data3": "2e",
+              "head": "A Shift Prod",
+              "data1": millsData["WRM_A"].toString(),
+              "data2": millsData["BRM_A"].toString(),
+              "data3": millsData["USM_A"].toString(),
               "selected": false,
               "i": 0,
+            },
+            {
+              "head": "B Shift Prod",
+              "data1": millsData["WRM_B"].toString(),
+              "data2": millsData["BRM_B"].toString(),
+              "data3": millsData["USM_B"].toString(),
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "C Shift Prod",
+              "data1": millsData["WRM_C"].toString(),
+              "data2": millsData["BRM_C"].toString(),
+              "data3": millsData["USM_C"].toString(),
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "Total Prod.",
+              "data1": millsData["WRM_TOTAL"].toString(),
+              "data2": millsData["BRM_TOTAL"].toString(),
+              "data3": millsData["USM_TOTAL"].toString(),
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "Prev. Day Total",
+              "data1": millsData["WRM_PDAY"].toString(),
+              "data2": millsData["BRM_PDAY"].toString(),
+              "data3": millsData["USM_PDAY"].toString(),
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "RH Temp [DegC]",
+              "data1": millsData["WRM_RHF_TEMP"].toString(),
+              "data2": millsData["BRM_RHF_TEMP"].toString(),
+              "data3": millsData["USM_RHF_TEMP"].toString(),
+              "selected": false,
+              "i": 5,
+            },
+            {
+              "head": "Oxygen [%]",
+              "data1": millsData["WRM_RHF_O2"].toStringAsFixed(2),
+              "data2": millsData["BRM_RHF_O2"].toStringAsFixed(2),
+              "data3": millsData["USM_RHF_O2"].toStringAsFixed(2),
+              "selected": false,
+              "i": 6,
+            },
+            {
+              "head": "Hot Charging (Billets)",
+              "data1": "NA",
+              "data2": millsData["BRM_HOT_CHARGING"].toString(),
+              "data3": "NA",
+              "selected": false,
+              "i": 7,
+            },
+            {
+              "head": "Last Billet/Bloom Rolled @",
+              "data1": millsData["LAST_UPDATE_WRM"].toString(),
+              "data2": millsData["LAST_UPDATE_BRM"].toString(),
+              "data3": millsData["LAST_UPDATE_USM"].toString(),
+              "selected": false,
+              "i": 8,
+            },
+            {
+              "head": "Mixed Gas Flow [Nm3/hr]",
+              "data1": millsData["MG_WRM_FLOW"].toString(),
+              "data2": millsData["MG_BRM_FLOW"].toString(),
+              "data3": millsData["MG_USM_FLOW"].toString(),
+              "selected": false,
+              "i": 9,
+            },
+            {
+              "head": "Shift Total MG Flow [Nm3]",
+              "data1": millsData["WRM_TOT_GAS_SHIFT"].toString(),
+              "data2": millsData["BRM_TOT_GAS_SHIFT"].toString(),
+              "data3": millsData["USM_TOT_GAS_SHIFT"].toString(),
+              "selected": false,
+              "i": 10,
+            },
+            {
+              "head": "Day Total MG Flow [Nm3]",
+              "data1": millsData["WRM_TOT_GAS_DAY"].toString(),
+              "data2": millsData["BRM_TOT_GAS_DAY"].toString(),
+              "data3": millsData["USM_TOT_GAS_DAY"].toString(),
+              "selected": false,
+              "i": 10,
+            },
+            {
+              "head": "Prev Day Total MG Flow [Nm3]",
+              "data1": millsData["WRM_TOT_GAS_PDAY"].toString(),
+              "data2": millsData["BRM_TOT_GAS_PDAY"].toString(),
+              "data3": millsData["USM_TOT_GAS_PDAY"].toString(),
+              "selected": false,
+              "i": 10,
             },
           ];
           if (num != -1) {

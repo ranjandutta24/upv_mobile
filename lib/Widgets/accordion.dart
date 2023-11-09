@@ -38,135 +38,83 @@ class _AccordionPageState extends State<AccordionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[100],
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            Accordion(
-              paddingListBottom: 0,
-              headerBorderColor: Colors.blueGrey,
-              headerBorderColorOpened: Colors.transparent,
-              // headerBorderWidth: 1,
-              headerBackgroundColorOpened:
-                  const Color.fromARGB(255, 55, 114, 209),
-              // headerBackgroundColorOpened: Colors.green,
-              contentBackgroundColor: Colors.white,
-              // contentBorderColor: Colors.green,
-              contentBorderWidth: 2,
-              contentHorizontalPadding: 0,
-              contentVerticalPadding: 0,
-              scaleWhenAnimating: true,
-              openAndCloseAnimation: true,
-              headerPadding:
-                  const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
-              sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
-              sectionClosingHapticFeedback: SectionHapticFeedback.light,
-              children: [
-                AccordionSection(
-                  isOpen: false,
-                  contentVerticalPadding: 10,
-                  contentHorizontalPadding: 0,
-                  leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-                  header: const Text('BLAST FURNACE',
-                      style: AccordionPage.headerStyle),
-                  content: const Col(),
-                ),
-              ],
-            ),
-            Accordion(
-              paddingListTop: 0,
-              paddingListBottom: 0,
-
-              headerBorderColor: Colors.blueGrey,
-              headerBorderColorOpened: Colors.transparent,
-              // headerBorderWidth: 1,
-              headerBackgroundColorOpened:
-                  const Color.fromARGB(255, 55, 114, 209),
-              // headerBackgroundColorOpened: Colors.green,
-              contentBackgroundColor: Colors.white,
-              // contentBorderColor: Colors.green,
-              contentBorderWidth: 2,
-              contentHorizontalPadding: 0,
-              scaleWhenAnimating: true,
-              openAndCloseAnimation: true,
-              headerPadding:
-                  const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
-              sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
-              sectionClosingHapticFeedback: SectionHapticFeedback.light,
-              children: [
-                AccordionSection(
-                  isOpen: false,
-                  contentVerticalPadding: 10,
-                  contentHorizontalPadding: 0,
-                  leftIcon: const Icon(Icons.text_fields_rounded,
-                      color: Colors.white),
-                  header: const Text("BASIC OXYGEN FURNACE",
-                      style: AccordionPage.headerStyle),
-                  content: const BOF(),
-                ),
-              ],
-            ),
-            Accordion(
-              paddingListTop: 0,
-              paddingListBottom: 0,
-              headerBorderColor: Colors.blueGrey,
-              headerBorderColorOpened: Colors.transparent,
-              // headerBorderWidth: 1,
-              headerBackgroundColorOpened:
-                  const Color.fromARGB(255, 55, 114, 209),
-              // headerBackgroundColorOpened: Colors.green,
-              contentBackgroundColor: Colors.white,
-              // contentBorderColor: Colors.green,
-              contentBorderWidth: 2,
-              contentHorizontalPadding: 0,
-              scaleWhenAnimating: true,
-              openAndCloseAnimation: true,
-              headerPadding:
-                  const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
-              sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
-              sectionClosingHapticFeedback: SectionHapticFeedback.light,
-              children: [
-                AccordionSection(
-                  isOpen: true,
-                  leftIcon: const Icon(Icons.text_fields_rounded,
-                      color: Colors.white),
-                  header: const Text("MILLS", style: AccordionPage.headerStyle),
-                  content: Mills(),
-                ),
-              ],
-            ),
-            // Accordion(
-            //   paddingListTop: 0,
-            //   paddingListBottom: 0,
-            //   headerBorderColor: Colors.blueGrey,
-            //   headerBorderColorOpened: Colors.transparent,
-            //   // headerBorderWidth: 1,
-            //   headerBackgroundColorOpened:
-            //       const Color.fromARGB(255, 55, 114, 209),
-            //   // headerBackgroundColorOpened: Colors.green,
-            //   contentBackgroundColor: Colors.white,
-            //   // contentBorderColor: Colors.green,
-            //   contentBorderWidth: 2,
-            //   contentHorizontalPadding: 0,
-            //   scaleWhenAnimating: true,
-            //   openAndCloseAnimation: true,
-            //   headerPadding:
-            //       const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
-            //   sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
-            //   sectionClosingHapticFeedback: SectionHapticFeedback.light,
-            //   children: [
-            //     AccordionSection(
-            //       isOpen: false,
-            //       leftIcon: const Icon(Icons.text_fields_rounded,
-            //           color: Colors.white),
-            //       header: const Text("TECHNO ECONOMICS",
-            //           style: AccordionPage.headerStyle),
-            //       content: TechnoEco(),
-            //     ),
-            //   ],
-            // ),
-          ],
-        ),
+      body: Accordion(
+        maxOpenSections: 10,
+        paddingListBottom: 0,
+        headerBorderColor: Colors.blueGrey,
+        headerBorderColorOpened: Colors.transparent,
+        // headerBorderWidth: 1,
+        headerBackgroundColorOpened: const Color.fromARGB(255, 55, 114, 209),
+        // headerBackgroundColorOpened: Colors.green,
+        contentBackgroundColor: Colors.white,
+        // contentBorderColor: Colors.green,
+        contentBorderWidth: 2,
+        contentHorizontalPadding: 0,
+        contentVerticalPadding: 0,
+        scaleWhenAnimating: true,
+        openAndCloseAnimation: true,
+        headerPadding: const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
+        sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
+        sectionClosingHapticFeedback: SectionHapticFeedback.light,
+        children: [
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header:
+                const Text('BLAST FURNACE', style: AccordionPage.headerStyle),
+            content: const Col(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            header: const Text("BASIC OXYGEN FURNACE",
+                style: AccordionPage.headerStyle),
+            content: const BOF(),
+          ),
+          AccordionSection(
+            isOpen: true,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("MILLS", style: AccordionPage.headerStyle),
+            content: Mills(),
+          ),
+        ],
       ),
+
+      // Accordion(
+      //   paddingListTop: 0,
+      //   paddingListBottom: 0,
+      //   headerBorderColor: Colors.blueGrey,
+      //   headerBorderColorOpened: Colors.transparent,
+      //   // headerBorderWidth: 1,
+      //   headerBackgroundColorOpened:
+      //       const Color.fromARGB(255, 55, 114, 209),
+      //   // headerBackgroundColorOpened: Colors.green,
+      //   contentBackgroundColor: Colors.white,
+      //   // contentBorderColor: Colors.green,
+      //   contentBorderWidth: 2,
+      //   contentHorizontalPadding: 0,
+      //   scaleWhenAnimating: true,
+      //   openAndCloseAnimation: true,
+      //   headerPadding:
+      //       const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
+      //   sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
+      //   sectionClosingHapticFeedback: SectionHapticFeedback.light,
+      //   children: [
+      //     AccordionSection(
+      //       isOpen: false,
+      //       leftIcon: const Icon(Icons.text_fields_rounded,
+      //           color: Colors.white),
+      //       header: const Text("TECHNO ECONOMICS",
+      //           style: AccordionPage.headerStyle),
+      //       content: TechnoEco(),
+      //     ),
+      //   ],
+      // ),
     );
   }
 } //__
