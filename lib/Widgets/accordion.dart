@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:upv_mobile/Compnent/Blast_furnace.dart';
 import 'package:upv_mobile/Compnent/Basic_oxygen_furnace.dart';
+import 'package:upv_mobile/Compnent/Mills.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 import 'package:upv_mobile/Widgets/ex3.dart';
 
@@ -53,7 +54,7 @@ class _AccordionPageState extends State<AccordionPage> {
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
         children: [
           AccordionSection(
-            isOpen: true,
+            isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
             leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
@@ -62,12 +63,22 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Col(),
           ),
           AccordionSection(
-            isOpen: false,
+            // contentBorderWidth: 0,
+            isOpen: true,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
             leftIcon:
                 const Icon(Icons.text_fields_rounded, color: Colors.white),
             header: const Text("BASIC OXYGEN FURNACE",
                 style: AccordionPage.headerStyle),
-            content: BOF(),
+            content: const BOF(),
+          ),
+          AccordionSection(
+            isOpen: true,
+            leftIcon:
+                const Icon(Icons.text_fields_rounded, color: Colors.white),
+            header: const Text("MILLS", style: AccordionPage.headerStyle),
+            content: Mills(),
           ),
         ],
       ),

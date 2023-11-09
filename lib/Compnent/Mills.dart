@@ -4,15 +4,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 
-class BOF extends StatefulWidget {
-  const BOF({super.key});
+class Mills extends StatefulWidget {
+  const Mills({super.key});
   @override
-  State<BOF> createState() {
-    return BOFState();
+  State<Mills> createState() {
+    return MillsState();
   }
 }
 
-class BOFState extends State<BOF> {
+class MillsState extends State<Mills> {
   late dynamic blastData;
   var loading = true;
   var num = -1;
