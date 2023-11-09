@@ -8,6 +8,7 @@ import 'package:get/get.dart';
 import 'package:upv_mobile/Compnent/Blast_furnace.dart';
 import 'package:upv_mobile/Compnent/Basic_oxygen_furnace.dart';
 import 'package:upv_mobile/Compnent/Mills.dart';
+import 'package:upv_mobile/Compnent/Techno_economics.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 import 'package:upv_mobile/Widgets/ex3.dart';
 
@@ -93,7 +94,7 @@ class _AccordionPageState extends State<AccordionPage> {
               sectionClosingHapticFeedback: SectionHapticFeedback.light,
               children: [
                 AccordionSection(
-                  isOpen: true,
+                  isOpen: false,
                   contentVerticalPadding: 10,
                   contentHorizontalPadding: 0,
                   leftIcon: const Icon(Icons.text_fields_rounded,
@@ -106,7 +107,7 @@ class _AccordionPageState extends State<AccordionPage> {
             ),
             Accordion(
               paddingListTop: 0,
-
+              paddingListBottom: 0,
               headerBorderColor: Colors.blueGrey,
               headerBorderColorOpened: Colors.transparent,
               // headerBorderWidth: 1,
@@ -125,7 +126,7 @@ class _AccordionPageState extends State<AccordionPage> {
               sectionClosingHapticFeedback: SectionHapticFeedback.light,
               children: [
                 AccordionSection(
-                  isOpen: false,
+                  isOpen: true,
                   leftIcon: const Icon(Icons.text_fields_rounded,
                       color: Colors.white),
                   header: const Text("MILLS", style: AccordionPage.headerStyle),
@@ -133,6 +134,36 @@ class _AccordionPageState extends State<AccordionPage> {
                 ),
               ],
             ),
+            // Accordion(
+            //   paddingListTop: 0,
+            //   paddingListBottom: 0,
+            //   headerBorderColor: Colors.blueGrey,
+            //   headerBorderColorOpened: Colors.transparent,
+            //   // headerBorderWidth: 1,
+            //   headerBackgroundColorOpened:
+            //       const Color.fromARGB(255, 55, 114, 209),
+            //   // headerBackgroundColorOpened: Colors.green,
+            //   contentBackgroundColor: Colors.white,
+            //   // contentBorderColor: Colors.green,
+            //   contentBorderWidth: 2,
+            //   contentHorizontalPadding: 0,
+            //   scaleWhenAnimating: true,
+            //   openAndCloseAnimation: true,
+            //   headerPadding:
+            //       const EdgeInsets.symmetric(vertical: 7, horizontal: 15),
+            //   sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
+            //   sectionClosingHapticFeedback: SectionHapticFeedback.light,
+            //   children: [
+            //     AccordionSection(
+            //       isOpen: false,
+            //       leftIcon: const Icon(Icons.text_fields_rounded,
+            //           color: Colors.white),
+            //       header: const Text("TECHNO ECONOMICS",
+            //           style: AccordionPage.headerStyle),
+            //       content: TechnoEco(),
+            //     ),
+            //   ],
+            // ),
           ],
         ),
       ),

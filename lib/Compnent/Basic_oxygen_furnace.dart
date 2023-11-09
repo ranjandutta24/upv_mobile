@@ -22,9 +22,9 @@ class BOFState extends State<BOF> {
     fun();
   }
 
-  Color _containerColor = Color.fromARGB(255, 17, 156, 43);
+  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = Color.fromARGB(255, 44, 44, 44);
+  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -49,7 +49,7 @@ class BOFState extends State<BOF> {
   BOFService() async {
     await Basicoxygenfurnace().then((data) {
       if (mounted) {
-        print(data.body);
+        // print(data.body);
         setState(() {
           blastData = json.decode(data.body);
           rows = [
@@ -157,16 +157,26 @@ class BOFState extends State<BOF> {
               "i": 10,
             },
             {
-              "head": "Prev. Day Heat",
-              "data1": blastData["BOF1_PDAY"].toString(),
+              "head": "Total Heat",
+              "data1": (blastData["BOF1_A"] +
+                      blastData["BOF1_B"] +
+                      blastData["BOF1_C"] +
+                      blastData["BOF2_A"] +
+                      blastData["BOF2_B"] +
+                      blastData["BOF2_C"] +
+                      blastData["BOF3_A"] +
+                      blastData["BOF3_B"] +
+                      blastData["BOF3_C"])
+                  .toString(),
               "data2": blastData["BOF2_PDAY"].toString(),
               "data3": blastData["BOF3_PDAY"].toString(),
               "selected": false,
               "i": 11,
             },
             {
-              "head": "Total Heat",
-              "data1": blastData["BOF1_PDAY"].toString(),
+              "head": "Prev. Day Heat",
+              "data1":
+                  "${(blastData["BOF1_PDAY"] + blastData["BOF2_PDAY"] + blastData["BOF3_PDAY"]).toString()} (${blastData["BOF1_PDAY"].toString()} + ${blastData["BOF2_PDAY"].toString()} + ${blastData["BOF3_PDAY"].toString()})",
               "data2": blastData["BOF2_PDAY"].toString(),
               "data3": blastData["BOF3_PDAY"].toString(),
               "selected": false,
@@ -206,40 +216,91 @@ class BOFState extends State<BOF> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color.fromARGB(255, 136, 137, 143), // Border color
+                      color: const Color.fromARGB(
+                          113, 44, 129, 227), // Border color
                       width: 2.0, // Border width
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
-                  child: const Row(
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(
-                        "Parameter",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 152, 152, 152)),
-                      ),
-                      Text(
-                        "BOF1",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 152, 152, 152),
+                      Expanded(
+                        flex: 4,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text(
+                            "Parameter",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152)),
+                          ),
                         ),
                       ),
-                      Text(
-                        "BOF2",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 152, 152, 152),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("BOF1",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
                         ),
                       ),
-                      Text(
-                        "BOF3",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 152, 152, 152),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("BOF2",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: const BoxDecoration(),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("BOF3",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
                         ),
                       ),
                     ],
@@ -257,19 +318,19 @@ class BOFState extends State<BOF> {
                             : _containerColora,
                         border: Border.all(
                           color: const Color.fromARGB(
-                              255, 165, 165, 165), // Border color
+                              113, 44, 129, 227), // Border color
                           width: 1.0, // Border width
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 5, horizontal: 3),
+                          vertical: 0, horizontal: 3),
                       child: _row(
-                        r["head"],
-                        r["data1"],
-                        r["data2"],
-                        r["data3"],
-                        r["selected"] == true ? _containerColora : _textColor,
-                      ),
+                          r["head"],
+                          r["data1"],
+                          r["data2"],
+                          r["data3"],
+                          r["selected"] == true ? _containerColora : _textColor,
+                          r["i"]),
                     ),
                   ),
               ],
@@ -278,15 +339,91 @@ class BOFState extends State<BOF> {
   }
 }
 
-Widget _row(h, d1, d2, d3, color) {
+Widget _row(h, d1, d2, d3, color, i) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Text(h, style: TextStyle(color: color)),
-      Text(d1, style: TextStyle(color: color)),
-      Text(d2, style: TextStyle(color: color)),
-      Text(d3, style: TextStyle(color: color)),
-      // Text(d, style: TextStyle(color: color)),
+      Expanded(
+        flex: 4,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
+              ),
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(
+            h,
+            style: TextStyle(color: color),
+          ),
+        ),
+      ),
+      i == 11 || i == 12
+          ? (Expanded(
+              flex: 3,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            ))
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 44, 129, 227),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            ),
+      i == 11 || i == 12
+          ? const Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 44, 129, 227),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d2,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            ),
+      i == 11 || i == 12
+          ? const Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d3,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            ),
+      // Text(h, style: TextStyle(color: color)),
+      // Text(d1, style: TextStyle(color: color)),
+      // Text(d2, style: TextStyle(color: color)),
+      // Text(d3, style: TextStyle(color: color)),
     ],
   );
 }
