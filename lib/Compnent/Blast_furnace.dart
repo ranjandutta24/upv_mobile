@@ -24,9 +24,9 @@ class ColState extends State<Col> {
     fun();
   }
 
-  Color _containerColor = Color.fromARGB(255, 17, 156, 43);
+  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = Color.fromARGB(255, 44, 44, 44);
+  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -415,7 +415,7 @@ class ColState extends State<Col> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color.fromARGB(255, 136, 137, 143), // Border color
+                      color: Color.fromARGB(113, 44, 129, 227), // Border color
                       width: 2.0, // Border width
                     ),
                   ),
@@ -448,13 +448,13 @@ class ColState extends State<Col> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              255, 165, 165, 165), // Border color
+                          color:
+                              Color.fromARGB(113, 44, 129, 227), // Border color
                           width: 1.0, // Border width
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 5, horizontal: 3),
+                          vertical: 0, horizontal: 3),
                       child: _row(
                         r["head"],
                         r["data"],
@@ -472,8 +472,35 @@ Widget _row(h, d, color) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      Text(h, style: TextStyle(color: color)),
-      Text(d, style: TextStyle(color: color)),
+      Expanded(
+        flex: 8,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
+              ),
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(
+            h,
+            style: TextStyle(color: color),
+          ),
+        ),
+      ),
+      Expanded(
+        flex: 3,
+        child: Container(
+          decoration: const BoxDecoration(),
+          child: Text(
+            d,
+            style: TextStyle(color: color),
+            textAlign: TextAlign.right,
+          ),
+        ),
+      ),
     ],
   );
 }
