@@ -7,7 +7,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:upv_mobile/Compnent/Blast_furnace.dart';
 import 'package:upv_mobile/Compnent/Basic_oxygen_furnace.dart';
+import 'package:upv_mobile/Compnent/Continuous_casting_plant.dart';
 import 'package:upv_mobile/Compnent/Mills.dart';
+import 'package:upv_mobile/Compnent/Sinter_plant.dart';
 import 'package:upv_mobile/Compnent/Techno_economics.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 import 'package:upv_mobile/Widgets/ex3.dart';
@@ -83,12 +85,36 @@ class _AccordionPageState extends State<AccordionPage> {
             content: Mills(),
           ),
           AccordionSection(
-            isOpen: true,
+            isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("TECHNO ECONOMICS",
                 style: AccordionPage.headerStyle),
             content: const TechnoEco(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header:
+                const Text("SINTER PLANT", style: AccordionPage.headerStyle),
+            content: const SinterPlant(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("CONTINUOUS CASTING PLANT",
+                style: AccordionPage.headerStyle),
+            content: const Ccp(),
+          ),
+          AccordionSection(
+            isOpen: true,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("POWER & BLOWING STATION",
+                style: AccordionPage.headerStyle),
+            content: const Ccp(),
           ),
         ],
       ),

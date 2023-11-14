@@ -4,16 +4,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 
-class TechnoEco extends StatefulWidget {
-  const TechnoEco({super.key});
+class Ccp extends StatefulWidget {
+  const Ccp({super.key});
   @override
-  State<TechnoEco> createState() {
-    return TechnoEcoState();
+  State<Ccp> createState() {
+    return CcpState();
   }
 }
 
-class TechnoEcoState extends State<TechnoEco> {
-  late dynamic technoData;
+class CcpState extends State<Ccp> {
+  late dynamic ccpData;
   var loading = true;
   var num = -1;
   @override
@@ -47,101 +47,102 @@ class TechnoEcoState extends State<TechnoEco> {
   List<dynamic> rows = [];
 
   TechnoService() async {
-    await technoeconomics().then((data) {
+    await continuouscastingplant().then((data) {
       if (mounted) {
         print(data.body);
         setState(() {
-          technoData = json.decode(data.body);
+          ccpData = json.decode(data.body);
           rows = [
             {
-              "head": "BFCokeRate[Kg/THM]",
-              "data1": technoData["BFCOKE_NORM"].toString(),
-              "data2": technoData["BFCOKE_ACTUAL"].toString(),
-              "data3": technoData["BFCOKE_CPLM"].toString(),
-              "data4": technoData["BFCOKE_CPLY"].toString(),
+              "head": "Cast",
+              "data1":
+                  "${ccpData["CCP1_A"].toString()}/${ccpData["CCP1_B"].toString()}/${ccpData["CCP1_C"].toString()}",
+              "data2":
+                  "${ccpData["CCP2_A"].toString()}/${ccpData["CCP2_B"].toString()}/${ccpData["CCP3_C"].toString()}",
+              "data3":
+                  "${ccpData["CCP3_A"].toString()}/${ccpData["CCP3_B"].toString()}/${ccpData["CCP3_C"].toString()}",
               "selected": false,
               "i": 0,
             },
             {
-              "head": "CDI Rate[Kg/THM]",
-              "data1": technoData["CDIRATE_NORM"].toString(),
-              "data2": technoData["CDIRATE_ACTUAL"].toString(),
-              "data3": technoData["CDIRATE_CPLM"].toString(),
-              "data4": technoData["CDIRATE_CPLY"].toString(),
+              "head": "Ladle Weight [Ton]",
+              "data1": ccpData["LADLEWEIGHT1"].toString(),
+              "data2": ccpData["LADLEWEIGHT2"].toString(),
+              "data3": ccpData["LADLEWEIGHT3"].toString(),
               "selected": false,
               "i": 1,
             },
             {
-              "head": "Fuel Rate[Kg/THM]",
-              "data1": technoData["FUELRATE_NORM"].toString(),
-              "data2": technoData["FUELRATE_ACTUAL"].toString(),
-              "data3": technoData["FUELRATE_CPLM"].toString(),
-              "data4": technoData["FUELRATE_CPLY"].toString(),
+              "head": "Tundish Temp [DegC]",
+              "data1": ccpData["TUNDISHTEMP1"].toString(),
+              "data2": ccpData["TUNDISHTEMP2"].toString(),
+              "data3": ccpData["TUNDISHTEMP3"].toString(),
               "selected": false,
               "i": 2,
             },
             {
-              "head": "BF Prod [T/m3/Day]",
-              "data1": technoData["BFPRO_NORM"].toStringAsFixed(2),
-              "data2": technoData["BFPRO_ACTUAL"].toStringAsFixed(2),
-              "data3": technoData["BFPRO_CPLM"].toStringAsFixed(2),
-              "data4": technoData["BFPRO_CPLY"].toStringAsFixed(2),
+              "head": "Tundish Weight [Ton]",
+              "data1": ccpData["TUNDISHWEIGHT1"].toString(),
+              "data2": ccpData["TUNDISHWEIGHT2"].toString(),
+              "data3": ccpData["TUNDISHWEIGHT3"].toString(),
               "selected": false,
               "i": 3,
             },
             {
-              "head": "HM Consm[Kg/TCS]",
-              "data1": technoData["HMCON_NORM"].toString(),
-              "data2": technoData["HMCON_ACTUAL"].toString(),
-              "data3": technoData["HMCON_CPLM"].toString(),
-              "data4": technoData["HMCON_CPLY"].toString(),
+              "head": "Casting Speed Strand 1",
+              "data1": ccpData["WITHDRAWALSPEED1_1"].toStringAsFixed(2),
+              "data2": ccpData["WITHDRAWALSPEED2_1"].toStringAsFixed(2),
+              "data3": ccpData["WITHDRAWALSPEED3_1"].toStringAsFixed(2),
               "selected": false,
               "i": 4,
             },
             {
-              "head": "Scrap Consm[Kg/TCS]",
-              "data1": technoData["SCRAP_NORM"].toString(),
-              "data2": technoData["SCRAP_ACTUAL"].toString(),
-              "data3": technoData["SCRAP_CPLM"].toString(),
-              "data4": technoData["SCRAP_CPLY"].toString(),
+              "head": "Casting Speed Strand 2",
+              "data1": ccpData["WITHDRAWALSPEED1_2"].toStringAsFixed(2),
+              "data2": ccpData["WITHDRAWALSPEED2_2"].toStringAsFixed(2),
+              "data3": ccpData["WITHDRAWALSPEED3_2"].toStringAsFixed(2),
               "selected": false,
               "i": 5,
             },
             {
-              "head": "TMI[Kg/TCS]",
-              "data1": technoData["TMI_NORM"].toString(),
-              "data2": technoData["TMI_ACTUAL"].toString(),
-              "data3": technoData["TMI_CPLM"].toString(),
-              "data4": technoData["TMI_CPLY"].toString(),
+              "head": "Casting Speed Strand 3",
+              "data1": ccpData["WITHDRAWALSPEED1_3"].toStringAsFixed(2),
+              "data2": ccpData["WITHDRAWALSPEED2_3"].toStringAsFixed(2),
+              "data3": ccpData["WITHDRAWALSPEED3_3"].toStringAsFixed(2),
               "selected": false,
               "i": 6,
             },
             {
-              "head": "Power[Kwh/TCS]",
-              "data1": technoData["POWER_NORM"].toString(),
-              "data2": technoData["POWER_ACTUAL"].toString(),
-              "data3": technoData["POWER_CPLM"].toString(),
-              "data4": technoData["POWER_CPLY"].toString(),
+              "head": "Casting Speed Strand 4",
+              "data1": ccpData["WITHDRAWALSPEED1_4"].toStringAsFixed(2),
+              "data2": ccpData["WITHDRAWALSPEED2_4"].toStringAsFixed(2),
+              "data3": ccpData["WITHDRAWALSPEED3_4"].toStringAsFixed(2),
               "selected": false,
               "i": 7,
             },
             {
-              "head": "SPEnergy[GCal/TSS]",
-              "data1": technoData["SPENERGY_NORM"].toStringAsFixed(2),
-              "data2": technoData["SPENERGY_ACTUAL"].toStringAsFixed(2),
-              "data3": technoData["SPENERGY_CPLM"].toStringAsFixed(2),
-              "data4": technoData["SPENERGY_CPLY"].toStringAsFixed(2),
+              "head": "Casting Speed Strand 5",
+              "data1": ccpData["WITHDRAWALSPEED1_5"].toStringAsFixed(2),
+              "data2": ccpData["WITHDRAWALSPEED2_5"].toStringAsFixed(2),
+              "data3": "",
               "selected": false,
               "i": 8,
             },
             {
-              "head": "SpWaterConsump[m3/TCS]",
-              "data1": technoData["SPWATER_NORM"].toStringAsFixed(2),
-              "data2": technoData["SPWATER_ACTUAL"].toStringAsFixed(2),
-              "data3": technoData["SPWATER_CPLM"].toStringAsFixed(2),
-              "data4": technoData["SWATER_CPLY"].toStringAsFixed(2),
+              "head": "Casting Speed Strand 6",
+              "data1": ccpData["WITHDRAWALSPEED1_6"].toStringAsFixed(2),
+              "data2": ccpData["WITHDRAWALSPEED2_6"].toStringAsFixed(2),
+              "data3": "",
               "selected": false,
               "i": 9,
+            },
+            {
+              "head": "Prev. Day Cast",
+              "data1": ccpData["CCPPRETOTAL"].toString(),
+              "data2": "",
+              "data3": "",
+              "selected": false,
+              "i": 10,
             },
           ];
           if (num != -1) {
@@ -204,7 +205,6 @@ class TechnoEcoState extends State<TechnoEco> {
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152)),
                           ),
                         ),
@@ -222,10 +222,9 @@ class TechnoEcoState extends State<TechnoEco> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("NORM",
+                          child: const Text("CCP1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -244,32 +243,9 @@ class TechnoEcoState extends State<TechnoEco> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("ACTUAL",
+                          child: const Text("CCP2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 9,
-                                color: Color.fromARGB(255, 152, 152, 152),
-                              ),
-                              textAlign: TextAlign.center),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
-                              ),
-                            ),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text("CPLM",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -281,10 +257,9 @@ class TechnoEcoState extends State<TechnoEco> {
                           decoration: const BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("CPLY",
+                          child: const Text("CCP3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -316,7 +291,6 @@ class TechnoEcoState extends State<TechnoEco> {
                           r["data1"],
                           r["data2"],
                           r["data3"],
-                          r["data4"],
                           r["selected"] == true ? _containerColora : _textColor,
                           r["i"]),
                     ),
@@ -327,7 +301,7 @@ class TechnoEcoState extends State<TechnoEco> {
   }
 }
 
-Widget _row(h, d1, d2, d3, d4, color, i) {
+Widget _row(h, d1, d2, d3, color, i) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -384,28 +358,13 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
       Expanded(
         flex: 1,
         child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
-              ),
-            ),
-          ),
+          decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d3,
               style: TextStyle(color: color), textAlign: TextAlign.center),
         ),
       ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d4,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
+
       // Text(h, style: TextStyle(color: color)),
       // Text(d1, style: TextStyle(color: color)),
       // Text(d2, style: TextStyle(color: color)),

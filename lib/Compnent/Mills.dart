@@ -147,7 +147,7 @@ class MillsState extends State<Mills> {
               "data2": millsData["BRM_TOT_GAS_DAY"].toString(),
               "data3": millsData["USM_TOT_GAS_DAY"].toString(),
               "selected": false,
-              "i": 10,
+              "i": 11,
             },
             {
               "head": "Prev Day Total MG Flow [Nm3]",
@@ -155,7 +155,7 @@ class MillsState extends State<Mills> {
               "data2": millsData["BRM_TOT_GAS_PDAY"].toString(),
               "data3": millsData["USM_TOT_GAS_PDAY"].toString(),
               "selected": false,
-              "i": 10,
+              "i": 12,
             },
           ];
           if (num != -1) {
