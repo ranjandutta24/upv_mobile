@@ -6,6 +6,7 @@ import 'package:upv_mobile/Widgets/accordion.dart';
 // import 'package:upv_mobile/Widgets/example.dart';
 // import 'package:upv_mobile/Widgets/example.dart';
 import 'package:upv_mobile/Widgets/example2.dart';
+import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class OverviewScreen extends StatefulWidget {
   const OverviewScreen({super.key});
@@ -32,7 +33,8 @@ class _OverviewsScreenState extends State<OverviewScreen> {
         appBar: AppBar(
           title: const Text('Overview'),
         ),
-        body: _acc());
+        drawer: const MainDrawer(),
+        body: _accordion());
   }
 }
 
@@ -52,7 +54,7 @@ Widget _col() {
   );
 }
 
-Widget _acc() {
+Widget _accordion() {
   return AccordionPage();
 }
 // Widget _aco() {
