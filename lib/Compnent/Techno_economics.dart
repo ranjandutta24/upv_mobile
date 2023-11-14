@@ -13,7 +13,7 @@ class TechnoEco extends StatefulWidget {
 }
 
 class TechnoEcoState extends State<TechnoEco> {
-  late dynamic blastData;
+  late dynamic technoData;
   var loading = true;
   var num = -1;
   @override
@@ -37,150 +37,111 @@ class TechnoEcoState extends State<TechnoEco> {
   }
 
   fun() {
-    BOFService();
+    TechnoService();
     var duration = const Duration(seconds: 5);
     Timer.periodic(duration, (Timer timer) {
-      BOFService();
+      TechnoService();
     });
   }
 
   List<dynamic> rows = [];
 
-  BOFService() async {
-    await Basicoxygenfurnace().then((data) {
+  TechnoService() async {
+    await technoeconomics().then((data) {
       if (mounted) {
         print(data.body);
         setState(() {
-          blastData = json.decode(data.body);
+          technoData = json.decode(data.body);
           rows = [
             {
-              "head": "Heat A/B/C",
-              "data1":
-                  "${blastData["BOF1_A"].toStringAsFixed(0)}/${blastData["BOF1_B"].toString()}/${blastData["BOF1_C"].toString()}",
-              "data2":
-                  "${blastData["BOF2_A"].toStringAsFixed(0)}/${blastData["BOF2_B"].toString()}/${blastData["BOF2_C"].toString()}",
-              "data3":
-                  "${blastData["BOF3_A"].toStringAsFixed(0)}/${blastData["BOF3_B"].toString()}/${blastData["BOF3_C"].toString()}",
+              "head": "BFCokeRate[Kg/THM]",
+              "data1": technoData["BFCOKE_NORM"].toString(),
+              "data2": technoData["BFCOKE_ACTUAL"].toString(),
+              "data3": technoData["BFCOKE_CPLM"].toString(),
+              "data4": technoData["BFCOKE_CPLY"].toString(),
               "selected": false,
               "i": 0,
             },
             {
-              "head": "Status",
-              "data1": "${blastData["BOF1_STATUS"]}",
-              "data2": "${blastData["BOF2_STATUS"]}",
-              "data3": "${blastData["BOF3_STATUS"]}",
+              "head": "CDI Rate[Kg/THM]",
+              "data1": technoData["CDIRATE_NORM"].toString(),
+              "data2": technoData["CDIRATE_ACTUAL"].toString(),
+              "data3": technoData["CDIRATE_CPLM"].toString(),
+              "data4": technoData["CDIRATE_CPLY"].toString(),
               "selected": false,
               "i": 1,
             },
             {
-              "head": "Last Blow Duration(Mins)",
-              "data1": blastData["BOF1_LASTHEATDURATION"].toString(),
-              "data2": blastData["BOF2_LASTHEATDURATION"].toString(),
-              "data3": blastData["BOF3_LASTHEATDURATION"].toString(),
+              "head": "Fuel Rate[Kg/THM]",
+              "data1": technoData["FUELRATE_NORM"].toString(),
+              "data2": technoData["FUELRATE_ACTUAL"].toString(),
+              "data3": technoData["FUELRATE_CPLM"].toString(),
+              "data4": technoData["FUELRATE_CPLY"].toString(),
               "selected": false,
               "i": 2,
             },
             {
-              "head": "Last Blow Start Time",
-              "data1": blastData["BOF1_HEATSTART"],
-              "data2": blastData["BOF2_HEATSTART"],
-              "data3": blastData["BOF3_HEATSTART"],
+              "head": "BF Prod [T/m3/Day]",
+              "data1": technoData["BFPRO_NORM"].toStringAsFixed(2),
+              "data2": technoData["BFPRO_ACTUAL"].toStringAsFixed(2),
+              "data3": technoData["BFPRO_CPLM"].toStringAsFixed(2),
+              "data4": technoData["BFPRO_CPLY"].toStringAsFixed(2),
               "selected": false,
               "i": 3,
             },
             {
-              "head": "Charge To Tap Duration(Mins)",
-              "data1": blastData["BOF1_LASTC2T"] == null
-                  ? "N/A"
-                  : blastData["BOF1_LASTC2T"].toString(),
-              "data2": blastData["BOF2_LASTC2T"] == null
-                  ? "N/A"
-                  : blastData["BOF2_LASTC2T"].toString(),
-              "data3": blastData["BOF3_LASTC2T"] == null
-                  ? "N/A"
-                  : blastData["BOF3_LASTC2T"].toString(),
+              "head": "HM Consm[Kg/TCS]",
+              "data1": technoData["HMCON_NORM"].toString(),
+              "data2": technoData["HMCON_ACTUAL"].toString(),
+              "data3": technoData["HMCON_CPLM"].toString(),
+              "data4": technoData["HMCON_CPLY"].toString(),
               "selected": false,
               "i": 4,
             },
             {
-              "head": "Tap To Tap Duration(Mins)",
-              "data1": blastData["BOF1_LASTT2T"] == null
-                  ? "N/A"
-                  : blastData["BOF1_LASTT2T"].toString(),
-              "data2": blastData["BOF2_LASTT2T"] == null
-                  ? "N/A"
-                  : blastData["BOF2_LASTT2T"].toString(),
-              "data3": blastData["BOF3_LASTT2T"] == null
-                  ? "N/A"
-                  : blastData["BOF3_LASTT2T"].toString(),
+              "head": "Scrap Consm[Kg/TCS]",
+              "data1": technoData["SCRAP_NORM"].toString(),
+              "data2": technoData["SCRAP_ACTUAL"].toString(),
+              "data3": technoData["SCRAP_CPLM"].toString(),
+              "data4": technoData["SCRAP_CPLY"].toString(),
               "selected": false,
               "i": 5,
             },
             {
-              "head": "Last Tapping Finish Time",
-              "data1": blastData["BOF1_LAST"] ?? "N/A",
-              "data2": blastData["BOF2_LAST"] ?? "N/A",
-              "data3": blastData["BOF3_LAST"] ?? "N/A",
+              "head": "TMI[Kg/TCS]",
+              "data1": technoData["TMI_NORM"].toString(),
+              "data2": technoData["TMI_ACTUAL"].toString(),
+              "data3": technoData["TMI_CPLM"].toString(),
+              "data4": technoData["TMI_CPLY"].toString(),
               "selected": false,
               "i": 6,
             },
             {
-              "head": "Temp [DegC]",
-              "data1": blastData["TEMP_1"].toString(),
-              "data2": blastData["TEMP_2"].toString(),
-              "data3": blastData["TEMP_3"].toString(),
+              "head": "Power[Kwh/TCS]",
+              "data1": technoData["POWER_NORM"].toString(),
+              "data2": technoData["POWER_ACTUAL"].toString(),
+              "data3": technoData["POWER_CPLM"].toString(),
+              "data4": technoData["POWER_CPLY"].toString(),
               "selected": false,
               "i": 7,
             },
             {
-              "head": "O2 Consm [Nm3]",
-              "data1": blastData["O2FLOWL11"].toStringAsFixed(0),
-              "data2": blastData["O2FLOWL22"].toStringAsFixed(0),
-              "data3": blastData["O2FLOWL33"].toStringAsFixed(0),
+              "head": "SPEnergy[GCal/TSS]",
+              "data1": technoData["SPENERGY_NORM"].toStringAsFixed(2),
+              "data2": technoData["SPENERGY_ACTUAL"].toStringAsFixed(2),
+              "data3": technoData["SPENERGY_CPLM"].toStringAsFixed(2),
+              "data4": technoData["SPENERGY_CPLY"].toStringAsFixed(2),
               "selected": false,
               "i": 8,
             },
             {
-              "head": "Gas Recovery [Nm3]x 1000",
-              "data1": blastData["BOF1_GASRECTOT"].toStringAsFixed(0),
-              "data2": blastData["BOF2_GASRECTOT"].toStringAsFixed(0),
-              "data3": blastData["BOF3_GASRECTOT"].toStringAsFixed(0),
+              "head": "SpWaterConsump[m3/TCS]",
+              "data1": technoData["SPWATER_NORM"].toStringAsFixed(2),
+              "data2": technoData["SPWATER_ACTUAL"].toStringAsFixed(2),
+              "data3": technoData["SPWATER_CPLM"].toStringAsFixed(2),
+              "data4": technoData["SWATER_CPLY"].toStringAsFixed(2),
               "selected": false,
               "i": 9,
-            },
-            {
-              "head": "Lining Life",
-              "data1": blastData["LINING_1"].toString(),
-              "data2": blastData["LINING_2"].toString(),
-              "data3": blastData["LINING_3"].toString(),
-              "selected": false,
-              "i": 10,
-            },
-            {
-              "head": "Total Heat",
-              "data1": (blastData["BOF1_A"] +
-                      blastData["BOF1_B"] +
-                      blastData["BOF1_C"] +
-                      blastData["BOF2_A"] +
-                      blastData["BOF2_B"] +
-                      blastData["BOF2_C"] +
-                      blastData["BOF3_A"] +
-                      blastData["BOF3_B"] +
-                      blastData["BOF3_C"])
-                  .toString(),
-              "data2": blastData["BOF2_PDAY"].toString(),
-              "data3": blastData["BOF3_PDAY"].toString(),
-              "selected": false,
-              "i": 11,
-            },
-            {
-              "head": "Prev. Day Heat",
-              "data1":
-                  "${(blastData["BOF1_PDAY"] + blastData["BOF2_PDAY"] + blastData["BOF3_PDAY"]).toString()} (${blastData["BOF1_PDAY"].toString()} + ${blastData["BOF2_PDAY"].toString()} + ${blastData["BOF3_PDAY"].toString()})",
-              "data2": blastData["BOF2_PDAY"].toString(),
-              "data3": blastData["BOF3_PDAY"].toString(),
-              "selected": false,
-              "i": 12,
             },
           ];
           if (num != -1) {
@@ -260,9 +221,10 @@ class TechnoEcoState extends State<TechnoEco> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("BOF1",
+                          child: const Text("NORM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
+                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -281,9 +243,32 @@ class TechnoEcoState extends State<TechnoEco> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("BOF2",
+                          child: const Text("ACTUAL",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
+                                fontSize: 9,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("CPLM",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -295,9 +280,10 @@ class TechnoEcoState extends State<TechnoEco> {
                           decoration: const BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("BOF3",
+                          child: const Text("CPLY",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
+                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -329,6 +315,7 @@ class TechnoEcoState extends State<TechnoEco> {
                           r["data1"],
                           r["data2"],
                           r["data3"],
+                          r["data4"],
                           r["selected"] == true ? _containerColora : _textColor,
                           r["i"]),
                     ),
@@ -339,7 +326,7 @@ class TechnoEcoState extends State<TechnoEco> {
   }
 }
 
-Widget _row(h, d1, d2, d3, color, i) {
+Widget _row(h, d1, d2, d3, d4, color, i) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -361,65 +348,63 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
         ),
       ),
-      i == 11 || i == 12
-          ? (Expanded(
-              flex: 3,
-              child: Container(
-                decoration: const BoxDecoration(),
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-                child: Text(d1,
-                    style: TextStyle(color: color),
-                    textAlign: TextAlign.center),
-              ),
-            ))
-          : Expanded(
-              flex: 1,
-              child: Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    right: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-                child: Text(d1,
-                    style: TextStyle(color: color),
-                    textAlign: TextAlign.center),
+      Expanded(
+        flex: 1,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
               ),
             ),
-      i == 11 || i == 12
-          ? const Text("")
-          : Expanded(
-              flex: 1,
-              child: Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    right: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
-                      width: 2.0,
-                    ),
-                  ),
-                ),
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-                child: Text(d2,
-                    style: TextStyle(color: color),
-                    textAlign: TextAlign.center),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(d1,
+              style: TextStyle(color: color), textAlign: TextAlign.center),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
               ),
             ),
-      i == 11 || i == 12
-          ? const Text("")
-          : Expanded(
-              flex: 1,
-              child: Container(
-                decoration: const BoxDecoration(),
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-                child: Text(d3,
-                    style: TextStyle(color: color),
-                    textAlign: TextAlign.center),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(d2,
+              style: TextStyle(color: color), textAlign: TextAlign.center),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
               ),
             ),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(d3,
+              style: TextStyle(color: color), textAlign: TextAlign.center),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: Container(
+          decoration: const BoxDecoration(),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(d4,
+              style: TextStyle(color: color), textAlign: TextAlign.center),
+        ),
+      ),
       // Text(h, style: TextStyle(color: color)),
       // Text(d1, style: TextStyle(color: color)),
       // Text(d2, style: TextStyle(color: color)),

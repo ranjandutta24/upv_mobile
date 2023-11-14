@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-var baseUrl = 'http://59.97.132.209:4060/api/user/signin';
+var baseUrl = 'http://59.97.132.209:4060/api';
 
 login(payload) async {
   try {
-    return await http.post(
-        Uri.parse('http://59.97.132.209:4060/api/user/signin'),
+    return await http.post(Uri.parse('$baseUrl/user/signin'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
@@ -26,7 +25,7 @@ login(payload) async {
 blastfurnace() async {
   try {
     return await http.get(
-      Uri.parse('http://59.97.132.209:4060/api/iron/blastfurnace'),
+      Uri.parse('$baseUrl/iron/blastfurnace'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
@@ -46,7 +45,7 @@ blastfurnace() async {
 Basicoxygenfurnace() async {
   try {
     return await http.get(
-      Uri.parse('http://59.97.132.209:4060/api/steelmills/basicoxygenfurnace'),
+      Uri.parse('$baseUrl/steelmills/basicoxygenfurnace'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
@@ -66,7 +65,27 @@ Basicoxygenfurnace() async {
 mills() async {
   try {
     return await http.get(
-      Uri.parse('http://59.97.132.209:4060/api/steelmills/mills'),
+      Uri.parse('$baseUrl/steelmills/mills'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
+      },
+    );
+  } catch (error) {
+    SnackBar(
+      duration: const Duration(seconds: 3),
+      content: const Center(
+        child: Text('api call error'),
+      ),
+      action: SnackBarAction(label: '', onPressed: () {}),
+    );
+  }
+}
+
+technoeconomics() async {
+  try {
+    return await http.get(
+      Uri.parse('$baseUrl/overview/technoeconomics'),
       headers: {
         'Content-Type': 'application/json',
         'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
