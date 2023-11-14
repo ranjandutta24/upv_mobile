@@ -250,20 +250,22 @@ class BOFState extends State<BOF> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: const Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: rows[1]["data1"] == "Stop"
+                                  ? const Color.fromARGB(255, 255, 7, 7)
+                                  : const Color.fromARGB(255, 98, 255, 7)),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BOF1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 255, 255, 255),
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -271,20 +273,22 @@ class BOFState extends State<BOF> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: const Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: rows[1]["data2"] == "Stop"
+                                  ? const Color.fromARGB(255, 255, 7, 7)
+                                  : const Color.fromARGB(255, 98, 255, 7)),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BOF2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 255, 255, 255),
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -292,13 +296,16 @@ class BOFState extends State<BOF> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                              color: rows[1]["data3"] == "Stop"
+                                  ? const Color.fromARGB(255, 255, 7, 7)
+                                  : const Color.fromARGB(255, 98, 255, 7)),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BOF3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 255, 255, 255),
                               ),
                               textAlign: TextAlign.center),
                         ),

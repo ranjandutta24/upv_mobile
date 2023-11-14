@@ -454,12 +454,12 @@ class ColState extends State<Col> {
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 3),
+                          vertical: 0, horizontal: 0),
                       child: _row(
-                        r["head"],
-                        r["data"],
-                        r["selected"] == true ? _containerColora : _textColor,
-                      ),
+                          r["head"],
+                          r["data"],
+                          r["selected"] == true ? _containerColora : _textColor,
+                          r["i"]),
                     ),
                   ),
               ],
@@ -468,7 +468,7 @@ class ColState extends State<Col> {
   }
 }
 
-Widget _row(h, d, color) {
+Widget _row(h, d, color, i) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -483,24 +483,45 @@ Widget _row(h, d, color) {
               ),
             ),
           ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(
-            h,
-            style: TextStyle(color: color),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Text(
+              h,
+              style: TextStyle(color: color),
+            ),
           ),
         ),
       ),
-      Expanded(
-        flex: 3,
-        child: Container(
-          decoration: const BoxDecoration(),
-          child: Text(
-            d,
-            style: TextStyle(color: color),
-            textAlign: TextAlign.right,
-          ),
-        ),
-      ),
+      i == 5
+          ? Expanded(
+              flex: 3,
+              child: Container(
+                decoration: BoxDecoration(
+                    color: double.parse(d) >= 1.6 && double.parse(d) <= 1.65
+                        ? Colors.amber
+                        : Color.fromARGB(255, 255, 64, 64)),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: Text(
+                    d,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.right,
+                  ),
+                ),
+              ),
+            )
+          : Expanded(
+              flex: 3,
+              child: Container(
+                decoration: const BoxDecoration(),
+                child: Text(
+                  d,
+                  style: TextStyle(color: color),
+                  textAlign: TextAlign.right,
+                ),
+              ),
+            ),
     ],
   );
 }
