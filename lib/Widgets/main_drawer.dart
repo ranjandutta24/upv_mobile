@@ -6,7 +6,9 @@ class MainDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-        child: Column(
+        child: SingleChildScrollView(
+            child: Container(
+                child: Column(
       children: [
         DrawerHeader(
           padding: EdgeInsets.all(10),
@@ -199,7 +201,37 @@ class MainDrawer extends StatelessWidget {
           ),
           onTap: () {},
         ),
+        ListTile(
+          leading: const Icon(
+            Icons.checklist,
+            size: 26,
+            color: Colors.black,
+          ),
+          title: const Text(
+            'Users details',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+            ),
+          ),
+          onTap: () {},
+        ),
+        ListTile(
+          leading: const Icon(
+            Icons.checklist,
+            size: 26,
+            color: Colors.black,
+          ),
+          title: const Text(
+            'Sign out',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+            ),
+          ),
+          onTap: () {},
+        ),
       ],
-    ));
+    ))));
   }
 }
