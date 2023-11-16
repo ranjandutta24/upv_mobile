@@ -145,8 +145,7 @@ continuouscastingplant() async {
 powerblowingstation() async {
   try {
     return await http.get(
-      Uri.parse(
-          '$baseUrl/http://59.97.132.209:4060/api/utility/powerblowingstation'),
+      Uri.parse('$baseUrl/utility/powerblowingstation'),
       headers: {
         'content-type': 'application/json',
         'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
