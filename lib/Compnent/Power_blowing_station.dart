@@ -15,6 +15,8 @@ class Pbs extends StatefulWidget {
 class PbsState extends State<Pbs> {
   late dynamic pbsData;
   var loading = true;
+  var num = -1;
+
   @override
   void initState() {
     super.initState();
@@ -50,32 +52,48 @@ class PbsState extends State<Pbs> {
               "selected": false,
               "i": 1,
             },
-            // {
-            //   "head": "BFG FLOW [Nm3/hr]",
-            //   "data1": pbsData["STEAMFLOW1"].toString(),
-            //   "data2": pbsData["STEAMFLOW2"].toString(),
-            //   "data3": pbsData["STEAMFLOW3"].toString(),
-            //   "selected": false,
-            //   "i": 1,
-            // },
-            // {
-            //   "head": "COG FLOW [Nm3/hr]",
-            //   "data1": pbsData["STEAMFLOW1"].toString(),
-            //   "data2": pbsData["STEAMFLOW2"].toString(),
-            //   "data3": pbsData["STEAMFLOW3"].toString(),
-            //   "selected": false,
-            //   "i": 1,
-            // },
-            // {
-            //   "head": "CBM FLOW [Nm3/hr]",
-            //   "data1": pbsData["STEAMFLOW1"].toString(),
-            //   "data2": pbsData["STEAMFLOW2"].toString(),
-            //   "data3": pbsData["STEAMFLOW3"].toString(),
-            //   "selected": false,
-            //   "i": 1,
-            // }
+            {
+              "head": "BFG FLOW [Nm3/hr]",
+              "data1": pbsData["PBS_B1MSP"].toString(),
+              "data2": pbsData["PBS_B1MSP"].toString(),
+              "data3": pbsData["PBS_B1MSP"].toString(),
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "COG FLOW [Nm3/hr]",
+              "data1": pbsData["PBS_B1MSP"].toString(),
+              "data2": pbsData["PBS_B1MSP"].toString(),
+              "data3": pbsData["PBS_B1MSP"].toString(),
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "CBM FLOW [Nm3/hr]",
+              "data1": pbsData["PBS_B1MSP"].toString(),
+              "data2": pbsData["PBS_B1MSP"].toString(),
+              "data3": pbsData["PBS_B1MSP"].toString(),
+              "selected": false,
+              "i": 1,
+            }
           ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
         });
+      } else {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Login Failed, wrong userid or password'),
+            ),
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
       }
     });
   }
@@ -231,7 +249,7 @@ Widget _row(h, d1, d2, d3, color, i) {
         ),
       ),
       Expanded(
-        flex: 1,
+        flex: 2,
         child: Container(
           decoration: const BoxDecoration(
             border: Border(
@@ -247,7 +265,7 @@ Widget _row(h, d1, d2, d3, color, i) {
         ),
       ),
       Expanded(
-        flex: 1,
+        flex: 2,
         child: Container(
           decoration: const BoxDecoration(
             border: Border(
@@ -263,7 +281,7 @@ Widget _row(h, d1, d2, d3, color, i) {
         ),
       ),
       Expanded(
-        flex: 1,
+        flex: 2,
         child: Container(
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
