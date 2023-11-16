@@ -1,10 +1,7 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
 import 'package:upv_mobile/Compnent/Blast_furnace.dart';
 import 'package:upv_mobile/Compnent/Basic_oxygen_furnace.dart';
 import 'package:upv_mobile/Compnent/CBM.dart';
@@ -14,8 +11,6 @@ import 'package:upv_mobile/Compnent/Mills.dart';
 import 'package:upv_mobile/Compnent/Power_blowing_station.dart';
 import 'package:upv_mobile/Compnent/Sinter_plant.dart';
 import 'package:upv_mobile/Compnent/Techno_economics.dart';
-import 'package:upv_mobile/Services/service_page.dart';
-import 'package:upv_mobile/Widgets/ex3.dart';
 
 class AccordionPage extends StatefulWidget {
   static const headerStyle = TextStyle(
