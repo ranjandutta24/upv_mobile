@@ -27,6 +27,16 @@ class LhfState extends State<Lhf> {
   Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
   Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
+  _changeColor(no) {
+    setState(() {
+      for (int i = 0; i < rows.length; i++) {
+        rows[i]["selected"] = false;
+      }
+      rows[no]["selected"] = true;
+      num = no;
+    });
+  }
+
   fun() {
     TechnoService();
     var duration = const Duration(seconds: 5);
@@ -50,7 +60,7 @@ class LhfState extends State<Lhf> {
               "data2": lhfData["LF1_TEMP1"].toString(),
               "data3": lhfData["LF1_TEMP1"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 0,
             },
             {
               "head": "CaSi/Fe Wire Spd SP/Act",
@@ -66,7 +76,7 @@ class LhfState extends State<Lhf> {
               "data2": lhfData["LF1_TEMP1"].toString(),
               "data3": lhfData["LF1_TEMP1"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 2,
             },
             {
               "head": "CaSi/Fe Wire Wt SP/Act ",
@@ -74,7 +84,7 @@ class LhfState extends State<Lhf> {
               "data2": lhfData["LF1_TEMP1"].toString(),
               "data3": lhfData["LF1_TEMP1"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 3,
             },
             {
               "head": "Al Wire Spd SP/Act ",
@@ -82,7 +92,7 @@ class LhfState extends State<Lhf> {
               "data2": lhfData["LF1_TEMP1"].toString(),
               "data3": lhfData["LF1_TEMP1"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 4,
             },
             {
               "head": "Al Wire SP/Act ",
@@ -90,7 +100,7 @@ class LhfState extends State<Lhf> {
               "data2": lhfData["LF1_TEMP1"].toString(),
               "data3": lhfData["LF1_TEMP1"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 5,
             },
             {
               "head": "Al Wire Wt SP/Act ",
@@ -98,7 +108,7 @@ class LhfState extends State<Lhf> {
               "data2": lhfData["LF1_TEMP1"].toString(),
               "data3": lhfData["LF1_TEMP1"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 6,
             },
           ];
           if (num != -1) {
@@ -161,7 +171,7 @@ class LhfState extends State<Lhf> {
                                 )),
                           )),
                       Expanded(
-                        flex: 2,
+                        flex: 1,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -182,16 +192,9 @@ class LhfState extends State<Lhf> {
                         ),
                       ),
                       Expanded(
-                        flex: 2,
+                        flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
-                              ),
-                            ),
-                          ),
+                          decoration: const BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("LF2",
@@ -207,7 +210,9 @@ class LhfState extends State<Lhf> {
                 ),
                 for (final Map r in rows)
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      _changeColor(r["i"]);
+                    },
                     child: Container(
                       decoration: BoxDecoration(
                         color: r["selected"] == true
@@ -258,7 +263,7 @@ Widget _row(h, d1, d2, color, i) {
         ),
       ),
       Expanded(
-        flex: 2,
+        flex: 1,
         child: Container(
           decoration: const BoxDecoration(
             border: Border(
@@ -274,16 +279,9 @@ Widget _row(h, d1, d2, color, i) {
         ),
       ),
       Expanded(
-        flex: 2,
+        flex: 1,
         child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
-              ),
-            ),
-          ),
+          decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
               style: TextStyle(color: color), textAlign: TextAlign.center),

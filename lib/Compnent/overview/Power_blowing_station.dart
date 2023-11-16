@@ -27,6 +27,16 @@ class PbsState extends State<Pbs> {
   Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
   Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
+  _changeColor(no) {
+    setState(() {
+      for (int i = 0; i < rows.length; i++) {
+        rows[i]["selected"] = false;
+      }
+      rows[no]["selected"] = true;
+      num = no;
+    });
+  }
+
   fun() {
     TechnoService();
     var duration = const Duration(seconds: 5);
@@ -50,7 +60,7 @@ class PbsState extends State<Pbs> {
               "data2": pbsData["PBS_B1MSP"].toString(),
               "data3": pbsData["PBS_B1MSP"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 0,
             },
             {
               "head": "BFG FLOW [Nm3/hr]",
@@ -66,7 +76,7 @@ class PbsState extends State<Pbs> {
               "data2": pbsData["PBS_B1MSP"].toString(),
               "data3": pbsData["PBS_B1MSP"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 2,
             },
             {
               "head": "CBM FLOW [Nm3/hr]",
@@ -74,7 +84,7 @@ class PbsState extends State<Pbs> {
               "data2": pbsData["PBS_B1MSP"].toString(),
               "data3": pbsData["PBS_B1MSP"].toString(),
               "selected": false,
-              "i": 1,
+              "i": 3,
             }
           ];
           if (num != -1) {
@@ -197,7 +207,9 @@ class PbsState extends State<Pbs> {
                   ),
                   for (final Map r in rows)
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        _changeColor(r["i"]);
+                      },
                       child: Container(
                         decoration: BoxDecoration(
                           color: r["selected"] == true
