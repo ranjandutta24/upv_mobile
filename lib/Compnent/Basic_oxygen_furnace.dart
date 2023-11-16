@@ -74,9 +74,15 @@ class BOFState extends State<BOF> {
             },
             {
               "head": "Last Blow Duration(Mins)",
-              "data1": bofData["BOF1_LASTHEATDURATION"].toString(),
-              "data2": bofData["BOF2_LASTHEATDURATION"].toString(),
-              "data3": bofData["BOF3_LASTHEATDURATION"].toString(),
+              "data1": bofData["BOF1_LASTHEATDURATION"] == null
+                  ? "N/A"
+                  : bofData["BOF1_LASTHEATDURATION"].toString(),
+              "data2": bofData["BOF2_LASTHEATDURATION"] == null
+                  ? "N/A"
+                  : bofData["BOF2_LASTHEATDURATION"].toString(),
+              "data3": bofData["BOF3_LASTHEATDURATION"] == null
+                  ? "N/A"
+                  : bofData["BOF3_LASTHEATDURATION"].toString(),
               "selected": false,
               "i": 2,
             },
@@ -222,7 +228,7 @@ class BOFState extends State<BOF> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -238,7 +244,7 @@ class BOFState extends State<BOF> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
@@ -364,7 +370,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontSize: 12),
           ),
         ),
       ),
@@ -390,10 +396,13 @@ Widget _row(h, d1, d2, d3, color, i) {
                     ),
                   ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-                child: Text(d1,
-                    style: TextStyle(color: color),
-                    textAlign: TextAlign.center),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                  child: Text(d1,
+                      style: TextStyle(color: color, fontSize: 12),
+                      textAlign: TextAlign.center),
+                ),
               ),
             ),
       i == 11 || i == 12
@@ -411,7 +420,7 @@ Widget _row(h, d1, d2, d3, color, i) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontSize: 12),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -423,7 +432,7 @@ Widget _row(h, d1, d2, d3, color, i) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d3,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontSize: 12),
                     textAlign: TextAlign.center),
               ),
             ),
