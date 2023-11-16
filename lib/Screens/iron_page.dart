@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Widgets/accordion.dart';
+import 'package:upv_mobile/Compnent/overview/accordion.dart';
 // import 'package:upv_mobile/Widgets/example.dart';
 // import 'package:upv_mobile/Widgets/example.dart';
 import 'package:upv_mobile/Widgets/example2.dart';
