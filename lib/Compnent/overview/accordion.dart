@@ -2,15 +2,15 @@ import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Compnent/Blast_furnace.dart';
-import 'package:upv_mobile/Compnent/Basic_oxygen_furnace.dart';
-import 'package:upv_mobile/Compnent/CBM.dart';
-import 'package:upv_mobile/Compnent/Coke_ovens.dart';
-import 'package:upv_mobile/Compnent/Continuous_casting_plant.dart';
-import 'package:upv_mobile/Compnent/Mills.dart';
-import 'package:upv_mobile/Compnent/Power_blowing_station.dart';
-import 'package:upv_mobile/Compnent/Sinter_plant.dart';
-import 'package:upv_mobile/Compnent/Techno_economics.dart';
+import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
+import 'package:upv_mobile/Compnent/overview/Basic_oxygen_furnace.dart';
+import 'package:upv_mobile/Compnent/overview/CBM.dart';
+import 'package:upv_mobile/Compnent/overview/Coke_ovens.dart';
+import 'package:upv_mobile/Compnent/overview/Continuous_casting_plant.dart';
+import 'package:upv_mobile/Compnent/overview/Mills.dart';
+import 'package:upv_mobile/Compnent/overview/Power_blowing_station.dart';
+import 'package:upv_mobile/Compnent/overview/Sinter_plant.dart';
+import 'package:upv_mobile/Compnent/overview/Techno_economics.dart';
 
 class AccordionPage extends StatefulWidget {
   static const headerStyle = TextStyle(
@@ -107,7 +107,7 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Ccp(),
           ),
           AccordionSection(
-            isOpen: false,
+            isOpen: true,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("POWER & BLOWING STATION",
@@ -122,7 +122,7 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Cbm(),
           ),
           AccordionSection(
-            isOpen: true,
+            isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("COKE OVENS", style: AccordionPage.headerStyle),
