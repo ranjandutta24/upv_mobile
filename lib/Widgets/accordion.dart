@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:upv_mobile/Compnent/Blast_furnace.dart';
 import 'package:upv_mobile/Compnent/Basic_oxygen_furnace.dart';
+import 'package:upv_mobile/Compnent/CBM.dart';
+import 'package:upv_mobile/Compnent/Coke_ovens.dart';
 import 'package:upv_mobile/Compnent/Continuous_casting_plant.dart';
 import 'package:upv_mobile/Compnent/Mills.dart';
 import 'package:upv_mobile/Compnent/Power_blowing_station.dart';
@@ -110,12 +112,26 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Ccp(),
           ),
           AccordionSection(
-            isOpen: true,
+            isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("POWER & BLOWING STATION",
                 style: AccordionPage.headerStyle),
             content: const Pbs(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("CBM", style: AccordionPage.headerStyle),
+            content: const Cbm(),
+          ),
+          AccordionSection(
+            isOpen: true,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("COKE OVENS", style: AccordionPage.headerStyle),
+            content: const CokeOvens(),
           ),
         ],
       ),

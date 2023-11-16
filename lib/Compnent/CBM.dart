@@ -13,7 +13,7 @@ class Cbm extends StatefulWidget {
 }
 
 class CbmState extends State<Cbm> {
-  late dynamic sinterData;
+  late dynamic cbmData;
   var loading = true;
   var num = -1;
   @override
@@ -37,46 +37,45 @@ class CbmState extends State<Cbm> {
   }
 
   fun() {
-    TechnoService();
+    cbmService();
     var duration = const Duration(seconds: 5);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      cbmService();
     });
   }
 
   List<dynamic> rows = [];
 
-  TechnoService() async {
-    await sinterplant().then((data) {
+  cbmService() async {
+    await cbm().then((data) {
       if (mounted) {
         print(data.body);
         setState(() {
-          sinterData = json.decode(data.body);
+          cbmData = json.decode(data.body);
           rows = [
             {
               "head": "METER 1 FLOW [SCM/hr]",
-              "data1": sinterData["SP1_ESSB"].toString(),
-              "data2": "",
+              "data1": cbmData["M1FLOW"].toString(),
               "selected": false,
               "i": 0,
             },
             {
               "head": "METER 2 FLOW [SCM/hr]",
-              "data1": sinterData["SP1_SLS_LEVEL"].toStringAsFixed(2),
+              "data1": cbmData["M2FLOW"].toStringAsFixed(2),
               "data2": "",
               "selected": false,
               "i": 1,
             },
             {
               "head": "INLET PRESSURE [kg/cm2]",
-              "data1": sinterData["SP1_SLS_LEVEL"].toStringAsFixed(2),
+              "data1": cbmData["INLETPRESSURE"].toStringAsFixed(2),
               "data2": "",
               "selected": false,
               "i": 2,
             },
             {
               "head": "OUTLET PRESSURE [kg/cm2]",
-              "data1": sinterData["SP1_SLS_LEVEL"].toStringAsFixed(2),
+              "data1": cbmData["OUTLETPRESSURE"].toStringAsFixed(2),
               "data2": "",
               "selected": false,
               "i": 3,

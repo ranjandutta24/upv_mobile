@@ -512,7 +512,14 @@ Widget _row(h, d, color, i) {
       Expanded(
         flex: 7,
         child: Container(
-          decoration: const BoxDecoration(),
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
+              ),
+            ),
+          ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
             child: Text(
@@ -527,12 +534,6 @@ Widget _row(h, d, color, i) {
               flex: 3,
               child: Container(
                 decoration: BoxDecoration(
-                    border: Border(
-                      left: BorderSide(
-                        color: Color.fromARGB(113, 44, 129, 227),
-                        width: 2.0,
-                      ),
-                    ),
                     color: double.parse(d) >= 1.6 && double.parse(d) <= 1.65
                         ? Colors.amber
                         : double.parse(d) > 1.65
@@ -552,14 +553,7 @@ Widget _row(h, d, color, i) {
           : Expanded(
               flex: 3,
               child: Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    left: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
-                      width: 2.0,
-                    ),
-                  ),
-                ),
+                decoration: const BoxDecoration(),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
