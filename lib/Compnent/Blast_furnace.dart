@@ -475,14 +475,7 @@ Widget _row(h, d, color, i) {
       Expanded(
         flex: 8,
         child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
-              ),
-            ),
-          ),
+          decoration: const BoxDecoration(),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
             child: Text(
@@ -499,7 +492,9 @@ Widget _row(h, d, color, i) {
                 decoration: BoxDecoration(
                     color: double.parse(d) >= 1.6 && double.parse(d) <= 1.65
                         ? Colors.amber
-                        : Color.fromARGB(255, 255, 64, 64)),
+                        : double.parse(d) > 1.65
+                            ? Color.fromARGB(255, 255, 64, 64)
+                            : Color.fromARGB(0, 252, 252, 252)),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
@@ -514,11 +509,22 @@ Widget _row(h, d, color, i) {
           : Expanded(
               flex: 3,
               child: Container(
-                decoration: const BoxDecoration(),
-                child: Text(
-                  d,
-                  style: TextStyle(color: color),
-                  textAlign: TextAlign.right,
+                decoration: const BoxDecoration(
+                  border: Border(
+                    left: BorderSide(
+                      color: Color.fromARGB(113, 44, 129, 227),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                  child: Text(
+                    d,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
               ),
             ),
