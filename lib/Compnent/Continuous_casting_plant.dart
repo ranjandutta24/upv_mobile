@@ -49,7 +49,7 @@ class CcpState extends State<Ccp> {
   TechnoService() async {
     await continuouscastingplant().then((data) {
       if (mounted) {
-        print(data.body);
+        // print(data.body);
         setState(() {
           ccpData = json.decode(data.body);
           rows = [
