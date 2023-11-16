@@ -37,20 +37,6 @@ class MainDrawer extends StatelessWidget {
             ],
           ),
         ),
-        const ListTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                'DASHBOARDS',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 18,
-                ),
-              ),
-            ],
-          ),
-        ),
         ListTile(
           leading: const Icon(
             Icons.checklist,
@@ -66,7 +52,7 @@ class MainDrawer extends StatelessWidget {
           ),
           onTap: () {},
         ),
-        const SizedBox(height: 12),
+        // const SizedBox(height: 12),
         ListTile(
           leading: const Icon(
             Icons.checklist,
