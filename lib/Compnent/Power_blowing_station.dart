@@ -9,6 +9,8 @@ class Pbs extends StatefulWidget {
 }
 
 class PbsState extends State<Pbs> {
+  List<dynamic> rows = [];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
