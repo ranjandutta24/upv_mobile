@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -14,10 +15,23 @@ class Pbs extends StatefulWidget {
 class PbsState extends State<Pbs> {
   late dynamic pbsData;
   var loading = true;
+  @override
+  void initState() {
+    super.initState();
+    fun();
+  }
 
   Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
   Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+
+  fun() {
+    TechnoService();
+    var duration = const Duration(seconds: 5);
+    Timer.periodic(duration, (Timer timer) {
+      TechnoService();
+    });
+  }
 
   List<dynamic> rows = [];
 
@@ -30,36 +44,36 @@ class PbsState extends State<Pbs> {
           rows = [
             {
               "head": "Steam Flow [TPH]",
-              "data1": pbsData["STEAMFLOW1"].toString(),
-              "data2": pbsData["STEAMFLOW2"].toString(),
-              "data3": pbsData["STEAMFLOW3"].toString(),
+              "data1": pbsData["PBS_B1MSP"].toString(),
+              "data2": pbsData["PBS_B1MSP"].toString(),
+              "data3": pbsData["PBS_B1MSP"].toString(),
               "selected": false,
               "i": 1,
             },
-            {
-              "head": "BFG FLOW [Nm3/hr]",
-              "data1": pbsData["STEAMFLOW1"].toString(),
-              "data2": pbsData["STEAMFLOW2"].toString(),
-              "data3": pbsData["STEAMFLOW3"].toString(),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "COG FLOW [Nm3/hr]",
-              "data1": pbsData["STEAMFLOW1"].toString(),
-              "data2": pbsData["STEAMFLOW2"].toString(),
-              "data3": pbsData["STEAMFLOW3"].toString(),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "CBM FLOW [Nm3/hr]",
-              "data1": pbsData["STEAMFLOW1"].toString(),
-              "data2": pbsData["STEAMFLOW2"].toString(),
-              "data3": pbsData["STEAMFLOW3"].toString(),
-              "selected": false,
-              "i": 1,
-            }
+            // {
+            //   "head": "BFG FLOW [Nm3/hr]",
+            //   "data1": pbsData["STEAMFLOW1"].toString(),
+            //   "data2": pbsData["STEAMFLOW2"].toString(),
+            //   "data3": pbsData["STEAMFLOW3"].toString(),
+            //   "selected": false,
+            //   "i": 1,
+            // },
+            // {
+            //   "head": "COG FLOW [Nm3/hr]",
+            //   "data1": pbsData["STEAMFLOW1"].toString(),
+            //   "data2": pbsData["STEAMFLOW2"].toString(),
+            //   "data3": pbsData["STEAMFLOW3"].toString(),
+            //   "selected": false,
+            //   "i": 1,
+            // },
+            // {
+            //   "head": "CBM FLOW [Nm3/hr]",
+            //   "data1": pbsData["STEAMFLOW1"].toString(),
+            //   "data2": pbsData["STEAMFLOW2"].toString(),
+            //   "data3": pbsData["STEAMFLOW3"].toString(),
+            //   "selected": false,
+            //   "i": 1,
+            // }
           ];
         });
       }
@@ -195,24 +209,68 @@ class PbsState extends State<Pbs> {
 }
 
 Widget _row(h, d1, d2, d3, color, i) {
-  return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-    Expanded(
-      flex: 4,
-      child: Container(
-        decoration: const BoxDecoration(
-          border: Border(
-            right: BorderSide(
-              color: Color.fromARGB(113, 44, 129, 227),
-              width: 2.0,
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Expanded(
+        flex: 4,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
+              ),
             ),
           ),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-        child: Text(
-          h,
-          style: TextStyle(color: color),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(
+            h,
+            style: TextStyle(color: color),
+          ),
         ),
       ),
-    )
-  ]);
+      Expanded(
+        flex: 1,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
+              ),
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(d1,
+              style: TextStyle(color: color), textAlign: TextAlign.center),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
+              ),
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(d2,
+              style: TextStyle(color: color), textAlign: TextAlign.center),
+        ),
+      ),
+      Expanded(
+        flex: 1,
+        child: Container(
+          decoration: const BoxDecoration(),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          child: Text(d3,
+              style: TextStyle(color: color), textAlign: TextAlign.center),
+        ),
+      ),
+    ],
+  );
 }
