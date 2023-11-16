@@ -49,7 +49,7 @@ class TechnoEcoState extends State<TechnoEco> {
   TechnoService() async {
     await technoeconomics().then((data) {
       if (mounted) {
-        print(data.body);
+        // print(data.body);
         setState(() {
           technoData = json.decode(data.body);
           rows = [

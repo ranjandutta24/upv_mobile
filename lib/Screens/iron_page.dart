@@ -1,11 +1,6 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
+import 'package:upv_mobile/Compnent/iron/accordion.dart';
 
-import 'package:upv_mobile/Compnent/overview/accordion.dart';
-// import 'package:upv_mobile/Widgets/example.dart';
-// import 'package:upv_mobile/Widgets/example.dart';
-import 'package:upv_mobile/Widgets/example2.dart';
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class IronScreen extends StatefulWidget {
@@ -38,24 +33,8 @@ class _IronsScreenState extends State<IronScreen> {
   }
 }
 
-Widget _col() {
-  return const Column(
-    children: [
-      CollapsibleWidget(
-        data: "BLAST FURNACE",
-      ),
-      CollapsibleWidget(
-        data: "BASIC OXYGEN FURNACE",
-      ),
-      CollapsibleWidget(
-        data: "MILLS",
-      ),
-    ],
-  );
-}
-
 Widget _accordion() {
-  return AccordionPage();
+  return AccordionIron();
 }
 // Widget _aco() {
 //   return AccordionApp();
