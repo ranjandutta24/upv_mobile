@@ -197,30 +197,32 @@ class PbsState extends State<Pbs> {
                   ),
                   for (final Map r in rows)
                     GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: r["selected"] == true
-                                ? _containerColor
-                                : _containerColora,
-                            border: Border.all(
-                              color: const Color.fromARGB(
-                                  113, 44, 129, 227), // Border color
-                              width: 1.0,
-                            ),
+                      onTap: () {},
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: r["selected"] == true
+                              ? _containerColor
+                              : _containerColora,
+                          border: Border.all(
+                            color: const Color.fromARGB(
+                                113, 44, 129, 227), // Border color
+                            width: 1.0,
                           ),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 0, horizontal: 3),
-                          child: _row(
-                              r["head"],
-                              r["data1"],
-                              r["data2"],
-                              r["data3"],
-                              r["selected"] == true
-                                  ? _containerColora
-                                  : _textColor,
-                              r["i"]),
-                        ))
+                        ),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 0, horizontal: 3),
+                        child: _row(
+                            r["head"],
+                            r["data1"],
+                            r["data2"],
+                            r["data3"],
+                            r["selected"] == true
+                                ? _containerColora
+                                : _textColor,
+                            r["i"]),
+                      ),
+                    ),
+                  _line(),
                 ],
               ));
   }
@@ -290,5 +292,106 @@ Widget _row(h, d1, d2, d3, color, i) {
         ),
       ),
     ],
+  );
+}
+
+Widget _line() {
+  return Padding(
+    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
+    child: Column(
+      children: [
+        Container(
+          decoration: BoxDecoration(
+            border: Border.all(
+              color: const Color.fromARGB(113, 43, 76, 98),
+              width: 2.0,
+            ),
+          ),
+          padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                flex: 4,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      right: BorderSide(
+                        color: Color.fromARGB(113, 44, 129, 227),
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                  child: const Text(
+                    "Parameter",
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 152, 152, 152)),
+                  ),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      right: BorderSide(
+                        color: Color.fromARGB(113, 56, 104, 156),
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                  child: const Text("STG1",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 152, 152, 152),
+                      ),
+                      textAlign: TextAlign.center),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      right: BorderSide(
+                        color: Color.fromARGB(113, 44, 129, 227),
+                        width: 2.0,
+                      ),
+                    ),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                  child: const Text("STG2",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 152, 152, 152),
+                      ),
+                      textAlign: TextAlign.center),
+                ),
+              ),
+              Expanded(
+                flex: 2,
+                child: Container(
+                  decoration: const BoxDecoration(),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                  child: const Text("STG3",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Color.fromARGB(255, 152, 152, 152),
+                      ),
+                      textAlign: TextAlign.center),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    ),
   );
 }
