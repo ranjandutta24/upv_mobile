@@ -9,6 +9,7 @@ import 'package:upv_mobile/Compnent/Blast_furnace.dart';
 import 'package:upv_mobile/Compnent/Basic_oxygen_furnace.dart';
 import 'package:upv_mobile/Compnent/Continuous_casting_plant.dart';
 import 'package:upv_mobile/Compnent/Mills.dart';
+import 'package:upv_mobile/Compnent/Power_blowing_station.dart';
 import 'package:upv_mobile/Compnent/Sinter_plant.dart';
 import 'package:upv_mobile/Compnent/Techno_economics.dart';
 import 'package:upv_mobile/Services/service_page.dart';
@@ -114,7 +115,7 @@ class _AccordionPageState extends State<AccordionPage> {
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("POWER & BLOWING STATION",
                 style: AccordionPage.headerStyle),
-            content: const Ccp(),
+            content: const Pbs(),
           ),
         ],
       ),
