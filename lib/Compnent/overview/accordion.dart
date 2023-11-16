@@ -7,6 +7,7 @@ import 'package:upv_mobile/Compnent/overview/Basic_oxygen_furnace.dart';
 import 'package:upv_mobile/Compnent/overview/CBM.dart';
 import 'package:upv_mobile/Compnent/overview/Coke_ovens.dart';
 import 'package:upv_mobile/Compnent/overview/Continuous_casting_plant.dart';
+import 'package:upv_mobile/Compnent/overview/Ladle_heating_furnace.dart';
 import 'package:upv_mobile/Compnent/overview/Mills.dart';
 import 'package:upv_mobile/Compnent/overview/Power_blowing_station.dart';
 import 'package:upv_mobile/Compnent/overview/Sinter_plant.dart';
@@ -127,6 +128,14 @@ class _AccordionPageState extends State<AccordionPage> {
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("COKE OVENS", style: AccordionPage.headerStyle),
             content: const CokeOvens(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("LADLE HEATING FURNACE",
+                style: AccordionPage.headerStyle),
+            content: const Lhf(),
           ),
         ],
       ),
