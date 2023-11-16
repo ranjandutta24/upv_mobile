@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Screens/iron_page.dart';
 import 'package:upv_mobile/Screens/overview_page.dart';
+import 'package:upv_mobile/Screens/steel_mills_page.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
@@ -13,7 +14,7 @@ class MainDrawer extends StatelessWidget {
                 child: Column(
       children: [
         DrawerHeader(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
               gradient: LinearGradient(
             colors: [
@@ -56,8 +57,8 @@ class MainDrawer extends StatelessWidget {
             Navigator.replace(
               context,
               oldRoute: ModalRoute.of(context)!,
-              newRoute:
-                  MaterialPageRoute(builder: (context) => OverviewScreen()),
+              newRoute: MaterialPageRoute(
+                  builder: (context) => const OverviewScreen()),
             );
           },
         ),
@@ -79,25 +80,33 @@ class MainDrawer extends StatelessWidget {
             Navigator.replace(
               context,
               oldRoute: ModalRoute.of(context)!,
-              newRoute: MaterialPageRoute(builder: (context) => IronScreen()),
+              newRoute:
+                  MaterialPageRoute(builder: (context) => const IronScreen()),
             );
           },
         ),
-        // ListTile(
-        //   leading: const Icon(
-        //     Icons.checklist,
-        //     size: 26,
-        //     color: Colors.black,
-        //   ),
-        //   title: const Text(
-        //     'steel/Mills',
-        //     style: TextStyle(
-        //       color: Colors.black,
-        //       fontSize: 18,
-        //     ),
-        //   ),
-        //   onTap: () {},
-        // ),
+        ListTile(
+          leading: const Icon(
+            Icons.checklist,
+            size: 26,
+            color: Colors.black,
+          ),
+          title: const Text(
+            'Steel/Mills',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+            ),
+          ),
+          onTap: () {
+            Navigator.replace(
+              context,
+              oldRoute: ModalRoute.of(context)!,
+              newRoute: MaterialPageRoute(
+                  builder: (context) => const SteelMillsScreen()),
+            );
+          },
+        ),
         // ListTile(
         //   leading: const Icon(
         //     Icons.checklist,
