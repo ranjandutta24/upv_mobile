@@ -162,3 +162,43 @@ powerblowingstation() async {
     );
   }
 }
+
+cbm() async {
+  try {
+    return await http.get(
+      Uri.parse('$baseUrl/utility/cbm'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
+      },
+    );
+  } catch (error) {
+    SnackBar(
+      duration: const Duration(seconds: 3),
+      content: const Center(
+        child: Text('api call error'),
+      ),
+      action: SnackBarAction(label: '', onPressed: () {}),
+    );
+  }
+}
+
+cokeovens() async {
+  try {
+    return await http.get(
+      Uri.parse('$baseUrl/iron/cokeovens'),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
+      },
+    );
+  } catch (error) {
+    SnackBar(
+      duration: const Duration(seconds: 3),
+      content: const Center(
+        child: Text('api call error'),
+      ),
+      action: SnackBarAction(label: '', onPressed: () {}),
+    );
+  }
+}
