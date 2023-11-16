@@ -36,22 +36,6 @@ class _OverviewsScreenState extends State<OverviewScreen> {
   }
 }
 
-Widget _col() {
-  return const Column(
-    children: [
-      CollapsibleWidget(
-        data: "BLAST FURNACE",
-      ),
-      CollapsibleWidget(
-        data: "BASIC OXYGEN FURNACE",
-      ),
-      CollapsibleWidget(
-        data: "MILLS",
-      ),
-    ],
-  );
-}
-
 Widget _accordion() {
   return AccordionPage();
 }

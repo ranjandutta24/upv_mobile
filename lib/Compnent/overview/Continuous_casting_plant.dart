@@ -37,16 +37,16 @@ class CcpState extends State<Ccp> {
   }
 
   fun() {
-    TechnoService();
+    ccpService();
     var duration = const Duration(seconds: 5);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      ccpService();
     });
   }
 
   List<dynamic> rows = [];
 
-  TechnoService() async {
+  ccpService() async {
     await continuouscastingplant().then((data) {
       if (mounted) {
         // print(data.body);

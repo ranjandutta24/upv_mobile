@@ -37,19 +37,19 @@ class SinterPlantState extends State<SinterPlant> {
   }
 
   fun() {
-    TechnoService();
+    sinterplantService();
     var duration = const Duration(seconds: 5);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      sinterplantService();
     });
   }
 
   List<dynamic> rows = [];
 
-  TechnoService() async {
+  sinterplantService() async {
     await sinterplant().then((data) {
       if (mounted) {
-        print(data.body);
+        // print(data.body);
         setState(() {
           sinterData = json.decode(data.body);
           rows = [

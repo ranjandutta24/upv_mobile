@@ -37,16 +37,16 @@ class MillsState extends State<Mills> {
   }
 
   fun() {
-    BOFService();
+    millsService();
     var duration = const Duration(seconds: 5);
     Timer.periodic(duration, (Timer timer) {
-      // BOFService();
+      millsService();
     });
   }
 
   List<dynamic> rows = [];
 
-  BOFService() async {
+  millsService() async {
     await mills().then((data) {
       if (mounted) {
         // print(data.body);

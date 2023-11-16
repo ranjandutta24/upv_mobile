@@ -3,16 +3,8 @@ import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
-import 'package:upv_mobile/Compnent/overview/Basic_oxygen_furnace.dart';
-import 'package:upv_mobile/Compnent/overview/CBM.dart';
-import 'package:upv_mobile/Compnent/overview/Coke_ovens.dart';
-import 'package:upv_mobile/Compnent/overview/Continuous_casting_plant.dart';
-import 'package:upv_mobile/Compnent/overview/Mills.dart';
-import 'package:upv_mobile/Compnent/overview/Power_blowing_station.dart';
-import 'package:upv_mobile/Compnent/overview/Sinter_plant.dart';
-import 'package:upv_mobile/Compnent/overview/Techno_economics.dart';
 
-class AccordionPage extends StatefulWidget {
+class AccordionIron extends StatefulWidget {
   static const headerStyle = TextStyle(
       color: Color(0xffffffff), fontSize: 18, fontWeight: FontWeight.bold);
   static const contentStyleHeader = TextStyle(
@@ -20,7 +12,7 @@ class AccordionPage extends StatefulWidget {
   static const contentStyle = TextStyle(
       color: Color(0xff999999), fontSize: 14, fontWeight: FontWeight.normal);
 
-  const AccordionPage({
+  const AccordionIron({
     Key? key,
     // required this.blastData,
   }) : super(key: key);
@@ -28,10 +20,10 @@ class AccordionPage extends StatefulWidget {
   // final blastData;
 
   @override
-  State<AccordionPage> createState() => _AccordionPageState();
+  State<AccordionIron> createState() => _AccordionPageState();
 }
 
-class _AccordionPageState extends State<AccordionPage> {
+class _AccordionPageState extends State<AccordionIron> {
   // late  blastData;
 
   @override
@@ -63,7 +55,7 @@ class _AccordionPageState extends State<AccordionPage> {
             contentHorizontalPadding: 0,
             leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
             header:
-                const Text('BLAST FURNACE', style: AccordionPage.headerStyle),
+                const Text('BLAST FURNACE', style: AccordionIron.headerStyle),
             content: const Col(),
           ),
         ],
