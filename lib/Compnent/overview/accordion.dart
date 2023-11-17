@@ -12,6 +12,7 @@ import 'package:upv_mobile/Compnent/overview/Mills.dart';
 import 'package:upv_mobile/Compnent/overview/Power_blowing_station.dart';
 import 'package:upv_mobile/Compnent/overview/Sinter_plant.dart';
 import 'package:upv_mobile/Compnent/overview/Techno_economics.dart';
+import 'package:upv_mobile/Compnent/overview/overview.dart';
 
 class AccordionPage extends StatefulWidget {
   static const headerStyle = TextStyle(
@@ -63,11 +64,30 @@ class _AccordionPageState extends State<AccordionPage> {
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
             leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('Overview', style: AccordionPage.headerStyle),
+            content: const Overview(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 53, 197, 63),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
             header:
-                const Text('BLAST FURNACE', style: AccordionPage.headerStyle),
+                const Text("BLAST FURNACE", style: AccordionPage.headerStyle),
             content: const Col(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 178, 197, 53),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header:
+                const Text("SINTER PLANT", style: AccordionPage.headerStyle),
+            content: const SinterPlant(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 53, 197, 180),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -77,6 +97,25 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const BOF(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 197, 163, 53),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("CONTINUOUS CASTING PLANT",
+                style: AccordionPage.headerStyle),
+            content: const Ccp(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 158, 89, 129),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("LADLE HEATING FURNACE",
+                style: AccordionPage.headerStyle),
+            content: const Lhf(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -87,33 +126,17 @@ class _AccordionPageState extends State<AccordionPage> {
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
-            header: const Text("TECHNO ECONOMICS",
+            header: const Text("POWER & BLOWING STATION",
                 style: AccordionPage.headerStyle),
-            content: const TechnoEco(),
+            content: const Pbs(),
           ),
           AccordionSection(
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header:
-                const Text("SINTER PLANT", style: AccordionPage.headerStyle),
-            content: const SinterPlant(),
-          ),
-          AccordionSection(
-            isOpen: false,
-            contentVerticalPadding: 10,
-            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
-            header: const Text("CONTINUOUS CASTING PLANT",
-                style: AccordionPage.headerStyle),
-            content: const Ccp(),
-          ),
-          AccordionSection(
-            isOpen: true,
-            contentVerticalPadding: 10,
-            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
-            header: const Text("POWER & BLOWING STATION",
-                style: AccordionPage.headerStyle),
-            content: const Pbs(),
+                const Text("OXYGEN PLANT", style: AccordionPage.headerStyle),
+            content: const Cbm(),
           ),
           AccordionSection(
             isOpen: false,
@@ -133,9 +156,25 @@ class _AccordionPageState extends State<AccordionPage> {
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
-            header: const Text("LADLE HEATING FURNACE",
+            header: const Text("BY PRODUCT PLANT",
                 style: AccordionPage.headerStyle),
-            content: const Lhf(),
+            content: const CokeOvens(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("LIME & DOLO CALCINATION PLANT",
+                style: AccordionPage.headerStyle),
+            content: const CokeOvens(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            header: const Text("TECHNO ECONOMICS",
+                style: AccordionPage.headerStyle),
+            content: const TechnoEco(),
           ),
         ],
       ),

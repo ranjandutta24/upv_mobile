@@ -93,23 +93,49 @@ class PbsState extends State<Pbs> {
           rows2 = [
             {
               "head": "Generation [MW]",
-              "data1": pbsData["PBS_B1MSF"].toString(),
-              "data2": pbsData["PBS_B2MSF"].toString(),
-              "data3": pbsData["PBS_B3MSF"].toString(),
+              "data1": pbsData["PBS_STG1GEN"].toStringAsFixed(2),
+              "data2": pbsData["PBS_STG2GEN"].toStringAsFixed(2),
+              "data3": pbsData["PBS_STG3GEN"].toStringAsFixed(2),
               "selected": false,
               "i": 4,
             },
             {
               "head": "Steam Flow [TPH]",
-              "data1": pbsData["PBS_B1MSF"].toString(),
-              "data2": pbsData["PBS_B2MSF"].toString(),
-              "data3": pbsData["PBS_B3MSF"].toString(),
+              "data1": pbsData["PBS_STG1SF"].toStringAsFixed(2),
+              "data2": pbsData["PBS_STG2SF"].toStringAsFixed(2),
+              "data3": pbsData["PBS_STG3SF"].toStringAsFixed(2),
               "selected": false,
               "i": 5,
             },
           ];
-          rows3 = [];
-          rows4 = [];
+          rows3 = [
+            {
+              "head": "Discharge [Nm3/min]",
+              "data1": pbsData["PBS_BL1DF"].toStringAsFixed(2),
+              "data2": pbsData["PBS_BL2DF"].toStringAsFixed(2),
+              "data3": pbsData["PBS_BL3DF"].toStringAsFixed(2),
+              "selected": false,
+              "i": 6,
+            },
+            {
+              "head": "Steam Flow [TPH]",
+              "data1": pbsData["PBS_STB1SF"].toStringAsFixed(2),
+              "data2": pbsData["PBS_STB2SF"].toStringAsFixed(2),
+              "data3": pbsData["PBS_STB3SF"].toStringAsFixed(2),
+              "selected": false,
+              "i": 7,
+            },
+          ];
+          rows4 = [
+            {
+              "head": "Generation [MW]",
+              "data1": pbsData["PBS_STB1SF"].toStringAsFixed(2),
+              "data2": pbsData["PBS_STB2SF"].toStringAsFixed(2),
+              "data3": pbsData["PBS_STB3SF"].toStringAsFixed(2),
+              "selected": false,
+              "i": 8,
+            },
+          ];
           if (num != -1) {
             rows[num]["selected"] = true;
             rows2[num]["selected"] = true;
@@ -349,6 +375,125 @@ class PbsState extends State<Pbs> {
                   ),
                 ),
                 for (final Map r in rows2)
+                  GestureDetector(
+                    onTap: () {
+                      _changeColor(r["i"]);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: r["selected"] == true
+                            ? _containerColor
+                            : _containerColora,
+                        border: Border.all(
+                          color: const Color.fromARGB(
+                              113, 44, 129, 227), // Border color
+                          width: 1.0,
+                        ),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 3),
+                      child: _row(
+                          r["head"],
+                          r["data1"],
+                          r["data2"],
+                          r["data3"],
+                          r["selected"] == true ? _containerColora : _textColor,
+                          r["i"]),
+                    ),
+                  ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color.fromARGB(113, 43, 76, 98),
+                      width: 2.0,
+                    ),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text(
+                            "Parameter",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152)),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 56, 104, 156),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("STB1",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("STB2",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: const BoxDecoration(),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("STB3",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                for (final Map r in rows3)
                   GestureDetector(
                     onTap: () {
                       _changeColor(r["i"]);
