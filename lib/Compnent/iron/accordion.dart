@@ -1,6 +1,7 @@
 import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:upv_mobile/Compnent/iron/Blast_furnace_iron.dart';
 
 import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
 
@@ -56,7 +57,7 @@ class _AccordionPageState extends State<AccordionIron> {
             leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
             header:
                 const Text('BLAST FURNACE', style: AccordionIron.headerStyle),
-            content: const Col(),
+            content: const Bfi(),
           ),
         ],
       ),
