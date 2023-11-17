@@ -129,7 +129,7 @@ class PbsState extends State<Pbs> {
           rows4 = [
             {
               "head": "Generation [MW]",
-              "data1": pbsData["PBS_STB1SF"].toStringAsFixed(2),
+              "data1": pbsData["PBS_BPTGEN"].toStringAsFixed(2),
               "data2": pbsData["PBS_STB2SF"].toStringAsFixed(2),
               "data3": pbsData["PBS_STB3SF"].toStringAsFixed(2),
               "selected": false,
@@ -494,6 +494,125 @@ class PbsState extends State<Pbs> {
                   ),
                 ),
                 for (final Map r in rows3)
+                  GestureDetector(
+                    onTap: () {
+                      _changeColor(r["i"]);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: r["selected"] == true
+                            ? _containerColor
+                            : _containerColora,
+                        border: Border.all(
+                          color: const Color.fromARGB(
+                              113, 44, 129, 227), // Border color
+                          width: 1.0,
+                        ),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 3),
+                      child: _row(
+                          r["head"],
+                          r["data1"],
+                          r["data2"],
+                          r["data3"],
+                          r["selected"] == true ? _containerColora : _textColor,
+                          r["i"]),
+                    ),
+                  ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: const Color.fromARGB(113, 43, 76, 98),
+                      width: 2.0,
+                    ),
+                  ),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 4,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text(
+                            "Parameter",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152)),
+                          ),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 56, 104, 156),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("BPTG1",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
+                              ),
+                            ),
+                          ),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("TRTG",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Container(
+                          decoration: const BoxDecoration(),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 5, horizontal: 0),
+                          child: const Text("STB3",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Color.fromARGB(255, 152, 152, 152),
+                              ),
+                              textAlign: TextAlign.center),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                for (final Map r in rows4)
                   GestureDetector(
                     onTap: () {
                       _changeColor(r["i"]);
