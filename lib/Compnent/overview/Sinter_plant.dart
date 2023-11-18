@@ -177,7 +177,7 @@ class SinterPlantState extends State<SinterPlant> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -205,20 +205,25 @@ class SinterPlantState extends State<SinterPlant> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 44, 129, 227),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows[4]["data1"]) < 0.1
+                                ? const Color.fromARGB(255, 255, 7, 7)
+                                : double.parse(rows[4]["data1"]) > 1
+                                    ? const Color.fromARGB(255, 98, 255, 7)
+                                    : const Color.fromARGB(0, 98, 255, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("SP1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -226,13 +231,19 @@ class SinterPlantState extends State<SinterPlant> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                            color: double.parse(rows[4]["data2"]) < 0.1
+                                ? const Color.fromARGB(255, 255, 7, 7)
+                                : double.parse(rows[4]["data2"]) > 1
+                                    ? const Color.fromARGB(255, 98, 255, 7)
+                                    : const Color.fromARGB(0, 98, 255, 7),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("SP2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),

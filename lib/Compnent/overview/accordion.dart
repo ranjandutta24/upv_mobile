@@ -9,6 +9,7 @@ import 'package:upv_mobile/Compnent/overview/Coke_ovens.dart';
 import 'package:upv_mobile/Compnent/overview/Continuous_casting_plant.dart';
 import 'package:upv_mobile/Compnent/overview/Ladle_heating_furnace.dart';
 import 'package:upv_mobile/Compnent/overview/Mills.dart';
+import 'package:upv_mobile/Compnent/overview/Oxygen_plant.dart';
 import 'package:upv_mobile/Compnent/overview/Power_blowing_station.dart';
 import 'package:upv_mobile/Compnent/overview/Sinter_plant.dart';
 import 'package:upv_mobile/Compnent/overview/Techno_economics.dart';
@@ -136,7 +137,7 @@ class _AccordionPageState extends State<AccordionPage> {
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header:
                 const Text("OXYGEN PLANT", style: AccordionPage.headerStyle),
-            content: const Cbm(),
+            content: const OxygenPlant(),
           ),
           AccordionSection(
             isOpen: false,

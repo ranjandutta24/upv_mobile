@@ -130,8 +130,8 @@ class PbsState extends State<Pbs> {
             {
               "head": "Generation [MW]",
               "data1": pbsData["PBS_BPTGEN"].toStringAsFixed(2),
-              "data2": pbsData["PBS_STB2SF"].toStringAsFixed(2),
-              "data3": pbsData["PBS_STB3SF"].toStringAsFixed(2),
+              "data2": pbsData["BF_TRTGMW"].toStringAsFixed(2),
+              "data3": "",
               "selected": false,
               "i": 8,
             },
@@ -601,7 +601,7 @@ class PbsState extends State<Pbs> {
                           decoration: const BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("STB3",
+                          child: const Text("",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 152, 152, 152),

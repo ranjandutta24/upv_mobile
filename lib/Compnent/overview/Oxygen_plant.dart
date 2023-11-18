@@ -13,7 +13,7 @@ class OxygenPlant extends StatefulWidget {
 }
 
 class OxygenPlantState extends State<OxygenPlant> {
-  late dynamic sinterData;
+  late dynamic oxygenData;
   var loading = true;
   var num = -1;
   @override
@@ -37,28 +37,98 @@ class OxygenPlantState extends State<OxygenPlant> {
   }
 
   fun() {
-    sinterplantService();
+    oxygenplantService();
     var duration = const Duration(seconds: 5);
     Timer.periodic(duration, (Timer timer) {
-      sinterplantService();
+      oxygenplantService();
     });
   }
 
   List<dynamic> rows = [];
 
-  sinterplantService() async {
-    await sinterplant().then((data) {
+  oxygenplantService() async {
+    await oxygenplant().then((data) {
       if (mounted) {
         // print(data.body);
         setState(() {
-          sinterData = json.decode(data.body);
+          oxygenData = json.decode(data.body);
           rows = [
             {
-              "head": "Emerg. Bunker Level[Ton]",
-              "data1": sinterData["SP1_ESSB"].toString(),
-              "data2": "",
+              "head": "HPGOX (Nm3/hr)",
+              "data1": oxygenData["HPGOXP1"].toString(),
+              "data2": oxygenData["HPGOXP2"].toString(),
               "selected": false,
               "i": 0,
+            },
+            {
+              "head": "PGOX (Nm3/hr)",
+              "data1": oxygenData["PGOXP1"].toString(),
+              "data2": oxygenData["PGOXP2"].toString(),
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "HPGAN (Nm3/hr)",
+              "data1": oxygenData["HPGANP1"].toString(),
+              "data2": oxygenData["HPGANP2"].toString(),
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "PGAN (Nm3/hr)",
+              "data1": oxygenData["PGANP1"].toString(),
+              "data2": oxygenData["PGANP2"].toString(),
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "Ar Flow BOF (Nm3/hr)",
+              "data1": oxygenData["ARFLBOF"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "O2 Flow BF (Nm3/hr)",
+              "data1": oxygenData["OXBF"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 5,
+            },
+            {
+              "head": "O2 Flow CCP (Nm3/hr)",
+              "data1": oxygenData["OFCCP"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 6,
+            },
+            {
+              "head": "O2 Flow BOFS1 (Nm3/hr)",
+              "data1": oxygenData["OFBOFS1"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 7,
+            },
+            {
+              "head": "O2 Flow BOFS2 (Nm3/hr)",
+              "data1": oxygenData["OFBOFS2"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 8,
+            },
+            {
+              "head": "MAC Status",
+              "data1": "MAC 1",
+              "data2": "MAC 2",
+              "selected": false,
+              "i": 9,
+            },
+            {
+              "head": "BAC Status",
+              "data1": "BAC 1",
+              "data2": "BAC 2",
+              "selected": false,
+              "i": 10,
             },
           ];
           if (num != -1) {
@@ -105,7 +175,7 @@ class OxygenPlantState extends State<OxygenPlant> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        flex: 4,
+                        flex: 6,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -126,7 +196,7 @@ class OxygenPlantState extends State<OxygenPlant> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -138,7 +208,7 @@ class OxygenPlantState extends State<OxygenPlant> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("SP1",
+                          child: const Text("PLANT 1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 152, 152, 152),
@@ -147,12 +217,12 @@ class OxygenPlantState extends State<OxygenPlant> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: const BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("SP2",
+                          child: const Text("PLANT 2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 152, 152, 152),
@@ -200,7 +270,7 @@ Widget _row(h, d1, d2, color, i) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Expanded(
-        flex: 4,
+        flex: 6,
         child: Container(
           decoration: const BoxDecoration(
             border: Border(
@@ -217,31 +287,46 @@ Widget _row(h, d1, d2, color, i) {
           ),
         ),
       ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
+      i == 4 || i == 5 || i == 6 || i == 7 || i == 8
+          ? Expanded(
+              flex: 4,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            )
+          : Expanded(
+              flex: 2,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 44, 129, 227),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
+      i == 4 || i == 5 || i == 6 || i == 7 || i == 8
+          ? Text("")
+          : Expanded(
+              flex: 2,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d2,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            ),
 
       // Text(h, style: TextStyle(color: color)),
       // Text(d1, style: TextStyle(color: color)),
