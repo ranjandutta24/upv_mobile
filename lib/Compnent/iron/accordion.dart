@@ -2,8 +2,11 @@ import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Compnent/iron/Blast_furnace_iron.dart';
+import 'package:upv_mobile/Compnent/iron/By_product_plant_iron.dart';
+import 'package:upv_mobile/Compnent/iron/Coke_ovens_iron.dart';
+import 'package:upv_mobile/Compnent/iron/Sinter_plant_iron.dart';
 
-import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
+//import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
 
 class AccordionIron extends StatefulWidget {
   static const headerStyle = TextStyle(
@@ -58,6 +61,32 @@ class _AccordionPageState extends State<AccordionIron> {
             header:
                 const Text('BLAST FURNACE', style: AccordionIron.headerStyle),
             content: const Bfi(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header:
+                const Text('SINTER PLANT', style: AccordionIron.headerStyle),
+            content: const Spi(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('COKE OVENS', style: AccordionIron.headerStyle),
+            content: const Coi(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('BY PRODUCT PLANT',
+                style: AccordionIron.headerStyle),
+            content: const Bppi(),
           ),
         ],
       ),
