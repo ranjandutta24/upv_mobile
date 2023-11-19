@@ -95,7 +95,7 @@ class BOFState extends State<BOF> {
               "i": 3,
             },
             {
-              "head": "Charge To Tap Duration(Mins)",
+              "head": "Charge To Tap Duration (Mins)",
               "data1": bofData["BOF1_LASTC2T"] == null
                   ? "N/A"
                   : bofData["BOF1_LASTC2T"].toString(),
@@ -214,7 +214,7 @@ class BOFState extends State<BOF> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text("")
           : Column(
@@ -257,21 +257,22 @@ class BOFState extends State<BOF> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: const Border(
-                                right: BorderSide(
-                                  color: Color.fromARGB(113, 44, 129, 227),
-                                  width: 2.0,
-                                ),
+                            border: const Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
                               ),
-                              color: rows[1]["data1"] == "Stop"
-                                  ? const Color.fromARGB(255, 255, 7, 7)
-                                  : const Color.fromARGB(255, 98, 255, 7)),
+                            ),
+                            color: rows[1]["data1"] == "Stop"
+                                ? const Color.fromARGB(255, 255, 7, 7)
+                                : const Color.fromARGB(255, 98, 255, 7),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BOF1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -294,7 +295,7 @@ class BOFState extends State<BOF> {
                           child: const Text("BOF2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -311,7 +312,7 @@ class BOFState extends State<BOF> {
                           child: const Text("BOF3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 255, 255, 255),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),

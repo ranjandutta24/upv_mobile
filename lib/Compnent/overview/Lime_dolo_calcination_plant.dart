@@ -133,7 +133,7 @@ class LdcpState extends State<Ldcp> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
         child: loading
             ? const Text(" ")
             : Column(children: [
