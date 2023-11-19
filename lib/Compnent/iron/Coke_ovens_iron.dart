@@ -127,7 +127,7 @@ class CoiState extends State<Coi> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text("")
           : Column(
@@ -148,18 +148,11 @@ class CoiState extends State<Coi> {
                       Expanded(
                         flex: 4,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
-                              ),
-                            ),
-                          ),
+                          decoration: const BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text(
-                            "Parameter",
+                            "Production",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 152, 152, 152)),

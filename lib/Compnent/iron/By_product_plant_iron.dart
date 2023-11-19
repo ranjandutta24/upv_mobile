@@ -128,7 +128,7 @@ class BppiState extends State<Bppi> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text(" ")
           : Column(
@@ -158,7 +158,7 @@ class BppiState extends State<Bppi> {
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 0),
-                            child: const Text('Parameters',
+                            child: const Text('Production',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey,
