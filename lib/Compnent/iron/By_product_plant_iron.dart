@@ -4,17 +4,17 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 
-class Bpplant extends StatefulWidget {
-  const Bpplant({super.key});
+class Bppi extends StatefulWidget {
+  const Bppi({super.key});
 
   @override
-  State<Bpplant> createState() {
-    return BpplantState();
+  State<Bppi> createState() {
+    return BppiState();
   }
 }
 
-class BpplantState extends State<Bpplant> {
-  late dynamic bpplantData;
+class BppiState extends State<Bppi> {
+  late dynamic bppiData;
   var loading = true;
   var num = -1;
 
@@ -53,31 +53,55 @@ class BpplantState extends State<Bpplant> {
       if (mounted) {
         print(data.body);
         setState(() {
-          bpplantData = json.decode(data.body);
+          bppiData = json.decode(data.body);
           rows = [
             {
               "head": "CO Gas Make [Nm3/hr]",
-              "data1": bpplantData["EX2"].toString(),
-              "data2": bpplantData["EX2"].toString(),
-              "data3": bpplantData["EX2"].toString(),
+              "data1": bppiData["EX2"].toString(),
+              "data2": bppiData["EX2"].toString(),
+              "data3": bppiData["EX2"].toString(),
               "selected": false,
               "i": 0,
             },
             {
-              "head": "Exhauster BPP 11",
-              "data1": bpplantData["EX2"].toString(),
-              "data2": bpplantData["EX2"].toString(),
-              "data3": bpplantData["EX2"].toString(),
+              "head": "CO Pressure [mmwc]",
+              "data1": bppiData["EX2"].toString(),
+              "data2": bppiData["EX2"].toString(),
+              "data3": bppiData["EX2"].toString(),
               "selected": false,
               "i": 1,
             },
             {
-              "head": "Exhauster BPP 10",
-              "data1": bpplantData["EX2"].toString(),
-              "data2": bpplantData["EX2"].toString(),
-              "data3": bpplantData["EX2"].toString(),
+              "head": "Flare Stack Flow [Nm3/hr]",
+              "data1": bppiData["EX2"].toString(),
+              "data2": bppiData["EX2"].toString(),
+              "data3": bppiData["EX2"].toString(),
               "selected": false,
               "i": 2,
+            },
+            {
+              "head": "Flare Stack Pressure [mmwc]",
+              "data1": bppiData["EX2"].toString(),
+              "data2": bppiData["EX2"].toString(),
+              "data3": bppiData["EX2"].toString(),
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "Exhauster BPP 11",
+              "data1": bppiData["EX2"].toString(),
+              "data2": bppiData["EX2"].toString(),
+              "data3": bppiData["EX2"].toString(),
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "Exhauster BPP 10",
+              "data1": bppiData["EX2"].toString(),
+              "data2": bppiData["EX2"].toString(),
+              "data3": bppiData["EX2"].toString(),
+              "selected": false,
+              "i": 5,
             },
           ];
           if (num != -1) {
@@ -134,7 +158,7 @@ class BpplantState extends State<Bpplant> {
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 0),
-                            child: const Text('Parameters',
+                            child: const Text('Production',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey,

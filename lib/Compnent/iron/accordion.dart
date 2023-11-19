@@ -1,9 +1,16 @@
 import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:upv_mobile/Compnent/iron/BF_stock_house.dart';
 import 'package:upv_mobile/Compnent/iron/Blast_furnace_iron.dart';
+import 'package:upv_mobile/Compnent/iron/By_product_plant_iron.dart';
+import 'package:upv_mobile/Compnent/iron/Cdcp_iron.dart';
+import 'package:upv_mobile/Compnent/iron/Coke_ovens_iron.dart';
+import 'package:upv_mobile/Compnent/iron/Gcp_trtg.dart';
+import 'package:upv_mobile/Compnent/iron/Sinter_plant_iron.dart';
+import 'package:upv_mobile/Compnent/iron/Stoves.dart';
 
-import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
+//import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
 
 class AccordionIron extends StatefulWidget {
   static const headerStyle = TextStyle(
@@ -58,6 +65,74 @@ class _AccordionPageState extends State<AccordionIron> {
             header:
                 const Text('BLAST FURNACE', style: AccordionIron.headerStyle),
             content: const Bfi(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header:
+                const Text('BF STOCK HOUSE', style: AccordionIron.headerStyle),
+            content: const Bfsh(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header:
+                const Text('SINTER PLANT', style: AccordionIron.headerStyle),
+            content: const Spi(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('COKE OVENS', style: AccordionIron.headerStyle),
+            content: const Coi(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('BY PRODUCT PLANT',
+                style: AccordionIron.headerStyle),
+            content: const Bppi(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('CDCP', style: AccordionIron.headerStyle),
+            content: const Cdcp(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('COKE OVEN #11 COMPLEX',
+                style: AccordionIron.headerStyle),
+            content: const Cdcp(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('GCP & TRTG', style: AccordionIron.headerStyle),
+            content: const Gcp(),
+          ),
+          AccordionSection(
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            header: const Text('STOVES', style: AccordionIron.headerStyle),
+            content: const Stoves(),
           ),
         ],
       ),
