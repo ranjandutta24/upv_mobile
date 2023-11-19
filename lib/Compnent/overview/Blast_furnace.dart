@@ -407,7 +407,7 @@ class ColState extends State<Col> {
   Widget build(BuildContext context) {
     // blastfurnacedata();
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text("")
           : Column(

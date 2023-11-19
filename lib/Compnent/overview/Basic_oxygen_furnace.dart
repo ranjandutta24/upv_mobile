@@ -214,7 +214,7 @@ class BOFState extends State<BOF> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text("")
           : Column(

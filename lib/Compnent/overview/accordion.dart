@@ -70,6 +70,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: Color.fromARGB(255, 53, 197, 63),
+            contentBorderColor: Color.fromARGB(255, 53, 197, 63),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -80,6 +81,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: Color.fromARGB(255, 178, 197, 53),
+            contentBorderColor: Color.fromARGB(255, 178, 197, 53),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -89,6 +91,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: Color.fromARGB(255, 53, 197, 180),
+            contentBorderColor: Color.fromARGB(255, 53, 197, 180),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -99,15 +102,19 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: Color.fromARGB(255, 197, 163, 53),
+            contentBorderColor: Color.fromARGB(255, 197, 163, 53),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("CONTINUOUS CASTING PLANT",
                 style: AccordionPage.headerStyle),
             content: const Ccp(),
+            // content: Text(
+            //     "sdssjhh sdfkjhskjfhks dk sfsdhgkew ertet et etett w "),
           ),
           AccordionSection(
             headerBackgroundColor: Color.fromARGB(255, 158, 89, 129),
+            contentBorderColor: Color.fromARGB(255, 158, 89, 129),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -117,6 +124,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: Color.fromARGB(255, 131, 152, 89),
+            contentBorderColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
