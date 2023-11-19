@@ -115,7 +115,7 @@ class _AccordionPageState extends State<AccordionPage> {
           AccordionSection(
             headerBackgroundColor: Color.fromARGB(255, 158, 89, 129),
             contentBorderColor: Color.fromARGB(255, 158, 89, 129),
-            isOpen: false,
+            isOpen: true,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("LADLE HEATING FURNACE",

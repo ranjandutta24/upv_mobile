@@ -55,7 +55,7 @@ class OverviewState extends State<Overview> {
       children: [
         SizedBox(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Container(
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -65,41 +65,41 @@ class OverviewState extends State<Overview> {
                       width: 2.0, // Border width
                     ),
                     color: const Color.fromARGB(113, 44, 129, 227)),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                child: const Padding(
+                  padding: EdgeInsets.all(8.0),
                   child: Text("BLAST FURNACE"),
                 )),
           ),
         ),
-        Col(),
+        const Col(),
         // Text("SINTER PLANT"),
         const SizedBox(
           height: 14,
         ),
         _heaad("SINTER PLANT"),
-        SinterPlant(),
+        const SinterPlant(),
 
         _heaad("BASIC OXYGEN FURNACE"),
-        BOF(),
+        const BOF(),
         _heaad("CONTINUOUS CASTING PLANT"),
-        Ccp(),
+        const Ccp(),
         _heaad("LADLE HEATING FURNACE"),
-        Lhf(),
+        const Lhf(),
         _heaad("MILLS"),
-        Mills(),
+        const Mills(),
         _heaad("POWER & BLOWING STATION"),
-        Pbs(),
+        const Pbs(),
         // _heaad("OXYGEN PLANT"),
         _heaad("CBM"),
-        Cbm(),
+        const Cbm(),
         _heaad("COKE OVENS"),
-        CokeOvens(),
+        const CokeOvens(),
         // Text("BY PRODUCT PLANT"),
 
         // Text("LIME & DOLO CALCINATION PLANT"),
 
-        Text("TECHNO ECONOMICS"),
-        TechnoEco()
+        const Text("TECHNO ECONOMICS"),
+        const TechnoEco()
       ],
     );
   }
@@ -108,7 +108,7 @@ class OverviewState extends State<Overview> {
 Widget _heaad(text) {
   return SizedBox(
     child: Padding(
-      padding: EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
