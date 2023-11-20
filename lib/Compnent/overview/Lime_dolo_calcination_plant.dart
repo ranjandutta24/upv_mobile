@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Ldcp extends StatefulWidget {
   const Ldcp({super.key});
@@ -46,6 +47,7 @@ class LdcpState extends State<Ldcp> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> state = [];
 
   TechnoService() async {
     await limedolocalcinationplant().then((data) {
@@ -55,34 +57,43 @@ class LdcpState extends State<Ldcp> {
           rows = [
             {
               "head": "Kiln Temperature[DegC]",
-              "data1": ldcpData["ETK1"].toString(),
-              "data2": ldcpData["ETK1"].toString(),
-              "data3": ldcpData["ETK1"].toString(),
-              "data4": ldcpData["ETK1"].toString(),
+              "data1": ldcpData["LDCP_K1TEMP"].toString(),
+              "data2": ldcpData["LDCP_K2TEMP"].toString(),
+              "data3": ldcpData["LDCP_K3TEMP"].toString(),
+              "data4": ldcpData["LDCP_K4TEMP"].toString(),
               "selected": false,
               "i": 0,
             },
             {
               "head": "Mixed Gas Flow[Nm3/hr]",
-              "data1": ldcpData["ETK1"].toString(),
-              "data2": ldcpData["ETK1"].toString(),
-              "data3": ldcpData["ETK1"].toString(),
-              "data4": ldcpData["ETK1"].toString(),
+              "data1": ldcpData["K1_MG"].toString(),
+              "data2": ldcpData["K2_MG"].toString(),
+              "data3": ldcpData["K3_MG"].toString(),
+              "data4": ldcpData["K4_MG"].toString(),
               "selected": false,
               "i": 1,
             },
             {
               "head": "Exhaust Gas Temperature[DegC]",
               "data1": ldcpData["ETK1"].toString(),
-              "data2": ldcpData["ETK1"].toString(),
-              "data3": ldcpData["ETK1"].toString(),
-              "data4": ldcpData["ETK1"].toString(),
+              "data2": ldcpData["ETK2"].toString(),
+              "data3": ldcpData["ETK3"].toString(),
+              "data4": ldcpData["ETK4"].toString(),
               "selected": false,
               "i": 2,
             },
             {
               "head": "Current Production[ton]",
-              "data1": ldcpData["ETK1"].toString(),
+              "data1": ldcpData["K1_PRODN"].toStringAsFixed(1),
+              "data2": ldcpData["K2_PRODN"].toStringAsFixed(1),
+              "data3": ldcpData["K3_PRODN"].toStringAsFixed(1),
+              "data4": ldcpData["K4_PRODN"].toStringAsFixed(1),
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "Calorific Value[KCal/Nm3]",
+              "data1": ldcpData["CV"].toString(),
               "data2": ldcpData["ETK1"].toString(),
               "data3": ldcpData["ETK1"].toString(),
               "data4": ldcpData["ETK1"].toString(),
@@ -90,23 +101,22 @@ class LdcpState extends State<Ldcp> {
               "i": 4,
             },
             {
-              "head": "Calorific Value[KCal/Nm3]",
-              "data1": ldcpData["ETK1"].toString(),
-              "data2": ldcpData["ETK1"].toString(),
-              "data3": ldcpData["ETK1"].toString(),
-              "data4": ldcpData["ETK1"].toString(),
-              "selected": false,
-              "i": 5,
-            },
-            {
               "head": "Inlet Pressure[mbar]",
-              "data1": ldcpData["ETK1"].toString(),
-              "data2": ldcpData["ETK1"].toString(),
+              "data1": ldcpData["INLETPRES"].toString(),
+              "data2": ldcpData["INLETPRES"].toString(),
               "data3": ldcpData["ETK1"].toString(),
               "data4": ldcpData["ETK1"].toString(),
               "selected": false,
               "i": 5,
             },
+          ];
+          state = [
+            {
+              "k1": ldcpData["LDCP_K1R"].toString(),
+              "k2": ldcpData["LDCP_K2R"].toString(),
+              "k3": ldcpData["LDCP_K3R"].toString(),
+              "k4": ldcpData["LDCP_K4R"].toString(),
+            }
           ];
           if (num != -1) {
             rows[num]["selected"] = true;
@@ -145,7 +155,7 @@ class LdcpState extends State<Ldcp> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 3, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -161,32 +171,35 @@ class LdcpState extends State<Ldcp> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: const Text('Parameter',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.grey,
+                                fontSize: 11,
                               )),
                         ),
                       ),
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 56, 104, 156),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 56, 104, 156),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: state[0]["k1"] == "False"
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("KILN 1",
+                          child: Text("KILN 1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -194,21 +207,23 @@ class LdcpState extends State<Ldcp> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 74, 104, 156),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 74, 104, 156),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: state[0]["k2"] == "False"
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("KILN 2",
+                          child: Text("KILN 2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -216,21 +231,23 @@ class LdcpState extends State<Ldcp> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 56, 104, 156),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 56, 104, 156),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: state[0]["k3"] == "False"
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("KILN 3",
+                          child: Text("KILN 3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -238,14 +255,17 @@ class LdcpState extends State<Ldcp> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                              color: state[0]["k4"] == "False"
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("KILN 4",
+                          child: Text("KILN 4",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -306,63 +326,84 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
         ),
       ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
+      i == 4 || i == 5
+          ? Expanded(
+              flex: 4,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            )
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 44, 129, 227),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 74, 104, 156),
-                width: 2.0,
+      i == 4 || i == 5
+          ? Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 74, 104, 156),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d2,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 74, 104, 156),
-                width: 2.0,
+      i == 4 || i == 5
+          ? Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 74, 104, 156),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d3,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d3,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d4,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
+      i == 4 || i == 5
+          ? Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d4,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            ),
     ],
   );
 }

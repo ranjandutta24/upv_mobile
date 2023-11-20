@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Lhf extends StatefulWidget {
   const Lhf({super.key});
@@ -46,6 +47,7 @@ class LhfState extends State<Lhf> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> state = [];
 
   TechnoService() async {
     await ladleheatingfurnace().then((data) {
@@ -118,6 +120,9 @@ class LhfState extends State<Lhf> {
               "i": 6,
             },
           ];
+          state = [
+            {"data1": lhfData["LF1_I1"], "data2": lhfData["LF2_I1"]}
+          ];
           if (num != -1) {
             rows[num]["selected"] = true;
           }
@@ -154,7 +159,7 @@ class LhfState extends State<Lhf> {
                     width: 2.0,
                   )),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 3, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -180,20 +185,25 @@ class LhfState extends State<Lhf> {
                       Expanded(
                         flex: 4,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 56, 104, 156),
                                 width: 2.0,
                               ),
                             ),
+                            color: state[0]["data1"] <= 0.1
+                                ? myColors["deactive"]
+                                : state[0]["data1"] >= 1.0
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("LF1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -201,13 +211,19 @@ class LhfState extends State<Lhf> {
                       Expanded(
                         flex: 4,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                            color: state[0]["data2"] <= 0.1
+                                ? myColors["deactive"]
+                                : state[0]["data2"] >= 1.0
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("LF2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),
