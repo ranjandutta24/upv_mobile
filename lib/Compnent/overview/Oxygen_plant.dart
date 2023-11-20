@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class OxygenPlant extends StatefulWidget {
   const OxygenPlant({super.key});
@@ -45,6 +46,7 @@ class OxygenPlantState extends State<OxygenPlant> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> state = [];
 
   oxygenplantService() async {
     await oxygenplant().then((data) {
@@ -131,6 +133,10 @@ class OxygenPlantState extends State<OxygenPlant> {
               "i": 10,
             },
           ];
+          state = [
+            {"d1": oxygenData["MAC1_STAT"], "d2": oxygenData["BAC1_STAT"]},
+            {"d1": oxygenData["MAC2_STAT"], "d2": oxygenData["BAC2_STAT"]}
+          ];
           if (num != -1) {
             rows[num]["selected"] = true;
           }
@@ -170,7 +176,7 @@ class OxygenPlantState extends State<OxygenPlant> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -198,20 +204,25 @@ class OxygenPlantState extends State<OxygenPlant> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 44, 129, 227),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows[0]["data1"]) >= 5000 &&
+                                    state[0]["d1"] == 1 &&
+                                    state[0]["d2"] == 1
+                                ? myColors["active"]
+                                : myColors["deactive"],
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("PLANT 1",
+                          child: Text("PLANT 1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -219,13 +230,19 @@ class OxygenPlantState extends State<OxygenPlant> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                            color: double.parse(rows[0]["data2"]) >= 5000 &&
+                                    state[1]["d1"] == 1 &&
+                                    state[1]["d2"] == 1
+                                ? myColors["active"]
+                                : myColors["deactive"],
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("PLANT 2",
+                          child: Text("PLANT 2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -250,13 +267,14 @@ class OxygenPlantState extends State<OxygenPlant> {
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 3),
+                          vertical: 0, horizontal: 0),
                       child: _row(
                           r["head"],
                           r["data1"],
                           r["data2"],
                           r["selected"] == true ? _containerColora : _textColor,
-                          r["i"]),
+                          r["i"],
+                          state),
                     ),
                   ),
               ],
@@ -265,7 +283,7 @@ class OxygenPlantState extends State<OxygenPlant> {
   }
 }
 
-Widget _row(h, d1, d2, color, i) {
+Widget _row(h, d1, d2, color, i, state) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -280,7 +298,7 @@ Widget _row(h, d1, d2, color, i) {
               ),
             ),
           ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
           child: Text(
             h,
             style: TextStyle(color: color),
@@ -301,13 +319,18 @@ Widget _row(h, d1, d2, color, i) {
           : Expanded(
               flex: 2,
               child: Container(
-                decoration: const BoxDecoration(
-                  border: Border(
+                decoration: BoxDecoration(
+                  border: const Border(
                     right: BorderSide(
                       color: Color.fromARGB(113, 44, 129, 227),
                       width: 2.0,
                     ),
                   ),
+                  color: state[0]["d1"] == 1 && i == 9
+                      ? myColors["active"]
+                      : state[1]["d1"] == 1 && i == 10
+                          ? myColors["active"]
+                          : const Color.fromARGB(0, 144, 141, 134),
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
@@ -316,11 +339,17 @@ Widget _row(h, d1, d2, color, i) {
               ),
             ),
       i == 4 || i == 5 || i == 6 || i == 7 || i == 8
-          ? Text("")
+          ? const Text("")
           : Expanded(
               flex: 2,
               child: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(
+                  color: state[0]["d2"] == 1 && i == 9
+                      ? myColors["active"]
+                      : state[1]["d2"] == 1 && i == 10
+                          ? myColors["active"]
+                          : const Color.fromARGB(0, 144, 141, 134),
+                ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
                     style: TextStyle(color: color),

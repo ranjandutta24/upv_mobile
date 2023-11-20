@@ -134,7 +134,7 @@ class _AccordionPageState extends State<AccordionPage> {
             content: Mills(),
           ),
           AccordionSection(
-            isOpen: false,
+            isOpen: true,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("POWER & BLOWING STATION",
@@ -172,7 +172,7 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Bpplant(),
           ),
           AccordionSection(
-            isOpen: true,
+            isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
             header: const Text("LIME & DOLO CALCINATION PLANT",
