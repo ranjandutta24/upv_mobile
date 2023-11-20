@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Mills extends StatefulWidget {
   const Mills({super.key});
@@ -45,6 +46,7 @@ class MillsState extends State<Mills> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> state = [];
 
   millsService() async {
     await mills().then((data) {
@@ -158,6 +160,13 @@ class MillsState extends State<Mills> {
               "i": 12,
             },
           ];
+          state = [
+            {
+              "wrm": millsData["DIFF"],
+              "brm": millsData["DIFF1"],
+              "usm": millsData["DIFF22"]
+            }
+          ];
           if (num != -1) {
             rows[num]["selected"] = true;
           }
@@ -197,7 +206,7 @@ class MillsState extends State<Mills> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -225,14 +234,16 @@ class MillsState extends State<Mills> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: state[0]["wrm"] >= 360
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("WRM",
@@ -246,14 +257,16 @@ class MillsState extends State<Mills> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: state[0]["brm"] >= 360
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BRM",
@@ -267,7 +280,10 @@ class MillsState extends State<Mills> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                              color: state[0]["usm"] >= 660
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("USM",

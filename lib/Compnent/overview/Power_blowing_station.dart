@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Pbs extends StatefulWidget {
   const Pbs({super.key});
@@ -161,7 +162,7 @@ class PbsState extends State<Pbs> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text(" ")
           : Column(
@@ -173,7 +174,7 @@ class PbsState extends State<Pbs> {
                     width: 2.0,
                   )),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 3, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -189,7 +190,7 @@ class PbsState extends State<Pbs> {
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
+                                vertical: 5, horizontal: 3),
                             child: const Text('Parameter',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -199,20 +200,25 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 56, 104, 156),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows[0]["data1"]) <= 10
+                                ? myColors["deactive"]
+                                : double.parse(rows[0]["data1"]) > 10
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("BOILER1",
+                          child: Text("BOILER1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -220,20 +226,24 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: const Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: double.parse(rows[0]["data2"]) <= 10
+                                  ? myColors["deactive"]
+                                  : double.parse(rows[0]["data2"]) > 10
+                                      ? myColors["active"]
+                                      : const Color.fromARGB(0, 255, 193, 7)),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("BOILER2",
+                          child: Text("BOILER2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -241,13 +251,18 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                              color: double.parse(rows[0]["data3"]) <= 10
+                                  ? myColors["deactive"]
+                                  : double.parse(rows[0]["data3"]) > 10
+                                      ? myColors["active"]
+                                      : const Color.fromARGB(0, 255, 193, 7)),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("BOILER3",
+                          child: Text("BOILER3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -290,7 +305,7 @@ class PbsState extends State<Pbs> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -306,7 +321,7 @@ class PbsState extends State<Pbs> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
@@ -318,20 +333,25 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 56, 104, 156),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows2[0]["data1"]) <= 1
+                                ? myColors["deactive"]
+                                : double.parse(rows2[0]["data1"]) > 3
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("STG1",
+                          child: Text("STG1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -339,20 +359,25 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 44, 129, 227),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows2[0]["data2"]) <= 1
+                                ? myColors["deactive"]
+                                : double.parse(rows2[0]["data2"]) > 3
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("STG2",
+                          child: Text("STG2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -360,13 +385,19 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                            color: double.parse(rows2[0]["data3"]) <= 1
+                                ? myColors["deactive"]
+                                : double.parse(rows2[0]["data3"]) > 3
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("STG3",
+                          child: Text("STG3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -409,7 +440,7 @@ class PbsState extends State<Pbs> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -425,7 +456,7 @@ class PbsState extends State<Pbs> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
@@ -437,20 +468,25 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 56, 104, 156),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows3[0]["data1"]) <= 300
+                                ? myColors["deactive"]
+                                : double.parse(rows3[0]["data1"]) > 300
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("STB1",
+                          child: Text("STB1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -458,20 +494,25 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 44, 129, 227),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows3[0]["data2"]) <= 300
+                                ? myColors["deactive"]
+                                : double.parse(rows3[0]["data2"]) > 300
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("STB2",
+                          child: Text("STB2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -479,13 +520,19 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                            color: double.parse(rows3[0]["data3"]) <= 300
+                                ? myColors["deactive"]
+                                : double.parse(rows3[0]["data3"]) > 300
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 255, 193, 7),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("STB3",
+                          child: Text("STB3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -556,20 +603,23 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 56, 104, 156),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows4[0]["data1"]) < 1
+                                ? myColors["deactive"]
+                                : myColors["active"],
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("BPTG1",
+                          child: Text("BPTG1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -577,20 +627,23 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 44, 129, 227),
                                 width: 2.0,
                               ),
                             ),
+                            color: double.parse(rows4[0]["data2"]) < 0.1
+                                ? myColors["deactive"]
+                                : myColors["active"],
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("TRTG",
+                          child: Text("TRTG",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -713,7 +766,7 @@ Widget _row(h, d1, d2, d3, color, i) {
 }
 
 Widget _line() {
-  return Padding(
+  return const Padding(
     padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
     child: Column(
       children: [],
