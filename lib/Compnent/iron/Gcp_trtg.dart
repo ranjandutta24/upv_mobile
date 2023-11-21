@@ -76,20 +76,20 @@ class GcpState extends State<Gcp> {
             },
             {
               "head": "TRTG Open [%]",
-              "data1": gcpData["TRTOPEN"].toStringAsFixed(0),
+              "data1": gcpData["TRTOPEN"].toStringAsFixed(2),
               "selected": false,
               "i": 3,
             },
             {
               "head": "AG Element A/B/C[%]",
               "data1":
-                  "${gcpData["AG_A"].toString()}/${gcpData["AG_B"].toString()}/${gcpData["AG_C"].toString()}",
+                  "${gcpData["AG_A"].toStringAsFixed(2)}/${gcpData["AG_B"].toStringAsFixed(2)}/${gcpData["AG_C"].toStringAsFixed(2)}",
               "selected": false,
               "i": 4,
             },
             {
               "head": "Clean Gas flow High[Nm3/h]",
-              "data1": gcpData[""].toStringAsFixed(0),
+              "data1": gcpData["CLEAN_GAS_FLOW"].toStringAsFixed(0),
               "selected": false,
               "i": 5,
             },

@@ -73,7 +73,6 @@ class BfiState extends State<Bfi> {
               "selected": false,
               "i": 4
             },
-
             {
               "head": "Top Temperature [DegC]",
               "data": "${bfiData["BF_TOPT"].toStringAsFixed(0)}",
@@ -111,7 +110,12 @@ class BfiState extends State<Bfi> {
               "selected": false,
               "i": 20
             },
-            //CDI Rate [TPH]
+            {
+              "head": "CDI [TPH]",
+              "data": "${bfiData["CDI_INJRATE"].toStringAsFixed(2)}",
+              "selected": false,
+              "i": 8
+            },
             {
               "head": "Raft [DegC]",
               "data": "${bfiData["RAFT"].toStringAsFixed(0)}",
@@ -142,9 +146,18 @@ class BfiState extends State<Bfi> {
               "selected": false,
               "i": 11
             },
-            //ore coke ratio
-            //production rate
-
+            {
+              "head": "Ore Coke Ratio",
+              "data": "${bfiData["OREBYCOKE"].toStringAsFixed(2)}",
+              "selected": false,
+              "i": 12
+            },
+            {
+              "head": "Production rate",
+              "data": "${bfiData["PROD_RATE"].toStringAsFixed(2)}",
+              "selected": false,
+              "i": 13
+            },
             {
               "head": "Last Day HM Prod [Ton]",
               "data": "${bfiData["LADLE_BFTLMSPROD"].toStringAsFixed(2)}",
@@ -163,7 +176,12 @@ class BfiState extends State<Bfi> {
               "selected": false,
               "i": 22
             },
-            //snort position
+            // {
+            //   "head": "Snort Position[%]",
+            //   "data": "${bfiData["PBS_SNORT"].toStringAsFixed(0)}",
+            //   "selected": false,
+            //   "i": 23
+            // },
             {
               "head": "Silicon[%]@ Sample time",
               "data":
@@ -171,8 +189,20 @@ class BfiState extends State<Bfi> {
               "selected": false,
               "i": 16
             },
-            //toredo car 1234/
-            //toredo car 5678.
+            {
+              "head": "Toredo Car 1/2/3/4 Level [%]",
+              "data":
+                  "${bfiData["TORPEDO1"].toStringAsFixed(0)}/${bfiData["TORPEDO2"].toStringAsFixed(0)}/${bfiData["TORPEDO3"].toStringAsFixed(0)}/${bfiData["TORPEDO4"].toStringAsFixed(0)}",
+              "selected": false,
+              "i": 17
+            },
+            {
+              "head": "Toredo Car 5/6/7/8 Level [%]",
+              "data":
+                  "${bfiData["TORPEDO5"].toStringAsFixed(0)}/${bfiData["TORPEDO6"].toStringAsFixed(0)}/${bfiData["TORPEDO7"].toStringAsFixed(0)}/${bfiData["TORPEDO8"].toStringAsFixed(0)}",
+              "selected": false,
+              "i": 17
+            },
           ];
           if (num != -1) {
             rows[num]["selected"] = true;
@@ -217,7 +247,7 @@ class BfiState extends State<Bfi> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        flex: 7,
+                        flex: 6,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -290,7 +320,7 @@ class BfiState extends State<Bfi> {
 Widget _row(h, d, color, i) {
   return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
     Expanded(
-      flex: 7,
+      flex: 6,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
