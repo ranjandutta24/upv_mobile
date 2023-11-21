@@ -4,7 +4,8 @@ import 'package:upv_mobile/Compnent/iron/accordion.dart';
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class IronScreen extends StatefulWidget {
-  const IronScreen({super.key});
+  const IronScreen({super.key, required this.data});
+  final data;
   @override
   State<IronScreen> createState() {
     return _IronsScreenState();
@@ -28,7 +29,9 @@ class _IronsScreenState extends State<IronScreen> {
         appBar: AppBar(
           title: const Text('Iron'),
         ),
-        drawer: const MainDrawer(),
+        drawer: MainDrawer(
+          data: widget.data,
+        ),
         body: _accordion());
   }
 }

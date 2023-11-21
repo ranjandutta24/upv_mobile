@@ -17,8 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   loginUser() async {
     final username = usernameController.text;
     final password = passwordController.text;
-    print(username);
-    print(password);
+
     var response = await login(
       json.encode({
         'userid': username,
@@ -28,9 +27,12 @@ class _LoginPageState extends State<LoginPage> {
     if (response.statusCode == 200) {
       jsonMap = json.decode(response.body);
       print(jsonMap);
+      // ignore: use_build_context_synchronously
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (ctx) => const OverviewScreen(),
+          builder: (ctx) => OverviewScreen(
+            data: jsonMap,
+          ),
         ),
       );
     } else {
@@ -107,7 +109,7 @@ class _LoginPageState extends State<LoginPage> {
       borderSide: const BorderSide(color: Colors.white),
     );
     return TextField(
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.white,
       ),
       controller: controller,
@@ -126,6 +128,11 @@ class _LoginPageState extends State<LoginPage> {
         onPressed: () {
           loginUser();
         },
+        style: ElevatedButton.styleFrom(
+            foregroundColor: Colors.blue,
+            backgroundColor: const Color.fromARGB(255, 228, 226, 226),
+            shape: const StadiumBorder(),
+            padding: const EdgeInsets.symmetric(vertical: 16)),
         child: const SizedBox(
           width: double.infinity,
           child: Text(
@@ -133,11 +140,6 @@ class _LoginPageState extends State<LoginPage> {
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 20),
           ),
-        ),
-        style: ElevatedButton.styleFrom(
-            foregroundColor: Colors.blue,
-            backgroundColor: const Color.fromARGB(255, 228, 226, 226),
-            shape: const StadiumBorder(),
-            padding: const EdgeInsets.symmetric(vertical: 16)));
+        ));
   }
 }

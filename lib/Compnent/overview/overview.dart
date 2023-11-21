@@ -30,10 +30,6 @@ class OverviewState extends State<Overview> {
     super.initState();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
-
   _changeColor(no) {
     setState(() {
       for (int i = 0; i < rows.length; i++) {

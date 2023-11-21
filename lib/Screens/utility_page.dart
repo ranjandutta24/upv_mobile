@@ -5,7 +5,8 @@ import 'package:upv_mobile/Compnent/utility/accordion.dart';
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class Utilitycreen extends StatefulWidget {
-  const Utilitycreen({super.key});
+  const Utilitycreen({super.key, required this.data});
+  final data;
   @override
   State<Utilitycreen> createState() {
     return _UtilityScreenState();
@@ -33,7 +34,9 @@ class _UtilityScreenState extends State<Utilitycreen> {
         appBar: AppBar(
           title: const Text('Utility'),
         ),
-        drawer: const MainDrawer(),
+        drawer: MainDrawer(
+          data: widget.data,
+        ),
         body: _accordion());
   }
 }

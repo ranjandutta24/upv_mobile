@@ -2,7 +2,6 @@ import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
 import 'package:upv_mobile/Compnent/steelmills/Basic_oxygen_furnace.dart';
 import 'package:upv_mobile/Compnent/steelmills/Continuous_casting_plant.dart';
 import 'package:upv_mobile/Compnent/steelmills/Ladle_heating_furnace.dart';

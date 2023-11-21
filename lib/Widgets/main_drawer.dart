@@ -5,14 +5,13 @@ import 'package:upv_mobile/Screens/steel_mills_page.dart';
 import 'package:upv_mobile/Screens/utility_page.dart';
 
 class MainDrawer extends StatelessWidget {
-  const MainDrawer({super.key});
-
+  const MainDrawer({super.key, required this.data});
+  final dynamic data;
   @override
   Widget build(BuildContext context) {
     return Drawer(
         child: SingleChildScrollView(
-            child: Container(
-                child: Column(
+            child: Column(
       children: [
         DrawerHeader(
           padding: const EdgeInsets.all(10),
@@ -25,18 +24,21 @@ class MainDrawer extends StatelessWidget {
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           )),
-          child: const Row(
+          child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.person_2_rounded,
+              const Icon(
+                Icons.perm_identity_rounded,
                 size: 48,
                 color: Color.fromARGB(234, 56, 23, 34),
               ),
-              SizedBox(width: 18),
+              const SizedBox(width: 18),
               Text(
-                'ADMIN',
-                style: TextStyle(fontSize: 26, fontWeight: FontWeight.w200),
+                "${data["firstname"]} ${data["lastname"] ?? ""}",
+                style: const TextStyle(
+                  fontSize: 26,
+                  fontWeight: FontWeight.w200,
+                ),
               )
             ],
           ),
@@ -59,7 +61,9 @@ class MainDrawer extends StatelessWidget {
               context,
               oldRoute: ModalRoute.of(context)!,
               newRoute: MaterialPageRoute(
-                  builder: (context) => const OverviewScreen()),
+                  builder: (context) => OverviewScreen(
+                        data: data,
+                      )),
             );
           },
         ),
@@ -81,8 +85,8 @@ class MainDrawer extends StatelessWidget {
             Navigator.replace(
               context,
               oldRoute: ModalRoute.of(context)!,
-              newRoute:
-                  MaterialPageRoute(builder: (context) => const IronScreen()),
+              newRoute: MaterialPageRoute(
+                  builder: (context) => IronScreen(data: data)),
             );
           },
         ),
@@ -104,7 +108,7 @@ class MainDrawer extends StatelessWidget {
               context,
               oldRoute: ModalRoute.of(context)!,
               newRoute: MaterialPageRoute(
-                  builder: (context) => const SteelMillsScreen()),
+                  builder: (context) => SteelMillsScreen(data: data)),
             );
           },
         ),
@@ -125,8 +129,8 @@ class MainDrawer extends StatelessWidget {
             Navigator.replace(
               context,
               oldRoute: ModalRoute.of(context)!,
-              newRoute:
-                  MaterialPageRoute(builder: (context) => const Utilitycreen()),
+              newRoute: MaterialPageRoute(
+                  builder: (context) => Utilitycreen(data: data)),
             );
           },
         ),
@@ -261,6 +265,6 @@ class MainDrawer extends StatelessWidget {
           },
         ),
       ],
-    ))));
+    )));
   }
 }
