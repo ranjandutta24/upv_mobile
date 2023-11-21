@@ -42,7 +42,7 @@ class MainDrawer extends StatelessWidget {
         ),
         ListTile(
           leading: const Icon(
-            Icons.checklist,
+            Icons.menu,
             size: 26,
             color: Colors.black,
           ),
@@ -65,7 +65,7 @@ class MainDrawer extends StatelessWidget {
         // const SizedBox(height: 12),
         ListTile(
           leading: const Icon(
-            Icons.checklist,
+            Icons.iron,
             size: 26,
             color: Colors.black,
           ),
@@ -87,7 +87,7 @@ class MainDrawer extends StatelessWidget {
         ),
         ListTile(
           leading: const Icon(
-            Icons.checklist,
+            Icons.bolt_sharp,
             size: 26,
             color: Colors.black,
           ),
@@ -215,7 +215,7 @@ class MainDrawer extends StatelessWidget {
         // ),
         ListTile(
           leading: const Icon(
-            Icons.checklist,
+            Icons.logout,
             size: 26,
             color: Colors.black,
           ),

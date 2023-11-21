@@ -71,12 +71,18 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Overview(),
           ),
           AccordionSection(
+            headerPadding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             headerBackgroundColor: Color.fromARGB(255, 53, 197, 63),
             contentBorderColor: Color.fromARGB(255, 53, 197, 63),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            // leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/furnace.png',
+              width: 40.0,
+              height: 40.0,
+            ),
             header:
                 const Text("BLAST FURNACE", style: AccordionPage.headerStyle),
             content: const Col(),
@@ -86,7 +92,11 @@ class _AccordionPageState extends State<AccordionPage> {
             contentBorderColor: Color.fromARGB(255, 178, 197, 53),
             isOpen: false,
             contentVerticalPadding: 10,
-            leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/factory.png',
+              width: 40.0,
+              height: 40.0,
+            ),
             header:
                 const Text("SINTER PLANT", style: AccordionPage.headerStyle),
             content: const SinterPlant(),
@@ -97,7 +107,11 @@ class _AccordionPageState extends State<AccordionPage> {
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/metallurgical-plant.png',
+              width: 40.0,
+              height: 40.0,
+            ),
             header: const Text("BASIC OXYGEN FURNACE",
                 style: AccordionPage.headerStyle),
             content: const BOF(),
@@ -134,6 +148,8 @@ class _AccordionPageState extends State<AccordionPage> {
             content: Mills(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 189, 171, 92),
+            contentBorderColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: true,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -142,6 +158,8 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Pbs(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 204, 212, 52),
+            contentBorderColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -150,6 +168,8 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const OxygenPlant(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 212, 196, 52),
+            contentBorderColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -157,6 +177,8 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Cbm(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 81, 174, 61),
+            contentBorderColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -164,6 +186,8 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const CokeOvens(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 112, 61, 174),
+            contentBorderColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -172,6 +196,8 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Bpplant(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 161, 61, 174),
+            contentBorderColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
@@ -180,6 +206,8 @@ class _AccordionPageState extends State<AccordionPage> {
             content: const Ldcp(),
           ),
           AccordionSection(
+            headerBackgroundColor: Color.fromARGB(255, 195, 153, 247),
+            contentBorderColor: Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: const Icon(Icons.bar_chart_sharp, color: Colors.white),
