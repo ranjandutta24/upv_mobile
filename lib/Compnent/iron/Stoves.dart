@@ -247,7 +247,7 @@ Widget _row(h, d1, color, i) {
             child: Text(
               d1,
               style: TextStyle(color: color),
-              textAlign: TextAlign.right,
+              textAlign: TextAlign.center,
             ),
           ),
         ),

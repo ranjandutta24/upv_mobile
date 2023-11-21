@@ -83,7 +83,7 @@ class _AccordionPageState extends State<AccordionIron> {
             leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
             header:
                 const Text('SINTER PLANT', style: AccordionIron.headerStyle),
-            content: const Spi(),
+            content: const SinterPlant(),
           ),
           AccordionSection(
             isOpen: false,
