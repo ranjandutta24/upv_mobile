@@ -152,7 +152,7 @@ class CdcpState extends State<Cdcp> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      flex: 7,
+                      flex: 4,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -163,17 +163,18 @@ class CdcpState extends State<Cdcp> {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 0),
+                            vertical: 8, horizontal: 0),
                         child: const Text(
                           "Production",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
+                              fontSize: 11,
                               color: Color.fromARGB(255, 152, 152, 152)),
                         ),
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -184,18 +185,18 @@ class CdcpState extends State<Cdcp> {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 0),
+                            vertical: 8, horizontal: 0),
                         child: const Text("CH#1",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 13,
+                              fontSize: 11,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
                             textAlign: TextAlign.center),
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -206,18 +207,18 @@ class CdcpState extends State<Cdcp> {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 0),
+                            vertical: 8, horizontal: 0),
                         child: const Text("CH#2",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 13,
+                              fontSize: 11,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
                             textAlign: TextAlign.center),
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -228,26 +229,26 @@ class CdcpState extends State<Cdcp> {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 0),
+                            vertical: 8, horizontal: 0),
                         child: const Text("CH#3",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 13,
+                              fontSize: 11,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
                             textAlign: TextAlign.center),
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 1,
                       child: Container(
                         decoration: const BoxDecoration(),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 0),
+                            vertical: 8, horizontal: 0),
                         child: const Text("CH#4",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 13,
+                              fontSize: 11,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
                             textAlign: TextAlign.center),
@@ -292,7 +293,7 @@ class CdcpState extends State<Cdcp> {
 Widget _row(h, d1, d2, d3, d4, color, i) {
   return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
     Expanded(
-      flex: 7,
+      flex: 4,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -303,16 +304,16 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontSize: 12),
           ),
         ),
       ),
     ),
     Expanded(
-      flex: 2,
+      flex: 1,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -323,17 +324,17 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
           child: Text(
             d1,
-            style: TextStyle(color: color),
-            textAlign: TextAlign.right,
+            style: TextStyle(color: color, fontSize: 12),
+            textAlign: TextAlign.center,
           ),
         ),
       ),
     ),
     Expanded(
-      flex: 2,
+      flex: 1,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -343,13 +344,14 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
             ),
           ),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
         child: Text(d2,
-            style: TextStyle(color: color), textAlign: TextAlign.center),
+            style: TextStyle(color: color, fontSize: 12),
+            textAlign: TextAlign.center),
       ),
     ),
     Expanded(
-      flex: 2,
+      flex: 1,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -359,18 +361,20 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
             ),
           ),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
         child: Text(d3,
-            style: TextStyle(color: color), textAlign: TextAlign.center),
+            style: TextStyle(color: color, fontSize: 12),
+            textAlign: TextAlign.center),
       ),
     ),
     Expanded(
-      flex: 2,
+      flex: 1,
       child: Container(
         decoration: const BoxDecoration(),
-        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
         child: Text(d4,
-            style: TextStyle(color: color), textAlign: TextAlign.center),
+            style: TextStyle(color: color, fontSize: 12),
+            textAlign: TextAlign.center),
       ),
     ),
   ]);
