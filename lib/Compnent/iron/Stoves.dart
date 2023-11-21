@@ -50,7 +50,7 @@ class StovesState extends State<Stoves> {
   }
 
   TechnoService() async {
-    await stoveService().then((data) {
+    await stoveservice().then((data) {
       if (mounted) {
         print(data.body);
         setState(() {

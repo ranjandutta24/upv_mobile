@@ -322,7 +322,7 @@ cdcpservice() async {
   }
 }
 
-stoveService() async {
+stoveservice() async {
   try {
     return await http.get(
       Uri.parse('$baseUrl/iron/stove'),

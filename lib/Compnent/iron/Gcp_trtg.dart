@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:upv_mobile/Services/service_page.dart';
 
 class Gcp extends StatefulWidget {
   const Gcp({super.key});
@@ -11,8 +15,105 @@ class Gcp extends StatefulWidget {
 
 class GcpState extends State<Gcp> {
   late dynamic gcpData;
-  var loading = false;
+  var loading = true;
   var num = -1;
+
+  @override
+  void initState() {
+    super.initState();
+
+    fun();
+  }
+
+  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+
+  _changeColor(no) {
+    setState(() {
+      for (int i = 0; i < rows.length; i++) {
+        rows[i]["selected"] = false;
+      }
+      rows[no]["selected"] = true;
+      num = no;
+    });
+  }
+
+  List<dynamic> rows = [];
+
+  fun() {
+    TechnoService();
+    var duration = const Duration(seconds: 5);
+    Timer.periodic(duration, (Timer timer) {
+      TechnoService();
+    });
+  }
+
+  TechnoService() async {
+    await gcpservice().then((data) {
+      if (mounted) {
+        print(data.body);
+        setState(() {
+          gcpData = json.decode(data.body);
+          rows = [
+            {
+              "head": "TRTG Generation [MW]",
+              "data1": gcpData["TRTGMW"].toStringAsFixed(0),
+              "selected": false,
+              "i": 0,
+            },
+            {
+              "head": "TRTG Pressure[Kg/cm2]",
+              "data1": gcpData["TRTPRES"].toStringAsFixed(0),
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "TRTG Temp. [DegC]",
+              "data1": gcpData["TRTTEMP"].toStringAsFixed(0),
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "TRTG Open [%]",
+              "data1": gcpData["TRTOPEN"].toStringAsFixed(0),
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "AG Element A/B/C[%]",
+              "data1":
+                  "${gcpData["AG_A"].toString()}/${gcpData["AG_B"].toString()}/${gcpData["AG_C"].toString()}",
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "Clean Gas flow High[Nm3/h]",
+              "data1": gcpData[""].toStringAsFixed(0),
+              "selected": false,
+              "i": 5,
+            },
+          ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
+        });
+      } else {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Login Failed, wrong userid or password'),
+            ),
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +134,7 @@ class GcpState extends State<Gcp> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      flex: 7,
+                      flex: 5,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -54,7 +155,7 @@ class GcpState extends State<Gcp> {
                       ),
                     ),
                     Expanded(
-                      flex: 3,
+                      flex: 5,
                       child: Container(
                         decoration: const BoxDecoration(),
                         padding: const EdgeInsets.symmetric(
@@ -72,7 +173,74 @@ class GcpState extends State<Gcp> {
                   ],
                 ),
               ),
+              for (final Map r in rows)
+                GestureDetector(
+                  onTap: () {
+                    _changeColor(r["i"]);
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: r["selected"] == true
+                          ? _containerColor
+                          : _containerColora,
+                      border: Border.all(
+                        color: const Color.fromARGB(
+                            113, 44, 129, 227), // Border color
+                        width: 1.0, // Border width
+                      ),
+                    ),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                    child: _row(
+                        r["head"],
+                        r["data1"],
+                        r["selected"] == true ? _containerColora : _textColor,
+                        r["i"]),
+                  ),
+                ),
             ]),
     );
   }
+}
+
+Widget _row(h, d1, color, i) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Expanded(
+        flex: 5,
+        child: Container(
+          decoration: const BoxDecoration(
+            border: Border(
+              right: BorderSide(
+                color: Color.fromARGB(113, 44, 129, 227),
+                width: 2.0,
+              ),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+            child: Text(
+              h,
+              style: TextStyle(color: color),
+            ),
+          ),
+        ),
+      ),
+      Expanded(
+        flex: 5,
+        child: Container(
+          decoration: const BoxDecoration(),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+            child: Text(
+              d1,
+              style: TextStyle(color: color),
+              textAlign: TextAlign.right,
+            ),
+          ),
+        ),
+      ),
+    ],
+  );
 }
