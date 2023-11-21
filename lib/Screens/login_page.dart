@@ -30,7 +30,9 @@ class _LoginPageState extends State<LoginPage> {
       // ignore: use_build_context_synchronously
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (ctx) => const OverviewScreen(),
+          builder: (ctx) => OverviewScreen(
+            data: jsonMap,
+          ),
         ),
       );
     } else {

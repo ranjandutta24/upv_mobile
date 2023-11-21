@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 
 import 'package:upv_mobile/Compnent/overview/accordion.dart';
-import 'package:upv_mobile/Screens/utility_page.dart';
-// import 'package:upv_mobile/Widgets/example.dart';
-// import 'package:upv_mobile/Widgets/example.dart';
-import 'package:upv_mobile/Widgets/example2.dart';
+
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class OverviewScreen extends StatefulWidget {
-  const OverviewScreen({super.key});
+  const OverviewScreen({super.key, required this.data});
+  final data;
   @override
   State<OverviewScreen> createState() {
     return _OverviewsScreenState();
@@ -36,7 +34,9 @@ class _OverviewsScreenState extends State<OverviewScreen> {
         appBar: AppBar(
           title: const Text('Home'),
         ),
-        drawer: const MainDrawer(),
+        drawer: MainDrawer(
+          data: widget.data,
+        ),
         body: _accordion());
   }
 }

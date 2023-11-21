@@ -5,7 +5,8 @@ import 'package:upv_mobile/Compnent/steelmills/accordion.dart';
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class SteelMillsScreen extends StatefulWidget {
-  const SteelMillsScreen({super.key});
+  const SteelMillsScreen({super.key, required this.data});
+  final data;
   @override
   State<SteelMillsScreen> createState() {
     return _SteelMillssScreenState();
@@ -29,7 +30,9 @@ class _SteelMillssScreenState extends State<SteelMillsScreen> {
         appBar: AppBar(
           title: const Text('Steel/Mills'),
         ),
-        drawer: const MainDrawer(),
+        drawer: MainDrawer(
+          data: widget.data,
+        ),
         body: _accordion());
   }
 }

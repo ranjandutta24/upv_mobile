@@ -65,116 +65,116 @@ class BfiState extends State<Bfi> {
               "head": "Blast Pressure [Kg/cm2]",
               "data": "${bfiData["BF_COLDP"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 3
+              "i": 1
             },
             {
               "head": "Top Pressure [Kg/cm2]",
               "data": "${bfiData["BF_TOPP"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 4
+              "i": 2
             },
             {
               "head": "Top Temperature [DegC]",
               "data": "${bfiData["BF_TOPT"].toStringAsFixed(0)}",
               "selected": false,
-              "i": 6
+              "i": 3
             },
             {
               "head": "Blast Temp [DegC] PV/SV",
               "data":
                   "${bfiData["HBTAVG"].toStringAsFixed(0)}/${bfiData["BTSP"].toStringAsFixed(0)}",
               "selected": false,
-              "i": 7
+              "i": 4
             },
             {
               "head": "Runner#1 Hot Metal Temp [DegC]",
               "data": "${bfiData["NRUNNERBF_RUNNERTEMP1"]}",
               "selected": false,
-              "i": 17
+              "i": 5
             },
             {
               "head": "Runner#2 Hot Metal Temp [DegC]",
               "data": "${bfiData["NRUNNERBF_RUNNERTEMP2"]}",
               "selected": false,
-              "i": 18
+              "i": 6
             },
             {
               "head": "Runner#3 Hot Metal Temp [DegC]",
               "data": "${bfiData["NRUNNERBF_RUNNERTEMP3"]}",
               "selected": false,
-              "i": 19
+              "i": 7
             },
             {
               "head": "Runner#4 Hot Metal Temp [DegC]",
               "data": "${bfiData["NRUNNERBF_RUNNERTEMP4"]}",
               "selected": false,
-              "i": 20
+              "i": 8
             },
             {
               "head": "CDI [TPH]",
               "data": "${bfiData["CDI_INJRATE"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 8
+              "i": 9
             },
             {
               "head": "Raft [DegC]",
               "data": "${bfiData["RAFT"].toStringAsFixed(0)}",
               "selected": false,
-              "i": 8
+              "i": 10
             },
             {
               "head": "O2 Enrich [Nm3/hr]",
               "data": bfiData["OF"].toStringAsFixed(2),
               "selected": false,
-              "i": 1
+              "i": 11
             },
             {
               "head": "Heat Load[Mcal]",
               "data": "${bfiData["TOTAL_HEAT_LOAD"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 10
+              "i": 12
             },
             {
               "head": "ETA CO [%]",
               "data": "${bfiData["BF_CO"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 9
+              "i": 13
             },
             {
               "head": "Charge Count",
               "data": "${bfiData["BF_CHARGE"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 11
+              "i": 14
             },
             {
               "head": "Ore Coke Ratio",
               "data": "${bfiData["OREBYCOKE"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 12
+              "i": 15
             },
             {
               "head": "Production rate",
               "data": "${bfiData["PROD_RATE"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 13
+              "i": 16
             },
             {
               "head": "Last Day HM Prod [Ton]",
               "data": "${bfiData["LADLE_BFTLMSPROD"].toStringAsFixed(2)}",
               "selected": false,
-              "i": 14
+              "i": 17
             },
             {
               "head": "Flare Stack Flow [Nm3/hr]",
               "data": "${bfiData["BF_FLAREF"].toStringAsFixed(0)}",
               "selected": false,
-              "i": 21
+              "i": 18
             },
             {
               "head": "Flare Stack Pressure [mmwc]",
               "data": "${bfiData["BF_FLAREP"].toStringAsFixed(0)}",
               "selected": false,
-              "i": 22
+              "i": 19
             },
             // {
             //   "head": "Snort Position[%]",
@@ -187,21 +187,21 @@ class BfiState extends State<Bfi> {
               "data":
                   "${bfiData["LAB_SI"].toStringAsFixed(2)}@${bfiData["LAB_HR"] ?? "0"}:${bfiData["LAB_MIN"] ?? "0"}",
               "selected": false,
-              "i": 16
+              "i": 20
             },
             {
               "head": "Toredo Car 1/2/3/4 Level [%]",
               "data":
                   "${bfiData["TORPEDO1"].toStringAsFixed(0)}/${bfiData["TORPEDO2"].toStringAsFixed(0)}/${bfiData["TORPEDO3"].toStringAsFixed(0)}/${bfiData["TORPEDO4"].toStringAsFixed(0)}",
               "selected": false,
-              "i": 17
+              "i": 21
             },
             {
               "head": "Toredo Car 5/6/7/8 Level [%]",
               "data":
                   "${bfiData["TORPEDO5"].toStringAsFixed(0)}/${bfiData["TORPEDO6"].toStringAsFixed(0)}/${bfiData["TORPEDO7"].toStringAsFixed(0)}/${bfiData["TORPEDO8"].toStringAsFixed(0)}",
               "selected": false,
-              "i": 17
+              "i": 22
             },
           ];
           if (num != -1) {

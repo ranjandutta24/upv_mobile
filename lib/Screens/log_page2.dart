@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:developer';
+// import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Screens/overview_page.dart';
 import 'package:upv_mobile/Services/service_page.dart';
@@ -32,11 +32,13 @@ class _LoginState extends State<Login> {
     );
     if (response.statusCode == 200) {
       jsonMap = json.decode(response.body);
-      print(jsonMap);
+      // print(jsonMap);
       // ignore: use_build_context_synchronously
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (ctx) => const OverviewScreen(),
+          builder: (ctx) => OverviewScreen(
+            data: jsonMap,
+          ),
         ),
       );
     } else {

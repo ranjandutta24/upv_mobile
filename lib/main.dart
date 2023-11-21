@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Screens/log_page2.dart';
-import 'package:upv_mobile/Screens/login_page.dart';
+// import 'package:upv_mobile/Screens/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: LoginPage(),
-      home: Login(),
+      home: const Login(),
     );
   }
 }
