@@ -5,6 +5,7 @@ import 'package:upv_mobile/Compnent/iron/BF_stock_house.dart';
 import 'package:upv_mobile/Compnent/iron/Blast_furnace_iron.dart';
 import 'package:upv_mobile/Compnent/iron/By_product_plant_iron.dart';
 import 'package:upv_mobile/Compnent/iron/Cdcp_iron.dart';
+import 'package:upv_mobile/Compnent/iron/Coke_oven_complex.dart';
 import 'package:upv_mobile/Compnent/iron/Coke_ovens_iron.dart';
 import 'package:upv_mobile/Compnent/iron/Gcp_trtg.dart';
 import 'package:upv_mobile/Compnent/iron/Sinter_plant_iron.dart';
@@ -116,7 +117,7 @@ class _AccordionPageState extends State<AccordionIron> {
             leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
             header: const Text('COKE OVEN #11 COMPLEX',
                 style: AccordionIron.headerStyle),
-            content: const Cdcp(),
+            content: const Coc(),
           ),
           AccordionSection(
             isOpen: false,
