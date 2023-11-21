@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 import 'package:upv_mobile/Utils/colors.dart';
 
-class Ccp extends StatefulWidget {
-  const Ccp({super.key});
+class Ccpsm extends StatefulWidget {
+  const Ccpsm({super.key});
   @override
-  State<Ccp> createState() {
-    return CcpState();
+  State<Ccpsm> createState() {
+    return CcpsmState();
   }
 }
 
-class CcpState extends State<Ccp> {
+class CcpsmState extends State<Ccpsm> {
   late dynamic ccpData;
   var loading = true;
   var num = -1;

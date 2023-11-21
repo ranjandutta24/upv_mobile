@@ -3,6 +3,9 @@ import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 
 import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
+import 'package:upv_mobile/Compnent/utility/CBM.dart';
+import 'package:upv_mobile/Compnent/utility/Lime_dolo_calcination_plant.dart';
+import 'package:upv_mobile/Compnent/utility/Oxygen_plant.dart';
 import 'package:upv_mobile/Compnent/utility/Power_blowing_station_utility.dart';
 
 class AccordionUtility extends StatefulWidget {
@@ -51,13 +54,119 @@ class _AccordionPageState extends State<AccordionUtility> {
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
         children: [
           AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
+            contentBorderColor: const Color.fromARGB(255, 189, 171, 92),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/power-plant.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             header: const Text('POWER & BLOWING STATION',
                 style: AccordionUtility.headerStyle),
             content: const PbsUt(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
+            contentBorderColor: const Color.fromARGB(255, 189, 171, 92),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: Image.asset(
+              'assets/icon/power-plant.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            header: const Text('BOF Gas Holder',
+                style: AccordionUtility.headerStyle),
+            content: const PbsUt(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
+            contentBorderColor: const Color.fromARGB(255, 189, 171, 92),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: Image.asset(
+              'assets/icon/power-plant.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            header:
+                const Text('Gas Utlity', style: AccordionUtility.headerStyle),
+            content: const PbsUt(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
+            contentBorderColor: const Color.fromARGB(255, 189, 171, 92),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            leftIcon: Image.asset(
+              'assets/icon/power-plant.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            header: const Text('Compressed Air Station',
+                style: AccordionUtility.headerStyle),
+            content: const PbsUt(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 204, 212, 52),
+            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: Image.asset(
+              'assets/icon/oxygen-tank.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            header:
+                const Text("OXYGEN PLANT", style: AccordionUtility.headerStyle),
+            content: const OxygenPlantUt(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 161, 61, 174),
+            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: Image.asset(
+              'assets/icon/capacity.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            header: const Text("LIME & DOLO CALCINATION PLANT",
+                style: AccordionUtility.headerStyle),
+            content: const LdcpUt(),
+          ),
+          AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 212, 196, 52),
+            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            leftIcon: Image.asset(
+              'assets/icon/pipe.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            header: const Text("CBM", style: AccordionUtility.headerStyle),
+            content: const CbmUt(),
           ),
         ],
       ),

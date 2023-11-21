@@ -4,15 +4,15 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 
-class Cbm extends StatefulWidget {
-  const Cbm({super.key});
+class CbmUt extends StatefulWidget {
+  const CbmUt({super.key});
   @override
-  State<Cbm> createState() {
-    return CbmState();
+  State<CbmUt> createState() {
+    return CbmUtState();
   }
 }
 
-class CbmState extends State<Cbm> {
+class CbmUtState extends State<CbmUt> {
   late dynamic cbmData;
   var loading = true;
   var num = -1;

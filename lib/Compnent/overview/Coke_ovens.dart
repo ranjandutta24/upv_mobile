@@ -37,88 +37,92 @@ class CokeOvensState extends State<CokeOvens> {
   }
 
   fun() {
-    cokeovensService();
-    var duration = const Duration(seconds: 30);
-    Timer.periodic(duration, (Timer timer) {
+    if (mounted) {
       cokeovensService();
-    });
+      var duration = const Duration(seconds: 30);
+      Timer.periodic(duration, (Timer timer) {
+        cokeovensService();
+      });
+    }
   }
 
   List<dynamic> rows = [];
 
   cokeovensService() async {
-    await cokeovens().then((data) {
-      if (mounted) {
-        // print(data.body);
-        setState(() {
-          cokeOvensData = json.decode(data.body);
-          rows = [
-            {
-              "head": "A Shift",
-              "data1": cokeOvensData["COB11_PUSHA"].toString(),
-              "data2": cokeOvensData["COB11_CHARGEA"].toString(),
-              "data3": cokeOvensData["COB10_PUSHA"].toString(),
-              "data4": cokeOvensData["COB10_CHARGEA"].toString(),
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "B Shift",
-              "data1": cokeOvensData["COB11_PUSHB"].toString(),
-              "data2": cokeOvensData["COB11_CHARGEB"].toString(),
-              "data3": cokeOvensData["COB10_PUSHB"].toString(),
-              "data4": cokeOvensData["COB10_CHARGEB"].toString(),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "C Shift",
-              "data1": cokeOvensData["COB11_PUSHC"].toString(),
-              "data2": cokeOvensData["COB11_CHARGEC"].toString(),
-              "data3": cokeOvensData["COB10_PUSHC"].toString(),
-              "data4": cokeOvensData["COB10_CHARGEC"].toString(),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "Total",
-              "data1": cokeOvensData["COB11_PUSHTOT"].toString(),
-              "data2": cokeOvensData["COB11_CHARGETOT"].toString(),
-              "data3": cokeOvensData["COB10_PUSHTOT"].toString(),
-              "data4": cokeOvensData["COB10_CHARGETOT"].toString(),
-              "selected": false,
-              "i": 3,
-            },
-            {
-              "head": "Prev.Day Total",
-              "data1": cokeOvensData["PUSHING_TOTOLD"].toString(),
-              "data2": cokeOvensData["CHARGING_TOTOLD"].toString(),
-              "data3": cokeOvensData["COB10_PUSHTOTLD"].toString(),
-              "data4": cokeOvensData["COB10_CHARGETOTLD"].toString(),
-              "selected": false,
-              "i": 4,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+    if (mounted) {
+      await cokeovens().then((data) {
+        if (data != null) {
+          // print(data.body);
+          setState(() {
+            cokeOvensData = json.decode(data.body);
+            rows = [
+              {
+                "head": "A Shift",
+                "data1": cokeOvensData["COB11_PUSHA"].toString(),
+                "data2": cokeOvensData["COB11_CHARGEA"].toString(),
+                "data3": cokeOvensData["COB10_PUSHA"].toString(),
+                "data4": cokeOvensData["COB10_CHARGEA"].toString(),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "B Shift",
+                "data1": cokeOvensData["COB11_PUSHB"].toString(),
+                "data2": cokeOvensData["COB11_CHARGEB"].toString(),
+                "data3": cokeOvensData["COB10_PUSHB"].toString(),
+                "data4": cokeOvensData["COB10_CHARGEB"].toString(),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "C Shift",
+                "data1": cokeOvensData["COB11_PUSHC"].toString(),
+                "data2": cokeOvensData["COB11_CHARGEC"].toString(),
+                "data3": cokeOvensData["COB10_PUSHC"].toString(),
+                "data4": cokeOvensData["COB10_CHARGEC"].toString(),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "Total",
+                "data1": cokeOvensData["COB11_PUSHTOT"].toString(),
+                "data2": cokeOvensData["COB11_CHARGETOT"].toString(),
+                "data3": cokeOvensData["COB10_PUSHTOT"].toString(),
+                "data4": cokeOvensData["COB10_CHARGETOT"].toString(),
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "Prev.Day Total",
+                "data1": cokeOvensData["PUSHING_TOTOLD"].toString(),
+                "data2": cokeOvensData["CHARGING_TOTOLD"].toString(),
+                "data3": cokeOvensData["COB10_PUSHTOTLD"].toString(),
+                "data4": cokeOvensData["COB10_CHARGETOTLD"].toString(),
+                "selected": false,
+                "i": 4,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override

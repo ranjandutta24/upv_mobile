@@ -3,17 +3,18 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
-class TechnoEco extends StatefulWidget {
-  const TechnoEco({super.key});
+class Millssm extends StatefulWidget {
+  const Millssm({super.key});
   @override
-  State<TechnoEco> createState() {
-    return TechnoEcoState();
+  State<Millssm> createState() {
+    return MillssmState();
   }
 }
 
-class TechnoEcoState extends State<TechnoEco> {
-  late dynamic technoData;
+class MillssmState extends State<Millssm> {
+  late dynamic millsData;
   var loading = true;
   var num = -1;
   @override
@@ -38,114 +39,136 @@ class TechnoEcoState extends State<TechnoEco> {
 
   fun() {
     if (mounted) {
-      TechnoService();
+      millsService();
       var duration = const Duration(seconds: 30);
       Timer.periodic(duration, (Timer timer) {
-        TechnoService();
+        millsService();
       });
     }
   }
 
   List<dynamic> rows = [];
+  List<dynamic> state = [];
 
-  TechnoService() async {
+  millsService() async {
     if (mounted) {
-      await technoeconomics().then((data) {
+      await mills().then((data) {
         if (data != null) {
           // print(data.body);
           setState(() {
-            technoData = json.decode(data.body);
+            millsData = json.decode(data.body);
             rows = [
               {
-                "head": "BFCokeRate[Kg/THM]",
-                "data1": technoData["BFCOKE_NORM"].toString(),
-                "data2": technoData["BFCOKE_ACTUAL"].toString(),
-                "data3": technoData["BFCOKE_CPLM"].toString(),
-                "data4": technoData["BFCOKE_CPLY"].toString(),
+                "head": "A Shift Prod",
+                "data1": millsData["WRM_A"].toString(),
+                "data2": millsData["BRM_A"].toString(),
+                "data3": millsData["USM_A"].toString(),
                 "selected": false,
                 "i": 0,
               },
               {
-                "head": "CDI Rate[Kg/THM]",
-                "data1": technoData["CDIRATE_NORM"].toString(),
-                "data2": technoData["CDIRATE_ACTUAL"].toString(),
-                "data3": technoData["CDIRATE_CPLM"].toString(),
-                "data4": technoData["CDIRATE_CPLY"].toString(),
+                "head": "B Shift Prod",
+                "data1": millsData["WRM_B"].toString(),
+                "data2": millsData["BRM_B"].toString(),
+                "data3": millsData["USM_B"].toString(),
                 "selected": false,
                 "i": 1,
               },
               {
-                "head": "Fuel Rate[Kg/THM]",
-                "data1": technoData["FUELRATE_NORM"].toString(),
-                "data2": technoData["FUELRATE_ACTUAL"].toString(),
-                "data3": technoData["FUELRATE_CPLM"].toString(),
-                "data4": technoData["FUELRATE_CPLY"].toString(),
+                "head": "C Shift Prod",
+                "data1": millsData["WRM_C"].toString(),
+                "data2": millsData["BRM_C"].toString(),
+                "data3": millsData["USM_C"].toString(),
                 "selected": false,
                 "i": 2,
               },
               {
-                "head": "BF Prod [T/m3/Day]",
-                "data1": technoData["BFPRO_NORM"].toStringAsFixed(2),
-                "data2": technoData["BFPRO_ACTUAL"].toStringAsFixed(2),
-                "data3": technoData["BFPRO_CPLM"].toStringAsFixed(2),
-                "data4": technoData["BFPRO_CPLY"].toStringAsFixed(2),
+                "head": "Total Prod.",
+                "data1": millsData["WRM_TOTAL"].toString(),
+                "data2": millsData["BRM_TOTAL"].toString(),
+                "data3": millsData["USM_TOTAL"].toString(),
                 "selected": false,
                 "i": 3,
               },
               {
-                "head": "HM Consm[Kg/TCS]",
-                "data1": technoData["HMCON_NORM"].toString(),
-                "data2": technoData["HMCON_ACTUAL"].toString(),
-                "data3": technoData["HMCON_CPLM"].toString(),
-                "data4": technoData["HMCON_CPLY"].toString(),
+                "head": "Prev. Day Total",
+                "data1": millsData["WRM_PDAY"].toString(),
+                "data2": millsData["BRM_PDAY"].toString(),
+                "data3": millsData["USM_PDAY"].toString(),
                 "selected": false,
                 "i": 4,
               },
               {
-                "head": "Scrap Consm[Kg/TCS]",
-                "data1": technoData["SCRAP_NORM"].toString(),
-                "data2": technoData["SCRAP_ACTUAL"].toString(),
-                "data3": technoData["SCRAP_CPLM"].toString(),
-                "data4": technoData["SCRAP_CPLY"].toString(),
+                "head": "RH Temp [DegC]",
+                "data1": millsData["WRM_RHF_TEMP"].toString(),
+                "data2": millsData["BRM_RHF_TEMP"].toString(),
+                "data3": millsData["USM_RHF_TEMP"].toString(),
                 "selected": false,
                 "i": 5,
               },
               {
-                "head": "TMI[Kg/TCS]",
-                "data1": technoData["TMI_NORM"].toString(),
-                "data2": technoData["TMI_ACTUAL"].toString(),
-                "data3": technoData["TMI_CPLM"].toString(),
-                "data4": technoData["TMI_CPLY"].toString(),
+                "head": "Oxygen [%]",
+                "data1": millsData["WRM_RHF_O2"].toStringAsFixed(2),
+                "data2": millsData["BRM_RHF_O2"].toStringAsFixed(2),
+                "data3": millsData["USM_RHF_O2"].toStringAsFixed(2),
                 "selected": false,
                 "i": 6,
               },
               {
-                "head": "Power[Kwh/TCS]",
-                "data1": technoData["POWER_NORM"].toString(),
-                "data2": technoData["POWER_ACTUAL"].toString(),
-                "data3": technoData["POWER_CPLM"].toString(),
-                "data4": technoData["POWER_CPLY"].toString(),
+                "head": "Hot Charging (Billets)",
+                "data1": "NA",
+                "data2": millsData["BRM_HOT_CHARGING"].toString(),
+                "data3": "NA",
                 "selected": false,
                 "i": 7,
               },
               {
-                "head": "SPEnergy[GCal/TSS]",
-                "data1": technoData["SPENERGY_NORM"].toStringAsFixed(2),
-                "data2": technoData["SPENERGY_ACTUAL"].toStringAsFixed(2),
-                "data3": technoData["SPENERGY_CPLM"].toStringAsFixed(2),
-                "data4": technoData["SPENERGY_CPLY"].toStringAsFixed(2),
+                "head": "Last Billet/Bloom Rolled @",
+                "data1": millsData["LAST_UPDATE_WRM"].toString(),
+                "data2": millsData["LAST_UPDATE_BRM"].toString(),
+                "data3": millsData["LAST_UPDATE_USM"].toString(),
                 "selected": false,
                 "i": 8,
               },
               {
-                "head": "SpWaterConsump[m3/TCS]",
-                "data1": technoData["SPWATER_NORM"].toStringAsFixed(2),
-                "data2": technoData["SPWATER_ACTUAL"].toStringAsFixed(2),
-                "data3": technoData["SPWATER_CPLM"].toStringAsFixed(2),
-                "data4": technoData["SWATER_CPLY"].toStringAsFixed(2),
+                "head": "Mixed Gas Flow [Nm3/hr]",
+                "data1": millsData["MG_WRM_FLOW"].toString(),
+                "data2": millsData["MG_BRM_FLOW"].toString(),
+                "data3": millsData["MG_USM_FLOW"].toString(),
                 "selected": false,
                 "i": 9,
               },
+              {
+                "head": "Shift Total MG Flow [Nm3]",
+                "data1": millsData["WRM_TOT_GAS_SHIFT"].toString(),
+                "data2": millsData["BRM_TOT_GAS_SHIFT"].toString(),
+                "data3": millsData["USM_TOT_GAS_SHIFT"].toString(),
+                "selected": false,
+                "i": 10,
+              },
+              {
+                "head": "Day Total MG Flow [Nm3]",
+                "data1": millsData["WRM_TOT_GAS_DAY"].toString(),
+                "data2": millsData["BRM_TOT_GAS_DAY"].toString(),
+                "data3": millsData["USM_TOT_GAS_DAY"].toString(),
+                "selected": false,
+                "i": 11,
+              },
+              {
+                "head": "Prev Day Total MG Flow [Nm3]",
+                "data1": millsData["WRM_TOT_GAS_PDAY"].toString(),
+                "data2": millsData["BRM_TOT_GAS_PDAY"].toString(),
+                "data3": millsData["USM_TOT_GAS_PDAY"].toString(),
+                "selected": false,
+                "i": 12,
+              },
+            ];
+            state = [
+              {
+                "wrm": millsData["DIFF"],
+                "brm": millsData["DIFF1"],
+                "usm": millsData["DIFF22"]
+              }
             ];
             if (num != -1) {
               rows[num]["selected"] = true;
@@ -187,7 +210,7 @@ class TechnoEcoState extends State<TechnoEco> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -208,7 +231,6 @@ class TechnoEcoState extends State<TechnoEco> {
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152)),
                           ),
                         ),
@@ -216,20 +238,21 @@ class TechnoEcoState extends State<TechnoEco> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: state[0]["wrm"] >= 360
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("NORM",
+                          child: const Text("WRM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -238,20 +261,21 @@ class TechnoEcoState extends State<TechnoEco> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
+                          decoration: BoxDecoration(
+                              border: Border(
+                                right: BorderSide(
+                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  width: 2.0,
+                                ),
                               ),
-                            ),
-                          ),
+                              color: state[0]["brm"] >= 360
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("ACTUAL",
+                          child: const Text("BRM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -260,35 +284,15 @@ class TechnoEcoState extends State<TechnoEco> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
-                                width: 2.0,
-                              ),
-                            ),
-                          ),
+                          decoration: BoxDecoration(
+                              color: state[0]["usm"] >= 660
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("CPLM",
+                          child: const Text("USM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                fontSize: 9,
-                                color: Color.fromARGB(255, 152, 152, 152),
-                              ),
-                              textAlign: TextAlign.center),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 1,
-                        child: Container(
-                          decoration: const BoxDecoration(),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text("CPLY",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 9,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -320,7 +324,6 @@ class TechnoEcoState extends State<TechnoEco> {
                           r["data1"],
                           r["data2"],
                           r["data3"],
-                          r["data4"],
                           r["selected"] == true ? _containerColora : _textColor,
                           r["i"]),
                     ),
@@ -331,7 +334,7 @@ class TechnoEcoState extends State<TechnoEco> {
   }
 }
 
-Widget _row(h, d1, d2, d3, d4, color, i) {
+Widget _row(h, d1, d2, d3, color, i) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -353,67 +356,65 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
         ),
       ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
+      i == 11 || i == 12
+          ? (Expanded(
+              flex: 3,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color, fontSize: 12),
+                    textAlign: TextAlign.center),
+              ),
+            ))
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 44, 129, 227),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color, fontSize: 12),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d1,
-              style: TextStyle(color: color, fontSize: 12),
-              textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
+      i == 11 || i == 12
+          ? const Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 44, 129, 227),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d2,
+                    style: TextStyle(color: color, fontSize: 12),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d2,
-              style: TextStyle(color: color, fontSize: 12),
-              textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
+      i == 11 || i == 12
+          ? const Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d3,
+                    style: TextStyle(color: color, fontSize: 12),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d3,
-              style: TextStyle(color: color, fontSize: 12),
-              textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d4,
-              style: TextStyle(color: color, fontSize: 12),
-              textAlign: TextAlign.center),
-        ),
-      ),
       // Text(h, style: TextStyle(color: color)),
       // Text(d1, style: TextStyle(color: color)),
       // Text(d2, style: TextStyle(color: color)),

@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 import 'package:upv_mobile/Utils/colors.dart';
 
-class Lhf extends StatefulWidget {
-  const Lhf({super.key});
+class Lhfsm extends StatefulWidget {
+  const Lhfsm({super.key});
 
-  State<Lhf> createState() {
-    return LhfState();
+  State<Lhfsm> createState() {
+    return LhfsmState();
   }
 }
 
-class LhfState extends State<Lhf> {
+class LhfsmState extends State<Lhfsm> {
   late dynamic lhfData;
   var loading = true;
   var num = -1;
