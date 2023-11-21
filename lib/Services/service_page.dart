@@ -321,3 +321,43 @@ cdcpservice() async {
     );
   }
 }
+
+stoveService() async {
+  try {
+    return await http.get(
+      Uri.parse('$baseUrl/iron/stove'),
+      headers: {
+        'content-Type': 'application/json',
+        'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA==',
+      },
+    );
+  } catch (error) {
+    SnackBar(
+      duration: const Duration(seconds: 3),
+      content: const Center(
+        child: Text('api call error'),
+      ),
+      action: SnackBarAction(label: '', onPressed: () {}),
+    );
+  }
+}
+
+gcpservice() async {
+  try {
+    return await http.get(
+      Uri.parse('$baseUrl/iron/gcptrtg'),
+      headers: {
+        'content-Type': 'application/json',
+        'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA==',
+      },
+    );
+  } catch (error) {
+    SnackBar(
+      duration: const Duration(seconds: 3),
+      content: const Center(
+        child: Text('api call error'),
+      ),
+      action: SnackBarAction(label: '', onPressed: () {}),
+    );
+  }
+}

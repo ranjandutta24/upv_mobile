@@ -231,6 +231,7 @@ class SpiState extends State<Spi> {
               "data1": spiData["SP1_WGASM_DEX"].toStringAsFixed(2),
               "data2": spiData["SP2_WGASM_DEX"].toStringAsFixed(2),
               "selected": false,
+              //"i": 25,
               "i": 24,
             },
             {
@@ -285,7 +286,7 @@ class SpiState extends State<Spi> {
             },
             {
               "head": "BED TOTAL 1/2",
-              "data1": spiData["SP1_BED1"].toStringAsFixed(0),
+              "data1": spiData["SP1_BED2"].toStringAsFixed(0),
               "data2": spiData["SP1_BED2"].toStringAsFixed(0),
               "selected": false,
               "i": 32,
