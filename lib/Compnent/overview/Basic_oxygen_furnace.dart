@@ -216,7 +216,8 @@ class BOFState extends State<BOF> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
-          ? const Text("")
+          ? const SizedBox(
+              height: 30, width: 30, child: CircularProgressIndicator())
           : Column(
               children: [
                 Container(
