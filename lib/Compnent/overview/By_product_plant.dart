@@ -39,63 +39,67 @@ class BpplantState extends State<Bpplant> {
   }
 
   fun() {
-    TechnoService();
-    var duration = const Duration(seconds: 30);
-    Timer.periodic(duration, (Timer timer) {
+    if (mounted) {
       TechnoService();
-    });
+      var duration = const Duration(seconds: 30);
+      Timer.periodic(duration, (Timer timer) {
+        TechnoService();
+      });
+    }
   }
 
   List<dynamic> rows = [];
 
   TechnoService() async {
-    await byproductplant().then((data) {
-      if (mounted) {
-        print(data.body);
-        setState(() {
-          bpplantData = json.decode(data.body);
-          rows = [
-            {
-              "head": "CO Gas Make [Nm3/hr]",
-              "data1": bpplantData["FT0600F003_C"].toStringAsFixed(0),
-              "data2": bpplantData["FT0600F003_C"].toStringAsFixed(0),
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "Exhauster BPP 11",
-              "data1": "EX#1",
-              "data2": "EX#2",
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "Exhauster BPP 10",
-              "data1": "EX#3",
-              "data2": "EX#4",
-              "selected": false,
-              "i": 2,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+    if (mounted) {
+      await byproductplant().then((data) {
+        if (data != null) {
+          // print(data.body);
+          setState(() {
+            bpplantData = json.decode(data.body);
+            rows = [
+              {
+                "head": "CO Gas Make [Nm3/hr]",
+                "data1": bpplantData["FT0600F003_C"].toStringAsFixed(0),
+                "data2": bpplantData["FT0600F003_C"].toStringAsFixed(0),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Exhauster BPP 11",
+                "data1": "EX#1",
+                "data2": "EX#2",
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Exhauster BPP 10",
+                "data1": "EX#3",
+                "data2": "EX#4",
+                "selected": false,
+                "i": 2,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override

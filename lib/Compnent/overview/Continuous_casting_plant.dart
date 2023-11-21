@@ -38,170 +38,174 @@ class CcpState extends State<Ccp> {
   }
 
   fun() {
-    ccpService();
-    var duration = const Duration(seconds: 30);
-    Timer.periodic(duration, (Timer timer) {
+    if (mounted) {
       ccpService();
-    });
+      var duration = const Duration(seconds: 30);
+      Timer.periodic(duration, (Timer timer) {
+        ccpService();
+      });
+    }
   }
 
   List<dynamic> rows = [];
   List<dynamic> status = [];
 
   ccpService() async {
-    await continuouscastingplant().then((data) {
-      if (mounted) {
-        // print(data.body);
-        setState(() {
-          ccpData = json.decode(data.body);
-          rows = [
-            {
-              "head": "Cast",
-              "data1":
-                  "${ccpData["CCP1_A"].toString()}/${ccpData["CCP1_B"].toString()}/${ccpData["CCP1_C"].toString()}",
-              "data2":
-                  "${ccpData["CCP2_A"].toString()}/${ccpData["CCP2_B"].toString()}/${ccpData["CCP3_C"].toString()}",
-              "data3":
-                  "${ccpData["CCP3_A"].toString()}/${ccpData["CCP3_B"].toString()}/${ccpData["CCP3_C"].toString()}",
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "Ladle Weight [Ton]",
-              "data1": ccpData["LADLEWEIGHT1"].toString(),
-              "data2": ccpData["LADLEWEIGHT2"].toString(),
-              "data3": ccpData["LADLEWEIGHT3"].toString(),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "Tundish Temp [DegC]",
-              "data1": ccpData["TUNDISHTEMP1"].toString(),
-              "data2": ccpData["TUNDISHTEMP2"].toString(),
-              "data3": ccpData["TUNDISHTEMP3"].toString(),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "Tundish Weight [Ton]",
-              "data1": ccpData["TUNDISHWEIGHT1"].toString(),
-              "data2": ccpData["TUNDISHWEIGHT2"].toString(),
-              "data3": ccpData["TUNDISHWEIGHT3"].toString(),
-              "selected": false,
-              "i": 3,
-            },
-            {
-              "head": "Casting Speed Strand 1",
-              "data1": ccpData["WITHDRAWALSPEED1_1"].toStringAsFixed(2),
-              "data2": ccpData["WITHDRAWALSPEED2_1"].toStringAsFixed(2),
-              "data3": ccpData["WITHDRAWALSPEED3_1"].toStringAsFixed(2),
-              "selected": false,
-              "i": 4,
-            },
-            {
-              "head": "Casting Speed Strand 2",
-              "data1": ccpData["WITHDRAWALSPEED1_2"].toStringAsFixed(2),
-              "data2": ccpData["WITHDRAWALSPEED2_2"].toStringAsFixed(2),
-              "data3": ccpData["WITHDRAWALSPEED3_2"].toStringAsFixed(2),
-              "selected": false,
-              "i": 5,
-            },
-            {
-              "head": "Casting Speed Strand 3",
-              "data1": ccpData["WITHDRAWALSPEED1_3"].toStringAsFixed(2),
-              "data2": ccpData["WITHDRAWALSPEED2_3"].toStringAsFixed(2),
-              "data3": ccpData["WITHDRAWALSPEED3_3"].toStringAsFixed(2),
-              "selected": false,
-              "i": 6,
-            },
-            {
-              "head": "Casting Speed Strand 4",
-              "data1": ccpData["WITHDRAWALSPEED1_4"].toStringAsFixed(2),
-              "data2": ccpData["WITHDRAWALSPEED2_4"].toStringAsFixed(2),
-              "data3": ccpData["WITHDRAWALSPEED3_4"].toStringAsFixed(2),
-              "selected": false,
-              "i": 7,
-            },
-            {
-              "head": "Casting Speed Strand 5",
-              "data1": ccpData["WITHDRAWALSPEED1_5"].toStringAsFixed(2),
-              "data2": ccpData["WITHDRAWALSPEED2_5"].toStringAsFixed(2),
-              "data3": "",
-              "selected": false,
-              "i": 8,
-            },
-            {
-              "head": "Casting Speed Strand 6",
-              "data1": ccpData["WITHDRAWALSPEED1_6"].toStringAsFixed(2),
-              "data2": ccpData["WITHDRAWALSPEED2_6"].toStringAsFixed(2),
-              "data3": "",
-              "selected": false,
-              "i": 9,
-            },
-            {
-              "head": "Prev. Day Cast",
-              "data1": ccpData["CCPPRETOTAL"].toString(),
-              "data2": "",
-              "data3": "",
-              "selected": false,
-              "i": 10,
-            },
-          ];
-          status = [
-            {
-              "CCP1": ccpData["CCP1_R"],
-              "CCP2": ccpData["CCP2_R"],
-              "CCP3": ccpData["CCP3_R"],
-            },
-            {
-              "CCP1": ccpData["CCP_1WDSPDSD1S"],
-              "CCP2": ccpData["CCP_2WDSPDSD1S"],
-              "CCP3": ccpData["CCP_3WDSPDSD1S"], //CSS1
-            },
-            {
-              "CCP1": ccpData["CCP_1WDSPDSD2S"],
-              "CCP2": ccpData["CCP_2WDSPDSD2S"],
-              "CCP3": ccpData["CCP_3WDSPDSD2S"], //CSS2
-            },
-            {
-              "CCP1": ccpData["CCP_1WDSPDSD3S"],
-              "CCP2": ccpData["CCP_2WDSPDSD3S"],
-              "CCP3": ccpData["CCP_3WDSPDSD3S"], //CSS3
-            },
-            {
-              "CCP1": ccpData["CCP_1WDSPDSD4S"],
-              "CCP2": ccpData["CCP_2WDSPDSD4S"],
-              "CCP3": ccpData["CCP_3WDSPDSD4S"], // #CSS4
-            },
-            {
-              "CCP1": ccpData["CCP_1WDSPDSD5S"],
-              "CCP2": ccpData["CCP_2WDSPDSD5S"], // #CSS5
-            },
-            {
-              "CCP1": ccpData["CCP_1WDSPDSD6S"],
-              "CCP2": ccpData["CCP_2WDSPDSD6S"], // #CSS6
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+    if (mounted) {
+      await continuouscastingplant().then((data) {
+        if (data != null) {
+          // print(data.body);
+          setState(() {
+            ccpData = json.decode(data.body);
+            rows = [
+              {
+                "head": "Cast",
+                "data1":
+                    "${ccpData["CCP1_A"].toString()}/${ccpData["CCP1_B"].toString()}/${ccpData["CCP1_C"].toString()}",
+                "data2":
+                    "${ccpData["CCP2_A"].toString()}/${ccpData["CCP2_B"].toString()}/${ccpData["CCP3_C"].toString()}",
+                "data3":
+                    "${ccpData["CCP3_A"].toString()}/${ccpData["CCP3_B"].toString()}/${ccpData["CCP3_C"].toString()}",
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Ladle Weight [Ton]",
+                "data1": ccpData["LADLEWEIGHT1"].toString(),
+                "data2": ccpData["LADLEWEIGHT2"].toString(),
+                "data3": ccpData["LADLEWEIGHT3"].toString(),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Tundish Temp [DegC]",
+                "data1": ccpData["TUNDISHTEMP1"].toString(),
+                "data2": ccpData["TUNDISHTEMP2"].toString(),
+                "data3": ccpData["TUNDISHTEMP3"].toString(),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "Tundish Weight [Ton]",
+                "data1": ccpData["TUNDISHWEIGHT1"].toString(),
+                "data2": ccpData["TUNDISHWEIGHT2"].toString(),
+                "data3": ccpData["TUNDISHWEIGHT3"].toString(),
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "Casting Speed Strand 1",
+                "data1": ccpData["WITHDRAWALSPEED1_1"].toStringAsFixed(2),
+                "data2": ccpData["WITHDRAWALSPEED2_1"].toStringAsFixed(2),
+                "data3": ccpData["WITHDRAWALSPEED3_1"].toStringAsFixed(2),
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Casting Speed Strand 2",
+                "data1": ccpData["WITHDRAWALSPEED1_2"].toStringAsFixed(2),
+                "data2": ccpData["WITHDRAWALSPEED2_2"].toStringAsFixed(2),
+                "data3": ccpData["WITHDRAWALSPEED3_2"].toStringAsFixed(2),
+                "selected": false,
+                "i": 5,
+              },
+              {
+                "head": "Casting Speed Strand 3",
+                "data1": ccpData["WITHDRAWALSPEED1_3"].toStringAsFixed(2),
+                "data2": ccpData["WITHDRAWALSPEED2_3"].toStringAsFixed(2),
+                "data3": ccpData["WITHDRAWALSPEED3_3"].toStringAsFixed(2),
+                "selected": false,
+                "i": 6,
+              },
+              {
+                "head": "Casting Speed Strand 4",
+                "data1": ccpData["WITHDRAWALSPEED1_4"].toStringAsFixed(2),
+                "data2": ccpData["WITHDRAWALSPEED2_4"].toStringAsFixed(2),
+                "data3": ccpData["WITHDRAWALSPEED3_4"].toStringAsFixed(2),
+                "selected": false,
+                "i": 7,
+              },
+              {
+                "head": "Casting Speed Strand 5",
+                "data1": ccpData["WITHDRAWALSPEED1_5"].toStringAsFixed(2),
+                "data2": ccpData["WITHDRAWALSPEED2_5"].toStringAsFixed(2),
+                "data3": "",
+                "selected": false,
+                "i": 8,
+              },
+              {
+                "head": "Casting Speed Strand 6",
+                "data1": ccpData["WITHDRAWALSPEED1_6"].toStringAsFixed(2),
+                "data2": ccpData["WITHDRAWALSPEED2_6"].toStringAsFixed(2),
+                "data3": "",
+                "selected": false,
+                "i": 9,
+              },
+              {
+                "head": "Prev. Day Cast",
+                "data1": ccpData["CCPPRETOTAL"].toString(),
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 10,
+              },
+            ];
+            status = [
+              {
+                "CCP1": ccpData["CCP1_R"],
+                "CCP2": ccpData["CCP2_R"],
+                "CCP3": ccpData["CCP3_R"],
+              },
+              {
+                "CCP1": ccpData["CCP_1WDSPDSD1S"],
+                "CCP2": ccpData["CCP_2WDSPDSD1S"],
+                "CCP3": ccpData["CCP_3WDSPDSD1S"], //CSS1
+              },
+              {
+                "CCP1": ccpData["CCP_1WDSPDSD2S"],
+                "CCP2": ccpData["CCP_2WDSPDSD2S"],
+                "CCP3": ccpData["CCP_3WDSPDSD2S"], //CSS2
+              },
+              {
+                "CCP1": ccpData["CCP_1WDSPDSD3S"],
+                "CCP2": ccpData["CCP_2WDSPDSD3S"],
+                "CCP3": ccpData["CCP_3WDSPDSD3S"], //CSS3
+              },
+              {
+                "CCP1": ccpData["CCP_1WDSPDSD4S"],
+                "CCP2": ccpData["CCP_2WDSPDSD4S"],
+                "CCP3": ccpData["CCP_3WDSPDSD4S"], // #CSS4
+              },
+              {
+                "CCP1": ccpData["CCP_1WDSPDSD5S"],
+                "CCP2": ccpData["CCP_2WDSPDSD5S"], // #CSS5
+              },
+              {
+                "CCP1": ccpData["CCP_1WDSPDSD6S"],
+                "CCP2": ccpData["CCP_2WDSPDSD6S"], // #CSS6
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override

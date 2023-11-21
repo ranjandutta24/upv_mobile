@@ -39,11 +39,13 @@ class PbsState extends State<Pbs> {
   }
 
   fun() {
-    TechnoService();
-    var duration = const Duration(seconds: 30);
-    Timer.periodic(duration, (Timer timer) {
+    if (mounted) {
       TechnoService();
-    });
+      var duration = const Duration(seconds: 30);
+      Timer.periodic(duration, (Timer timer) {
+        TechnoService();
+      });
+    }
   }
 
   List<dynamic> rows = [];
@@ -52,111 +54,113 @@ class PbsState extends State<Pbs> {
   List<dynamic> rows4 = [];
 
   TechnoService() async {
-    await powerblowingstation().then((data) {
-      if (mounted) {
-        // print(data.body);
-        setState(() {
-          pbsData = json.decode(data.body);
-          rows = [
-            {
-              "head": "Steam Flow [TPH]",
-              "data1": pbsData["PBS_B1MSF"].toString(),
-              "data2": pbsData["PBS_B2MSF"].toString(),
-              "data3": pbsData["PBS_B3MSF"].toString(),
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "BFG FLOW [Nm3/hr]",
-              "data1": pbsData["PBS_B1BFGF"].toString(),
-              "data2": pbsData["PBS_B2BFGF"].toString(),
-              "data3": pbsData["PBS_B3BFGF"].toString(),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "COG FLOW [Nm3/hr]",
-              "data1": pbsData["PBS_B1COGF"].toString(),
-              "data2": pbsData["PBS_B2COGF"].toString(),
-              "data3": pbsData["PBS_B3COGF"].toString(),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "CBM FLOW [Nm3/hr]",
-              "data1": pbsData["PBS_B1CBMF"].toString(),
-              "data2": pbsData["PBS_B2CBMF"].toString(),
-              "data3": pbsData["PBS_B3CBMF"].toString(),
-              "selected": false,
-              "i": 3,
+    if (mounted) {
+      await powerblowingstation().then((data) {
+        if (data != null) {
+          // print(data.body);
+          setState(() {
+            pbsData = json.decode(data.body);
+            rows = [
+              {
+                "head": "Steam Flow [TPH]",
+                "data1": pbsData["PBS_B1MSF"].toString(),
+                "data2": pbsData["PBS_B2MSF"].toString(),
+                "data3": pbsData["PBS_B3MSF"].toString(),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "BFG FLOW [Nm3/hr]",
+                "data1": pbsData["PBS_B1BFGF"].toString(),
+                "data2": pbsData["PBS_B2BFGF"].toString(),
+                "data3": pbsData["PBS_B3BFGF"].toString(),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "COG FLOW [Nm3/hr]",
+                "data1": pbsData["PBS_B1COGF"].toString(),
+                "data2": pbsData["PBS_B2COGF"].toString(),
+                "data3": pbsData["PBS_B3COGF"].toString(),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "CBM FLOW [Nm3/hr]",
+                "data1": pbsData["PBS_B1CBMF"].toString(),
+                "data2": pbsData["PBS_B2CBMF"].toString(),
+                "data3": pbsData["PBS_B3CBMF"].toString(),
+                "selected": false,
+                "i": 3,
+              }
+            ];
+            rows2 = [
+              {
+                "head": "Generation [MW]",
+                "data1": pbsData["PBS_STG1GEN"].toStringAsFixed(2),
+                "data2": pbsData["PBS_STG2GEN"].toStringAsFixed(2),
+                "data3": pbsData["PBS_STG3GEN"].toStringAsFixed(2),
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Steam Flow [TPH]",
+                "data1": pbsData["PBS_STG1SF"].toStringAsFixed(2),
+                "data2": pbsData["PBS_STG2SF"].toStringAsFixed(2),
+                "data3": pbsData["PBS_STG3SF"].toStringAsFixed(2),
+                "selected": false,
+                "i": 5,
+              },
+            ];
+            rows3 = [
+              {
+                "head": "Discharge [Nm3/min]",
+                "data1": pbsData["PBS_BL1DF"].toStringAsFixed(2),
+                "data2": pbsData["PBS_BL2DF"].toStringAsFixed(2),
+                "data3": pbsData["PBS_BL3DF"].toStringAsFixed(2),
+                "selected": false,
+                "i": 6,
+              },
+              {
+                "head": "Steam Flow [TPH]",
+                "data1": pbsData["PBS_STB1SF"].toStringAsFixed(2),
+                "data2": pbsData["PBS_STB2SF"].toStringAsFixed(2),
+                "data3": pbsData["PBS_STB3SF"].toStringAsFixed(2),
+                "selected": false,
+                "i": 7,
+              },
+            ];
+            rows4 = [
+              {
+                "head": "Generation [MW]",
+                "data1": pbsData["PBS_BPTGEN"].toStringAsFixed(2),
+                "data2": pbsData["BF_TRTGMW"].toStringAsFixed(2),
+                "data3": "",
+                "selected": false,
+                "i": 8,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+              rows2[num]["selected"] = true;
             }
-          ];
-          rows2 = [
-            {
-              "head": "Generation [MW]",
-              "data1": pbsData["PBS_STG1GEN"].toStringAsFixed(2),
-              "data2": pbsData["PBS_STG2GEN"].toStringAsFixed(2),
-              "data3": pbsData["PBS_STG3GEN"].toStringAsFixed(2),
-              "selected": false,
-              "i": 4,
-            },
-            {
-              "head": "Steam Flow [TPH]",
-              "data1": pbsData["PBS_STG1SF"].toStringAsFixed(2),
-              "data2": pbsData["PBS_STG2SF"].toStringAsFixed(2),
-              "data3": pbsData["PBS_STG3SF"].toStringAsFixed(2),
-              "selected": false,
-              "i": 5,
-            },
-          ];
-          rows3 = [
-            {
-              "head": "Discharge [Nm3/min]",
-              "data1": pbsData["PBS_BL1DF"].toStringAsFixed(2),
-              "data2": pbsData["PBS_BL2DF"].toStringAsFixed(2),
-              "data3": pbsData["PBS_BL3DF"].toStringAsFixed(2),
-              "selected": false,
-              "i": 6,
-            },
-            {
-              "head": "Steam Flow [TPH]",
-              "data1": pbsData["PBS_STB1SF"].toStringAsFixed(2),
-              "data2": pbsData["PBS_STB2SF"].toStringAsFixed(2),
-              "data3": pbsData["PBS_STB3SF"].toStringAsFixed(2),
-              "selected": false,
-              "i": 7,
-            },
-          ];
-          rows4 = [
-            {
-              "head": "Generation [MW]",
-              "data1": pbsData["PBS_BPTGEN"].toStringAsFixed(2),
-              "data2": pbsData["BF_TRTGMW"].toStringAsFixed(2),
-              "data3": "",
-              "selected": false,
-              "i": 8,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-            rows2[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+            loading = false;
+          });
+        } else {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override

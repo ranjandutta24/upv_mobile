@@ -37,127 +37,131 @@ class SinterPlantState extends State<SinterPlant> {
   }
 
   fun() {
-    sinterplantService();
-    var duration = const Duration(seconds: 30);
-    Timer.periodic(duration, (Timer timer) {
+    if (mounted) {
       sinterplantService();
-    });
+      var duration = const Duration(seconds: 30);
+      Timer.periodic(duration, (Timer timer) {
+        sinterplantService();
+      });
+    }
   }
 
   List<dynamic> rows = [];
 
   sinterplantService() async {
-    await sinterplant().then((data) {
-      if (mounted) {
-        // print(data.body);
-        setState(() {
-          sinterData = json.decode(data.body);
-          rows = [
-            {
-              "head": "Emerg. Bunker Level[Ton]",
-              "data1": sinterData["SP1_ESSB"].toString(),
-              "data2": "",
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "SLS Level[%]",
-              "data1": sinterData["SP1_SLS_LEVEL"].toStringAsFixed(2),
-              "data2": "",
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "Suction Pressure[mmwc]",
-              "data1": sinterData["SP1_SUCTION"].toStringAsFixed(0),
-              "data2": sinterData["SP2_SUCTION"].toStringAsFixed(0),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "Burner Avg Temp [Deg C]",
-              "data1": sinterData["SP1_BUNERAVGTEMP"].toStringAsFixed(0),
-              "data2": sinterData["SP2_BUNERAVGTEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 3,
-            },
-            {
-              "head": "Machine Speed [m/min]",
-              "data1": sinterData["SP1_MCSPEED"].toStringAsFixed(2),
-              "data2": sinterData["SP2_MCSPEED"].toStringAsFixed(2),
-              "selected": false,
-              "i": 4,
-            },
-            {
-              "head": "Waste Gas Fan [RPM]",
-              "data1": sinterData["SP1_WGRPM"].toStringAsFixed(0),
-              "data2": sinterData["SP2_WGRPM"].toStringAsFixed(0),
-              "selected": false,
-              "i": 5,
-            },
-            {
-              "head": "Mix Gas Flow [Nm3/hr]",
-              "data1": sinterData["SP1_MIXGASF"].toStringAsFixed(0),
-              "data2": sinterData["SP2_MIXGASF"].toStringAsFixed(0),
-              "selected": false,
-              "i": 6,
-            },
-            {
-              "head": "A Shift Prod",
-              "data1": sinterData["SP1_A"].toStringAsFixed(0),
-              "data2": sinterData["SP2_A"].toStringAsFixed(0),
-              "selected": false,
-              "i": 7,
-            },
-            {
-              "head": "B Shift Prod",
-              "data1": sinterData["SP1_B"].toStringAsFixed(0),
-              "data2": sinterData["SP2_B"].toStringAsFixed(0),
-              "selected": false,
-              "i": 8,
-            },
-            {
-              "head": "C Shift Prod",
-              "data1": sinterData["SP1_C"].toStringAsFixed(0),
-              "data2": sinterData["SP2_C"].toStringAsFixed(0),
-              "selected": false,
-              "i": 9,
-            },
-            {
-              "head": "Production [Ton]",
-              "data1": sinterData["SP1_PROD"].toStringAsFixed(0),
-              "data2": sinterData["SP2_PROD"].toStringAsFixed(0),
-              "selected": false,
-              "i": 10,
-            },
-            {
-              "head": "Cooler Pressure [mbar]",
-              "data1": sinterData["SP1_COOLERPRESS"].toStringAsFixed(2),
-              "data2": sinterData["SP2_COOLERPRESS"].toStringAsFixed(2),
-              "selected": false,
-              "i": 11,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+    if (mounted) {
+      await sinterplant().then((data) {
+        if (data != null) {
+          // print(data.body);
+          setState(() {
+            sinterData = json.decode(data.body);
+            rows = [
+              {
+                "head": "Emerg. Bunker Level[Ton]",
+                "data1": sinterData["SP1_ESSB"].toString(),
+                "data2": "",
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "SLS Level[%]",
+                "data1": sinterData["SP1_SLS_LEVEL"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Suction Pressure[mmwc]",
+                "data1": sinterData["SP1_SUCTION"].toStringAsFixed(0),
+                "data2": sinterData["SP2_SUCTION"].toStringAsFixed(0),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "Burner Avg Temp [Deg C]",
+                "data1": sinterData["SP1_BUNERAVGTEMP"].toStringAsFixed(0),
+                "data2": sinterData["SP2_BUNERAVGTEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "Machine Speed [m/min]",
+                "data1": sinterData["SP1_MCSPEED"].toStringAsFixed(2),
+                "data2": sinterData["SP2_MCSPEED"].toStringAsFixed(2),
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Waste Gas Fan [RPM]",
+                "data1": sinterData["SP1_WGRPM"].toStringAsFixed(0),
+                "data2": sinterData["SP2_WGRPM"].toStringAsFixed(0),
+                "selected": false,
+                "i": 5,
+              },
+              {
+                "head": "Mix Gas Flow [Nm3/hr]",
+                "data1": sinterData["SP1_MIXGASF"].toStringAsFixed(0),
+                "data2": sinterData["SP2_MIXGASF"].toStringAsFixed(0),
+                "selected": false,
+                "i": 6,
+              },
+              {
+                "head": "A Shift Prod",
+                "data1": sinterData["SP1_A"].toStringAsFixed(0),
+                "data2": sinterData["SP2_A"].toStringAsFixed(0),
+                "selected": false,
+                "i": 7,
+              },
+              {
+                "head": "B Shift Prod",
+                "data1": sinterData["SP1_B"].toStringAsFixed(0),
+                "data2": sinterData["SP2_B"].toStringAsFixed(0),
+                "selected": false,
+                "i": 8,
+              },
+              {
+                "head": "C Shift Prod",
+                "data1": sinterData["SP1_C"].toStringAsFixed(0),
+                "data2": sinterData["SP2_C"].toStringAsFixed(0),
+                "selected": false,
+                "i": 9,
+              },
+              {
+                "head": "Production [Ton]",
+                "data1": sinterData["SP1_PROD"].toStringAsFixed(0),
+                "data2": sinterData["SP2_PROD"].toStringAsFixed(0),
+                "selected": false,
+                "i": 10,
+              },
+              {
+                "head": "Cooler Pressure [mbar]",
+                "data1": sinterData["SP1_COOLERPRESS"].toStringAsFixed(2),
+                "data2": sinterData["SP2_COOLERPRESS"].toStringAsFixed(2),
+                "selected": false,
+                "i": 11,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('something wrong '),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override
