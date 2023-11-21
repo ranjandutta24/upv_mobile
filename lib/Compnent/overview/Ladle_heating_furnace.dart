@@ -52,7 +52,7 @@ class LhfState extends State<Lhf> {
   TechnoService() async {
     await ladleheatingfurnace().then((data) {
       if (mounted) {
-        print(data.body);
+        // print(data.body);
         setState(() {
           lhfData = json.decode(data.body);
           rows = [
@@ -200,10 +200,10 @@ class LhfState extends State<Lhf> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("LF1",
+                          child: Text("LF1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 94, 93, 93),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -220,10 +220,10 @@ class LhfState extends State<Lhf> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("LF2",
+                          child: Text("LF2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 94, 93, 93),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),

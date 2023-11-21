@@ -179,7 +179,7 @@ class _AccordionPageState extends State<AccordionPage> {
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
             contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
-            isOpen: true,
+            isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
               'assets/icon/power-plant.png',

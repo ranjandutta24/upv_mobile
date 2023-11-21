@@ -143,7 +143,7 @@ class LdcpState extends State<Ldcp> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
         child: loading
             ? const Text(" ")
             : Column(children: [
@@ -184,7 +184,7 @@ class LdcpState extends State<Ldcp> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: Border(
+                              border: const Border(
                                 right: BorderSide(
                                   color: Color.fromARGB(113, 56, 104, 156),
                                   width: 2.0,
@@ -208,7 +208,7 @@ class LdcpState extends State<Ldcp> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: Border(
+                              border: const Border(
                                 right: BorderSide(
                                   color: Color.fromARGB(113, 74, 104, 156),
                                   width: 2.0,
@@ -232,7 +232,7 @@ class LdcpState extends State<Ldcp> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: Border(
+                              border: const Border(
                                 right: BorderSide(
                                   color: Color.fromARGB(113, 56, 104, 156),
                                   width: 2.0,
@@ -355,7 +355,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
               ),
             ),
       i == 4 || i == 5
-          ? Text("")
+          ? const Text("")
           : Expanded(
               flex: 1,
               child: Container(
@@ -374,7 +374,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
               ),
             ),
       i == 4 || i == 5
-          ? Text("")
+          ? const Text("")
           : Expanded(
               flex: 1,
               child: Container(
@@ -393,7 +393,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
               ),
             ),
       i == 4 || i == 5
-          ? Text("")
+          ? const Text("")
           : Expanded(
               flex: 1,
               child: Container(

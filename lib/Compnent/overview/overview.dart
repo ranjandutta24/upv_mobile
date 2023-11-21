@@ -4,10 +4,12 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Compnent/overview/Basic_oxygen_furnace.dart';
 import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
+import 'package:upv_mobile/Compnent/overview/By_product_plant.dart';
 import 'package:upv_mobile/Compnent/overview/CBM.dart';
 import 'package:upv_mobile/Compnent/overview/Coke_ovens.dart';
 import 'package:upv_mobile/Compnent/overview/Continuous_casting_plant.dart';
 import 'package:upv_mobile/Compnent/overview/Ladle_heating_furnace.dart';
+import 'package:upv_mobile/Compnent/overview/Lime_dolo_calcination_plant.dart';
 import 'package:upv_mobile/Compnent/overview/Mills.dart';
 import 'package:upv_mobile/Compnent/overview/Power_blowing_station.dart';
 import 'package:upv_mobile/Compnent/overview/Sinter_plant.dart';
@@ -53,52 +55,66 @@ class OverviewState extends State<Overview> {
     // blastfurnacedata();
     return Column(
       children: [
-        SizedBox(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
-                      width: 2.0, // Border width
-                    ),
-                    color: const Color.fromARGB(113, 44, 129, 227)),
-                child: const Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text("BLAST FURNACE"),
-                )),
-          ),
-        ),
+        _heaad("BLAST FURNACE"),
         const Col(),
-        // Text("SINTER PLANT"),
         const SizedBox(
           height: 14,
         ),
+
         _heaad("SINTER PLANT"),
         const SinterPlant(),
+        const SizedBox(
+          height: 14,
+        ),
 
         _heaad("BASIC OXYGEN FURNACE"),
         const BOF(),
+        const SizedBox(
+          height: 14,
+        ),
         _heaad("CONTINUOUS CASTING PLANT"),
         const Ccp(),
+        const SizedBox(
+          height: 14,
+        ),
         _heaad("LADLE HEATING FURNACE"),
         const Lhf(),
+        const SizedBox(
+          height: 14,
+        ),
         _heaad("MILLS"),
         const Mills(),
+        const SizedBox(
+          height: 14,
+        ),
         _heaad("POWER & BLOWING STATION"),
         const Pbs(),
+        const SizedBox(
+          height: 14,
+        ),
         // _heaad("OXYGEN PLANT"),
         _heaad("CBM"),
         const Cbm(),
+        const SizedBox(
+          height: 14,
+        ),
         _heaad("COKE OVENS"),
         const CokeOvens(),
-        // Text("BY PRODUCT PLANT"),
+        const SizedBox(
+          height: 14,
+        ),
+        _heaad("BY PRODUCT PLANT"),
+        Bpplant(),
+        const SizedBox(
+          height: 14,
+        ),
 
-        // Text("LIME & DOLO CALCINATION PLANT"),
-
-        const Text("TECHNO ECONOMICS"),
+        _heaad("LIME & DOLO CALCINATION PLANT"),
+        Ldcp(),
+        const SizedBox(
+          height: 14,
+        ),
+        _heaad("TECHNO ECONOMICS"),
         const TechnoEco()
       ],
     );
@@ -108,7 +124,7 @@ class OverviewState extends State<Overview> {
 Widget _heaad(text) {
   return SizedBox(
     child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 5),
       child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
@@ -119,7 +135,12 @@ Widget _heaad(text) {
               color: const Color.fromARGB(113, 44, 129, 227)),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(text),
+            child: Text(
+              text,
+              style: const TextStyle(
+                  color: Color.fromARGB(255, 56, 56, 56),
+                  fontWeight: FontWeight.w500),
+            ),
           )),
     ),
   );
