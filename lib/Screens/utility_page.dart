@@ -1,31 +1,28 @@
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Compnent/overview/accordion.dart';
-import 'package:upv_mobile/Screens/utility_page.dart';
-// import 'package:upv_mobile/Widgets/example.dart';
-// import 'package:upv_mobile/Widgets/example.dart';
-import 'package:upv_mobile/Widgets/example2.dart';
+import 'package:upv_mobile/Compnent/utility/accordion.dart';
+
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
-class OverviewScreen extends StatefulWidget {
-  const OverviewScreen({super.key});
+class Utilitycreen extends StatefulWidget {
+  const Utilitycreen({super.key});
   @override
-  State<OverviewScreen> createState() {
-    return _OverviewsScreenState();
+  State<Utilitycreen> createState() {
+    return _UtilityScreenState();
   }
 }
 
-class _OverviewsScreenState extends State<OverviewScreen> {
+class _UtilityScreenState extends State<Utilitycreen> {
   late dynamic blastData;
   var loading = true;
-
+  @override
   // void initState() {
   //   super.initState();
   //   blastfurnacedata();
   // }
 
   // late  blastData;
-  @override
+
   void dispose() {
     super.dispose();
   }
@@ -34,7 +31,7 @@ class _OverviewsScreenState extends State<OverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Home'),
+          title: const Text('Utility'),
         ),
         drawer: const MainDrawer(),
         body: _accordion());
@@ -42,7 +39,7 @@ class _OverviewsScreenState extends State<OverviewScreen> {
 }
 
 Widget _accordion() {
-  return AccordionPage();
+  return AccordionUtility();
 }
 // Widget _aco() {
 //   return AccordionApp();

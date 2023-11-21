@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:upv_mobile/Screens/iron_page.dart';
 import 'package:upv_mobile/Screens/overview_page.dart';
 import 'package:upv_mobile/Screens/steel_mills_page.dart';
+import 'package:upv_mobile/Screens/utility_page.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key});
@@ -107,21 +108,28 @@ class MainDrawer extends StatelessWidget {
             );
           },
         ),
-        // ListTile(
-        //   leading: const Icon(
-        //     Icons.checklist,
-        //     size: 26,
-        //     color: Colors.black,
-        //   ),
-        //   title: const Text(
-        //     'Utility',
-        //     style: TextStyle(
-        //       color: Colors.black,
-        //       fontSize: 18,
-        //     ),
-        //   ),
-        //   onTap: () {},
-        // ),
+        ListTile(
+          leading: const Icon(
+            Icons.checklist,
+            size: 26,
+            color: Colors.black,
+          ),
+          title: const Text(
+            'Utility',
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+            ),
+          ),
+          onTap: () {
+            Navigator.replace(
+              context,
+              oldRoute: ModalRoute.of(context)!,
+              newRoute:
+                  MaterialPageRoute(builder: (context) => const Utilitycreen()),
+            );
+          },
+        ),
         // ListTile(
         //   leading: const Icon(
         //     Icons.checklist,

@@ -38,7 +38,7 @@ class SinterPlantState extends State<SinterPlant> {
 
   fun() {
     sinterplantService();
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
       sinterplantService();
     });

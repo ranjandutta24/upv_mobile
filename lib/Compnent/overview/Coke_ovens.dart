@@ -38,7 +38,7 @@ class CokeOvensState extends State<CokeOvens> {
 
   fun() {
     cokeovensService();
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
       cokeovensService();
     });
