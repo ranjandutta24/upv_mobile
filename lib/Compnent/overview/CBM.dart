@@ -38,7 +38,7 @@ class CbmState extends State<Cbm> {
 
   fun() {
     cbmService();
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
       cbmService();
     });
