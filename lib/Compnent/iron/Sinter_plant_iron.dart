@@ -4,24 +4,22 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 
-class Spi extends StatefulWidget {
-  const Spi({super.key});
+class SinterPlant extends StatefulWidget {
+  const SinterPlant({super.key});
 
   @override
-  State<Spi> createState() {
-    return SpiState();
+  State<SinterPlant> createState() {
+    return SinterPlantState();
   }
 }
 
-class SpiState extends State<Spi> {
+class SinterPlantState extends State<SinterPlant> {
   late dynamic spiData;
   var loading = true;
   var num = -1;
-
   @override
   void initState() {
     super.initState();
-
     fun();
   }
 
@@ -99,7 +97,6 @@ class SpiState extends State<Spi> {
                 "selected": false,
                 "i": 5,
               },
-
               {
                 "head": "SLS Level[%]",
                 "data1": spiData["SP1_SLS_LEVEL"].toStringAsFixed(2),
@@ -149,7 +146,6 @@ class SpiState extends State<Spi> {
                 "selected": false,
                 "i": 12,
               },
-
               {
                 "head": "Mix Gas Flow [Nm3/hr]",
                 "data1": spiData["SP1_MIXGASF"].toStringAsFixed(0),
@@ -299,7 +295,6 @@ class SpiState extends State<Spi> {
                 "selected": false,
                 "i": 33,
               },
-
               {
                 "head": "Suction Pressure[mmwc]",
                 "data1": spiData["SP1_SUCTION"].toStringAsFixed(0),
@@ -307,7 +302,6 @@ class SpiState extends State<Spi> {
                 "selected": false,
                 "i": 34,
               },
-
               {
                 "head": "Cooler Pressure [mbar]",
                 "data1": spiData["SP1_COOLERPRESS"].toStringAsFixed(2),
@@ -342,7 +336,7 @@ class SpiState extends State<Spi> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text("")
           : Column(
@@ -356,7 +350,7 @@ class SpiState extends State<Spi> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -384,20 +378,25 @@ class SpiState extends State<Spi> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            border: Border(
+                          decoration: BoxDecoration(
+                            border: const Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 44, 129, 227),
                                 width: 2.0,
                               ),
                             ),
+                            // color: double.parse(rows[4]["data1"]) < 0.1
+                            //     ? const Color.fromARGB(255, 255, 7, 7)
+                            //     : double.parse(rows[4]["data1"]) > 1
+                            //         ? const Color.fromARGB(255, 98, 255, 7)
+                            //         : const Color.fromARGB(0, 98, 255, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("SP1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -405,13 +404,19 @@ class SpiState extends State<Spi> {
                       Expanded(
                         flex: 1,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(
+                              // color: double.parse(rows[4]["data2"]) < 0.1
+                              //     ? const Color.fromARGB(255, 255, 7, 7)
+                              //     : double.parse(rows[4]["data2"]) > 1
+                              //         ? const Color.fromARGB(255, 98, 255, 7)
+                              //         : const Color.fromARGB(0, 98, 255, 7),
+                              ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("SP2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: Color.fromARGB(255, 94, 93, 93),
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -498,6 +503,11 @@ Widget _row(h, d1, d2, color, i) {
               style: TextStyle(color: color), textAlign: TextAlign.center),
         ),
       ),
+
+      // Text(h, style: TextStyle(color: color)),
+      // Text(d1, style: TextStyle(color: color)),
+      // Text(d2, style: TextStyle(color: color)),
+      // Text(d3, style: TextStyle(color: color)),
     ],
   );
 }

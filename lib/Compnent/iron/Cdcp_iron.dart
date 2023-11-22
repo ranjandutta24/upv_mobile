@@ -328,7 +328,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           child: Text(
             d1,
             style: TextStyle(color: color, fontSize: 14),
-            textAlign: TextAlign.right,
+            textAlign: TextAlign.center,
           ),
         ),
       ),
@@ -347,7 +347,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
         child: Text(d2,
             style: TextStyle(color: color, fontSize: 14),
-            textAlign: TextAlign.right),
+            textAlign: TextAlign.center),
       ),
     ),
     Expanded(
@@ -364,7 +364,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
         child: Text(d3,
             style: TextStyle(color: color, fontSize: 14),
-            textAlign: TextAlign.right),
+            textAlign: TextAlign.center),
       ),
     ),
     Expanded(
@@ -374,7 +374,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
         child: Text(d4,
             style: TextStyle(color: color, fontSize: 14),
-            textAlign: TextAlign.right),
+            textAlign: TextAlign.center),
       ),
     ),
   ]);

@@ -116,8 +116,8 @@ class _AccordionPageState extends State<AccordionIron> {
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             header:
-                const Text("SINTER PLANT", style: AccordionIron.headerStyle),
-            content: const Spi(),
+                const Text('SINTER PLANT', style: AccordionIron.headerStyle),
+            content: const SinterPlant(),
           ),
           // AccordionSection(
           //   isOpen: false,
