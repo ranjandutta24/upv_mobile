@@ -49,81 +49,83 @@ class CocState extends State<Coc> {
   List<dynamic> rows = [];
 
   TechnoService() async {
-    await cokeovencomplexservice().then((data) {
-      if (mounted) {
-        print(data.body);
-        setState(() {
-          cocData = json.decode(data.body);
-          rows = [
-            {
-              "head": "COG Flow Block 1/2 [Nm3/hr]",
-              "data1": cocData["CO_GAS1_F"].toStringAsFixed(0),
-              "data2": cocData["CO_GAS2_F"].toStringAsFixed(0),
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "COG Press.Block 1/2 [MMWC]",
-              "data1": cocData["CO_GAS1_P"].toStringAsFixed(0),
-              "data2": cocData["CO_GAS2_P"].toStringAsFixed(0),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "LP Steam Press.1/2 [Kg/cm2]",
-              "data1": cocData["CD_PR_LPS1_P"].toStringAsFixed(0),
-              "data2": cocData["CD_PR_LPS2_P"].toStringAsFixed(0),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "LP Steam Flow.1/2 [tph]",
-              "data1": cocData["CD_PR_LPS1_F"].toStringAsFixed(0),
-              "data2": cocData["CD_PR_LPS2_F"].toStringAsFixed(0),
-              "selected": false,
-              "i": 3,
-            },
-            {
-              "head": "HP Steam Press.1/2[Kg/cm2]",
-              "data1": cocData["CD_HPS1_P"].toStringAsFixed(0),
-              "data2": cocData["CD_HPS2_P"].toStringAsFixed(0),
-              "selected": false,
-              "i": 4,
-            },
-            {
-              "head": "HP Steam Flow[tph]",
-              "data1": cocData["CD_HPS1_F"].toStringAsFixed(0),
-              "data2": cocData["CD_HPS2_F"].toStringAsFixed(0),
-              "selected": false,
-              "i": 5,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+    if (mounted) {
+      await cokeovencomplexservice().then((data) {
+        if (data != null) {
+          print(data.body);
+          setState(() {
+            cocData = json.decode(data.body);
+            rows = [
+              {
+                "head": "COG Flow Block 1/2 [Nm3/hr]",
+                "data1": cocData["CO_GAS1_F"].toStringAsFixed(0),
+                "data2": cocData["CO_GAS2_F"].toStringAsFixed(0),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "COG Press.Block 1/2 [MMWC]",
+                "data1": cocData["CO_GAS1_P"].toStringAsFixed(0),
+                "data2": cocData["CO_GAS2_P"].toStringAsFixed(0),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "LP Steam Press.1/2 [Kg/cm2]",
+                "data1": cocData["CD_PR_LPS1_P"].toStringAsFixed(0),
+                "data2": cocData["CD_PR_LPS2_P"].toStringAsFixed(0),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "LP Steam Flow.1/2 [tph]",
+                "data1": cocData["CD_PR_LPS1_F"].toStringAsFixed(0),
+                "data2": cocData["CD_PR_LPS2_F"].toStringAsFixed(0),
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "HP Steam Press.1/2[Kg/cm2]",
+                "data1": cocData["CD_HPS1_P"].toStringAsFixed(0),
+                "data2": cocData["CD_HPS2_P"].toStringAsFixed(0),
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "HP Steam Flow[tph]",
+                "data1": cocData["CD_HPS1_F"].toStringAsFixed(0),
+                "data2": cocData["CD_HPS2_F"].toStringAsFixed(0),
+                "selected": false,
+                "i": 5,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-      child: loading
+      child: loading || !mounted
           ? const Text(" ")
           : Column(
               children: [

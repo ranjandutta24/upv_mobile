@@ -49,94 +49,96 @@ class CdcpState extends State<Cdcp> {
   List<dynamic> rows = [];
 
   TechnoService() async {
-    await cdcpservice().then((data) {
-      if (mounted) {
-        // print(data.body);
-        setState(() {
-          cdcpData = json.decode(data.body);
-          rows = [
-            {
-              "head": "Steam Flow[TPH]",
-              "data1": cdcpData["BOILER1FIR523"].toStringAsFixed(0),
-              "data2": cdcpData["BOILER2FIR523"].toStringAsFixed(0),
-              "data3": cdcpData["BOILER3FIR523"].toStringAsFixed(0),
-              "data4": cdcpData["BOILER4FIR523"].toStringAsFixed(0),
-              "selected": false,
-              "i": 0,
-            },
-            //"${bfshData["BF_ORE2"].toStringAsFixed(2)}",
-            {
-              "head": "Steam Pr [Kg/cm2]",
-              "data1": cdcpData["BOILER1PI520"].toStringAsFixed(0),
-              "data2": cdcpData["BOILER2PI520"].toStringAsFixed(0),
-              "data3": cdcpData["BOILER3PI520"].toStringAsFixed(0),
-              "data4": cdcpData["BOILER4PI520"].toStringAsFixed(0),
-              "selected": false,
-              "i": 1,
-            },
+    if (mounted) {
+      await cdcpservice().then((data) {
+        if (data != null) {
+          // print(data.body);
+          setState(() {
+            cdcpData = json.decode(data.body);
+            rows = [
+              {
+                "head": "Steam Flow[TPH]",
+                "data1": cdcpData["BOILER1FIR523"].toStringAsFixed(0),
+                "data2": cdcpData["BOILER2FIR523"].toStringAsFixed(0),
+                "data3": cdcpData["BOILER3FIR523"].toStringAsFixed(0),
+                "data4": cdcpData["BOILER4FIR523"].toStringAsFixed(0),
+                "selected": false,
+                "i": 0,
+              },
+              //"${bfshData["BF_ORE2"].toStringAsFixed(2)}",
+              {
+                "head": "Steam Pr [Kg/cm2]",
+                "data1": cdcpData["BOILER1PI520"].toStringAsFixed(0),
+                "data2": cdcpData["BOILER2PI520"].toStringAsFixed(0),
+                "data3": cdcpData["BOILER3PI520"].toStringAsFixed(0),
+                "data4": cdcpData["BOILER4PI520"].toStringAsFixed(0),
+                "selected": false,
+                "i": 1,
+              },
 
-            {
-              "head": "Next Previous 2 Shift Charge Count",
-              "data1": cdcpData["LIFTER1CHARGINGQ3"] == null
-                  ? "0"
-                  : cdcpData["LIFTER1CHARGINGQ3"].toStringAsFixed(0),
-              "data2": cdcpData["LIFTER2CHARGINGQ3"] == null
-                  ? "0"
-                  : cdcpData["LIFTER2CHARGINGQ3"].toStringAsFixed(0),
-              "data3": cdcpData["LIFTER3CHARGINGQ3"] == null
-                  ? "0"
-                  : cdcpData["LIFTER3CHARGINGQ3"].toStringAsFixed(0),
-              "data4": cdcpData["LIFTER4CHARGINGQ3"] == null
-                  ? "0"
-                  : cdcpData["LIFTER4CHARGINGQ3"].toStringAsFixed(0),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "Next Next Previous 3 Shift Charge Count",
-              "data1": cdcpData["LIFTER1CHARGINGQ4"] == null
-                  ? "0"
-                  : cdcpData["LIFTER1CHARGINGQ4"].toStringAsFixed(0),
-              "data2": cdcpData["LIFTER2CHARGINGQ4"] == null
-                  ? "0"
-                  : cdcpData["LIFTER2CHARGINGQ4"].toStringAsFixed(0),
-              "data3": cdcpData["LIFTER3CHARGINGQ4"] == null
-                  ? "0"
-                  : cdcpData["LIFTER3CHARGINGQ4"].toStringAsFixed(0),
-              "data4": cdcpData["LIFTER4CHARGINGQ4"] == null
-                  ? "0"
-                  : cdcpData["LIFTER4CHARGINGQ4"].toStringAsFixed(0),
-              "selected": false,
-              "i": 4,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+              {
+                "head": "Next Previous 2 Shift Charge",
+                "data1": cdcpData["LIFTER1CHARGINGQ3"] == null
+                    ? "0"
+                    : cdcpData["LIFTER1CHARGINGQ3"].toStringAsFixed(0),
+                "data2": cdcpData["LIFTER2CHARGINGQ3"] == null
+                    ? "0"
+                    : cdcpData["LIFTER2CHARGINGQ3"].toStringAsFixed(0),
+                "data3": cdcpData["LIFTER3CHARGINGQ3"] == null
+                    ? "0"
+                    : cdcpData["LIFTER3CHARGINGQ3"].toStringAsFixed(0),
+                "data4": cdcpData["LIFTER4CHARGINGQ3"] == null
+                    ? "0"
+                    : cdcpData["LIFTER4CHARGINGQ3"].toStringAsFixed(0),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "Next Next Previous 3 Shift Charge",
+                "data1": cdcpData["LIFTER1CHARGINGQ4"] == null
+                    ? "0"
+                    : cdcpData["LIFTER1CHARGINGQ4"].toStringAsFixed(0),
+                "data2": cdcpData["LIFTER2CHARGINGQ4"] == null
+                    ? "0"
+                    : cdcpData["LIFTER2CHARGINGQ4"].toStringAsFixed(0),
+                "data3": cdcpData["LIFTER3CHARGINGQ4"] == null
+                    ? "0"
+                    : cdcpData["LIFTER3CHARGINGQ4"].toStringAsFixed(0),
+                "data4": cdcpData["LIFTER4CHARGINGQ4"] == null
+                    ? "0"
+                    : cdcpData["LIFTER4CHARGINGQ4"].toStringAsFixed(0),
+                "selected": false,
+                "i": 3,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-      child: loading
+      child: loading || !mounted
           ? const Text(" ")
           : Column(children: [
               Container(
@@ -152,7 +154,7 @@ class CdcpState extends State<Cdcp> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      flex: 4,
+                      flex: 7,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -168,7 +170,7 @@ class CdcpState extends State<Cdcp> {
                           "Production",
                           style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 11,
+                              fontSize: 9,
                               color: Color.fromARGB(255, 152, 152, 152)),
                         ),
                       ),
@@ -189,10 +191,10 @@ class CdcpState extends State<Cdcp> {
                         child: const Text("CH#1",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 11,
+                              fontSize: 9,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
-                            textAlign: TextAlign.right),
+                            textAlign: TextAlign.center),
                       ),
                     ),
                     Expanded(
@@ -211,10 +213,10 @@ class CdcpState extends State<Cdcp> {
                         child: const Text("CH#2",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 11,
+                              fontSize: 9,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
-                            textAlign: TextAlign.right),
+                            textAlign: TextAlign.center),
                       ),
                     ),
                     Expanded(
@@ -233,10 +235,10 @@ class CdcpState extends State<Cdcp> {
                         child: const Text("CH#3",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 11,
+                              fontSize: 9,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
-                            textAlign: TextAlign.right),
+                            textAlign: TextAlign.center),
                       ),
                     ),
                     Expanded(
@@ -248,10 +250,10 @@ class CdcpState extends State<Cdcp> {
                         child: const Text("CH#4",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 11,
+                              fontSize: 9,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
-                            textAlign: TextAlign.right),
+                            textAlign: TextAlign.center),
                       ),
                     ),
                   ],
@@ -293,7 +295,7 @@ class CdcpState extends State<Cdcp> {
 Widget _row(h, d1, d2, d3, d4, color, i) {
   return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
     Expanded(
-      flex: 4,
+      flex: 7,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -304,7 +306,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
           child: Text(
             h,
             style: TextStyle(color: color, fontSize: 12),
@@ -324,10 +326,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
           child: Text(
             d1,
-            style: TextStyle(color: color, fontSize: 14),
+            style: TextStyle(color: color, fontSize: 12),
             textAlign: TextAlign.center,
           ),
         ),
@@ -344,9 +346,9 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
             ),
           ),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
         child: Text(d2,
-            style: TextStyle(color: color, fontSize: 14),
+            style: TextStyle(color: color, fontSize: 12),
             textAlign: TextAlign.center),
       ),
     ),
@@ -361,9 +363,9 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
             ),
           ),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
         child: Text(d3,
-            style: TextStyle(color: color, fontSize: 14),
+            style: TextStyle(color: color, fontSize: 12),
             textAlign: TextAlign.center),
       ),
     ),
@@ -371,9 +373,9 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
       flex: 1,
       child: Container(
         decoration: const BoxDecoration(),
-        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
+        padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
         child: Text(d4,
-            style: TextStyle(color: color, fontSize: 14),
+            style: TextStyle(color: color, fontSize: 12),
             textAlign: TextAlign.center),
       ),
     ),

@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Bpplant extends StatefulWidget {
   const Bpplant({super.key});
@@ -49,6 +50,7 @@ class BpplantState extends State<Bpplant> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> state = [];
 
   TechnoService() async {
     if (mounted) {
@@ -79,6 +81,16 @@ class BpplantState extends State<Bpplant> {
                 "selected": false,
                 "i": 2,
               },
+            ];
+            state = [
+              {
+                "d1": bpplantData["EX1"],
+                "d2": bpplantData["EX2"],
+              },
+              {
+                "d1": bpplantData["BPP_EX3ON"],
+                "d2": bpplantData["BPP_EX4ON"],
+              }
             ];
             if (num != -1) {
               rows[num]["selected"] = true;
@@ -196,13 +208,14 @@ class BpplantState extends State<Bpplant> {
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 3),
+                          vertical: 0, horizontal: 0),
                       child: _row(
                           r["head"],
                           r["data1"],
                           r["data2"],
                           r["selected"] == true ? _containerColora : _textColor,
-                          r["i"]),
+                          r["i"],
+                          state),
                     ),
                   ),
               ],
@@ -211,7 +224,7 @@ class BpplantState extends State<Bpplant> {
   }
 }
 
-Widget _row(h, d1, d2, color, i) {
+Widget _row(h, d1, d2, color, i, state) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -236,13 +249,22 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 2,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
                 color: Color.fromARGB(113, 44, 129, 227),
                 width: 2.0,
               ),
             ),
+            color: i == 1
+                ? state[0]["d1"] == 0
+                    ? myColors["deactive"]
+                    : myColors["active"]
+                : i == 2
+                    ? state[1]["d1"] == 0
+                        ? myColors["deactive"]
+                        : myColors["active"]
+                    : const Color.fromARGB(0, 255, 193, 7),
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
@@ -252,7 +274,17 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 2,
         child: Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(
+            color: i == 1
+                ? state[0]["d2"] == 0
+                    ? myColors["deactive"]
+                    : myColors["active"]
+                : i == 2
+                    ? state[1]["d2"] == 0
+                        ? myColors["deactive"]
+                        : myColors["active"]
+                    : const Color.fromARGB(0, 255, 193, 7),
+          ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
               style: TextStyle(color: color), textAlign: TextAlign.center),

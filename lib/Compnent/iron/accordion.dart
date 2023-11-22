@@ -58,15 +58,6 @@ class _AccordionPageState extends State<AccordionIron> {
         sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
         children: [
-          // AccordionSection(
-          //   isOpen: false,
-          //   contentVerticalPadding: 10,
-          //   contentHorizontalPadding: 0,
-          //   leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-          //   header:
-          //       const Text('BLAST FURNACE', style: AccordionIron.headerStyle),
-          //   content: const Bfi(),
-          // ),
           AccordionSection(
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
@@ -86,23 +77,57 @@ class _AccordionPageState extends State<AccordionIron> {
             content: const Bfi(),
           ),
           AccordionSection(
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            headerBackgroundColor: Color.fromARGB(255, 162, 70, 70),
+            contentBorderColor: const Color.fromARGB(255, 197, 53, 53),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            // leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/natural-gas.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            header: const Text("STOVES", style: AccordionIron.headerStyle),
+            content: const Stoves(),
+          ),
+          AccordionSection(
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            headerBackgroundColor: Color.fromARGB(255, 213, 184, 52),
+            contentBorderColor: const Color.fromARGB(255, 213, 184, 52),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            // leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/warehouse.png',
+              width: 40.0,
+              height: 40.0,
+            ),
             header:
-                const Text('BF STOCK HOUSE', style: AccordionIron.headerStyle),
+                const Text("BF STOCK HOUSE", style: AccordionIron.headerStyle),
             content: const Bfsh(),
           ),
-          // AccordionSection(
-          //   isOpen: false,
-          //   contentVerticalPadding: 10,
-          //   contentHorizontalPadding: 0,
-          //   leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-          //   header:
-          //       const Text('SINTER PLANT', style: AccordionIron.headerStyle),
-          //   content: const Spi(),
-          // ),
+          AccordionSection(
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            headerBackgroundColor: Color.fromARGB(255, 52, 165, 213),
+            contentBorderColor: const Color.fromARGB(255, 52, 165, 213),
+            isOpen: false,
+            contentVerticalPadding: 10,
+            contentHorizontalPadding: 0,
+            // leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/gas.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            header: const Text("GCP & TRTG", style: AccordionIron.headerStyle),
+            content: const Gcp(),
+          ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 178, 197, 53),
             contentBorderColor: const Color.fromARGB(255, 178, 197, 53),
@@ -119,14 +144,6 @@ class _AccordionPageState extends State<AccordionIron> {
                 const Text('SINTER PLANT', style: AccordionIron.headerStyle),
             content: const SinterPlant(),
           ),
-          // AccordionSection(
-          //   isOpen: false,
-          //   contentVerticalPadding: 10,
-          //   contentHorizontalPadding: 0,
-          //   leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-          //   header: const Text('COKE OVENS', style: AccordionIron.headerStyle),
-          //   content: const Coi(),
-          // ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 81, 174, 61),
             contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
@@ -142,15 +159,6 @@ class _AccordionPageState extends State<AccordionIron> {
             header: const Text("COKE OVENS", style: AccordionIron.headerStyle),
             content: const Coi(),
           ),
-          // AccordionSection(
-          //   isOpen: false,
-          //   contentVerticalPadding: 10,
-          //   contentHorizontalPadding: 0,
-          //   leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-          //   header: const Text('BY PRODUCT PLANT',
-          //       style: AccordionIron.headerStyle),
-          //   content: const Bppi(),
-          // ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 112, 61, 174),
             contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
@@ -168,37 +176,39 @@ class _AccordionPageState extends State<AccordionIron> {
             content: const Bppi(),
           ),
           AccordionSection(
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            headerBackgroundColor: Color.fromARGB(255, 149, 152, 101),
+            contentBorderColor: const Color.fromARGB(255, 52, 165, 213),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-            header: const Text('CDCP', style: AccordionIron.headerStyle),
+            // leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/CDCP.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            header: const Text("CDCP", style: AccordionIron.headerStyle),
             content: const Cdcp(),
           ),
           AccordionSection(
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            headerBackgroundColor: Color.fromARGB(255, 139, 182, 99),
+            contentBorderColor: const Color.fromARGB(255, 52, 165, 213),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-            header: const Text('COKE OVEN #11 COMPLEX',
+            // leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/Complex.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            header: const Text("COKE OVEN #11 COMPLEX",
                 style: AccordionIron.headerStyle),
             content: const Coc(),
-          ),
-          AccordionSection(
-            isOpen: false,
-            contentVerticalPadding: 10,
-            contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-            header: const Text('GCP & TRTG', style: AccordionIron.headerStyle),
-            content: const Gcp(),
-          ),
-          AccordionSection(
-            isOpen: false,
-            contentVerticalPadding: 10,
-            contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-            header: const Text('STOVES', style: AccordionIron.headerStyle),
-            content: const Stoves(),
           ),
         ],
       ),

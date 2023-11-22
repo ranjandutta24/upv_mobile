@@ -50,76 +50,78 @@ class GcpState extends State<Gcp> {
   }
 
   TechnoService() async {
-    await gcpservice().then((data) {
-      if (mounted) {
-        print(data.body);
-        setState(() {
-          gcpData = json.decode(data.body);
-          rows = [
-            {
-              "head": "TRTG Generation [MW]",
-              "data1": gcpData["TRTGMW"].toStringAsFixed(0),
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "TRTG Pressure[Kg/cm2]",
-              "data1": gcpData["TRTPRES"].toStringAsFixed(0),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "TRTG Temp. [DegC]",
-              "data1": gcpData["TRTTEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "TRTG Open [%]",
-              "data1": gcpData["TRTOPEN"].toStringAsFixed(2),
-              "selected": false,
-              "i": 3,
-            },
-            {
-              "head": "AG Element A/B/C[%]",
-              "data1":
-                  "${gcpData["AG_A"].toStringAsFixed(2)}/${gcpData["AG_B"].toStringAsFixed(2)}/${gcpData["AG_C"].toStringAsFixed(2)}",
-              "selected": false,
-              "i": 4,
-            },
-            {
-              "head": "Clean Gas flow High[Nm3/h]",
-              "data1": gcpData["CLEAN_GAS_FLOW"].toStringAsFixed(0),
-              "selected": false,
-              "i": 5,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+    if (mounted) {
+      await gcpservice().then((data) {
+        if (data != null) {
+          print(data.body);
+          setState(() {
+            gcpData = json.decode(data.body);
+            rows = [
+              {
+                "head": "TRTG Generation [MW]",
+                "data1": gcpData["TRTGMW"].toStringAsFixed(0),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "TRTG Pressure[Kg/cm2]",
+                "data1": gcpData["TRTPRES"].toStringAsFixed(0),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "TRTG Temp. [DegC]",
+                "data1": gcpData["TRTTEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "TRTG Open [%]",
+                "data1": gcpData["TRTOPEN"].toStringAsFixed(2),
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "AG Element A/B/C[%]",
+                "data1":
+                    "${gcpData["AG_A"].toStringAsFixed(2)}/${gcpData["AG_B"].toStringAsFixed(2)}/${gcpData["AG_C"].toStringAsFixed(2)}",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Clean Gas flow High[Nm3/h]",
+                "data1": gcpData["CLEAN_GAS_FLOW"].toStringAsFixed(0),
+                "selected": false,
+                "i": 5,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-      child: loading
+      child: loading || !mounted
           ? const Text(" ")
           : Column(children: [
               Container(
@@ -134,7 +136,7 @@ class GcpState extends State<Gcp> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      flex: 5,
+                      flex: 6,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -155,7 +157,7 @@ class GcpState extends State<Gcp> {
                       ),
                     ),
                     Expanded(
-                      flex: 5,
+                      flex: 4,
                       child: Container(
                         decoration: const BoxDecoration(),
                         padding: const EdgeInsets.symmetric(
@@ -166,7 +168,7 @@ class GcpState extends State<Gcp> {
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 152, 152, 152),
                           ),
-                          textAlign: TextAlign.right,
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
@@ -208,7 +210,7 @@ Widget _row(h, d1, color, i) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Expanded(
-        flex: 5,
+        flex: 6,
         child: Container(
           decoration: const BoxDecoration(
             border: Border(
@@ -228,7 +230,7 @@ Widget _row(h, d1, color, i) {
         ),
       ),
       Expanded(
-        flex: 5,
+        flex: 4,
         child: Container(
           decoration: const BoxDecoration(),
           child: Padding(

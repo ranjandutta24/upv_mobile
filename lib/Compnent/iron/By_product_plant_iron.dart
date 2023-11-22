@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Bppi extends StatefulWidget {
   const Bppi({super.key});
@@ -47,6 +48,7 @@ class BppiState extends State<Bppi> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> state = [];
 
   TechnoService() async {
     if (mounted) {
@@ -58,47 +60,60 @@ class BppiState extends State<Bppi> {
             rows = [
               {
                 "head": "CO Gas Make [Nm3/hr]",
-                "data1": bppiData["EX2"].toString(),
-                "data2": bppiData["EX2"].toString(),
+                "data1": bppiData["FT0600F003_C"].toStringAsFixed(0),
+                "data2": bppiData["COB10_GASMAKEF"].toStringAsFixed(0),
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "CO Pressure [mmwc]",
-                "data1": bppiData["EX2"].toString(),
-                "data2": bppiData["EX2"].toString(),
+                "data1": bppiData["COGASMAKEPRESSURE"].toStringAsFixed(0),
+                "data2": bppiData["COB10_COGSUPPLY"] == null
+                    ? "0"
+                    : bppiData["COB10_COGSUPPLY"].toString(),
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "Flare Stack Flow [Nm3/hr]",
-                "data1": bppiData["EX2"].toString(),
-                "data2": bppiData["EX2"].toString(),
+                "data1": bppiData["COFLARESTACKFLOW"].toStringAsFixed(0),
+                "data2": "",
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "Flare Stack Pressure [mmwc]",
-                "data1": bppiData["EX2"].toString(),
-                "data2": bppiData["EX2"].toString(),
+                "data1": bppiData["COFLARESTACKPRESSURE"].toStringAsFixed(2),
+                "data2": "",
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Exhauster BPP 11",
-                "data1": bppiData["EX2"].toString(),
-                "data2": bppiData["EX2"].toString(),
+                "data1": "EX#1",
+                "data2": "EX#2",
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "Exhauster BPP 10",
-                "data1": bppiData["EX2"].toString(),
-                "data2": bppiData["EX2"].toString(),
+                "data1": "EX#3",
+                "data2": "EX#4",
                 "selected": false,
                 "i": 5,
               },
             ];
+            state = [
+              {
+                "d1": bppiData["EX1"],
+                "d2": bppiData["EX2"],
+              },
+              {
+                "d1": bppiData["BPP_EX3ON"],
+                "d2": bppiData["BPP_EX4ON"],
+              }
+            ];
+
             if (num != -1) {
               rows[num]["selected"] = true;
             }
@@ -124,7 +139,7 @@ class BppiState extends State<Bppi> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text(" ")
           : Column(
@@ -215,13 +230,14 @@ class BppiState extends State<Bppi> {
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 3),
+                          vertical: 0, horizontal: 0),
                       child: _row(
                           r["head"],
                           r["data1"],
                           r["data2"],
                           r["selected"] == true ? _containerColora : _textColor,
-                          r["i"]),
+                          r["i"],
+                          state),
                     ),
                   ),
               ],
@@ -230,7 +246,7 @@ class BppiState extends State<Bppi> {
   }
 }
 
-Widget _row(h, d1, d2, color, i) {
+Widget _row(h, d1, d2, color, i, state) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -255,13 +271,22 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 2,
         child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
+          decoration: BoxDecoration(
+            border: const Border(
               right: BorderSide(
                 color: Color.fromARGB(113, 44, 129, 227),
                 width: 2.0,
               ),
             ),
+            color: i == 4
+                ? state[0]["d1"] == 0
+                    ? myColors["deactive"]
+                    : myColors["active"]
+                : i == 5
+                    ? state[1]["d1"] == 0
+                        ? myColors["deactive"]
+                        : myColors["active"]
+                    : const Color.fromARGB(0, 255, 193, 7),
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
@@ -271,7 +296,17 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 2,
         child: Container(
-          decoration: const BoxDecoration(),
+          decoration: BoxDecoration(
+            color: i == 4
+                ? state[0]["d2"] == 0
+                    ? myColors["deactive"]
+                    : myColors["active"]
+                : i == 5
+                    ? state[1]["d2"] == 0
+                        ? myColors["deactive"]
+                        : myColors["active"]
+                    : const Color.fromARGB(0, 255, 193, 7),
+          ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
               style: TextStyle(color: color), textAlign: TextAlign.center),

@@ -281,7 +281,7 @@ class BfiState extends State<Bfi> {
                               fontWeight: FontWeight.bold,
                               color: Color.fromARGB(255, 152, 152, 152),
                             ),
-                            textAlign: TextAlign.right,
+                            textAlign: TextAlign.center,
                           ),
                         ),
                       ),

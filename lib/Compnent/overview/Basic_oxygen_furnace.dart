@@ -219,7 +219,7 @@ class BOFState extends State<BOF> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-      child: loading
+      child: loading || !mounted
           ? const SizedBox(
               height: 30, width: 30, child: CircularProgressIndicator())
           : Column(

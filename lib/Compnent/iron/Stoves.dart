@@ -50,87 +50,89 @@ class StovesState extends State<Stoves> {
   }
 
   TechnoService() async {
-    await stoveservice().then((data) {
-      if (mounted) {
-        print(data.body);
-        setState(() {
-          stovesData = json.decode(data.body);
-          rows = [
-            {
-              "head": "Stv 1 Gas Flow [Nm3/hr]",
-              "data1": stovesData["SMG1"].toStringAsFixed(0),
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "Stv 1 Dome Temp. [DegC]",
-              "data1": stovesData["SDT1"].toStringAsFixed(0),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "Stv 2 Gas Flow [Nm3/hr]",
-              "data1": stovesData["SMG2"].toStringAsFixed(0),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "Stv 2 Dome Temp. [DegC]",
-              "data1": stovesData["SDT2"].toStringAsFixed(0),
-              "selected": false,
-              "i": 3,
-            },
-            {
-              "head": "Stv 3 Gas Flow [Nm3/hr]",
-              "data1": stovesData["SMG3"].toStringAsFixed(0),
-              "selected": false,
-              "i": 4,
-            },
-            {
-              "head": "Stv 3 Dome Temp.[DegC]",
-              "data1": stovesData["SDT3"].toStringAsFixed(0),
-              "selected": false,
-              "i": 5,
-            },
-            {
-              "head": "BF Gas Total Cons[Nm3/hr]",
-              "data1": stovesData["TOTAL_BF_CONSUMPTION"].toStringAsFixed(0),
-              "selected": false,
-              "i": 5,
-            },
-            {
-              "head": "Snort Position [%]",
-              "data1": stovesData["PBS_SNORT"].toStringAsFixed(2),
-              "selected": false,
-              "i": 5,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+    if (mounted) {
+      await stoveservice().then((data) {
+        if (data != null) {
+          print(data.body);
+          setState(() {
+            stovesData = json.decode(data.body);
+            rows = [
+              {
+                "head": "Stv 1 Gas Flow [Nm3/hr]",
+                "data1": stovesData["SMG1"].toStringAsFixed(0),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Stv 1 Dome Temp. [DegC]",
+                "data1": stovesData["SDT1"].toStringAsFixed(0),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Stv 2 Gas Flow [Nm3/hr]",
+                "data1": stovesData["SMG2"].toStringAsFixed(0),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "Stv 2 Dome Temp. [DegC]",
+                "data1": stovesData["SDT2"].toStringAsFixed(0),
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "Stv 3 Gas Flow [Nm3/hr]",
+                "data1": stovesData["SMG3"].toStringAsFixed(0),
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Stv 3 Dome Temp.[DegC]",
+                "data1": stovesData["SDT3"].toStringAsFixed(0),
+                "selected": false,
+                "i": 5,
+              },
+              {
+                "head": "BF Gas Total Cons[Nm3/hr]",
+                "data1": stovesData["TOTAL_BF_CONSUMPTION"].toStringAsFixed(0),
+                "selected": false,
+                "i": 6,
+              },
+              {
+                "head": "Snort Position [%]",
+                "data1": stovesData["PBS_SNORT"].toStringAsFixed(2),
+                "selected": false,
+                "i": 7,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
-      child: loading
+      child: loading || !mounted
           ? const Text(" ")
           : Column(children: [
               Container(
@@ -177,7 +179,7 @@ class StovesState extends State<Stoves> {
                             fontWeight: FontWeight.bold,
                             color: Color.fromARGB(255, 152, 152, 152),
                           ),
-                          textAlign: TextAlign.right,
+                          textAlign: TextAlign.center,
                         ),
                       ),
                     ),
