@@ -43,7 +43,7 @@ class StovesState extends State<Stoves> {
 
   fun() {
     TechnoService();
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
       TechnoService();
     });

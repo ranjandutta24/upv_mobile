@@ -40,7 +40,7 @@ class BppiState extends State<Bppi> {
 
   fun() {
     TechnoService();
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
       TechnoService();
     });
@@ -49,74 +49,76 @@ class BppiState extends State<Bppi> {
   List<dynamic> rows = [];
 
   TechnoService() async {
-    await byproductplant().then((data) {
-      if (mounted) {
-        print(data.body);
-        setState(() {
-          bppiData = json.decode(data.body);
-          rows = [
-            {
-              "head": "CO Gas Make [Nm3/hr]",
-              "data1": bppiData["EX2"].toString(),
-              "data2": bppiData["EX2"].toString(),
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "CO Pressure [mmwc]",
-              "data1": bppiData["EX2"].toString(),
-              "data2": bppiData["EX2"].toString(),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "Flare Stack Flow [Nm3/hr]",
-              "data1": bppiData["EX2"].toString(),
-              "data2": bppiData["EX2"].toString(),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "Flare Stack Pressure [mmwc]",
-              "data1": bppiData["EX2"].toString(),
-              "data2": bppiData["EX2"].toString(),
-              "selected": false,
-              "i": 3,
-            },
-            {
-              "head": "Exhauster BPP 11",
-              "data1": bppiData["EX2"].toString(),
-              "data2": bppiData["EX2"].toString(),
-              "selected": false,
-              "i": 4,
-            },
-            {
-              "head": "Exhauster BPP 10",
-              "data1": bppiData["EX2"].toString(),
-              "data2": bppiData["EX2"].toString(),
-              "selected": false,
-              "i": 5,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+    if (mounted) {
+      await byproductplant().then((data) {
+        if (data != null) {
+          // print(data.body);
+          setState(() {
+            bppiData = json.decode(data.body);
+            rows = [
+              {
+                "head": "CO Gas Make [Nm3/hr]",
+                "data1": bppiData["EX2"].toString(),
+                "data2": bppiData["EX2"].toString(),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "CO Pressure [mmwc]",
+                "data1": bppiData["EX2"].toString(),
+                "data2": bppiData["EX2"].toString(),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Flare Stack Flow [Nm3/hr]",
+                "data1": bppiData["EX2"].toString(),
+                "data2": bppiData["EX2"].toString(),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "Flare Stack Pressure [mmwc]",
+                "data1": bppiData["EX2"].toString(),
+                "data2": bppiData["EX2"].toString(),
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "Exhauster BPP 11",
+                "data1": bppiData["EX2"].toString(),
+                "data2": bppiData["EX2"].toString(),
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Exhauster BPP 10",
+                "data1": bppiData["EX2"].toString(),
+                "data2": bppiData["EX2"].toString(),
+                "selected": false,
+                "i": 5,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override

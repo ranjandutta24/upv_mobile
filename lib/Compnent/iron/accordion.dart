@@ -58,13 +58,31 @@ class _AccordionPageState extends State<AccordionIron> {
         sectionOpeningHapticFeedback: SectionHapticFeedback.heavy,
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
         children: [
+          // AccordionSection(
+          //   isOpen: false,
+          //   contentVerticalPadding: 10,
+          //   contentHorizontalPadding: 0,
+          //   leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+          //   header:
+          //       const Text('BLAST FURNACE', style: AccordionIron.headerStyle),
+          //   content: const Bfi(),
+          // ),
           AccordionSection(
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            headerBackgroundColor: const Color.fromARGB(255, 53, 197, 63),
+            contentBorderColor: const Color.fromARGB(255, 53, 197, 63),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            // leftIcon: const Icon(Icons.fullscreen, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/furnace.png',
+              width: 40.0,
+              height: 40.0,
+            ),
             header:
-                const Text('BLAST FURNACE', style: AccordionIron.headerStyle),
+                const Text("BLAST FURNACE", style: AccordionIron.headerStyle),
             content: const Bfi(),
           ),
           AccordionSection(
@@ -76,29 +94,76 @@ class _AccordionPageState extends State<AccordionIron> {
                 const Text('BF STOCK HOUSE', style: AccordionIron.headerStyle),
             content: const Bfsh(),
           ),
+          // AccordionSection(
+          //   isOpen: false,
+          //   contentVerticalPadding: 10,
+          //   contentHorizontalPadding: 0,
+          //   leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+          //   header:
+          //       const Text('SINTER PLANT', style: AccordionIron.headerStyle),
+          //   content: const Spi(),
+          // ),
           AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 178, 197, 53),
+            contentBorderColor: const Color.fromARGB(255, 178, 197, 53),
             isOpen: false,
             contentVerticalPadding: 10,
-            contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+            leftIcon: Image.asset(
+              'assets/icon/factory.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             header:
-                const Text('SINTER PLANT', style: AccordionIron.headerStyle),
+                const Text("SINTER PLANT", style: AccordionIron.headerStyle),
             content: const Spi(),
           ),
+          // AccordionSection(
+          //   isOpen: false,
+          //   contentVerticalPadding: 10,
+          //   contentHorizontalPadding: 0,
+          //   leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+          //   header: const Text('COKE OVENS', style: AccordionIron.headerStyle),
+          //   content: const Coi(),
+          // ),
           AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 81, 174, 61),
+            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
-            contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-            header: const Text('COKE OVENS', style: AccordionIron.headerStyle),
+            leftIcon: Image.asset(
+              'assets/icon/stone-oven.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            header: const Text("COKE OVENS", style: AccordionIron.headerStyle),
             content: const Coi(),
           ),
+          // AccordionSection(
+          //   isOpen: false,
+          //   contentVerticalPadding: 10,
+          //   contentHorizontalPadding: 0,
+          //   leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
+          //   header: const Text('BY PRODUCT PLANT',
+          //       style: AccordionIron.headerStyle),
+          //   content: const Bppi(),
+          // ),
           AccordionSection(
+            headerBackgroundColor: const Color.fromARGB(255, 112, 61, 174),
+            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
             isOpen: false,
             contentVerticalPadding: 10,
-            contentHorizontalPadding: 0,
-            leftIcon: const Icon(Icons.bolt_sharp, color: Colors.white),
-            header: const Text('BY PRODUCT PLANT',
+            leftIcon: Image.asset(
+              'assets/icon/innovation.png',
+              width: 40.0,
+              height: 40.0,
+            ),
+            headerPadding:
+                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+            header: const Text("BY PRODUCT PLANT",
                 style: AccordionIron.headerStyle),
             content: const Bppi(),
           ),

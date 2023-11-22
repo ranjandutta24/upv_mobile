@@ -41,7 +41,7 @@ class SpiState extends State<Spi> {
 
   fun() {
     sinterplantService();
-    var duration = const Duration(seconds: 5);
+    var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
       sinterplantService();
     });
@@ -50,291 +50,293 @@ class SpiState extends State<Spi> {
   List<dynamic> rows = [];
 
   sinterplantService() async {
-    await sinterplant().then((data) {
-      if (mounted) {
-        // print(data.body);
-        setState(() {
-          spiData = json.decode(data.body);
-          rows = [
-            {
-              "head": "Machine Speed [m/min]",
-              "data1": spiData["SP1_MCSPEED"].toStringAsFixed(2),
-              "data2": spiData["SP2_MCSPEED"].toStringAsFixed(2),
-              "selected": false,
-              "i": 0,
-            },
-            {
-              "head": "Burner Avg Temp [Deg C]",
-              "data1": spiData["SP1_BUNERAVGTEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_BUNERAVGTEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 1,
-            },
-            {
-              "head": "Waste Gas Fan [RPM]",
-              "data1": spiData["SP1_WGRPM"].toStringAsFixed(0),
-              "data2": spiData["SP2_WGRPM"].toStringAsFixed(0),
-              "selected": false,
-              "i": 2,
-            },
-            {
-              "head": "Production [Ton]",
-              "data1": spiData["SP1_PROD"].toStringAsFixed(0),
-              "data2": spiData["SP2_PROD"].toStringAsFixed(0),
-              "selected": false,
-              "i": 3,
-            },
-            {
-              "head": "BF STOCK [Ton]",
-              "data1": "${spiData["SP1_BFSTOCK"]}",
-              "data2": "",
-              "selected": false,
-              "i": 4,
-            },
-            {
-              "head": "ESSB Storage [Ton]",
-              "data1": "${spiData["SP1_ESSB"]}",
-              "data2": "",
-              "selected": false,
-              "i": 5,
-            },
+    if (mounted) {
+      await sinterplant().then((data) {
+        if (data != null) {
+          // print(data.body);
+          setState(() {
+            spiData = json.decode(data.body);
+            rows = [
+              {
+                "head": "Machine Speed [m/min]",
+                "data1": spiData["SP1_MCSPEED"].toStringAsFixed(2),
+                "data2": spiData["SP2_MCSPEED"].toStringAsFixed(2),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Burner Avg Temp [Deg C]",
+                "data1": spiData["SP1_BUNERAVGTEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_BUNERAVGTEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Waste Gas Fan [RPM]",
+                "data1": spiData["SP1_WGRPM"].toStringAsFixed(0),
+                "data2": spiData["SP2_WGRPM"].toStringAsFixed(0),
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "Production [Ton]",
+                "data1": spiData["SP1_PROD"].toStringAsFixed(0),
+                "data2": spiData["SP2_PROD"].toStringAsFixed(0),
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "BF STOCK [Ton]",
+                "data1": "${spiData["SP1_BFSTOCK"]}",
+                "data2": "",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "ESSB Storage [Ton]",
+                "data1": "${spiData["SP1_ESSB"]}",
+                "data2": "",
+                "selected": false,
+                "i": 5,
+              },
 
-            {
-              "head": "SLS Level[%]",
-              "data1": spiData["SP1_SLS_LEVEL"].toStringAsFixed(2),
-              "data2": "",
-              "selected": false,
-              "i": 6,
-            },
-            {
-              "head": "SPM [mg/Nm]",
-              "data1": spiData["SP1_OPCA"].toStringAsFixed(2),
-              "data2": spiData["SP2_OPCA"].toStringAsFixed(2),
-              "selected": false,
-              "i": 7,
-            },
-            {
-              "head": "SOX",
-              "data1": spiData["SP1_SOX"].toStringAsFixed(0),
-              "data2": spiData["SP2_SOX"].toStringAsFixed(0),
-              "selected": false,
-              "i": 8,
-            },
-            {
-              "head": "NOX",
-              "data1": spiData["SP1_NOX"].toStringAsFixed(0),
-              "data2": spiData["SP2_NOX"].toStringAsFixed(0),
-              "selected": false,
-              "i": 9,
-            },
-            {
-              "head": "ESP Inlet Temp[DegC]",
-              "data1": spiData["SP1_ESPILTEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_ESPILTEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 10,
-            },
-            {
-              "head": "ESP Outlet Temp[DegC]",
-              "data1": spiData["SP1_ESPOLTEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_ESPOLTEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 11,
-            },
-            {
-              "head": "Mix Gas Pressure [mmwc]",
-              "data1": spiData["SP1_MIXGASPRESS"].toStringAsFixed(2),
-              "data2": spiData["SP1_MIXGASPRESS"].toStringAsFixed(2),
-              "selected": false,
-              "i": 12,
-            },
+              {
+                "head": "SLS Level[%]",
+                "data1": spiData["SP1_SLS_LEVEL"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 6,
+              },
+              {
+                "head": "SPM [mg/Nm]",
+                "data1": spiData["SP1_OPCA"].toStringAsFixed(2),
+                "data2": spiData["SP2_OPCA"].toStringAsFixed(2),
+                "selected": false,
+                "i": 7,
+              },
+              {
+                "head": "SOX",
+                "data1": spiData["SP1_SOX"].toStringAsFixed(0),
+                "data2": spiData["SP2_SOX"].toStringAsFixed(0),
+                "selected": false,
+                "i": 8,
+              },
+              {
+                "head": "NOX",
+                "data1": spiData["SP1_NOX"].toStringAsFixed(0),
+                "data2": spiData["SP2_NOX"].toStringAsFixed(0),
+                "selected": false,
+                "i": 9,
+              },
+              {
+                "head": "ESP Inlet Temp[DegC]",
+                "data1": spiData["SP1_ESPILTEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_ESPILTEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 10,
+              },
+              {
+                "head": "ESP Outlet Temp[DegC]",
+                "data1": spiData["SP1_ESPOLTEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_ESPOLTEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 11,
+              },
+              {
+                "head": "Mix Gas Pressure [mmwc]",
+                "data1": spiData["SP1_MIXGASPRESS"].toStringAsFixed(2),
+                "data2": spiData["SP1_MIXGASPRESS"].toStringAsFixed(2),
+                "selected": false,
+                "i": 12,
+              },
 
-            {
-              "head": "Mix Gas Flow [Nm3/hr]",
-              "data1": spiData["SP1_MIXGASF"].toStringAsFixed(0),
-              "data2": spiData["SP2_MIXGASF"].toStringAsFixed(0),
-              "selected": false,
-              "i": 13,
-            },
-            {
-              "head": "Furnace Pressure [mbar]",
-              "data1": spiData["SP1_FURNP"].toStringAsFixed(2),
-              "data2": spiData["SP2_FURNP"].toStringAsFixed(2),
-              "selected": false,
-              "i": 14,
-            },
-            {
-              "head": "WG Current [A]",
-              "data1": spiData["SP1_WGAS_I"].toStringAsFixed(0),
-              "data2": spiData["SP2_WGAS_I"].toStringAsFixed(0),
-              "selected": false,
-              "i": 15,
-            },
-            {
-              "head": "WG Fan DE Bearing Temp.[DegC]",
-              "data1": spiData["SP1_WGASF_DETEMP"].toStringAsFixed(0),
-              "data2": spiData["SP1_WGASF_DETEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 16,
-            },
-            {
-              "head": "WG Fan NDE Bearing Temp.[DegC]",
-              "data1": spiData["SP1_WGASF_NDETEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_WGASF_NDETEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 17,
-            },
-            {
-              "head": "WG Motor DE Bearing Temp.[DegC]",
-              "data1": spiData["SP1_WGASM_DETEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_WGASM_DETEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 18,
-            },
-            {
-              "head": "WG Motor NDE Bearing Temp.[DegC]",
-              "data1": spiData["SP1_WGASM_NDETEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_WGASM_NDETEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 19,
-            },
-            {
-              "head": "WG Fan DE X vib[um pp]",
-              "data1": spiData["SP1_WGASDEX"].toStringAsFixed(2),
-              "data2": spiData["SP2_WGASDEX"].toStringAsFixed(2),
-              "selected": false,
-              "i": 20,
-            },
-            {
-              "head": "WG Fan DE Y vib[um pp]",
-              "data1": spiData["SP1_WGASDEY"].toStringAsFixed(0),
-              "data2": spiData["SP2_WGASDEY"].toStringAsFixed(2),
-              "selected": false,
-              "i": 21,
-            },
-            {
-              "head": "WG Gas Fan NDE X vib",
-              "data1": spiData["SP1_WGASNDEX"].toStringAsFixed(2),
-              "data2": spiData["SP2_WGASNDEX"].toStringAsFixed(2),
-              "selected": false,
-              "i": 22,
-            },
-            {
-              "head": "WG Gas Fan NDE Y vib[um pp]",
-              "data1": spiData["SP1_WGASNDEY"].toStringAsFixed(2),
-              "data2": spiData["SP2_WGASNDEY"].toStringAsFixed(2),
-              "selected": false,
-              "i": 23,
-            },
-            {
-              "head": "WG Motor DE X vib[um pp]",
-              "data1": spiData["SP1_WGASM_DEX"].toStringAsFixed(2),
-              "data2": spiData["SP2_WGASM_DEX"].toStringAsFixed(2),
-              "selected": false,
-              //"i": 25,
-              "i": 24,
-            },
-            {
-              "head": "WG Motor DE Y vib[um pp]",
-              "data1": spiData["SP1_WGASM_DEY"].toStringAsFixed(0),
-              "data2": spiData["SP2_WGASM_DEY"].toStringAsFixed(2),
-              "selected": false,
-              "i": 25,
-            },
-            // //data pending
-            {
-              "head": "WG Motor NDE X vib[um pp]",
-              "data1": spiData["SP1_WGASM_NDEX"].toStringAsFixed(2),
-              "data2": spiData["SP2_WGASM_NDEX"].toStringAsFixed(0),
-              "selected": false,
-              "i": 26,
-            },
-            {
-              "head": "WG Motor NDE Y vib[um pp]",
-              "data1": spiData["SP1_WGASM_NDEY"].toStringAsFixed(2),
-              "data2": spiData["SP2_WGASM_NDEY"].toStringAsFixed(2),
-              "selected": false,
-              "i": 27,
-            },
-            {
-              "head": "Winbox No.17 Temp.[DegC]",
-              "data1": spiData["SP1_WIND17TEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_WIND17TEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 28,
-            },
-            {
-              "head": "Winbox No.18 Temp.[DegC]",
-              "data1": spiData["SP1_WIND18TEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_WIND18TEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 29,
-            },
-            {
-              "head": "Winbox No.19 Temp.[DegC]",
-              "data1": spiData["SP1_WIND19TEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_WIND19TEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 30,
-            },
-            {
-              "head": "Winbox No.20 Temp.[DegC]",
-              "data1": spiData["SP1_WIND20TEMP"].toStringAsFixed(0),
-              "data2": spiData["SP2_WIND20TEMP"].toStringAsFixed(0),
-              "selected": false,
-              "i": 31,
-            },
-            {
-              "head": "BED TOTAL 1/2",
-              "data1": spiData["SP1_BED2"].toStringAsFixed(0),
-              "data2": spiData["SP1_BED2"].toStringAsFixed(0),
-              "selected": false,
-              "i": 32,
-            },
-            {
-              "head": "BESEMIX TOTAL",
-              "data1": spiData["SP1_BASE"].toStringAsFixed(0),
-              "data2": "",
-              "selected": false,
-              "i": 33,
-            },
+              {
+                "head": "Mix Gas Flow [Nm3/hr]",
+                "data1": spiData["SP1_MIXGASF"].toStringAsFixed(0),
+                "data2": spiData["SP2_MIXGASF"].toStringAsFixed(0),
+                "selected": false,
+                "i": 13,
+              },
+              {
+                "head": "Furnace Pressure [mbar]",
+                "data1": spiData["SP1_FURNP"].toStringAsFixed(2),
+                "data2": spiData["SP2_FURNP"].toStringAsFixed(2),
+                "selected": false,
+                "i": 14,
+              },
+              {
+                "head": "WG Current [A]",
+                "data1": spiData["SP1_WGAS_I"].toStringAsFixed(0),
+                "data2": spiData["SP2_WGAS_I"].toStringAsFixed(0),
+                "selected": false,
+                "i": 15,
+              },
+              {
+                "head": "WG Fan DE Bearing Temp.[DegC]",
+                "data1": spiData["SP1_WGASF_DETEMP"].toStringAsFixed(0),
+                "data2": spiData["SP1_WGASF_DETEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 16,
+              },
+              {
+                "head": "WG Fan NDE Bearing Temp.[DegC]",
+                "data1": spiData["SP1_WGASF_NDETEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_WGASF_NDETEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 17,
+              },
+              {
+                "head": "WG Motor DE Bearing Temp.[DegC]",
+                "data1": spiData["SP1_WGASM_DETEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_WGASM_DETEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 18,
+              },
+              {
+                "head": "WG Motor NDE Bearing Temp.[DegC]",
+                "data1": spiData["SP1_WGASM_NDETEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_WGASM_NDETEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 19,
+              },
+              {
+                "head": "WG Fan DE X vib[um pp]",
+                "data1": spiData["SP1_WGASDEX"].toStringAsFixed(2),
+                "data2": spiData["SP2_WGASDEX"].toStringAsFixed(2),
+                "selected": false,
+                "i": 20,
+              },
+              {
+                "head": "WG Fan DE Y vib[um pp]",
+                "data1": spiData["SP1_WGASDEY"].toStringAsFixed(0),
+                "data2": spiData["SP2_WGASDEY"].toStringAsFixed(2),
+                "selected": false,
+                "i": 21,
+              },
+              {
+                "head": "WG Gas Fan NDE X vib",
+                "data1": spiData["SP1_WGASNDEX"].toStringAsFixed(2),
+                "data2": spiData["SP2_WGASNDEX"].toStringAsFixed(2),
+                "selected": false,
+                "i": 22,
+              },
+              {
+                "head": "WG Gas Fan NDE Y vib[um pp]",
+                "data1": spiData["SP1_WGASNDEY"].toStringAsFixed(2),
+                "data2": spiData["SP2_WGASNDEY"].toStringAsFixed(2),
+                "selected": false,
+                "i": 23,
+              },
+              {
+                "head": "WG Motor DE X vib[um pp]",
+                "data1": spiData["SP1_WGASM_DEX"].toStringAsFixed(2),
+                "data2": spiData["SP2_WGASM_DEX"].toStringAsFixed(2),
+                "selected": false,
+                //"i": 25,
+                "i": 24,
+              },
+              {
+                "head": "WG Motor DE Y vib[um pp]",
+                "data1": spiData["SP1_WGASM_DEY"].toStringAsFixed(0),
+                "data2": spiData["SP2_WGASM_DEY"].toStringAsFixed(2),
+                "selected": false,
+                "i": 25,
+              },
+              // //data pending
+              {
+                "head": "WG Motor NDE X vib[um pp]",
+                "data1": spiData["SP1_WGASM_NDEX"].toStringAsFixed(2),
+                "data2": spiData["SP2_WGASM_NDEX"].toStringAsFixed(0),
+                "selected": false,
+                "i": 26,
+              },
+              {
+                "head": "WG Motor NDE Y vib[um pp]",
+                "data1": spiData["SP1_WGASM_NDEY"].toStringAsFixed(2),
+                "data2": spiData["SP2_WGASM_NDEY"].toStringAsFixed(2),
+                "selected": false,
+                "i": 27,
+              },
+              {
+                "head": "Winbox No.17 Temp.[DegC]",
+                "data1": spiData["SP1_WIND17TEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_WIND17TEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 28,
+              },
+              {
+                "head": "Winbox No.18 Temp.[DegC]",
+                "data1": spiData["SP1_WIND18TEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_WIND18TEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 29,
+              },
+              {
+                "head": "Winbox No.19 Temp.[DegC]",
+                "data1": spiData["SP1_WIND19TEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_WIND19TEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 30,
+              },
+              {
+                "head": "Winbox No.20 Temp.[DegC]",
+                "data1": spiData["SP1_WIND20TEMP"].toStringAsFixed(0),
+                "data2": spiData["SP2_WIND20TEMP"].toStringAsFixed(0),
+                "selected": false,
+                "i": 31,
+              },
+              {
+                "head": "BED TOTAL 1/2",
+                "data1": spiData["SP1_BED2"].toStringAsFixed(0),
+                "data2": spiData["SP1_BED2"].toStringAsFixed(0),
+                "selected": false,
+                "i": 32,
+              },
+              {
+                "head": "BESEMIX TOTAL",
+                "data1": spiData["SP1_BASE"].toStringAsFixed(0),
+                "data2": "",
+                "selected": false,
+                "i": 33,
+              },
 
-            {
-              "head": "Suction Pressure[mmwc]",
-              "data1": spiData["SP1_SUCTION"].toStringAsFixed(0),
-              "data2": spiData["SP2_SUCTION"].toStringAsFixed(0),
-              "selected": false,
-              "i": 34,
-            },
+              {
+                "head": "Suction Pressure[mmwc]",
+                "data1": spiData["SP1_SUCTION"].toStringAsFixed(0),
+                "data2": spiData["SP2_SUCTION"].toStringAsFixed(0),
+                "selected": false,
+                "i": 34,
+              },
 
-            {
-              "head": "Cooler Pressure [mbar]",
-              "data1": spiData["SP1_COOLERPRESS"].toStringAsFixed(2),
-              "data2": spiData["SP2_COOLERPRESS"].toStringAsFixed(2),
-              "selected": false,
-              "i": 35,
-            },
-          ];
-          if (num != -1) {
-            rows[num]["selected"] = true;
-          }
-          loading = false;
-        });
-      } else {
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).clearSnackBars();
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(
-            duration: const Duration(seconds: 3),
-            content: const Center(
-              child: Text('Login Failed, wrong userid or password'),
+              {
+                "head": "Cooler Pressure [mbar]",
+                "data1": spiData["SP1_COOLERPRESS"].toStringAsFixed(2),
+                "data2": spiData["SP2_COOLERPRESS"].toStringAsFixed(2),
+                "selected": false,
+                "i": 35,
+              },
+            ];
+            if (num != -1) {
+              rows[num]["selected"] = true;
+            }
+            loading = false;
+          });
+        } else {
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).clearSnackBars();
+          // ignore: use_build_context_synchronously
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              duration: const Duration(seconds: 3),
+              content: const Center(
+                child: Text('Login Failed, wrong userid or password'),
+              ),
+              action: SnackBarAction(label: '', onPressed: () {}),
             ),
-            action: SnackBarAction(label: '', onPressed: () {}),
-          ),
-        );
-      }
-    });
+          );
+        }
+      });
+    }
   }
 
   @override
