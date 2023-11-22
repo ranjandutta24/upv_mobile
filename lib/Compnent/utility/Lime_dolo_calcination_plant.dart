@@ -59,13 +59,31 @@ class LdcpUtState extends State<LdcpUt> {
             ldcpData = json.decode(data.body);
             rows = [
               {
+                "head": "Current Production[ton]",
+                "data1": ldcpData["K1_PRODN"].toStringAsFixed(1),
+                "data2": ldcpData["K2_PRODN"].toStringAsFixed(1),
+                "data3": ldcpData["K3_PRODN"].toStringAsFixed(1),
+                "data4": ldcpData["K4_PRODN"].toStringAsFixed(1),
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Prev Day Production [ton]",
+                "data1": ldcpData["K1_PREVDAY"].toStringAsFixed(1),
+                "data2": ldcpData["K2_PREVDAY"].toStringAsFixed(1),
+                "data3": ldcpData["K3_PREVDAY"].toStringAsFixed(1),
+                "data4": ldcpData["K4_PREVDAY"].toStringAsFixed(1),
+                "selected": false,
+                "i": 1,
+              },
+              {
                 "head": "Kiln Temperature[DegC]",
                 "data1": ldcpData["LDCP_K1TEMP"].toString(),
                 "data2": ldcpData["LDCP_K2TEMP"].toString(),
                 "data3": ldcpData["LDCP_K3TEMP"].toString(),
                 "data4": ldcpData["LDCP_K4TEMP"].toString(),
                 "selected": false,
-                "i": 0,
+                "i": 2,
               },
               {
                 "head": "Mixed Gas Flow[Nm3/hr]",
@@ -73,24 +91,6 @@ class LdcpUtState extends State<LdcpUt> {
                 "data2": ldcpData["K2_MG"].toString(),
                 "data3": ldcpData["K3_MG"].toString(),
                 "data4": ldcpData["K4_MG"].toString(),
-                "selected": false,
-                "i": 1,
-              },
-              {
-                "head": "Exhaust Gas Temperature[DegC]",
-                "data1": ldcpData["ETK1"].toString(),
-                "data2": ldcpData["ETK2"].toString(),
-                "data3": ldcpData["ETK3"].toString(),
-                "data4": ldcpData["ETK4"].toString(),
-                "selected": false,
-                "i": 2,
-              },
-              {
-                "head": "Current Production[ton]",
-                "data1": ldcpData["K1_PRODN"].toStringAsFixed(1),
-                "data2": ldcpData["K2_PRODN"].toStringAsFixed(1),
-                "data3": ldcpData["K3_PRODN"].toStringAsFixed(1),
-                "data4": ldcpData["K4_PRODN"].toStringAsFixed(1),
                 "selected": false,
                 "i": 3,
               },
@@ -111,6 +111,15 @@ class LdcpUtState extends State<LdcpUt> {
                 "data4": ldcpData["ETK1"].toString(),
                 "selected": false,
                 "i": 5,
+              },
+              {
+                "head": "Exhaust Gas Temperature[DegC]",
+                "data1": ldcpData["ETK1"].toString(),
+                "data2": ldcpData["ETK2"].toString(),
+                "data3": ldcpData["ETK3"].toString(),
+                "data4": ldcpData["ETK4"].toString(),
+                "selected": false,
+                "i": 6,
               },
             ];
             state = [
@@ -134,7 +143,7 @@ class LdcpUtState extends State<LdcpUt> {
             SnackBar(
               duration: const Duration(seconds: 3),
               content: const Center(
-                child: Text('Login Failed, wrong userid or password'),
+                child: Text('Something wrong'),
               ),
               action: SnackBarAction(label: '', onPressed: () {}),
             ),

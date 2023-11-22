@@ -194,7 +194,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 204, 212, 52),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            contentBorderColor: const Color.fromARGB(255, 204, 212, 52),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -210,7 +210,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 212, 196, 52),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            contentBorderColor: const Color.fromARGB(255, 212, 196, 52),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -225,7 +225,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 81, 174, 61),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            contentBorderColor: const Color.fromARGB(255, 81, 174, 61),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -240,7 +240,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 112, 61, 174),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            contentBorderColor: const Color.fromARGB(255, 112, 61, 174),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -256,7 +256,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 161, 61, 174),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            contentBorderColor: const Color.fromARGB(255, 161, 61, 174),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -272,7 +272,7 @@ class _AccordionPageState extends State<AccordionPage> {
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 195, 153, 247),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            contentBorderColor: const Color.fromARGB(255, 195, 153, 247),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(

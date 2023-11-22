@@ -79,7 +79,7 @@ class _AccordionPageState extends State<AccordionIron> {
           AccordionSection(
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            headerBackgroundColor: Color.fromARGB(255, 162, 70, 70),
+            headerBackgroundColor: const Color.fromARGB(255, 162, 70, 70),
             contentBorderColor: const Color.fromARGB(255, 197, 53, 53),
             isOpen: false,
             contentVerticalPadding: 10,
@@ -96,7 +96,7 @@ class _AccordionPageState extends State<AccordionIron> {
           AccordionSection(
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            headerBackgroundColor: Color.fromARGB(255, 213, 184, 52),
+            headerBackgroundColor: const Color.fromARGB(255, 213, 184, 52),
             contentBorderColor: const Color.fromARGB(255, 213, 184, 52),
             isOpen: false,
             contentVerticalPadding: 10,
@@ -114,7 +114,7 @@ class _AccordionPageState extends State<AccordionIron> {
           AccordionSection(
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            headerBackgroundColor: Color.fromARGB(255, 52, 165, 213),
+            headerBackgroundColor: const Color.fromARGB(255, 52, 165, 213),
             contentBorderColor: const Color.fromARGB(255, 52, 165, 213),
             isOpen: false,
             contentVerticalPadding: 10,
@@ -161,7 +161,7 @@ class _AccordionPageState extends State<AccordionIron> {
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 112, 61, 174),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            contentBorderColor: const Color.fromARGB(255, 112, 61, 174),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -178,8 +178,8 @@ class _AccordionPageState extends State<AccordionIron> {
           AccordionSection(
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            headerBackgroundColor: Color.fromARGB(255, 149, 152, 101),
-            contentBorderColor: const Color.fromARGB(255, 52, 165, 213),
+            headerBackgroundColor: const Color.fromARGB(255, 149, 152, 101),
+            contentBorderColor: const Color.fromARGB(255, 149, 152, 101),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -195,8 +195,8 @@ class _AccordionPageState extends State<AccordionIron> {
           AccordionSection(
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            headerBackgroundColor: Color.fromARGB(255, 139, 182, 99),
-            contentBorderColor: const Color.fromARGB(255, 52, 165, 213),
+            headerBackgroundColor: const Color.fromARGB(255, 139, 182, 99),
+            contentBorderColor: const Color.fromARGB(255, 139, 182, 99),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,

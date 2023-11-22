@@ -122,18 +122,53 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                 "i": 8,
               },
               {
+                "head": "Ar Consumption A Shift (ton)",
+                "data1": oxygenData["AR_A"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 9,
+              },
+              {
+                "head": "Ar Consumption B Shift (ton)",
+                "data1": oxygenData["AR_B"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 10,
+              },
+              {
+                "head": "Ar Consumption C Shift (ton)",
+                "data1": oxygenData["AR_C"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 11,
+              },
+              {
+                "head": "Ar Consumption Today (ton)",
+                "data1": oxygenData["AR_CUR"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 12,
+              },
+              {
+                "head": "Ar Consumption Prev Day (ton)",
+                "data1": oxygenData["AR_PRED"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 13,
+              },
+              {
                 "head": "MAC Status",
                 "data1": "MAC 1",
                 "data2": "MAC 2",
                 "selected": false,
-                "i": 9,
+                "i": 14,
               },
               {
                 "head": "BAC Status",
                 "data1": "BAC 1",
                 "data2": "BAC 2",
                 "selected": false,
-                "i": 10,
+                "i": 15,
               },
             ];
             state = [
@@ -153,7 +188,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
             SnackBar(
               duration: const Duration(seconds: 3),
               content: const Center(
-                child: Text('Login Failed, wrong userid or password'),
+                child: Text('Something wrong'),
               ),
               action: SnackBarAction(label: '', onPressed: () {}),
             ),
@@ -309,7 +344,16 @@ Widget _row(h, d1, d2, color, i, state) {
           ),
         ),
       ),
-      i == 4 || i == 5 || i == 6 || i == 7 || i == 8
+      i == 4 ||
+              i == 5 ||
+              i == 6 ||
+              i == 7 ||
+              i == 8 ||
+              i == 9 ||
+              i == 10 ||
+              i == 11 ||
+              i == 12 ||
+              i == 13
           ? Expanded(
               flex: 4,
               child: Container(
@@ -330,9 +374,9 @@ Widget _row(h, d1, d2, color, i, state) {
                       width: 2.0,
                     ),
                   ),
-                  color: state[0]["d1"] == 1 && i == 9
+                  color: state[0]["d1"] == 1 && i == 14
                       ? myColors["active"]
-                      : state[1]["d1"] == 1 && i == 10
+                      : state[1]["d1"] == 1 && i == 15
                           ? myColors["active"]
                           : const Color.fromARGB(0, 144, 141, 134),
                 ),
@@ -342,15 +386,24 @@ Widget _row(h, d1, d2, color, i, state) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 4 || i == 5 || i == 6 || i == 7 || i == 8
+      i == 4 ||
+              i == 5 ||
+              i == 6 ||
+              i == 7 ||
+              i == 8 ||
+              i == 9 ||
+              i == 10 ||
+              i == 11 ||
+              i == 12 ||
+              i == 13
           ? const Text("")
           : Expanded(
               flex: 2,
               child: Container(
                 decoration: BoxDecoration(
-                  color: state[0]["d2"] == 1 && i == 9
+                  color: state[0]["d2"] == 1 && i == 14
                       ? myColors["active"]
-                      : state[1]["d2"] == 1 && i == 10
+                      : state[1]["d2"] == 1 && i == 15
                           ? myColors["active"]
                           : const Color.fromARGB(0, 144, 141, 134),
                 ),

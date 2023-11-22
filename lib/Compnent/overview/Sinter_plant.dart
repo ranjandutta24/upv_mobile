@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class SinterPlant extends StatefulWidget {
   const SinterPlant({super.key});
@@ -217,9 +218,9 @@ class SinterPlantState extends State<SinterPlant> {
                               ),
                             ),
                             color: double.parse(rows[4]["data1"]) < 0.1
-                                ? const Color.fromARGB(255, 255, 7, 7)
+                                ? myColors["deactive"]
                                 : double.parse(rows[4]["data1"]) > 1
-                                    ? const Color.fromARGB(255, 98, 255, 7)
+                                    ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
@@ -237,9 +238,9 @@ class SinterPlantState extends State<SinterPlant> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: double.parse(rows[4]["data2"]) < 0.1
-                                ? const Color.fromARGB(255, 255, 7, 7)
+                                ? myColors["deactive"]
                                 : double.parse(rows[4]["data2"]) > 1
-                                    ? const Color.fromARGB(255, 98, 255, 7)
+                                    ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),
                           padding: const EdgeInsets.symmetric(

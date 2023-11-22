@@ -107,7 +107,7 @@ class GcpState extends State<Gcp> {
             SnackBar(
               duration: const Duration(seconds: 3),
               content: const Center(
-                child: Text('Login Failed, wrong userid or password'),
+                child: Text('Something wrong'),
               ),
               action: SnackBarAction(label: '', onPressed: () {}),
             ),

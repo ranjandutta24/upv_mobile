@@ -57,31 +57,43 @@ class CbmUtState extends State<CbmUt> {
             cbmData = json.decode(data.body);
             rows = [
               {
+                "head": "METER 1 VOLUME [SCM]",
+                "data1": cbmData["M1VOLUME"].toString(),
+                "selected": false,
+                "i": 0,
+              },
+              {
                 "head": "METER 1 FLOW [SCM/hr]",
                 "data1": cbmData["M1FLOW"].toString(),
                 "selected": false,
-                "i": 0,
+                "i": 1,
+              },
+              {
+                "head": "METER 2 VOLUME [SCM]",
+                "data1": cbmData["M2VOLUME"].toString(),
+                "selected": false,
+                "i": 2,
               },
               {
                 "head": "METER 2 FLOW [SCM/hr]",
                 "data1": cbmData["M2FLOW"].toStringAsFixed(2),
                 "data2": "",
                 "selected": false,
-                "i": 1,
+                "i": 3,
               },
               {
                 "head": "INLET PRESSURE [kg/cm2]",
                 "data1": cbmData["INLETPRESSURE"].toStringAsFixed(2),
                 "data2": "",
                 "selected": false,
-                "i": 2,
+                "i": 4,
               },
               {
                 "head": "OUTLET PRESSURE [kg/cm2]",
                 "data1": cbmData["OUTLETPRESSURE"].toStringAsFixed(2),
                 "data2": "",
                 "selected": false,
-                "i": 3,
+                "i": 5,
               },
             ];
             if (num != -1) {
@@ -97,7 +109,7 @@ class CbmUtState extends State<CbmUt> {
             SnackBar(
               duration: const Duration(seconds: 3),
               content: const Center(
-                child: Text('Login Failed, wrong userid or password'),
+                child: Text('Something wrong'),
               ),
               action: SnackBarAction(label: '', onPressed: () {}),
             ),

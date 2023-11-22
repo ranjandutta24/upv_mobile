@@ -24,9 +24,9 @@ class CocState extends State<Coc> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -39,20 +39,20 @@ class CocState extends State<Coc> {
   }
 
   fun() {
-    TechnoService();
+    cocService();
     var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      cocService();
     });
   }
 
   List<dynamic> rows = [];
 
-  TechnoService() async {
+  cocService() async {
     if (mounted) {
       await cokeovencomplexservice().then((data) {
         if (data != null) {
-          print(data.body);
+          // print(data.body);
           setState(() {
             cocData = json.decode(data.body);
             rows = [
@@ -111,7 +111,7 @@ class CocState extends State<Coc> {
             SnackBar(
               duration: const Duration(seconds: 3),
               content: const Center(
-                child: Text('Login Failed, wrong userid or password'),
+                child: Text('Something wrong'),
               ),
               action: SnackBarAction(label: '', onPressed: () {}),
             ),
@@ -124,7 +124,7 @@ class CocState extends State<Coc> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading || !mounted
           ? const Text(" ")
           : Column(
@@ -179,7 +179,7 @@ class CocState extends State<Coc> {
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(255, 152, 152, 152),
                                 ),
-                                textAlign: TextAlign.right),
+                                textAlign: TextAlign.center),
                           ),
                         ),
                         Expanded(
@@ -193,7 +193,7 @@ class CocState extends State<Coc> {
                                   fontWeight: FontWeight.bold,
                                   color: Color.fromARGB(255, 152, 152, 152),
                                 ),
-                                textAlign: TextAlign.right),
+                                textAlign: TextAlign.center),
                           ),
                         ),
                       ]),

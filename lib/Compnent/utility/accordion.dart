@@ -1,6 +1,7 @@
 import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
+import 'package:upv_mobile/Compnent/utility/BOF_gas_holder.dart';
 
 import 'package:upv_mobile/Compnent/utility/CBM.dart';
 import 'package:upv_mobile/Compnent/utility/Lime_dolo_calcination_plant.dart';
@@ -70,13 +71,13 @@ class _AccordionPageState extends State<AccordionUtility> {
             content: const PbsUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
-            contentBorderColor: const Color.fromARGB(255, 189, 171, 92),
+            headerBackgroundColor: const Color.fromARGB(255, 189, 142, 92),
+            contentBorderColor: const Color.fromARGB(255, 189, 142, 92),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
             leftIcon: Image.asset(
-              'assets/icon/power-plant.png',
+              'assets/icon/online.png',
               width: 40.0,
               height: 40.0,
             ),
@@ -84,7 +85,7 @@ class _AccordionPageState extends State<AccordionUtility> {
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             header: const Text('BOF Gas Holder',
                 style: AccordionUtility.headerStyle),
-            content: const PbsUt(),
+            content: const BofGasHoldUt(),
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),

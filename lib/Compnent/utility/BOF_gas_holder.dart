@@ -4,16 +4,16 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 
-class Cbm extends StatefulWidget {
-  const Cbm({super.key});
+class BofGasHoldUt extends StatefulWidget {
+  const BofGasHoldUt({super.key});
   @override
-  State<Cbm> createState() {
-    return CbmState();
+  State<BofGasHoldUt> createState() {
+    return BofGasHoldUtState();
   }
 }
 
-class CbmState extends State<Cbm> {
-  late dynamic cbmData;
+class BofGasHoldUtState extends State<BofGasHoldUt> {
+  late dynamic gasholdData;
   var loading = true;
   var num = -1;
   @override
@@ -22,9 +22,9 @@ class CbmState extends State<Cbm> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -38,47 +38,47 @@ class CbmState extends State<Cbm> {
 
   fun() {
     if (mounted) {
-      cbmService();
+      bofgasholderService();
       var duration = const Duration(seconds: 30);
       Timer.periodic(duration, (Timer timer) {
-        cbmService();
+        bofgasholderService();
       });
     }
   }
 
   List<dynamic> rows = [];
 
-  cbmService() async {
+  bofgasholderService() async {
     if (mounted) {
-      await cbm().then((data) {
+      await bofgasholder().then((data) {
         if (data != null) {
           // print(data.body);
           setState(() {
-            cbmData = json.decode(data.body);
+            gasholdData = json.decode(data.body);
             rows = [
               {
-                "head": "METER 1 FLOW [SCM/hr]",
-                "data1": cbmData["M1FLOW"].toString(),
+                "head": "Gas Holder Level [metre]",
+                "data1": gasholdData["GASHOLDERLVL"].toStringAsFixed(2),
                 "selected": false,
                 "i": 0,
               },
               {
-                "head": "METER 2 FLOW [SCM/hr]",
-                "data1": cbmData["M2FLOW"].toStringAsFixed(2),
+                "head": "Gas Holder Pressure [mmWC]",
+                "data1": gasholdData["GASHOLDERPRES"].toStringAsFixed(2),
                 "data2": "",
                 "selected": false,
                 "i": 1,
               },
               {
-                "head": "INLET PRESSURE [kg/cm2]",
-                "data1": cbmData["INLETPRESSURE"].toStringAsFixed(2),
+                "head": "Gas Holder Temperature [DegC]",
+                "data1": gasholdData["GASHOLDERTEMP"].toStringAsFixed(2),
                 "data2": "",
                 "selected": false,
                 "i": 2,
               },
               {
-                "head": "OUTLET PRESSURE [kg/cm2]",
-                "data1": cbmData["OUTLETPRESSURE"].toStringAsFixed(2),
+                "head": "Exported Gas [Nm3/hr]",
+                "data1": gasholdData["EXPORTEDGAS"].toStringAsFixed(2),
                 "data2": "",
                 "selected": false,
                 "i": 3,

@@ -24,9 +24,9 @@ class PbsUtState extends State<PbsUt> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -39,10 +39,10 @@ class PbsUtState extends State<PbsUt> {
   }
 
   fun() {
-    TechnoService();
+    pbsService();
     var duration = const Duration(seconds: 5);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      pbsService();
     });
   }
 
@@ -51,9 +51,9 @@ class PbsUtState extends State<PbsUt> {
   List<dynamic> rows3 = [];
   List<dynamic> rows4 = [];
 
-  TechnoService() async {
+  pbsService() async {
     if (mounted) {
-      print("call");
+      // print("call");
       await powerblowingstation().then((data) {
         if (mounted) {
           // print(data.body);
@@ -91,6 +91,22 @@ class PbsUtState extends State<PbsUt> {
                 "data3": pbsData["PBS_B3CBMF"].toString(),
                 "selected": false,
                 "i": 3,
+              },
+              {
+                "head": "Steam Pressure [Kg/cm2]",
+                "data1": pbsData["PBS_B1MSP"].toString(),
+                "data2": pbsData["PBS_B2MSP"].toString(),
+                "data3": pbsData["PBS_B3MSP"].toString(),
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Steam Temp.[Degc]",
+                "data1": pbsData["PBS_B1MST"].toString(),
+                "data2": pbsData["PBS_B2MST"].toString(),
+                "data3": pbsData["PBS_B3MST"].toString(),
+                "selected": false,
+                "i": 5,
               }
             ];
             rows2 = [
@@ -152,7 +168,7 @@ class PbsUtState extends State<PbsUt> {
             SnackBar(
               duration: const Duration(seconds: 3),
               content: const Center(
-                child: Text('Login Failed, wrong userid or password'),
+                child: Text('Something wrong'),
               ),
               action: SnackBarAction(label: '', onPressed: () {}),
             ),

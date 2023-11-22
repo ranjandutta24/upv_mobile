@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class SinterPlant extends StatefulWidget {
   const SinterPlant({super.key});
@@ -323,7 +324,7 @@ class SinterPlantState extends State<SinterPlant> {
             SnackBar(
               duration: const Duration(seconds: 3),
               content: const Center(
-                child: Text('Login Failed, wrong userid or password'),
+                child: Text('Something wrong'),
               ),
               action: SnackBarAction(label: '', onPressed: () {}),
             ),
@@ -366,7 +367,7 @@ class SinterPlantState extends State<SinterPlant> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
@@ -385,11 +386,11 @@ class SinterPlantState extends State<SinterPlant> {
                                 width: 2.0,
                               ),
                             ),
-                            // color: double.parse(rows[4]["data1"]) < 0.1
-                            //     ? const Color.fromARGB(255, 255, 7, 7)
-                            //     : double.parse(rows[4]["data1"]) > 1
-                            //         ? const Color.fromARGB(255, 98, 255, 7)
-                            //         : const Color.fromARGB(0, 98, 255, 7),
+                            color: double.parse(rows[0]["data1"]) < 0.1
+                                ? myColors["deactive"]
+                                : double.parse(rows[0]["data1"]) > 1
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 98, 255, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
@@ -405,12 +406,12 @@ class SinterPlantState extends State<SinterPlant> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              // color: double.parse(rows[4]["data2"]) < 0.1
-                              //     ? const Color.fromARGB(255, 255, 7, 7)
-                              //     : double.parse(rows[4]["data2"]) > 1
-                              //         ? const Color.fromARGB(255, 98, 255, 7)
-                              //         : const Color.fromARGB(0, 98, 255, 7),
-                              ),
+                            color: double.parse(rows[0]["data2"]) < 0.1
+                                ? myColors["deactive"]
+                                : double.parse(rows[0]["data2"]) > 1
+                                    ? myColors["active"]
+                                    : const Color.fromARGB(0, 98, 255, 7),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("SP2",
