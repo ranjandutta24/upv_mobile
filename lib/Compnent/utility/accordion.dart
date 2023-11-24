@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:upv_mobile/Compnent/utility/BOF_gas_holder.dart';
 
 import 'package:upv_mobile/Compnent/utility/CBM.dart';
+import 'package:upv_mobile/Compnent/utility/Compressed_air.dart';
 import 'package:upv_mobile/Compnent/utility/Gas_utility.dart';
 import 'package:upv_mobile/Compnent/utility/Lime_dolo_calcination_plant.dart';
 import 'package:upv_mobile/Compnent/utility/Oxygen_plant.dart';
@@ -55,8 +56,8 @@ class _AccordionPageState extends State<AccordionUtility> {
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
         children: [
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
-            contentBorderColor: const Color.fromARGB(255, 189, 171, 92),
+            headerBackgroundColor: Color.fromARGB(255, 89, 104, 110),
+            contentBorderColor: Color.fromARGB(164, 89, 104, 110),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -78,7 +79,7 @@ class _AccordionPageState extends State<AccordionUtility> {
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
             leftIcon: Image.asset(
-              'assets/icon/online.png',
+              'assets/icon/gas-bottle.png',
               width: 40.0,
               height: 40.0,
             ),
@@ -95,7 +96,7 @@ class _AccordionPageState extends State<AccordionUtility> {
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
             leftIcon: Image.asset(
-              'assets/icon/power-plant.png',
+              'assets/icon/online.png',
               width: 40.0,
               height: 40.0,
             ),
@@ -106,13 +107,13 @@ class _AccordionPageState extends State<AccordionUtility> {
             content: const GasUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
-            contentBorderColor: const Color.fromARGB(255, 189, 171, 92),
+            headerBackgroundColor: Color.fromARGB(255, 92, 186, 189),
+            contentBorderColor: const Color.fromARGB(255, 92, 186, 189),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
             leftIcon: Image.asset(
-              'assets/icon/power-plant.png',
+              'assets/icon/home.png',
               width: 40.0,
               height: 40.0,
             ),
@@ -120,7 +121,7 @@ class _AccordionPageState extends State<AccordionUtility> {
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             header: const Text('Compressed Air Station',
                 style: AccordionUtility.headerStyle),
-            content: const PbsUt(),
+            content: const CasUt(),
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 204, 212, 52),
@@ -128,7 +129,7 @@ class _AccordionPageState extends State<AccordionUtility> {
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
-              'assets/icon/oxygen-tank.png',
+              'assets/icon/tank.png',
               width: 40.0,
               height: 40.0,
             ),
@@ -144,7 +145,7 @@ class _AccordionPageState extends State<AccordionUtility> {
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
-              'assets/icon/capacity.png',
+              'assets/icon/LDCP.png',
               width: 40.0,
               height: 40.0,
             ),

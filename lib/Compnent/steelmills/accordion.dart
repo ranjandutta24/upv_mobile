@@ -78,7 +78,7 @@ class _AccordionPageState extends State<AccordionSteel> {
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
             leftIcon: Image.asset(
-              'assets/icon/metallurgical-plant.png',
+              'assets/icon/missile.png',
               width: 40.0,
               height: 40.0,
             ),
@@ -95,7 +95,7 @@ class _AccordionPageState extends State<AccordionSteel> {
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
             leftIcon: Image.asset(
-              'assets/icon/metallurgical-plant.png',
+              'assets/icon/weigh-scale.png',
               width: 40.0,
               height: 40.0,
             ),
