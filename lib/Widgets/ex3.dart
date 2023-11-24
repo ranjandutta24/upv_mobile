@@ -10,7 +10,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Table Row Color Change Example'),
+          title: const Text('Table Row Color Change Example'),
         ),
         body: DataTableExample(),
       ),
@@ -35,8 +35,8 @@ class _DataTableExampleState extends State<DataTableExample> {
     {"h": "44", "d": "22", "selected": false, "i": 1},
     {"h": "55", "d": "33", "selected": false, "i": 2},
   ];
-  Color _containerColor = Colors.blue; // Initial background color
-  Color _containerColora =
+  final Color _containerColor = Colors.blue; // Initial background color
+  final Color _containerColora =
       const Color.fromARGB(255, 255, 255, 255); // Initial background color
 
   _changeColor(no) {

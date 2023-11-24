@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -8,6 +10,7 @@ import 'package:upv_mobile/Utils/colors.dart';
 class Lhfsm extends StatefulWidget {
   const Lhfsm({super.key});
 
+  @override
   State<Lhfsm> createState() {
     return LhfsmState();
   }
@@ -24,9 +27,9 @@ class LhfsmState extends State<Lhfsm> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -40,10 +43,10 @@ class LhfsmState extends State<Lhfsm> {
 
   fun() {
     if (mounted) {
-      TechnoService();
+      lfService();
       var duration = const Duration(seconds: 30);
       Timer.periodic(duration, (Timer timer) {
-        TechnoService();
+        lfService();
       });
     }
   }
@@ -51,7 +54,7 @@ class LhfsmState extends State<Lhfsm> {
   List<dynamic> rows = [];
   List<dynamic> state = [];
 
-  TechnoService() async {
+  lfService() async {
     if (mounted) {
       await ladleheatingfurnace().then((data) {
         if (data != null) {

@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -23,9 +25,9 @@ class CcpsmState extends State<Ccpsm> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -387,7 +389,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           ? Expanded(
               flex: 3,
               child: Container(
-                decoration: BoxDecoration(),
+                decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
                     style: TextStyle(color: color),
@@ -437,7 +439,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
               ),
             ),
       i == 10
-          ? Text("")
+          ? const Text("")
           : Expanded(
               flex: 1,
               child: Container(
@@ -481,7 +483,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
               ),
             ),
       i == 10
-          ? Text("")
+          ? const Text("")
           : Expanded(
               flex: 1,
               child: Container(

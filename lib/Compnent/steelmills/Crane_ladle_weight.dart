@@ -1,3 +1,5 @@
+// ignore_for_file: file_names, camel_case_types
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -8,6 +10,7 @@ import 'package:upv_mobile/Utils/colors.dart';
 class clwsm extends StatefulWidget {
   const clwsm({super.key});
 
+  @override
   State<clwsm> createState() {
     return clwsmState();
   }
@@ -138,7 +141,7 @@ class clwsmState extends State<clwsm> {
                       Expanded(
                         flex: 8,
                         child: Container(
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: Text("Value",

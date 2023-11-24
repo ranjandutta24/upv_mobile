@@ -26,7 +26,7 @@ class _LoginPageState extends State<LoginPage> {
     );
     if (response.statusCode == 200) {
       jsonMap = json.decode(response.body);
-      print(jsonMap);
+      // print(jsonMap);
       // ignore: use_build_context_synchronously
       Navigator.of(context).push(
         MaterialPageRoute(

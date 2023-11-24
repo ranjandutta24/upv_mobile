@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -8,6 +10,7 @@ import 'package:upv_mobile/Utils/colors.dart';
 class PbsUt extends StatefulWidget {
   const PbsUt({super.key});
 
+  @override
   State<PbsUt> createState() {
     return PbsUtState();
   }
@@ -781,14 +784,5 @@ Widget _row(h, d1, d2, d3, color, i) {
         ),
       ),
     ],
-  );
-}
-
-Widget _line() {
-  return const Padding(
-    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-    child: Column(
-      children: [],
-    ),
   );
 }

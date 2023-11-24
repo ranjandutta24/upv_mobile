@@ -56,8 +56,8 @@ class _AccordionPageState extends State<AccordionUtility> {
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
         children: [
           AccordionSection(
-            headerBackgroundColor: Color.fromARGB(255, 89, 104, 110),
-            contentBorderColor: Color.fromARGB(164, 89, 104, 110),
+            headerBackgroundColor: const Color.fromARGB(255, 89, 104, 110),
+            contentBorderColor: const Color.fromARGB(164, 89, 104, 110),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -107,7 +107,7 @@ class _AccordionPageState extends State<AccordionUtility> {
             content: const GasUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: Color.fromARGB(255, 92, 186, 189),
+            headerBackgroundColor: const Color.fromARGB(255, 92, 186, 189),
             contentBorderColor: const Color.fromARGB(255, 92, 186, 189),
             isOpen: false,
             contentVerticalPadding: 10,

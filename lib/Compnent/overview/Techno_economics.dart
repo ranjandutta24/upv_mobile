@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -22,9 +24,9 @@ class TechnoEcoState extends State<TechnoEco> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -38,17 +40,17 @@ class TechnoEcoState extends State<TechnoEco> {
 
   fun() {
     if (mounted) {
-      TechnoService();
+      technoeconomicsService();
       var duration = const Duration(seconds: 30);
       Timer.periodic(duration, (Timer timer) {
-        TechnoService();
+        technoeconomicsService();
       });
     }
   }
 
   List<dynamic> rows = [];
 
-  TechnoService() async {
+  technoeconomicsService() async {
     if (mounted) {
       await technoeconomics().then((data) {
         if (data != null) {
