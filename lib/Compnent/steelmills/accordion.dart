@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:upv_mobile/Compnent/steelmills/Basic_oxygen_furnace.dart';
 import 'package:upv_mobile/Compnent/steelmills/Continuous_casting_plant.dart';
+import 'package:upv_mobile/Compnent/steelmills/Crane_ladle_weight.dart';
 import 'package:upv_mobile/Compnent/steelmills/Ladle_heating_furnace.dart';
 import 'package:upv_mobile/Compnent/steelmills/Mills.dart';
 
@@ -89,8 +90,8 @@ class _AccordionPageState extends State<AccordionSteel> {
           AccordionSection(
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            headerBackgroundColor: const Color.fromARGB(255, 53, 197, 180),
-            contentBorderColor: const Color.fromARGB(255, 53, 197, 180),
+            headerBackgroundColor: const Color.fromARGB(255, 115, 141, 92),
+            contentBorderColor: const Color.fromARGB(255, 115, 141, 92),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -101,7 +102,7 @@ class _AccordionPageState extends State<AccordionSteel> {
             ),
             header: const Text("CRANE LADLE WEIGHT",
                 style: AccordionSteel.headerStyle),
-            content: const BOFsm(),
+            content: const clwsm(),
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 197, 163, 53),

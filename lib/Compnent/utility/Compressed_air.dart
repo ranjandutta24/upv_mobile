@@ -47,6 +47,7 @@ class CasUtState extends State<CasUt> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> rows2 = [];
 
   compressedairstationService() async {
     if (mounted) {
@@ -99,6 +100,39 @@ class CasUtState extends State<CasUt> {
                 "data5": carData["MOTOR_CURR_COMP5"].toStringAsFixed(0),
                 "selected": false,
                 "i": 5,
+              },
+            ];
+            rows2 = [
+              {
+                "head": "Blast Furnace",
+                "data1": carData["INST_AIR_F"].toStringAsFixed(2),
+                "data2": carData["INST_AIR_P"].toStringAsFixed(2),
+                "data3": carData["PLANT_AIR_F"].toStringAsFixed(2),
+                "data4": carData["PLANT_AIR_P"].toStringAsFixed(2),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "LDCP",
+                "data1": carData["INST_F"].toStringAsFixed(2),
+                "data2": carData["INST_P"].toStringAsFixed(2),
+                "data3": "NA",
+                "data4": "NA",
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "BOF",
+                "data1": "0",
+                "data2": "0",
+                "data3": carData["COMP_AIR_FLOW"] == null
+                    ? "NA"
+                    : carData["COMP_AIR_FLOW"].toStringAsFixed(0),
+                "data4": carData["COMP_AIR_PRESSURE"] == null
+                    ? "NA"
+                    : carData["COMP_AIR_PRESSURE"].toStringAsFixed(0),
+                "selected": false,
+                "i": 1,
               },
             ];
 
@@ -162,6 +196,34 @@ class CasUtState extends State<CasUt> {
                           r["i"]),
                     ),
                   ),
+                for (final Map r in rows2)
+                  GestureDetector(
+                    onTap: () {
+                      // _changeColor(r["i"]);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        // color: r["selected"] == true
+                        //     ? _containerColor
+                        //     : _containerColora,
+                        border: Border.all(
+                          color: const Color.fromARGB(
+                              113, 44, 129, 227), // Border color
+                          width: 1.0, // Border width
+                        ),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 3),
+                      child: _row2(
+                          r["head"],
+                          r["data1"],
+                          r["data2"],
+                          r["data3"],
+                          r["data4"],
+                          r["selected"] == true ? _containerColora : _textColor,
+                          r["i"]),
+                    ),
+                  ),
               ],
             ),
     );
@@ -198,7 +260,7 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
               child: Text(
                 (i == 0 || i == 1 || i == 2 || i == 3)
                     ? "Compressor"
-                    : "Compressor 1",
+                    : "Compressor1",
                 style: TextStyle(color: color),
               ),
             ),
@@ -223,7 +285,7 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
-                      "Compressor 2",
+                      "Compressor2",
                       style: TextStyle(color: color),
                     ),
                   ),
@@ -258,7 +320,7 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
-                      "Compressor 3",
+                      "Compressor3",
                       style: TextStyle(color: color),
                     ),
                   ),
@@ -282,7 +344,7 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
-                      "Compressor 4",
+                      "Compressor4",
                       style: TextStyle(color: color),
                     ),
                   ),
@@ -313,7 +375,7 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                     padding:
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
-                      "Compressor 5",
+                      "Compressor5",
                       style: TextStyle(color: color),
                     ),
                   ),
@@ -332,6 +394,139 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                 ),
               ],
             ),
+    ],
+  );
+}
+
+Widget _row2(h, d1, d2, d3, d4, color, i) {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            // flex: 4,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                h,
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              ),
+            ),
+          )
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                "Instrument Grade Flow (Nm3/hr)",
+                style: TextStyle(color: color),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                d1,
+                style: TextStyle(color: color),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                "Instrument Grade Pressure (kg/cm2)",
+                style: TextStyle(color: color),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                d2,
+                style: TextStyle(color: color),
+              ),
+            ),
+          )
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                "Plant Grade Flow (Nm3/hr)",
+                style: TextStyle(color: color),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                d3,
+                style: TextStyle(color: color),
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                "Plant Grade Pressure (kg/cm2)",
+                style: TextStyle(color: color),
+              ),
+            ),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Text(
+                d4,
+                style: TextStyle(color: color),
+              ),
+            ),
+          )
+        ],
+      ),
     ],
   );
 }

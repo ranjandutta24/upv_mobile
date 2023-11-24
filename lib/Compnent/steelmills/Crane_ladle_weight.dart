@@ -5,16 +5,16 @@ import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 import 'package:upv_mobile/Utils/colors.dart';
 
-class Lhfsm extends StatefulWidget {
-  const Lhfsm({super.key});
+class clwsm extends StatefulWidget {
+  const clwsm({super.key});
 
-  State<Lhfsm> createState() {
-    return LhfsmState();
+  State<clwsm> createState() {
+    return clwsmState();
   }
 }
 
-class LhfsmState extends State<Lhfsm> {
-  late dynamic lhfData;
+class clwsmState extends State<clwsm> {
+  late dynamic cldData;
   var loading = true;
   var num = -1;
 
@@ -24,9 +24,9 @@ class LhfsmState extends State<Lhfsm> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -40,10 +40,10 @@ class LhfsmState extends State<Lhfsm> {
 
   fun() {
     if (mounted) {
-      TechnoService();
+      craneladleweightService();
       var duration = const Duration(seconds: 30);
       Timer.periodic(duration, (Timer timer) {
-        TechnoService();
+        craneladleweightService();
       });
     }
   }
@@ -51,35 +51,29 @@ class LhfsmState extends State<Lhfsm> {
   List<dynamic> rows = [];
   List<dynamic> state = [];
 
-  TechnoService() async {
+  craneladleweightService() async {
     if (mounted) {
-      await ladleheatingfurnace().then((data) {
+      await craneladleweight().then((data) {
         if (data != null) {
           // print(data.body);
           setState(() {
-            lhfData = json.decode(data.body);
+            cldData = json.decode(data.body);
             rows = [
               {
-                "head": "Temp [DegC]",
-                "data1":
-                    "${lhfData["LF1_TEMP1"].toString()}/${lhfData["LF1_TEMP2"].toString()}/${lhfData["LF1_TEMP3"].toString()}",
-                "data2":
-                    "${lhfData["LF2_TEMP1"].toString()}/${lhfData["LF2_TEMP2"].toString()}/${lhfData["LF2_TEMP3"].toString()}",
+                "head": "Weight Crane 1223 [Ton]",
+                "data1": cldData["CRANE3"].toString(),
                 "selected": false,
                 "i": 0,
               },
               {
-                "head": "Current [Amp]",
-                "data1":
-                    "${lhfData["LF1_I1"].toStringAsFixed(1)}/${lhfData["LF1_I2"].toStringAsFixed(1)}/${lhfData["LF1_I3"].toStringAsFixed(1)}",
-                "data2":
-                    "${lhfData["LF2_I1"].toStringAsFixed(1)}/${lhfData["LF2_I2"].toStringAsFixed(1)}/${lhfData["LF2_I3"].toStringAsFixed(1)}",
+                "head": "Weight Crane 1224 [Ton]",
+                "data1": cldData["CRANE4"].toString(),
                 "selected": false,
                 "i": 1,
               },
             ];
             state = [
-              {"data1": lhfData["LF1_I1"], "data2": lhfData["LF2_I1"]}
+              {"data1": cldData["LF1_I1"], "data2": cldData["LF2_I1"]}
             ];
             if (num != -1) {
               rows[num]["selected"] = true;
@@ -134,7 +128,7 @@ class LhfsmState extends State<Lhfsm> {
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
+                                vertical: 5, horizontal: 3),
                             child: const Text('Parameters',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -144,42 +138,10 @@ class LhfsmState extends State<Lhfsm> {
                       Expanded(
                         flex: 8,
                         child: Container(
-                          decoration: BoxDecoration(
-                            border: const Border(
-                              right: BorderSide(
-                                color: Color.fromARGB(113, 56, 104, 156),
-                                width: 2.0,
-                              ),
-                            ),
-                            color: state[0]["data1"] <= 0.1
-                                ? myColors["deactive"]
-                                : state[0]["data1"] >= 1.0
-                                    ? myColors["active"]
-                                    : const Color.fromARGB(0, 255, 193, 7),
-                          ),
+                          decoration: BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: Text("LF1",
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: myColors["header"],
-                              ),
-                              textAlign: TextAlign.center),
-                        ),
-                      ),
-                      Expanded(
-                        flex: 8,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: state[0]["data2"] <= 0.1
-                                ? myColors["deactive"]
-                                : state[0]["data2"] >= 1.0
-                                    ? myColors["active"]
-                                    : const Color.fromARGB(0, 255, 193, 7),
-                          ),
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: Text("LF2",
+                          child: Text("Value",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
@@ -211,7 +173,6 @@ class LhfsmState extends State<Lhfsm> {
                       child: _row(
                           r["head"],
                           r["data1"],
-                          r["data2"],
                           r["selected"] == true ? _containerColora : _textColor,
                           r["i"]),
                     ),
@@ -222,7 +183,7 @@ class LhfsmState extends State<Lhfsm> {
   }
 }
 
-Widget _row(h, d1, d2, color, i) {
+Widget _row(h, d1, color, i) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -237,7 +198,7 @@ Widget _row(h, d1, d2, color, i) {
               ),
             ),
           ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
           child: Text(
             h,
             style: TextStyle(color: color),
@@ -247,25 +208,9 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 8,
         child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
-              ),
-            ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 8,
-        child: Container(
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d2,
+          child: Text(d1,
               style: TextStyle(color: color), textAlign: TextAlign.center),
         ),
       ),

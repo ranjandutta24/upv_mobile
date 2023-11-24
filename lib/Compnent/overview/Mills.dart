@@ -250,10 +250,10 @@ class MillsState extends State<Mills> {
                                   : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("WRM",
+                          child: Text("WRM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -273,10 +273,10 @@ class MillsState extends State<Mills> {
                                   : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("BRM",
+                          child: Text("BRM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -290,10 +290,10 @@ class MillsState extends State<Mills> {
                                   : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("USM",
+                          child: Text("USM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: myColors["header"],
                               ),
                               textAlign: TextAlign.center),
                         ),
