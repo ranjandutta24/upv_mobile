@@ -16,9 +16,8 @@ class _LoginState extends State<Login> {
   bool _obscureText = true;
   late Map<String, dynamic> jsonMap;
   final _formKey = GlobalKey<FormState>();
-  TextEditingController usernameController = TextEditingController(text: "isp");
-  TextEditingController passwordController =
-      TextEditingController(text: "sail");
+  TextEditingController usernameController = TextEditingController(text: "");
+  TextEditingController passwordController = TextEditingController(text: "");
 
   loginUser() async {
     final username = usernameController.text;
