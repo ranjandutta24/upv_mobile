@@ -24,9 +24,9 @@ class BfshState extends State<Bfsh> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -39,20 +39,20 @@ class BfshState extends State<Bfsh> {
   }
 
   fun() {
-    TechnoService();
+    bfstockhouseService();
     var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      bfstockhouseService();
     });
   }
 
   List<dynamic> rows = [];
 
-  TechnoService() async {
+  bfstockhouseService() async {
     if (mounted) {
       await bfstockhouse().then((data) {
         if (data != null) {
-          print(data.body);
+          // print(data.body);
           setState(() {
             bfshData = json.decode(data.body);
             rows = [
@@ -208,14 +208,15 @@ class BfshState extends State<Bfsh> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading || !mounted
           ? const Text(" ")
           : Column(children: [
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color.fromARGB(113, 44, 129, 227), // Border color
+                    color:
+                        const Color.fromARGB(113, 44, 129, 227), // Border color
                     width: 2.0, // Border width
                   ),
                 ),
@@ -274,8 +275,8 @@ class BfshState extends State<Bfsh> {
                           ? _containerColor
                           : _containerColora,
                       border: Border.all(
-                        color:
-                            Color.fromARGB(113, 44, 129, 227), // Border color
+                        color: const Color.fromARGB(
+                            113, 44, 129, 227), // Border color
                         width: 1.0, // Border width
                       ),
                     ),

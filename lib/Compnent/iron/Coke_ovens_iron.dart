@@ -25,9 +25,9 @@ class CoiState extends State<Coi> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -129,7 +129,7 @@ class CoiState extends State<Coi> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text("")
           : Column(

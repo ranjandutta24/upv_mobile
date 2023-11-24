@@ -24,9 +24,9 @@ class CdcpState extends State<Cdcp> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -39,16 +39,16 @@ class CdcpState extends State<Cdcp> {
   }
 
   fun() {
-    TechnoService();
+    cdcpserviceWrap();
     var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      cdcpserviceWrap();
     });
   }
 
   List<dynamic> rows = [];
 
-  TechnoService() async {
+  cdcpserviceWrap() async {
     if (mounted) {
       await cdcpservice().then((data) {
         if (data != null) {
@@ -137,7 +137,7 @@ class CdcpState extends State<Cdcp> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading || !mounted
           ? const Text(" ")
           : Column(children: [
@@ -270,8 +270,8 @@ class CdcpState extends State<Cdcp> {
                           ? _containerColor
                           : _containerColora,
                       border: Border.all(
-                        color:
-                            Color.fromARGB(113, 44, 129, 227), // Border color
+                        color: const Color.fromARGB(
+                            113, 44, 129, 227), // Border color
                         width: 1.0, // Border width
                       ),
                     ),

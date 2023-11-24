@@ -25,9 +25,9 @@ class BppiState extends State<Bppi> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -40,17 +40,17 @@ class BppiState extends State<Bppi> {
   }
 
   fun() {
-    TechnoService();
+    byproductplantService();
     var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      byproductplantService();
     });
   }
 
   List<dynamic> rows = [];
   List<dynamic> state = [];
 
-  TechnoService() async {
+  byproductplantService() async {
     if (mounted) {
       await byproductplant().then((data) {
         if (data != null) {

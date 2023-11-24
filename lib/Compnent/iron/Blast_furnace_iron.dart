@@ -25,9 +25,9 @@ class BfiState extends State<Bfi> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -239,7 +239,8 @@ class BfiState extends State<Bfi> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color.fromARGB(113, 44, 129, 227), // Border color
+                      color: const Color.fromARGB(
+                          113, 44, 129, 227), // Border color
                       width: 2.0, // Border width
                     ),
                   ),
@@ -299,8 +300,8 @@ class BfiState extends State<Bfi> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color:
-                              Color.fromARGB(113, 44, 129, 227), // Border color
+                          color: const Color.fromARGB(
+                              113, 44, 129, 227), // Border color
                           width: 1.0, // Border width
                         ),
                       ),
