@@ -5,7 +5,7 @@ import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class IronScreen extends StatefulWidget {
   const IronScreen({super.key, required this.data});
-  final data;
+  final dynamic data;
   @override
   State<IronScreen> createState() {
     return _IronsScreenState();

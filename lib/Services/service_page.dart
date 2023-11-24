@@ -42,7 +42,7 @@ blastfurnace() async {
   }
 }
 
-Basicoxygenfurnace() async {
+basicoxygenfurnace() async {
   try {
     return await http.get(
       Uri.parse('$baseUrl/steelmills/basicoxygenfurnace'),

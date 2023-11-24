@@ -6,7 +6,7 @@ import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class OverviewScreen extends StatefulWidget {
   const OverviewScreen({super.key, required this.data});
-  final data;
+  final dynamic data;
   @override
   State<OverviewScreen> createState() {
     return _OverviewsScreenState();

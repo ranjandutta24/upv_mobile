@@ -5,6 +5,8 @@ import 'package:upv_mobile/Screens/overview_page.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }

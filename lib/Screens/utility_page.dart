@@ -6,7 +6,7 @@ import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class Utilitycreen extends StatefulWidget {
   const Utilitycreen({super.key, required this.data});
-  final data;
+  final dynamic data;
   @override
   State<Utilitycreen> createState() {
     return _UtilityScreenState();

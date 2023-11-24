@@ -1,3 +1,5 @@
+// ignore_for_file: library_private_types_in_public_api
+
 import 'package:flutter/material.dart';
 
 class CollapsibleWidget extends StatefulWidget {
@@ -6,7 +8,7 @@ class CollapsibleWidget extends StatefulWidget {
     required this.data,
   }) : super(key: key);
 
-  final data;
+  final dynamic data;
   @override
   _CollapsibleWidgetState createState() => _CollapsibleWidgetState();
 }
@@ -29,7 +31,7 @@ class _CollapsibleWidgetState extends State<CollapsibleWidget> {
           onTap: _toggleCollapse,
         ),
         if (_isExpanded)
-          Padding(
+          const Padding(
             padding: EdgeInsets.all(16.0),
             child: Text('Collapsible content goes here.'),
           ),

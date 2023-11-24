@@ -6,7 +6,7 @@ import 'package:upv_mobile/Widgets/main_drawer.dart';
 
 class SteelMillsScreen extends StatefulWidget {
   const SteelMillsScreen({super.key, required this.data});
-  final data;
+  final dynamic data;
   @override
   State<SteelMillsScreen> createState() {
     return _SteelMillssScreenState();
@@ -38,7 +38,7 @@ class _SteelMillssScreenState extends State<SteelMillsScreen> {
 }
 
 Widget _accordion() {
-  return AccordionSteel();
+  return const AccordionSteel();
 }
 // Widget _aco() {
 //   return AccordionApp();
