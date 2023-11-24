@@ -70,6 +70,41 @@ class BOFsmState extends State<BOFsm> {
                 "i": 0,
               },
               {
+                "head": "Total Heat",
+                // "data1": (bofData["BOF1_A"] +
+                //         bofData["BOF1_B"] +
+                //         bofData["BOF1_C"] +
+                //         bofData["BOF2_A"] +
+                //         bofData["BOF2_B"] +
+                //         bofData["BOF2_C"] +
+                //         bofData["BOF3_A"] +
+                //         bofData["BOF3_B"] +
+                //         bofData["BOF3_C"])
+                //     .toString(),
+                "data1": bofData["TOTAL_HEAT"].toStringAsFixed(0),
+                "data2": " ",
+                "data3": " ",
+                "selected": false,
+                "i": 11,
+              },
+              {
+                "head": "Prev. Day Heat",
+                "data1":
+                    "${(bofData["BOF1_PDAY"] + bofData["BOF2_PDAY"] + bofData["BOF3_PDAY"]).toString()} (${bofData["BOF1_PDAY"].toString()} + ${bofData["BOF2_PDAY"].toString()} + ${bofData["BOF3_PDAY"].toString()})",
+                "data2": bofData["BOF2_PDAY"].toString(),
+                "data3": bofData["BOF3_PDAY"].toString(),
+                "selected": false,
+                "i": 12,
+              },
+              {
+                "head": "Heat No",
+                "data1": bofData["BOF1_HEAT"].toString(),
+                "data2": bofData["BOF2_HEAT"].toString(),
+                "data3": bofData["BOF3_HEAT"].toString(),
+                "selected": false,
+                "i": 7,
+              },
+              {
                 "head": "Status",
                 "data1": "${bofData["BOF1_STATUS"]}",
                 "data2": "${bofData["BOF2_STATUS"]}",
@@ -78,7 +113,15 @@ class BOFsmState extends State<BOFsm> {
                 "i": 1,
               },
               {
-                "head": "Last Blow Duration(Mins)",
+                "head": "Last Blow Start Time",
+                "data1": bofData["BOF1_HEATSTART"],
+                "data2": bofData["BOF2_HEATSTART"],
+                "data3": bofData["BOF3_HEATSTART"],
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": " Blow Duration(Mins)",
                 "data1": bofData["BOF1_LASTHEATDURATION"] == null
                     ? "N/A"
                     : bofData["BOF1_LASTHEATDURATION"].toString(),
@@ -90,14 +133,6 @@ class BOFsmState extends State<BOFsm> {
                     : bofData["BOF3_LASTHEATDURATION"].toString(),
                 "selected": false,
                 "i": 2,
-              },
-              {
-                "head": "Last Blow Start Time",
-                "data1": bofData["BOF1_HEATSTART"],
-                "data2": bofData["BOF2_HEATSTART"],
-                "data3": bofData["BOF3_HEATSTART"],
-                "selected": false,
-                "i": 3,
               },
               {
                 "head": "Charge To Tap Duration (Mins)",
@@ -136,6 +171,14 @@ class BOFsmState extends State<BOFsm> {
                 "i": 6,
               },
               {
+                "head": "Last Blow Start Time",
+                "data1": bofData["BOF1_HEATSTART"],
+                "data2": bofData["BOF2_HEATSTART"],
+                "data3": bofData["BOF3_HEATSTART"],
+                "selected": false,
+                "i": 3,
+              },
+              {
                 "head": "Temp [DegC]",
                 "data1": bofData["TEMP_1"].toString(),
                 "data2": bofData["TEMP_2"].toString(),
@@ -166,23 +209,6 @@ class BOFsmState extends State<BOFsm> {
                 "data3": bofData["LINING_3"].toString(),
                 "selected": false,
                 "i": 10,
-              },
-              {
-                "head": "Total Heat",
-                "data1": (bofData["BOF1_A"] +
-                        bofData["BOF1_B"] +
-                        bofData["BOF1_C"] +
-                        bofData["BOF2_A"] +
-                        bofData["BOF2_B"] +
-                        bofData["BOF2_C"] +
-                        bofData["BOF3_A"] +
-                        bofData["BOF3_B"] +
-                        bofData["BOF3_C"])
-                    .toString(),
-                "data2": bofData["BOF2_PDAY"].toString(),
-                "data3": bofData["BOF3_PDAY"].toString(),
-                "selected": false,
-                "i": 11,
               },
               {
                 "head": "Prev. Day Heat",
