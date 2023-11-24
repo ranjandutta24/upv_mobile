@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -42,14 +44,14 @@ class GcpState extends State<Gcp> {
   List<dynamic> rows = [];
 
   fun() {
-    TechnoService();
+    gcpserviceWraper();
     var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      gcpserviceWraper();
     });
   }
 
-  TechnoService() async {
+  gcpserviceWraper() async {
     if (mounted) {
       await gcpservice().then((data) {
         if (data != null) {

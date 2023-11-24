@@ -30,15 +30,15 @@ class OverviewState extends State<Overview> {
     super.initState();
   }
 
-  _changeColor(no) {
-    setState(() {
-      for (int i = 0; i < rows.length; i++) {
-        rows[i]["selected"] = false;
-      }
-      rows[no]["selected"] = true;
-      num = no;
-    });
-  }
+  // _changeColor(no) {
+  //   setState(() {
+  //     for (int i = 0; i < rows.length; i++) {
+  //       rows[i]["selected"] = false;
+  //     }
+  //     rows[no]["selected"] = true;
+  //     num = no;
+  //   });
+  // }
 
   List<dynamic> rows = [];
 
@@ -96,13 +96,13 @@ class OverviewState extends State<Overview> {
           height: 14,
         ),
         _heaad("BY PRODUCT PLANT"),
-        Bpplant(),
+        const Bpplant(),
         const SizedBox(
           height: 14,
         ),
 
         _heaad("LIME & DOLO CALCINATION PLANT"),
-        Ldcp(),
+        const Ldcp(),
         const SizedBox(
           height: 14,
         ),

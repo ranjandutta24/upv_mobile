@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -42,14 +44,14 @@ class StovesState extends State<Stoves> {
   List<dynamic> rows = [];
 
   fun() {
-    TechnoService();
+    stoveserviceWraper();
     var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
-      TechnoService();
+      stoveserviceWraper();
     });
   }
 
-  TechnoService() async {
+  stoveserviceWraper() async {
     if (mounted) {
       await stoveservice().then((data) {
         if (data != null) {
@@ -131,14 +133,15 @@ class StovesState extends State<Stoves> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading || !mounted
           ? const Text(" ")
           : Column(children: [
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: Color.fromARGB(113, 44, 129, 227), // Border color
+                    color:
+                        const Color.fromARGB(113, 44, 129, 227), // Border color
                     width: 2.0, // Border width
                   ),
                 ),

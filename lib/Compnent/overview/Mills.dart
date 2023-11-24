@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -23,9 +25,9 @@ class MillsState extends State<Mills> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -239,7 +241,7 @@ class MillsState extends State<Mills> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: Border(
+                              border: const Border(
                                 right: BorderSide(
                                   color: Color.fromARGB(113, 44, 129, 227),
                                   width: 2.0,
@@ -262,7 +264,7 @@ class MillsState extends State<Mills> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: Border(
+                              border: const Border(
                                 right: BorderSide(
                                   color: Color.fromARGB(113, 44, 129, 227),
                                   width: 2.0,

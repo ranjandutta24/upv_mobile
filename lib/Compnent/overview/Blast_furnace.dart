@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -24,9 +26,9 @@ class ColState extends State<Col> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -242,7 +244,8 @@ class ColState extends State<Col> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: Color.fromARGB(113, 44, 129, 227), // Border color
+                      color: const Color.fromARGB(
+                          113, 44, 129, 227), // Border color
                       width: 2.0, // Border width
                     ),
                   ),
@@ -312,8 +315,8 @@ class ColState extends State<Col> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color:
-                              Color.fromARGB(113, 44, 129, 227), // Border color
+                          color: const Color.fromARGB(
+                              113, 44, 129, 227), // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -364,8 +367,8 @@ Widget _row(h, d, color, i) {
                     color: double.parse(d) >= 1.6 && double.parse(d) <= 1.65
                         ? Colors.amber
                         : double.parse(d) > 1.65
-                            ? Color.fromARGB(255, 255, 64, 64)
-                            : Color.fromARGB(0, 252, 252, 252)),
+                            ? const Color.fromARGB(255, 255, 64, 64)
+                            : const Color.fromARGB(0, 252, 252, 252)),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 0, vertical: 5),

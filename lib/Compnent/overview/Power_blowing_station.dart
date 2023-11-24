@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -8,6 +10,7 @@ import 'package:upv_mobile/Utils/colors.dart';
 class Pbs extends StatefulWidget {
   const Pbs({super.key});
 
+  @override
   State<Pbs> createState() {
     return PbsState();
   }
@@ -24,9 +27,9 @@ class PbsState extends State<Pbs> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -40,10 +43,10 @@ class PbsState extends State<Pbs> {
 
   fun() {
     if (mounted) {
-      TechnoService();
+      pbService();
       var duration = const Duration(seconds: 30);
       Timer.periodic(duration, (Timer timer) {
-        TechnoService();
+        pbService();
       });
     }
   }
@@ -53,7 +56,7 @@ class PbsState extends State<Pbs> {
   List<dynamic> rows3 = [];
   List<dynamic> rows4 = [];
 
-  TechnoService() async {
+  pbService() async {
     if (mounted) {
       await powerblowingstation().then((data) {
         if (data != null) {
@@ -766,14 +769,5 @@ Widget _row(h, d1, d2, d3, color, i) {
         ),
       ),
     ],
-  );
-}
-
-Widget _line() {
-  return const Padding(
-    padding: EdgeInsets.symmetric(horizontal: 0, vertical: 0),
-    child: Column(
-      children: [],
-    ),
   );
 }

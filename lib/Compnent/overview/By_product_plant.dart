@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -25,9 +27,9 @@ class BpplantState extends State<Bpplant> {
     fun();
   }
 
-  Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
   _changeColor(no) {
     setState(() {
@@ -41,10 +43,10 @@ class BpplantState extends State<Bpplant> {
 
   fun() {
     if (mounted) {
-      TechnoService();
+      byproductplantService();
       var duration = const Duration(seconds: 30);
       Timer.periodic(duration, (Timer timer) {
-        TechnoService();
+        byproductplantService();
       });
     }
   }
@@ -52,7 +54,7 @@ class BpplantState extends State<Bpplant> {
   List<dynamic> rows = [];
   List<dynamic> state = [];
 
-  TechnoService() async {
+  byproductplantService() async {
     if (mounted) {
       await byproductplant().then((data) {
         if (data != null) {
@@ -117,7 +119,7 @@ class BpplantState extends State<Bpplant> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 0),
+      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
           ? const Text(" ")
           : Column(
@@ -250,7 +252,7 @@ Widget _row(h, d1, d2, color, i, state) {
         flex: 2,
         child: Container(
           decoration: BoxDecoration(
-            border: Border(
+            border: const Border(
               right: BorderSide(
                 color: Color.fromARGB(113, 44, 129, 227),
                 width: 2.0,
