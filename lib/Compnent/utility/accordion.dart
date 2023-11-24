@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:upv_mobile/Compnent/utility/BOF_gas_holder.dart';
 
 import 'package:upv_mobile/Compnent/utility/CBM.dart';
+import 'package:upv_mobile/Compnent/utility/Gas_utility.dart';
 import 'package:upv_mobile/Compnent/utility/Lime_dolo_calcination_plant.dart';
 import 'package:upv_mobile/Compnent/utility/Oxygen_plant.dart';
 import 'package:upv_mobile/Compnent/utility/Power_blowing_station_utility.dart';
@@ -102,7 +103,7 @@ class _AccordionPageState extends State<AccordionUtility> {
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             header:
                 const Text('Gas Utlity', style: AccordionUtility.headerStyle),
-            content: const PbsUt(),
+            content: const GasUt(),
           ),
           AccordionSection(
             headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
