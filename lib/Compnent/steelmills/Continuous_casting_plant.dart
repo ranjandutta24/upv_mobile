@@ -96,6 +96,93 @@ class CcpsmState extends State<Ccpsm> {
                 "i": 3,
               },
               {
+                "head": "Tundish",
+                "data1": "${ccpData["CCP_1TCCAR"]}",
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 4,
+              },
+              //CCP_2TCCAR CCP_3TCCAR do i need to add this?
+              {
+                "head": "Billet Cast",
+                "data1": "",
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Strand 1",
+                "data1": "${ccpData["CCP_1WDSPDSD1S"]}",
+                "data2": "${ccpData["CCP_2WDSPDSD1S"]}",
+                "data3": "${ccpData["CCP_3WDSPDSD1S"]}",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Strand 2",
+                "data1": "${ccpData["CCP_1WDSPDSD2S"]}",
+                "data2": "${ccpData["CCP_2WDSPDSD2S"]}",
+                "data3": "${ccpData["CCP_3WDSPDSD2S"]}",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Strand 3",
+                "data1": "${ccpData["CCP_1WDSPDSD3S"]}",
+                "data2": "${ccpData["CCP_2WDSPDSD3S"]}",
+                "data3": "${ccpData["CCP_3WDSPDSD3S"]}",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Strand 4",
+                "data1": "${ccpData["CCP_1WDSPDSD4S"]}",
+                "data2": "${ccpData["CCP_2WDSPDSD4S"]}",
+                "data3": "${ccpData["CCP_3WDSPDSD4S"]}",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Strand 5",
+                "data1": "${ccpData["CCP_1WDSPDSD5S"]}",
+                "data2": "${ccpData["CCP_2WDSPDSD5S"]}",
+                "data3": "",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Strand 6",
+                "data1": "${ccpData["CCP_1WDSPDSD6S"]}",
+                "data2": "${ccpData["CCP_2WDSPDSD6S"]}",
+                "data3": "",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Strand 1 Duration ",
+                "data1":
+                    "${ccpData["HH1_1"].toStringAsFixed(0)}:${ccpData["MM1_1"].toString()}:${ccpData["SS1_1"].toString()}",
+                "data2":
+                    "${ccpData["HH2_1"].toStringAsFixed(0)}:${ccpData["MM2_1"].toString()}:${ccpData["SS2_1"].toString()}",
+                "data3":
+                    "${ccpData["HH3_1"].toStringAsFixed(0)}:${ccpData["MM3_1"].toString()}:${ccpData["SS3_1"].toString()}",
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Strand 2 Duration ",
+                "data1":
+                    "${ccpData["HH1_2"].toStringAsFixed(0)}:${ccpData["MM1_2"].toString()}:${ccpData["SS1_2"].toString()}",
+                "data2":
+                    "${ccpData["HH2_2"].toStringAsFixed(0)}:${ccpData["MM2_2"].toString()}:${ccpData["SS2_2"].toString()}",
+                "data3":
+                    "${ccpData["HH3_2"].toStringAsFixed(0)}:${ccpData["MM3_2"].toString()}:${ccpData["SS3_2"].toString()}",
+                "selected": false,
+                "i": 0,
+              },
+              {
                 "head": "Casting Speed Strand 1",
                 "data1": ccpData["WITHDRAWALSPEED1_1"].toStringAsFixed(2),
                 "data2": ccpData["WITHDRAWALSPEED2_1"].toStringAsFixed(2),
