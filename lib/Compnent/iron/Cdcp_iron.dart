@@ -60,10 +60,10 @@ class CdcpState extends State<Cdcp> {
             rows = [
               {
                 "head": "Steam Flow[TPH]",
-                "data1": cdcpData["BOILER1FIR523"].toStringAsFixed(0),
-                "data2": cdcpData["BOILER2FIR523"].toStringAsFixed(0),
-                "data3": cdcpData["BOILER3FIR523"].toStringAsFixed(0),
-                "data4": cdcpData["BOILER4FIR523"].toStringAsFixed(0),
+                "data1": cdcpData["BOILER1FIR523"].toStringAsFixed(2),
+                "data2": cdcpData["BOILER2FIR523"].toStringAsFixed(2),
+                "data3": cdcpData["BOILER3FIR523"].toStringAsFixed(2),
+                "data4": cdcpData["BOILER4FIR523"].toStringAsFixed(2),
                 "selected": false,
                 "i": 0,
               },
@@ -76,6 +76,32 @@ class CdcpState extends State<Cdcp> {
                 "data4": cdcpData["BOILER4PI520"].toStringAsFixed(0),
                 "selected": false,
                 "i": 1,
+              },
+              {
+                "head": "Current. Shift Charge Count",
+                "data1": cdcpData["LIFTER1CHARGINGQ1"].toStringAsFixed(0),
+                "data2": cdcpData["LIFTER2CHARGINGQ1"].toStringAsFixed(0),
+                "data3": cdcpData["LIFTER3CHARGINGQ1"].toStringAsFixed(0),
+                "data4": cdcpData["LIFTER4CHARGINGQ1"].toStringAsFixed(0),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Previous 1 Shift Charge Count",
+                "data1": cdcpData["LIFTER1CHARGINGQ2"] == null
+                    ? "0"
+                    : cdcpData["LIFTER1CHARGINGQ2"].toStringAsFixed(0),
+                "data2": cdcpData["LIFTER2CHARGINGQ2"] == null
+                    ? "0"
+                    : cdcpData["LIFTER2CHARGINGQ2"].toStringAsFixed(0),
+                "data3": cdcpData["LIFTER3CHARGINGQ2"] == null
+                    ? "0"
+                    : cdcpData["LIFTER3CHARGINGQ2"].toStringAsFixed(0),
+                "data4": cdcpData["LIFTER4CHARGINGQ2"] == null
+                    ? "0"
+                    : cdcpData["LIFTER4CHARGINGQ2"].toStringAsFixed(0),
+                "selected": false,
+                "i": 2,
               },
 
               {
