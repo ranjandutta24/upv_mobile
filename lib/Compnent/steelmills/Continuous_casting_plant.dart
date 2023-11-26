@@ -183,6 +183,111 @@ class CcpsmState extends State<Ccpsm> {
                 "i": 0,
               },
               {
+                "head": "Strand 3 Duration ",
+                "data1":
+                    "${ccpData["HH1_3"].toStringAsFixed(0)}:${ccpData["MM1_3"].toString()}:${ccpData["SS1_3"].toString()}",
+                "data2":
+                    "${ccpData["HH2_3"].toStringAsFixed(0)}:${ccpData["MM2_3"].toString()}:${ccpData["SS2_3"].toString()}",
+                "data3":
+                    "${ccpData["HH3_3"].toStringAsFixed(0)}:${ccpData["MM3_3"].toString()}:${ccpData["SS3_3"].toString()}",
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Strand 4 Duration ",
+                "data1":
+                    "${ccpData["HH1_4"].toStringAsFixed(0)}:${ccpData["MM1_4"].toString()}:${ccpData["SS1_4"].toString()}",
+                "data2":
+                    "${ccpData["HH2_4"].toStringAsFixed(0)}:${ccpData["MM2_4"].toString()}:${ccpData["SS2_4"].toString()}",
+                "data3":
+                    "${ccpData["HH3_4"].toStringAsFixed(0)}:${ccpData["MM3_4"].toString()}:${ccpData["SS3_4"].toString()}",
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Strand 5 Duration ",
+                "data1":
+                    "${ccpData["HH1_5"].toStringAsFixed(0)}:${ccpData["MM1_5"].toString()}:${ccpData["SS1_5"].toString()}",
+                "data2":
+                    "${ccpData["HH2_5"].toStringAsFixed(0)}:${ccpData["MM2_5"].toString()}:${ccpData["SS2_5"].toString()}",
+                "data3": "",
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Strand 6 Duration ",
+                "data1":
+                    "${ccpData["HH1_6"].toStringAsFixed(0)}:${ccpData["MM1_6"].toString()}:${ccpData["SS1_6"].toString()}",
+                "data2":
+                    "${ccpData["HH2_6"].toStringAsFixed(0)}:${ccpData["MM2_6"].toString()}:${ccpData["SS2_6"].toString()}",
+                "data3": "",
+                "selected": false,
+                "i": 0,
+              },
+              {
+                "head": "Oxygen Consm.[Nm3/hr]",
+                "data1": ccpData["O2_F"] == null
+                    ? "0"
+                    : ccpData["O2_F"].toStringAsFixed(0),
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "N2 Consm.[Nm3/hr]",
+                "data1": ccpData["N2_F"] == null
+                    ? "0"
+                    : ccpData["N2_F"].toStringAsFixed(0),
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "Argon Consm.[Nm3/hr]",
+                "data1": "",
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "CBM Consm.[Nm3/hr]",
+                "data1": ccpData["CBM_F"] == null
+                    ? "0"
+                    : ccpData["CBM_F"].toStringAsFixed(0),
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "COG Consm.[Nm3/hr]",
+                "data1": "",
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "Prev. Day Cast",
+                "data1": ccpData["CCPPRETOTAL"].toString(),
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 10,
+              },
+              {
+                "head": "Ladle Running Count.",
+                "data1": ccpData["LADLENO_1"].toString(),
+                "data2": ccpData["LADLENO_2"].toString(),
+                "data3": ccpData["LADLENO_3"].toString(),
+                "selected": false,
+                "i": 3,
+              },
+
+              {
                 "head": "Casting Speed Strand 1",
                 "data1": ccpData["WITHDRAWALSPEED1_1"].toStringAsFixed(2),
                 "data2": ccpData["WITHDRAWALSPEED2_1"].toStringAsFixed(2),
@@ -231,12 +336,52 @@ class CcpsmState extends State<Ccpsm> {
                 "i": 9,
               },
               {
-                "head": "Prev. Day Cast",
-                "data1": ccpData["CCPPRETOTAL"].toString(),
-                "data2": "",
+                "head": "Stopper Position Strand 1",
+                "data1": ccpData["C1_S1"].toStringAsFixed(2),
+                "data2": ccpData["C2_S1"].toStringAsFixed(2),
+                "data3": ccpData["C3_S1"].toStringAsFixed(2),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Stopper Position Strand 2",
+                "data1": ccpData["C1_S2"].toStringAsFixed(2),
+                "data2": ccpData["C2_S2"].toStringAsFixed(2),
+                "data3": ccpData["C3_S2"].toStringAsFixed(2),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Stopper Position Strand 3",
+                "data1": ccpData["C1_S3"].toStringAsFixed(2),
+                "data2": ccpData["C2_S3"].toStringAsFixed(2),
+                "data3": ccpData["C3_S3"].toStringAsFixed(2),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Stopper Position Strand 4",
+                "data1": ccpData["C1_S4"].toStringAsFixed(2),
+                "data2": ccpData["C2_S4"].toStringAsFixed(2),
+                "data3": ccpData["C3_S4"].toStringAsFixed(2),
+                "selected": false,
+                "i": 1,
+              },
+              {
+                "head": "Stopper Position Strand 5",
+                "data1": ccpData["C1_S5"].toStringAsFixed(2),
+                "data2": ccpData["C2_S5"].toStringAsFixed(2),
                 "data3": "",
                 "selected": false,
-                "i": 10,
+                "i": 1,
+              },
+              {
+                "head": "Stopper Position Strand 6",
+                "data1": ccpData["C1_S6"].toStringAsFixed(2),
+                "data2": ccpData["C2_S6"].toStringAsFixed(2),
+                "data3": "",
+                "selected": false,
+                "i": 1,
               },
             ];
             status = [

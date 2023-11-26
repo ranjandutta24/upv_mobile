@@ -7,6 +7,7 @@ import 'package:upv_mobile/Compnent/steelmills/Continuous_casting_plant.dart';
 import 'package:upv_mobile/Compnent/steelmills/Crane_ladle_weight.dart';
 import 'package:upv_mobile/Compnent/steelmills/Ladle_heating_furnace.dart';
 import 'package:upv_mobile/Compnent/steelmills/Mills.dart';
+import 'package:upv_mobile/Compnent/steelmills/Torpedo_at_hmrs.dart';
 
 class AccordionSteel extends StatefulWidget {
   static const headerStyle = TextStyle(
@@ -85,7 +86,7 @@ class _AccordionPageState extends State<AccordionSteel> {
             ),
             header: const Text("Torpedo at HMRS",
                 style: AccordionSteel.headerStyle),
-            content: const BOFsm(),
+            content: const Hmrs(),
           ),
           AccordionSection(
             headerPadding:
