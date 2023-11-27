@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:async';
 import 'dart:convert';
 
@@ -24,19 +26,19 @@ class HmrsState extends State<Hmrs> {
     fun();
   }
 
-  final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
-  final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  // final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
+  // final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
+  // final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
 
-  _changeColor(no) {
-    setState(() {
-      for (int i = 0; i < rows.length; i++) {
-        rows[i]["selected"] = false;
-      }
-      rows[no]["selected"] = true;
-      num = no;
-    });
-  }
+  // _changeColor(no) {
+  //   setState(() {
+  //     for (int i = 0; i < rows.length; i++) {
+  //       rows[i]["selected"] = false;
+  //     }
+  //     rows[no]["selected"] = true;
+  //     num = no;
+  //   });
+  // }
 
   fun() {
     hmrsService();

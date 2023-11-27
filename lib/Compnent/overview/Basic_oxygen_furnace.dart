@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class BOF extends StatefulWidget {
   const BOF({super.key});
@@ -271,8 +272,8 @@ class BOFState extends State<BOF> {
                               ),
                             ),
                             color: rows[1]["data1"] == "Stop"
-                                ? const Color.fromARGB(255, 255, 7, 7)
-                                : const Color.fromARGB(255, 98, 255, 7),
+                                ? myColors["deactive"]
+                                : myColors["active"],
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
@@ -295,8 +296,8 @@ class BOFState extends State<BOF> {
                                 ),
                               ),
                               color: rows[1]["data2"] == "Stop"
-                                  ? const Color.fromARGB(255, 255, 7, 7)
-                                  : const Color.fromARGB(255, 98, 255, 7)),
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BOF2",
@@ -312,8 +313,8 @@ class BOFState extends State<BOF> {
                         child: Container(
                           decoration: BoxDecoration(
                               color: rows[1]["data3"] == "Stop"
-                                  ? const Color.fromARGB(255, 255, 7, 7)
-                                  : const Color.fromARGB(255, 98, 255, 7)),
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BOF3",

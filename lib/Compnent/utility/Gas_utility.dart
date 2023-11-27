@@ -373,7 +373,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               decoration: const BoxDecoration(),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -383,6 +383,11 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               ),
             ),
           ),
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Expanded(
             flex: 1,
             child: Container(
@@ -395,7 +400,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               decoration: const BoxDecoration(),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -422,7 +427,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               decoration: const BoxDecoration(),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -432,6 +437,11 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               ),
             ),
           ),
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Expanded(
             flex: 1,
             child: Container(
@@ -444,7 +454,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               decoration: const BoxDecoration(),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -471,7 +481,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               decoration: const BoxDecoration(),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -481,6 +491,11 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               ),
             ),
           ),
+        ],
+      ),
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
           Expanded(
             flex: 1,
             child: Container(
@@ -493,7 +508,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
             ),
           ),
           Expanded(
-            flex: 1,
+            flex: 2,
             child: Container(
               decoration: const BoxDecoration(),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
