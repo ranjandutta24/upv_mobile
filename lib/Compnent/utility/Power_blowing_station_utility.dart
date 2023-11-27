@@ -217,6 +217,7 @@ class PbsUtState extends State<PbsUt> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey,
+                                  fontSize: 11,
                                 )),
                           )),
                       Expanded(
@@ -241,6 +242,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -266,6 +268,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -285,6 +288,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -347,8 +351,10 @@ class PbsUtState extends State<PbsUt> {
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 152, 152, 152),
+                              fontSize: 11,
+                            ),
                           ),
                         ),
                       ),
@@ -374,6 +380,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -400,6 +407,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -420,6 +428,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -482,8 +491,10 @@ class PbsUtState extends State<PbsUt> {
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 152, 152, 152),
+                              fontSize: 11,
+                            ),
                           ),
                         ),
                       ),
@@ -509,6 +520,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -535,6 +547,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -555,6 +568,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -617,8 +631,10 @@ class PbsUtState extends State<PbsUt> {
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 152, 152, 152),
+                              fontSize: 11,
+                            ),
                           ),
                         ),
                       ),
@@ -642,6 +658,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -666,6 +683,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -680,6 +698,7 @@ class PbsUtState extends State<PbsUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Color.fromARGB(255, 152, 152, 152),
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -738,7 +757,10 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(
+              color: color,
+              fontSize: 11,
+            ),
           ),
         ),
       ),
@@ -755,7 +777,11 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(
+                color: color,
+                fontSize: 11,
+              ),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -771,7 +797,11 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(
+                color: color,
+                fontSize: 11,
+              ),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -780,7 +810,11 @@ Widget _row(h, d1, d2, d3, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d3,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(
+                color: color,
+                fontSize: 11,
+              ),
+              textAlign: TextAlign.center),
         ),
       ),
     ],

@@ -202,6 +202,7 @@ class PbsState extends State<Pbs> {
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: Colors.grey,
+                                  fontSize: 11,
                                 )),
                           )),
                       Expanded(
@@ -226,6 +227,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -251,6 +253,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -270,6 +273,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -333,6 +337,7 @@ class PbsState extends State<Pbs> {
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
+                                fontSize: 11,
                                 color: Color.fromARGB(255, 152, 152, 152)),
                           ),
                         ),
@@ -359,6 +364,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -385,6 +391,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -405,6 +412,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -467,8 +475,10 @@ class PbsState extends State<Pbs> {
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 11,
+                              color: Color.fromARGB(255, 152, 152, 152),
+                            ),
                           ),
                         ),
                       ),
@@ -494,6 +504,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -520,6 +531,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -540,6 +552,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -602,8 +615,10 @@ class PbsState extends State<Pbs> {
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                              fontWeight: FontWeight.bold,
+                              fontSize: 11,
+                              color: Color.fromARGB(255, 152, 152, 152),
+                            ),
                           ),
                         ),
                       ),
@@ -627,6 +642,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -651,6 +667,7 @@ class PbsState extends State<Pbs> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: myColors["header"],
+                                fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -664,6 +681,7 @@ class PbsState extends State<Pbs> {
                           child: const Text("",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
+                                fontSize: 11,
                                 color: Color.fromARGB(255, 152, 152, 152),
                               ),
                               textAlign: TextAlign.center),
@@ -723,7 +741,10 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(
+              color: color,
+              fontSize: 11,
+            ),
           ),
         ),
       ),
@@ -740,7 +761,11 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(
+                color: color,
+                fontSize: 11,
+              ),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -756,7 +781,11 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(
+                color: color,
+                fontSize: 11,
+              ),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -765,7 +794,11 @@ Widget _row(h, d1, d2, d3, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d3,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(
+                color: color,
+                fontSize: 11,
+              ),
+              textAlign: TextAlign.center),
         ),
       ),
     ],
