@@ -375,7 +375,7 @@ class BOFsmState extends State<BOFsm> {
                                 width: 2.0,
                               ),
                             ),
-                            color: rows[1]["data1"] == "Stop"
+                            color: rows[4]["data1"] == "Stop"
                                 ? const Color.fromARGB(255, 255, 7, 7)
                                 : const Color.fromARGB(255, 98, 255, 7),
                           ),
