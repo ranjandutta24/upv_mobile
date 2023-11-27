@@ -84,7 +84,7 @@ class CdcpState extends State<Cdcp> {
                 "data3": cdcpData["LIFTER3CHARGINGQ1"].toStringAsFixed(0),
                 "data4": cdcpData["LIFTER4CHARGINGQ1"].toStringAsFixed(0),
                 "selected": false,
-                "i": 1,
+                "i": 2,
               },
               {
                 "head": "Previous 1 Shift Charge Count",
@@ -101,7 +101,7 @@ class CdcpState extends State<Cdcp> {
                     ? "0"
                     : cdcpData["LIFTER4CHARGINGQ2"].toStringAsFixed(0),
                 "selected": false,
-                "i": 2,
+                "i": 3,
               },
 
               {
@@ -119,7 +119,7 @@ class CdcpState extends State<Cdcp> {
                     ? "0"
                     : cdcpData["LIFTER4CHARGINGQ3"].toStringAsFixed(0),
                 "selected": false,
-                "i": 2,
+                "i": 4,
               },
               {
                 "head": "Next Next Previous 3 Shift Charge",
@@ -136,7 +136,7 @@ class CdcpState extends State<Cdcp> {
                     ? "0"
                     : cdcpData["LIFTER4CHARGINGQ4"].toStringAsFixed(0),
                 "selected": false,
-                "i": 3,
+                "i": 5,
               },
             ];
             if (num != -1) {

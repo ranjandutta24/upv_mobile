@@ -617,7 +617,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           ),
         ),
       ),
-      i == 10
+      i == 18 || i == 19 || i == 20 || i == 21 || i == 22 || i == 23
           ? Expanded(
               flex: 3,
               child: Container(
@@ -670,7 +670,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 10
+      i == 18 || i == 19 || i == 20 || i == 21 || i == 22 || i == 23
           ? const Text("")
           : Expanded(
               flex: 1,
@@ -714,7 +714,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 10
+      i == 18 || i == 19 || i == 20 || i == 21 || i == 22 || i == 23
           ? const Text("")
           : Expanded(
               flex: 1,

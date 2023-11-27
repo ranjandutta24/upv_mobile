@@ -85,7 +85,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": " ",
                 "data3": " ",
                 "selected": false,
-                "i": 11,
+                "i": 1,
               },
               {
                 "head": "Prev. Day Heat",
@@ -94,7 +94,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["BOF2_PDAY"].toString(),
                 "data3": bofData["BOF3_PDAY"].toString(),
                 "selected": false,
-                "i": 12,
+                "i": 2,
               },
               {
                 "head": "Heat No",
@@ -102,7 +102,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["BOF2_HEAT"].toString(),
                 "data3": bofData["BOF3_HEAT"].toString(),
                 "selected": false,
-                "i": 7,
+                "i": 3,
               },
               {
                 "head": "Status",
@@ -110,7 +110,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": "${bofData["BOF2_STATUS"]}",
                 "data3": "${bofData["BOF3_STATUS"]}",
                 "selected": false,
-                "i": 1,
+                "i": 4,
               },
               {
                 "head": "Last Blow Start Time",
@@ -118,7 +118,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["BOF2_HEATSTART"],
                 "data3": bofData["BOF3_HEATSTART"],
                 "selected": false,
-                "i": 3,
+                "i": 5,
               },
               {
                 "head": " Blow Duration(Mins)",
@@ -132,7 +132,7 @@ class BOFsmState extends State<BOFsm> {
                     ? "N/A"
                     : bofData["BOF3_LASTHEATDURATION"].toString(),
                 "selected": false,
-                "i": 2,
+                "i": 6,
               },
               {
                 "head": "Charge To Tap Duration (Mins)",
@@ -146,7 +146,7 @@ class BOFsmState extends State<BOFsm> {
                     ? "N/A"
                     : bofData["BOF3_LASTC2T"].toString(),
                 "selected": false,
-                "i": 4,
+                "i": 7,
               },
               {
                 "head": "Tap To Tap Duration(Mins)",
@@ -160,7 +160,7 @@ class BOFsmState extends State<BOFsm> {
                     ? "N/A"
                     : bofData["BOF3_LASTT2T"].toString(),
                 "selected": false,
-                "i": 5,
+                "i": 8,
               },
               {
                 "head": "Last Tapping Finish Time",
@@ -168,7 +168,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["BOF2_LAST"] ?? "N/A",
                 "data3": bofData["BOF3_LAST"] ?? "N/A",
                 "selected": false,
-                "i": 6,
+                "i": 9,
               },
               {
                 "head": "Lance in Operation",
@@ -176,7 +176,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["LANCESTATUS_2"].toString(),
                 "data3": bofData["LANCESTATUS_3"].toString(),
                 "selected": false,
-                "i": 3,
+                "i": 10,
               },
               {
                 "head": "Lining Life",
@@ -184,7 +184,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["LINING_2"].toString(),
                 "data3": bofData["LINING_3"].toString(),
                 "selected": false,
-                "i": 10,
+                "i": 11,
               },
               {
                 "head": "Temp [DegC]",
@@ -192,7 +192,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["TEMP_2"].toString(),
                 "data3": bofData["TEMP_3"].toString(),
                 "selected": false,
-                "i": 7,
+                "i": 12,
               },
               {
                 "head": "O2 Flow [Nm3/min]",
@@ -200,7 +200,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["O2FLOWL2"].toStringAsFixed(2),
                 "data3": bofData["O2FLOWL3"].toStringAsFixed(2),
                 "selected": false,
-                "i": 8,
+                "i": 13,
               },
               {
                 "head": "O2 Consm [Nm3]",
@@ -208,7 +208,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["O2FLOWL22"].toStringAsFixed(0),
                 "data3": bofData["O2FLOWL33"].toStringAsFixed(0),
                 "selected": false,
-                "i": 8,
+                "i": 14,
               },
               {
                 "head": "Gas Recovery Status",
@@ -216,7 +216,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": "${bofData["REC_2"]}",
                 "data3": "${bofData["REC_3"]}",
                 "selected": false,
-                "i": 1,
+                "i": 15,
               },
               {
                 "head": "Gas Recovery Per heat[Nm3]",
@@ -224,7 +224,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["GASREC_2"].toStringAsFixed(0),
                 "data3": bofData["GASREC_3"].toStringAsFixed(0),
                 "selected": false,
-                "i": 9,
+                "i": 16,
               },
               {
                 "head": "Gas Recovery [Nm3]x 1000",
@@ -232,7 +232,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["BOF2_GASRECTOT"].toStringAsFixed(0),
                 "data3": bofData["BOF3_GASRECTOT"].toStringAsFixed(0),
                 "selected": false,
-                "i": 9,
+                "i": 17,
               },
               {
                 "head": "CBM Gas Consm (Flow)[Nm3/hr]",
@@ -240,7 +240,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": " ",
                 "data3": " ",
                 "selected": false,
-                "i": 9,
+                "i": 18,
               },
               {
                 "head": "CBM Gas Consm (Pressure) [mmwc]",
@@ -248,7 +248,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": " ",
                 "data3": " ",
                 "selected": false,
-                "i": 9,
+                "i": 19,
               },
               {
                 "head": "N2 Flow [Nm3/min]",
@@ -256,7 +256,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["BOF2_N2CON"].toStringAsFixed(0),
                 "data3": bofData["BOF3_N2CON"].toStringAsFixed(0),
                 "selected": false,
-                "i": 9,
+                "i": 20,
               },
               {
                 "head": "Dry Gas O2[%]",
@@ -264,7 +264,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["BOF2_O2"].toStringAsFixed(0),
                 "data3": bofData["BOF3_O2"].toStringAsFixed(0),
                 "selected": false,
-                "i": 9,
+                "i": 21,
               },
               {
                 "head": "ID Fan RPM",
@@ -272,7 +272,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": bofData["IDFAN_2"].toStringAsFixed(2),
                 "data3": bofData["IDFAN_3"].toStringAsFixed(2),
                 "selected": false,
-                "i": 9,
+                "i": 22,
               },
               {
                 "head": "PRS 1 N2 Flow[Nm3/hr]",
@@ -280,7 +280,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": " ",
                 "data3": " ",
                 "selected": false,
-                "i": 9,
+                "i": 23,
               },
               {
                 "head": "PRS 2 N2 Flow[Nm3/hr]",
@@ -288,7 +288,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 9,
+                "i": 24,
               },
               {
                 "head": "PRS 3 N2 Flow[Nm3/hr]",
@@ -296,7 +296,7 @@ class BOFsmState extends State<BOFsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 9,
+                "i": 25,
               },
             ];
             if (num != -1) {
@@ -487,7 +487,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
         ),
       ),
-      i == 11 || i == 12
+      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? (Expanded(
               flex: 3,
               child: Container(
@@ -518,7 +518,7 @@ Widget _row(h, d1, d2, d3, color, i) {
                 ),
               ),
             ),
-      i == 11 || i == 12
+      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? const Text("")
           : Expanded(
               flex: 1,
@@ -537,7 +537,7 @@ Widget _row(h, d1, d2, d3, color, i) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 11 || i == 12
+      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? const Text("")
           : Expanded(
               flex: 1,
