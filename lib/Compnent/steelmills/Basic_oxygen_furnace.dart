@@ -512,7 +512,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
               flex: 1,
               child: Container(
                 decoration: BoxDecoration(
-                    border: Border(
+                    border: const Border(
                       right: BorderSide(
                         color: Color.fromARGB(113, 44, 129, 227),
                         width: 2.0,
@@ -522,7 +522,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                         ? status[0]["BOF1"] == "On"
                             ? myColors["active"]
                             : myColors["deactive"]
-                        : Color.fromARGB(0, 255, 7, 7)),
+                        : const Color.fromARGB(0, 255, 7, 7)),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -538,7 +538,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
               flex: 1,
               child: Container(
                 decoration: BoxDecoration(
-                    border: Border(
+                    border: const Border(
                       right: BorderSide(
                         color: Color.fromARGB(113, 44, 129, 227),
                         width: 2.0,
