@@ -463,7 +463,7 @@ class CcpsmState extends State<Ccpsm> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        flex: 4,
+                        flex: 8,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -484,7 +484,7 @@ class CcpsmState extends State<Ccpsm> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 3,
                         child: Container(
                           decoration: BoxDecoration(
                             border: const Border(
@@ -511,7 +511,7 @@ class CcpsmState extends State<Ccpsm> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 3,
                         child: Container(
                           decoration: BoxDecoration(
                             border: const Border(
@@ -538,7 +538,7 @@ class CcpsmState extends State<Ccpsm> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 3,
                         child: Container(
                           decoration: BoxDecoration(
                             color: status[0]["CCP3"] <= 0.0
@@ -600,7 +600,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Expanded(
-        flex: 4,
+        flex: 8,
         child: Container(
           decoration: const BoxDecoration(
             border: Border(
@@ -617,9 +617,9 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           ),
         ),
       ),
-      i == 18 || i == 19 || i == 20 || i == 21 || i == 22 || i == 23
+      i > 17 && i < 24
           ? Expanded(
-              flex: 3,
+              flex: 9,
               child: Container(
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -629,7 +629,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
               ),
             )
           : Expanded(
-              flex: 1,
+              flex: 3,
               child: Container(
                 decoration: BoxDecoration(
                   border: const Border(
@@ -638,27 +638,27 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                       width: 2.0,
                     ),
                   ),
-                  color: i == 4
+                  color: i == 6
                       ? status[1]["CCP1"] == "Casting"
                           ? myColors["active"]
                           : myColors["deactive"]
-                      : i == 5
+                      : i == 7
                           ? status[2]["CCP1"] == "Casting"
                               ? myColors["active"]
                               : myColors["deactive"]
-                          : i == 6
+                          : i == 8
                               ? status[3]["CCP1"] == "Casting"
                                   ? myColors["active"]
                                   : myColors["deactive"]
-                              : i == 7
+                              : i == 9
                                   ? status[4]["CCP1"] == "Casting"
                                       ? myColors["active"]
                                       : myColors["deactive"]
-                                  : i == 8
+                                  : i == 10
                                       ? status[5]["CCP1"] == "Casting"
                                           ? myColors["active"]
                                           : myColors["deactive"]
-                                      : i == 9
+                                      : i == 11
                                           ? status[6]["CCP1"] == "Casting"
                                               ? myColors["active"]
                                               : myColors["deactive"]
@@ -670,10 +670,10 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 18 || i == 19 || i == 20 || i == 21 || i == 22 || i == 23
+      i > 17 && i < 24
           ? const Text("")
           : Expanded(
-              flex: 1,
+              flex: 3,
               child: Container(
                 decoration: BoxDecoration(
                   border: const Border(
@@ -682,27 +682,27 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                       width: 2.0,
                     ),
                   ),
-                  color: i == 4
+                  color: i == 6
                       ? status[1]["CCP2"] == "Casting"
                           ? myColors["active"]
                           : myColors["deactive"]
-                      : i == 5
+                      : i == 7
                           ? status[2]["CCP2"] == "Casting"
                               ? myColors["active"]
                               : myColors["deactive"]
-                          : i == 6
+                          : i == 8
                               ? status[3]["CCP2"] == "Casting"
                                   ? myColors["active"]
                                   : myColors["deactive"]
-                              : i == 7
+                              : i == 9
                                   ? status[4]["CCP2"] == "Casting"
                                       ? myColors["active"]
                                       : myColors["deactive"]
-                                  : i == 8
+                                  : i == 10
                                       ? status[5]["CCP2"] == "Casting"
                                           ? myColors["active"]
                                           : myColors["deactive"]
-                                      : i == 9
+                                      : i == 11
                                           ? status[6]["CCP2"] == "Casting"
                                               ? myColors["active"]
                                               : myColors["deactive"]
@@ -714,25 +714,25 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 18 || i == 19 || i == 20 || i == 21 || i == 22 || i == 23
+      i > 17 && i < 24
           ? const Text("")
           : Expanded(
-              flex: 1,
+              flex: 3,
               child: Container(
                 decoration: BoxDecoration(
-                  color: i == 4
+                  color: i == 6
                       ? status[1]["CCP3"] == "Casting"
                           ? myColors["active"]
                           : myColors["deactive"]
-                      : i == 5
+                      : i == 7
                           ? status[2]["CCP3"] == "Casting"
                               ? myColors["active"]
                               : myColors["deactive"]
-                          : i == 6
+                          : i == 8
                               ? status[3]["CCP3"] == "Casting"
                                   ? myColors["active"]
                                   : myColors["deactive"]
-                              : i == 7
+                              : i == 9
                                   ? status[4]["CCP3"] == "Casting"
                                       ? myColors["active"]
                                       : myColors["deactive"]

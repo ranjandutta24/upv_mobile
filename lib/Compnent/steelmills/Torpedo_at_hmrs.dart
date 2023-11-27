@@ -57,7 +57,7 @@ class HmrsState extends State<Hmrs> {
 
           setState(() {
             hmrsData = json.decode(data.body);
-            var time = DateTime.parse(hmrsData[1]["TIME"])
+            var time = DateTime.parse(hmrsData[0]["TIME"])
                 .add(const Duration(hours: 5, minutes: 30));
 
             rows = [
