@@ -53,17 +53,20 @@ class HmrsState extends State<Hmrs> {
       await torpedoathmrs().then((data) {
         if (data != null) {
           // print(data.body);
+
           setState(() {
             hmrsData = json.decode(data.body);
+            var time = DateTime.parse(hmrsData[1]["TIME"])
+                .add(const Duration(hours: 5, minutes: 30));
+
             rows = [
               {
-                {
-                  "head": "TIME",
-                  "data1": hmrsData["TLCNO"].toStringAsFixed(0),
-                  "data2": hmrsData["NETWT"].toStringAsFixed(1),
-                  "selected": false,
-                  "i": 1,
-                },
+                "head":
+                    "${time.day.toString()}/${time.month.toString()}/${time.year.toString()}, ${time.hour.toString()}:${time.minute.toString()}",
+                "data1": hmrsData[0]["TLCNO"].toString(),
+                "data2": double.parse(hmrsData[0]["NETWT"]).toStringAsFixed(2),
+                "selected": false,
+                "i": 0,
               },
             ];
 
@@ -97,82 +100,82 @@ class HmrsState extends State<Hmrs> {
           ? const Text(" ")
           : Column(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: const Color.fromARGB(113, 43, 76, 98),
-                      width: 2.0,
-                    ),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 3, vertical: 0),
-                  child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          flex: 6,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                right: BorderSide(
-                                  color: Color.fromARGB(113, 74, 104, 156),
-                                  width: 2.0,
-                                ),
-                              ),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
-                            child: const Text('Time',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
-                                )),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                right: BorderSide(
-                                  color: Color.fromARGB(113, 56, 104, 156),
-                                  width: 2.0,
-                                ),
-                              ),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
-                            child: const Text("Torpedo No.",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 152, 152, 152),
-                                ),
-                                textAlign: TextAlign.center),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 4,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                right: BorderSide(
-                                  color: Color.fromARGB(113, 56, 104, 156),
-                                  width: 2.0,
-                                ),
-                              ),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
-                            child: const Text("Torpedo net Weight[in tons]",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 152, 152, 152),
-                                ),
-                                textAlign: TextAlign.center),
-                          ),
-                        ),
-                      ]),
-                ),
+                // Container(
+                //   decoration: BoxDecoration(
+                //     border: Border.all(
+                //       color: const Color.fromARGB(113, 43, 76, 98),
+                //       width: 2.0,
+                //     ),
+                //   ),
+                //   padding:
+                //       const EdgeInsets.symmetric(horizontal: 3, vertical: 0),
+                //   child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //       children: [
+                //         Expanded(
+                //           flex: 6,
+                //           child: Container(
+                //             decoration: const BoxDecoration(
+                //               border: Border(
+                //                 right: BorderSide(
+                //                   color: Color.fromARGB(113, 74, 104, 156),
+                //                   width: 2.0,
+                //                 ),
+                //               ),
+                //             ),
+                //             padding: const EdgeInsets.symmetric(
+                //                 vertical: 5, horizontal: 0),
+                //             child: const Text('Time',
+                //                 style: TextStyle(
+                //                   fontWeight: FontWeight.bold,
+                //                   color: Colors.grey,
+                //                 )),
+                //           ),
+                //         ),
+                //         Expanded(
+                //           flex: 2,
+                //           child: Container(
+                //             decoration: const BoxDecoration(
+                //               border: Border(
+                //                 right: BorderSide(
+                //                   color: Color.fromARGB(113, 56, 104, 156),
+                //                   width: 2.0,
+                //                 ),
+                //               ),
+                //             ),
+                //             padding: const EdgeInsets.symmetric(
+                //                 vertical: 5, horizontal: 0),
+                //             child: const Text("Torpedo No.",
+                //                 style: TextStyle(
+                //                   fontWeight: FontWeight.bold,
+                //                   color: Color.fromARGB(255, 152, 152, 152),
+                //                 ),
+                //                 textAlign: TextAlign.center),
+                //           ),
+                //         ),
+                //         Expanded(
+                //           flex: 4,
+                //           child: Container(
+                //             decoration: const BoxDecoration(
+                //               border: Border(
+                //                 right: BorderSide(
+                //                   color: Color.fromARGB(113, 56, 104, 156),
+                //                   width: 2.0,
+                //                 ),
+                //               ),
+                //             ),
+                //             padding: const EdgeInsets.symmetric(
+                //                 vertical: 5, horizontal: 0),
+                //             child: const Text("Torpedo net Weight[in tons]",
+                //                 style: TextStyle(
+                //                   fontWeight: FontWeight.bold,
+                //                   color: Color.fromARGB(255, 152, 152, 152),
+                //                 ),
+                //                 textAlign: TextAlign.center),
+                //           ),
+                //         ),
+                //       ]),
+                // ),
                 for (final Map r in rows)
                   GestureDetector(
                     onTap: () {
@@ -207,56 +210,103 @@ class HmrsState extends State<Hmrs> {
 }
 
 Widget _row(h, d1, d2, color, i) {
-  return Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  return Column(
     children: [
-      Expanded(
-        flex: 6,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            flex: 6,
+            child: Container(
+              decoration: const BoxDecoration(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                child: Text(
+                  "Time",
+                  style: TextStyle(color: color),
+                ),
               ),
             ),
           ),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-            child: Text(
-              h,
-              style: TextStyle(color: color),
+          Expanded(
+            flex: 6,
+            child: Container(
+              decoration: const BoxDecoration(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                child: Text(
+                  h,
+                  style: TextStyle(color: color),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
           ),
-        ),
+        ],
       ),
-      Expanded(
-        flex: 2,
-        child: Container(
-          decoration: const BoxDecoration(),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-            child: Text(
-              d1,
-              style: TextStyle(color: color),
-              textAlign: TextAlign.center,
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            flex: 6,
+            child: Container(
+              decoration: const BoxDecoration(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                child: Text(
+                  "Torpedo No.",
+                  style: TextStyle(color: color),
+                ),
+              ),
             ),
           ),
-        ),
+          Expanded(
+            flex: 6,
+            child: Container(
+              decoration: const BoxDecoration(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                child: Text(
+                  d1,
+                  style: TextStyle(color: color),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
-      Expanded(
-        flex: 4,
-        child: Container(
-          decoration: const BoxDecoration(),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-            child: Text(
-              d1,
-              style: TextStyle(color: color),
-              textAlign: TextAlign.center,
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Expanded(
+            flex: 6,
+            child: Container(
+              decoration: const BoxDecoration(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                child: Text(
+                  "Torpedo Net Weight [in tons]",
+                  style: TextStyle(color: color),
+                ),
+              ),
             ),
           ),
-        ),
+          Expanded(
+            flex: 6,
+            child: Container(
+              decoration: const BoxDecoration(),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+                child: Text(
+                  d2,
+                  style: TextStyle(color: color),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     ],
   );
