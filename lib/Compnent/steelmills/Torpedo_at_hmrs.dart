@@ -70,6 +70,7 @@ class HmrsState extends State<Hmrs> {
                 "i": 0,
               },
             ];
+            newrows = hmrsData;
 
             if (num != -1) {
               rows[num]["selected"] = true;
@@ -177,16 +178,44 @@ class HmrsState extends State<Hmrs> {
                 //         ),
                 //       ]),
                 // ),
-                for (final Map r in rows)
+                // for (final Map r in rows)
+                //   GestureDetector(
+                //     onTap: () {
+                //       _changeColor(r["i"]);
+                //     },
+                //     child: Container(
+                //       decoration: BoxDecoration(
+                //         color: r["selected"] == true
+                //             ? _containerColor
+                //             : _containerColora,
+                //         border: Border.all(
+                //           color: const Color.fromARGB(
+                //               113, 44, 129, 227), // Border color
+                //           width: 1.0,
+                //         ),
+                //       ),
+                //       padding: const EdgeInsets.symmetric(
+                //           vertical: 0, horizontal: 0),
+                //       child: _row(
+                //         r["head"],
+                //         r["data1"],
+                //         r["data2"],
+                //         r["selected"] == true ? _containerColora : _textColor,
+                //         r["i"],
+                //       ),
+                //     ),
+                //   ),
+
+                for (final Map r in newrows)
                   GestureDetector(
                     onTap: () {
-                      _changeColor(r["i"]);
+                      // _changeColor(r["i"]);
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: r["selected"] == true
-                            ? _containerColor
-                            : _containerColora,
+                        // color: r["selected"] == true
+                        //     ? _containerColor
+                        //     : _containerColora,
                         border: Border.all(
                           color: const Color.fromARGB(
                               113, 44, 129, 227), // Border color
@@ -196,11 +225,11 @@ class HmrsState extends State<Hmrs> {
                       padding: const EdgeInsets.symmetric(
                           vertical: 0, horizontal: 0),
                       child: _row(
-                        r["head"],
-                        r["data1"],
-                        r["data2"],
-                        r["selected"] == true ? _containerColora : _textColor,
-                        r["i"],
+                        r["TIME"],
+                        r["TLCNO"],
+                        r["NETWT"],
+                        // r["selected"] == true ? _containerColora : _textColor,
+                        // r["i"],
                       ),
                     ),
                   ),
@@ -210,7 +239,11 @@ class HmrsState extends State<Hmrs> {
   }
 }
 
-Widget _row(h, d1, d2, color, i) {
+Widget _row(t, d1, d2) {
+  getTime(time) {
+    return DateTime.parse(time).add(const Duration(hours: 5, minutes: 30));
+  }
+
   return Column(
     children: [
       Row(
@@ -220,11 +253,11 @@ Widget _row(h, d1, d2, color, i) {
             flex: 6,
             child: Container(
               decoration: const BoxDecoration(),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   "Time",
-                  style: TextStyle(color: color),
+                  // style: TextStyle(color: color),
                 ),
               ),
             ),
@@ -236,8 +269,10 @@ Widget _row(h, d1, d2, color, i) {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
-                  h,
-                  style: TextStyle(color: color),
+                  // getTime(h).day.toString(),
+
+                  "${getTime(t).day.toString()}/${getTime(t).month.toString()}/${getTime(t).year.toString()}, ${getTime(t).hour.toString()}:${getTime(t).minute.toString()}",
+                  // style: TextStyle(color: color),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -252,11 +287,11 @@ Widget _row(h, d1, d2, color, i) {
             flex: 6,
             child: Container(
               decoration: const BoxDecoration(),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   "Torpedo No.",
-                  style: TextStyle(color: color),
+                  // style: TextStyle(color: color),
                 ),
               ),
             ),
@@ -268,8 +303,8 @@ Widget _row(h, d1, d2, color, i) {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
-                  d1,
-                  style: TextStyle(color: color),
+                  d1.toString(),
+                  // style: TextStyle(color: color),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -284,11 +319,11 @@ Widget _row(h, d1, d2, color, i) {
             flex: 6,
             child: Container(
               decoration: const BoxDecoration(),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+              child: const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   "Torpedo Net Weight [in tons]",
-                  style: TextStyle(color: color),
+                  // style: TextStyle(color: color),
                 ),
               ),
             ),
@@ -300,8 +335,8 @@ Widget _row(h, d1, d2, color, i) {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
-                  d2,
-                  style: TextStyle(color: color),
+                  double.parse(d2).toStringAsFixed(2),
+                  // style: TextStyle(color: color),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -312,3 +347,105 @@ Widget _row(h, d1, d2, color, i) {
     ],
   );
 }
+// Widget _row(h, d1, d2, color, i) {
+//   return Column(
+//     children: [
+//       Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           Expanded(
+//             flex: 6,
+//             child: Container(
+//               decoration: const BoxDecoration(),
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+//                 child: Text(
+//                   "Time",
+//                   style: TextStyle(color: color),
+//                 ),
+//               ),
+//             ),
+//           ),
+//           Expanded(
+//             flex: 6,
+//             child: Container(
+//               decoration: const BoxDecoration(),
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+//                 child: Text(
+//                   h,
+//                   style: TextStyle(color: color),
+//                   textAlign: TextAlign.center,
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//       Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           Expanded(
+//             flex: 6,
+//             child: Container(
+//               decoration: const BoxDecoration(),
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+//                 child: Text(
+//                   "Torpedo No.",
+//                   style: TextStyle(color: color),
+//                 ),
+//               ),
+//             ),
+//           ),
+//           Expanded(
+//             flex: 6,
+//             child: Container(
+//               decoration: const BoxDecoration(),
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+//                 child: Text(
+//                   d1,
+//                   style: TextStyle(color: color),
+//                   textAlign: TextAlign.center,
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//       Row(
+//         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//         children: [
+//           Expanded(
+//             flex: 6,
+//             child: Container(
+//               decoration: const BoxDecoration(),
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+//                 child: Text(
+//                   "Torpedo Net Weight [in tons]",
+//                   style: TextStyle(color: color),
+//                 ),
+//               ),
+//             ),
+//           ),
+//           Expanded(
+//             flex: 6,
+//             child: Container(
+//               decoration: const BoxDecoration(),
+//               child: Padding(
+//                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
+//                 child: Text(
+//                   d2,
+//                   style: TextStyle(color: color),
+//                   textAlign: TextAlign.center,
+//                 ),
+//               ),
+//             ),
+//           ),
+//         ],
+//       ),
+//     ],
+//   );
+// }
