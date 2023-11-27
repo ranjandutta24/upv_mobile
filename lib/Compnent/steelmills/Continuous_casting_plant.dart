@@ -73,9 +73,9 @@ class CcpsmState extends State<Ccpsm> {
               },
               {
                 "head": "Ladle Weight [Ton]",
-                "data1": ccpData["LADLEWEIGHT1"].toString(),
-                "data2": ccpData["LADLEWEIGHT2"].toString(),
-                "data3": ccpData["LADLEWEIGHT3"].toString(),
+                "data1": ccpData["LADLEWEIGHT1"].toStringAsFixed(2),
+                "data2": ccpData["LADLEWEIGHT2"].toStringAsFixed(2),
+                "data3": ccpData["LADLEWEIGHT3"].toStringAsFixed(2),
                 "selected": false,
                 "i": 1,
               },
