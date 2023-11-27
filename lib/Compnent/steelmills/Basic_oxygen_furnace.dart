@@ -416,7 +416,7 @@ class BOFsmState extends State<BOFsm> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: rows[1]["data3"] == "Stop"
+                              color: rows[4]["data3"] == "Stop"
                                   ? const Color.fromARGB(255, 255, 7, 7)
                                   : const Color.fromARGB(255, 98, 255, 7)),
                           padding: const EdgeInsets.symmetric(
@@ -487,7 +487,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
         ),
       ),
-      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
+      i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? (Expanded(
               flex: 3,
               child: Container(
@@ -518,7 +518,7 @@ Widget _row(h, d1, d2, d3, color, i) {
                 ),
               ),
             ),
-      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
+      i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? const Text("")
           : Expanded(
               flex: 1,
@@ -537,7 +537,7 @@ Widget _row(h, d1, d2, d3, color, i) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
+      i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? const Text("")
           : Expanded(
               flex: 1,
