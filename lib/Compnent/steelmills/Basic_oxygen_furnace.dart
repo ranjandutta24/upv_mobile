@@ -354,7 +354,7 @@ class BOFsmState extends State<BOFsm> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        flex: 4,
+                        flex: 8,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -375,7 +375,7 @@ class BOFsmState extends State<BOFsm> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 3,
                         child: Container(
                           decoration: BoxDecoration(
                             border: const Border(
@@ -385,8 +385,8 @@ class BOFsmState extends State<BOFsm> {
                               ),
                             ),
                             color: rows[4]["data1"] == "Stop"
-                                ? const Color.fromARGB(255, 255, 7, 7)
-                                : const Color.fromARGB(255, 98, 255, 7),
+                                ? myColors["deactive"]
+                                : myColors["active"],
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
@@ -399,7 +399,7 @@ class BOFsmState extends State<BOFsm> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 3,
                         child: Container(
                           decoration: BoxDecoration(
                               border: const Border(
@@ -409,8 +409,8 @@ class BOFsmState extends State<BOFsm> {
                                 ),
                               ),
                               color: rows[4]["data2"] == "Stop"
-                                  ? const Color.fromARGB(255, 255, 7, 7)
-                                  : const Color.fromARGB(255, 98, 255, 7)),
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BOF2",
@@ -422,12 +422,12 @@ class BOFsmState extends State<BOFsm> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 3,
                         child: Container(
                           decoration: BoxDecoration(
                               color: rows[4]["data3"] == "Stop"
-                                  ? const Color.fromARGB(255, 255, 7, 7)
-                                  : const Color.fromARGB(255, 98, 255, 7)),
+                                  ? myColors["deactive"]
+                                  : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("BOF3",
@@ -458,7 +458,7 @@ class BOFsmState extends State<BOFsm> {
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 3),
+                          vertical: 0, horizontal: 0),
                       child: _row(
                           r["head"],
                           r["data1"],
@@ -480,7 +480,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Expanded(
-        flex: 4,
+        flex: 8,
         child: Container(
           decoration: const BoxDecoration(
             border: Border(
@@ -499,7 +499,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
       ),
       i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? (Expanded(
-              flex: 3,
+              flex: 9,
               child: Container(
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -509,7 +509,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
               ),
             ))
           : Expanded(
-              flex: 1,
+              flex: 3,
               child: Container(
                 decoration: BoxDecoration(
                     border: const Border(
@@ -535,7 +535,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
       i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? const Text("")
           : Expanded(
-              flex: 1,
+              flex: 3,
               child: Container(
                 decoration: BoxDecoration(
                     border: const Border(
@@ -558,7 +558,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
       i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? const Text("")
           : Expanded(
-              flex: 1,
+              flex: 3,
               child: Container(
                 decoration: BoxDecoration(
                     color: i == 15

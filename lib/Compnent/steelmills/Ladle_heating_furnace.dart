@@ -137,7 +137,7 @@ class LhfsmState extends State<Lhfsm> {
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
+                                vertical: 5, horizontal: 3),
                             child: const Text('Parameters',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -260,7 +260,8 @@ Widget _row(h, d1, d2, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontSize: 12),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -269,7 +270,8 @@ Widget _row(h, d1, d2, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontSize: 12),
+              textAlign: TextAlign.center),
         ),
       ),
     ],
