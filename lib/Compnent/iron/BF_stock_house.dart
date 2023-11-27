@@ -185,6 +185,7 @@ class BfshState extends State<Bfsh> {
                 "i": 20,
               },
             ];
+
             if (num != -1) {
               rows[num]["selected"] = true;
             }
@@ -296,7 +297,12 @@ class BfshState extends State<Bfsh> {
   }
 }
 
-Widget _row(h, d, color, i) {
+Widget _row(
+  h,
+  d,
+  color,
+  i,
+) {
   return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
     Expanded(
       flex: 7,

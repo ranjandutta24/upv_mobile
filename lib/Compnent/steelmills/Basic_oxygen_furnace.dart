@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class BOFsm extends StatefulWidget {
   const BOFsm({super.key});
@@ -49,6 +50,7 @@ class BOFsmState extends State<BOFsm> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> status = [];
 
   bfService() async {
     if (mounted) {
@@ -299,6 +301,13 @@ class BOFsmState extends State<BOFsm> {
                 "i": 25,
               },
             ];
+            status = [
+              {
+                "BOF1": bofData["REC_1"],
+                "BOF2": bofData["REC_2"],
+                "BOF3": bofData["REC_3"],
+              }
+            ];
             if (num != -1) {
               rows[num]["selected"] = true;
             }
@@ -375,7 +384,7 @@ class BOFsmState extends State<BOFsm> {
                                 width: 2.0,
                               ),
                             ),
-                            color: rows[1]["data1"] == "Stop"
+                            color: rows[4]["data1"] == "Stop"
                                 ? const Color.fromARGB(255, 255, 7, 7)
                                 : const Color.fromARGB(255, 98, 255, 7),
                           ),
@@ -399,7 +408,7 @@ class BOFsmState extends State<BOFsm> {
                                   width: 2.0,
                                 ),
                               ),
-                              color: rows[1]["data2"] == "Stop"
+                              color: rows[4]["data2"] == "Stop"
                                   ? const Color.fromARGB(255, 255, 7, 7)
                                   : const Color.fromARGB(255, 98, 255, 7)),
                           padding: const EdgeInsets.symmetric(
@@ -416,7 +425,7 @@ class BOFsmState extends State<BOFsm> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: rows[1]["data3"] == "Stop"
+                              color: rows[4]["data3"] == "Stop"
                                   ? const Color.fromARGB(255, 255, 7, 7)
                                   : const Color.fromARGB(255, 98, 255, 7)),
                           padding: const EdgeInsets.symmetric(
@@ -456,7 +465,8 @@ class BOFsmState extends State<BOFsm> {
                           r["data2"],
                           r["data3"],
                           r["selected"] == true ? _containerColora : _textColor,
-                          r["i"]),
+                          r["i"],
+                          status),
                     ),
                   ),
               ],
@@ -465,7 +475,7 @@ class BOFsmState extends State<BOFsm> {
   }
 }
 
-Widget _row(h, d1, d2, d3, color, i) {
+Widget _row(h, d1, d2, d3, color, i, status) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
@@ -487,7 +497,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
         ),
       ),
-      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
+      i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? (Expanded(
               flex: 3,
               child: Container(
@@ -501,14 +511,18 @@ Widget _row(h, d1, d2, d3, color, i) {
           : Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    right: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
-                      width: 2.0,
+                decoration: BoxDecoration(
+                    border: const Border(
+                      right: BorderSide(
+                        color: Color.fromARGB(113, 44, 129, 227),
+                        width: 2.0,
+                      ),
                     ),
-                  ),
-                ),
+                    color: i == 15
+                        ? status[0]["BOF1"] == "On"
+                            ? myColors["active"]
+                            : myColors["deactive"]
+                        : const Color.fromARGB(0, 255, 7, 7)),
                 child: Padding(
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
@@ -518,31 +532,40 @@ Widget _row(h, d1, d2, d3, color, i) {
                 ),
               ),
             ),
-      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
+      i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? const Text("")
           : Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(
-                  border: Border(
-                    right: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
-                      width: 2.0,
+                decoration: BoxDecoration(
+                    border: const Border(
+                      right: BorderSide(
+                        color: Color.fromARGB(113, 44, 129, 227),
+                        width: 2.0,
+                      ),
                     ),
-                  ),
-                ),
+                    color: i == 15
+                        ? status[0]["BOF2"] == "On"
+                            ? myColors["active"]
+                            : myColors["deactive"]
+                        : const Color.fromARGB(0, 255, 7, 7)),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
                     style: TextStyle(color: color, fontSize: 12),
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 1 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
+      i == 1 || i == 2 || i == 18 || i == 19 || i == 23 || i == 24 || i == 25
           ? const Text("")
           : Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(),
+                decoration: BoxDecoration(
+                    color: i == 15
+                        ? status[0]["BOF3"] == "On"
+                            ? myColors["active"]
+                            : myColors["deactive"]
+                        : const Color.fromARGB(0, 255, 7, 7)),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d3,
                     style: TextStyle(color: color, fontSize: 12),
