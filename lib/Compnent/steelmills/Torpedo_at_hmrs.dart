@@ -47,6 +47,7 @@ class HmrsState extends State<Hmrs> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> newrows = [];
 
   hmrsService() async {
     if (mounted) {
