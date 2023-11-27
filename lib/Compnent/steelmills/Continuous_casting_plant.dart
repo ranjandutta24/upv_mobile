@@ -110,7 +110,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 4,
+                "i": 5,
               },
               {
                 "head": "Strand 1",
@@ -118,7 +118,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "${ccpData["CCP_2WDSPDSD1S"]}",
                 "data3": "${ccpData["CCP_3WDSPDSD1S"]}",
                 "selected": false,
-                "i": 4,
+                "i": 6,
               },
               {
                 "head": "Strand 2",
@@ -126,7 +126,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "${ccpData["CCP_2WDSPDSD2S"]}",
                 "data3": "${ccpData["CCP_3WDSPDSD2S"]}",
                 "selected": false,
-                "i": 4,
+                "i": 7,
               },
               {
                 "head": "Strand 3",
@@ -134,7 +134,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "${ccpData["CCP_2WDSPDSD3S"]}",
                 "data3": "${ccpData["CCP_3WDSPDSD3S"]}",
                 "selected": false,
-                "i": 4,
+                "i": 8,
               },
               {
                 "head": "Strand 4",
@@ -142,7 +142,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "${ccpData["CCP_2WDSPDSD4S"]}",
                 "data3": "${ccpData["CCP_3WDSPDSD4S"]}",
                 "selected": false,
-                "i": 4,
+                "i": 9,
               },
               {
                 "head": "Strand 5",
@@ -150,7 +150,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "${ccpData["CCP_2WDSPDSD5S"]}",
                 "data3": "",
                 "selected": false,
-                "i": 4,
+                "i": 10,
               },
               {
                 "head": "Strand 6",
@@ -158,7 +158,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "${ccpData["CCP_2WDSPDSD6S"]}",
                 "data3": "",
                 "selected": false,
-                "i": 4,
+                "i": 11,
               },
               {
                 "head": "Strand 1 Duration ",
@@ -169,7 +169,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data3":
                     "${ccpData["HH3_1"].toStringAsFixed(0)}:${ccpData["MM3_1"].toString()}:${ccpData["SS3_1"].toString()}",
                 "selected": false,
-                "i": 0,
+                "i": 12,
               },
               {
                 "head": "Strand 2 Duration ",
@@ -180,7 +180,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data3":
                     "${ccpData["HH3_2"].toStringAsFixed(0)}:${ccpData["MM3_2"].toString()}:${ccpData["SS3_2"].toString()}",
                 "selected": false,
-                "i": 0,
+                "i": 13,
               },
               {
                 "head": "Strand 3 Duration ",
@@ -191,7 +191,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data3":
                     "${ccpData["HH3_3"].toStringAsFixed(0)}:${ccpData["MM3_3"].toString()}:${ccpData["SS3_3"].toString()}",
                 "selected": false,
-                "i": 0,
+                "i": 14,
               },
               {
                 "head": "Strand 4 Duration ",
@@ -202,7 +202,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data3":
                     "${ccpData["HH3_4"].toStringAsFixed(0)}:${ccpData["MM3_4"].toString()}:${ccpData["SS3_4"].toString()}",
                 "selected": false,
-                "i": 0,
+                "i": 15,
               },
               {
                 "head": "Strand 5 Duration ",
@@ -212,7 +212,7 @@ class CcpsmState extends State<Ccpsm> {
                     "${ccpData["HH2_5"].toStringAsFixed(0)}:${ccpData["MM2_5"].toString()}:${ccpData["SS2_5"].toString()}",
                 "data3": "",
                 "selected": false,
-                "i": 0,
+                "i": 16,
               },
               {
                 "head": "Strand 6 Duration ",
@@ -222,7 +222,7 @@ class CcpsmState extends State<Ccpsm> {
                     "${ccpData["HH2_6"].toStringAsFixed(0)}:${ccpData["MM2_6"].toString()}:${ccpData["SS2_6"].toString()}",
                 "data3": "",
                 "selected": false,
-                "i": 0,
+                "i": 17,
               },
               {
                 "head": "Oxygen Consm.[Nm3/hr]",
@@ -232,7 +232,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 3,
+                "i": 18,
               },
               {
                 "head": "N2 Consm.[Nm3/hr]",
@@ -242,7 +242,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 3,
+                "i": 19,
               },
               {
                 "head": "Argon Consm.[Nm3/hr]",
@@ -250,7 +250,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 3,
+                "i": 20,
               },
               {
                 "head": "CBM Consm.[Nm3/hr]",
@@ -260,7 +260,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 3,
+                "i": 21,
               },
               {
                 "head": "COG Consm.[Nm3/hr]",
@@ -268,7 +268,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 3,
+                "i": 22,
               },
               {
                 "head": "Prev. Day Cast",
@@ -276,7 +276,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": "",
                 "data3": "",
                 "selected": false,
-                "i": 10,
+                "i": 23,
               },
               {
                 "head": "Ladle Running Count.",
@@ -284,7 +284,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["LADLENO_2"].toString(),
                 "data3": ccpData["LADLENO_3"].toString(),
                 "selected": false,
-                "i": 3,
+                "i": 24,
               },
 
               {
@@ -293,7 +293,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["WITHDRAWALSPEED2_1"].toStringAsFixed(2),
                 "data3": ccpData["WITHDRAWALSPEED3_1"].toStringAsFixed(2),
                 "selected": false,
-                "i": 4,
+                "i": 25,
               },
               {
                 "head": "Casting Speed Strand 2",
@@ -301,7 +301,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["WITHDRAWALSPEED2_2"].toStringAsFixed(2),
                 "data3": ccpData["WITHDRAWALSPEED3_2"].toStringAsFixed(2),
                 "selected": false,
-                "i": 5,
+                "i": 26,
               },
               {
                 "head": "Casting Speed Strand 3",
@@ -309,7 +309,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["WITHDRAWALSPEED2_3"].toStringAsFixed(2),
                 "data3": ccpData["WITHDRAWALSPEED3_3"].toStringAsFixed(2),
                 "selected": false,
-                "i": 6,
+                "i": 27,
               },
               {
                 "head": "Casting Speed Strand 4",
@@ -317,7 +317,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["WITHDRAWALSPEED2_4"].toStringAsFixed(2),
                 "data3": ccpData["WITHDRAWALSPEED3_4"].toStringAsFixed(2),
                 "selected": false,
-                "i": 7,
+                "i": 28,
               },
               {
                 "head": "Casting Speed Strand 5",
@@ -325,7 +325,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["WITHDRAWALSPEED2_5"].toStringAsFixed(2),
                 "data3": "",
                 "selected": false,
-                "i": 8,
+                "i": 29,
               },
               {
                 "head": "Casting Speed Strand 6",
@@ -333,7 +333,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["WITHDRAWALSPEED2_6"].toStringAsFixed(2),
                 "data3": "",
                 "selected": false,
-                "i": 9,
+                "i": 30,
               },
               {
                 "head": "Stopper Position Strand 1",
@@ -341,7 +341,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["C2_S1"].toStringAsFixed(2),
                 "data3": ccpData["C3_S1"].toStringAsFixed(2),
                 "selected": false,
-                "i": 1,
+                "i": 31,
               },
               {
                 "head": "Stopper Position Strand 2",
@@ -349,7 +349,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["C2_S2"].toStringAsFixed(2),
                 "data3": ccpData["C3_S2"].toStringAsFixed(2),
                 "selected": false,
-                "i": 1,
+                "i": 32,
               },
               {
                 "head": "Stopper Position Strand 3",
@@ -357,7 +357,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["C2_S3"].toStringAsFixed(2),
                 "data3": ccpData["C3_S3"].toStringAsFixed(2),
                 "selected": false,
-                "i": 1,
+                "i": 33,
               },
               {
                 "head": "Stopper Position Strand 4",
@@ -365,7 +365,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["C2_S4"].toStringAsFixed(2),
                 "data3": ccpData["C3_S4"].toStringAsFixed(2),
                 "selected": false,
-                "i": 1,
+                "i": 34,
               },
               {
                 "head": "Stopper Position Strand 5",
@@ -373,7 +373,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["C2_S5"].toStringAsFixed(2),
                 "data3": "",
                 "selected": false,
-                "i": 1,
+                "i": 35,
               },
               {
                 "head": "Stopper Position Strand 6",
@@ -381,7 +381,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["C2_S6"].toStringAsFixed(2),
                 "data3": "",
                 "selected": false,
-                "i": 1,
+                "i": 36,
               },
             ];
             status = [
