@@ -61,7 +61,7 @@ flutter:
   fonts:
     - family: CustomFont
       fonts:
-        - asset: assets/font/Play-Bold
+        - asset: assets/font/Play-Regular.ttf
 
   # To add assets to your application, add an assets section, like this:
   assets:

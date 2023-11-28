@@ -200,7 +200,7 @@ class SinterPlantState extends State<SinterPlant> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
@@ -312,31 +312,47 @@ Widget _row(h, d1, d2, color, i) {
           ),
         ),
       ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
-                width: 2.0,
+      i == 0 || i == 1
+          ? Expanded(
+              flex: 2,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            )
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: Color.fromARGB(113, 44, 129, 227),
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          decoration: const BoxDecoration(),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
-        ),
-      ),
+
+      i == 0 || i == 1
+          ? Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d2,
+                    style: TextStyle(color: color),
+                    textAlign: TextAlign.center),
+              ),
+            ),
 
       // Text(h, style: TextStyle(color: color)),
       // Text(d1, style: TextStyle(color: color)),

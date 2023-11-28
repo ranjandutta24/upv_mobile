@@ -12,7 +12,9 @@ import 'package:upv_mobile/Compnent/utility/Power_blowing_station_utility.dart';
 
 class AccordionUtility extends StatefulWidget {
   static const headerStyle = TextStyle(
-      color: Color(0xffffffff), fontSize: 18, fontWeight: FontWeight.bold);
+      color: Color.fromARGB(255, 56, 56, 56),
+      fontSize: 18,
+      fontWeight: FontWeight.bold);
   static const contentStyleHeader = TextStyle(
       color: Color(0xff999999), fontSize: 14, fontWeight: FontWeight.w700);
   static const contentStyle = TextStyle(
@@ -56,8 +58,13 @@ class _AccordionPageState extends State<AccordionUtility> {
         sectionClosingHapticFeedback: SectionHapticFeedback.light,
         children: [
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 89, 104, 110),
-            contentBorderColor: const Color.fromARGB(164, 89, 104, 110),
+            rightIcon: _rightIcon(),
+            paddingBetweenClosedSections: 5,
+            paddingBetweenOpenSections: 5,
+            headerBackgroundColor: const Color.fromARGB(255, 173, 191, 227),
+            headerBackgroundColorOpened:
+                const Color.fromARGB(255, 173, 191, 227),
+            contentBorderColor: const Color.fromARGB(255, 173, 191, 227),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -67,14 +74,18 @@ class _AccordionPageState extends State<AccordionUtility> {
               height: 40.0,
             ),
             headerPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             header: const Text('POWER & BLOWING STATION',
                 style: AccordionUtility.headerStyle),
             content: const PbsUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 189, 142, 92),
-            contentBorderColor: const Color.fromARGB(255, 189, 142, 92),
+            rightIcon: _rightIcon(),
+            paddingBetweenClosedSections: 5,
+            paddingBetweenOpenSections: 5,
+            headerBackgroundColor: const Color.fromARGB(255, 114, 176, 118),
+            headerBackgroundColorOpened: const Color.fromARGB(255, 83, 156, 88),
+            contentBorderColor: const Color.fromARGB(255, 92, 170, 97),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -84,14 +95,19 @@ class _AccordionPageState extends State<AccordionUtility> {
               height: 40.0,
             ),
             headerPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             header: const Text('BOF Gas Holder',
                 style: AccordionUtility.headerStyle),
             content: const BofGasHoldUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 189, 171, 92),
-            contentBorderColor: const Color.fromARGB(255, 189, 171, 92),
+            rightIcon: _rightIcon(),
+            paddingBetweenClosedSections: 5,
+            paddingBetweenOpenSections: 5,
+            headerBackgroundColor: const Color.fromARGB(255, 193, 184, 79),
+            headerBackgroundColorOpened:
+                const Color.fromARGB(255, 190, 180, 64),
+            contentBorderColor: const Color.fromARGB(255, 178, 197, 53),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -101,14 +117,19 @@ class _AccordionPageState extends State<AccordionUtility> {
               height: 40.0,
             ),
             headerPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             header:
                 const Text('Gas Utlity', style: AccordionUtility.headerStyle),
             content: const GasUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 92, 186, 189),
-            contentBorderColor: const Color.fromARGB(255, 92, 186, 189),
+            rightIcon: _rightIcon(),
+            paddingBetweenClosedSections: 5,
+            paddingBetweenOpenSections: 5,
+            headerBackgroundColor: const Color.fromARGB(184, 122, 202, 193),
+            headerBackgroundColorOpened:
+                const Color.fromARGB(184, 85, 171, 161),
+            contentBorderColor: const Color.fromARGB(184, 109, 202, 191),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,
@@ -118,14 +139,19 @@ class _AccordionPageState extends State<AccordionUtility> {
               height: 40.0,
             ),
             headerPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             header: const Text('Compressed Air Station',
                 style: AccordionUtility.headerStyle),
             content: const CasUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 204, 212, 52),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            rightIcon: _rightIcon(),
+            paddingBetweenClosedSections: 5,
+            paddingBetweenOpenSections: 5,
+            headerBackgroundColor: const Color.fromARGB(255, 203, 161, 97),
+            headerBackgroundColorOpened:
+                const Color.fromARGB(255, 169, 130, 71),
+            contentBorderColor: const Color.fromARGB(255, 197, 163, 53),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -134,14 +160,19 @@ class _AccordionPageState extends State<AccordionUtility> {
               height: 40.0,
             ),
             headerPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             header:
                 const Text("OXYGEN PLANT", style: AccordionUtility.headerStyle),
             content: const OxygenPlantUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 161, 61, 174),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            rightIcon: _rightIcon(),
+            paddingBetweenClosedSections: 5,
+            paddingBetweenOpenSections: 5,
+            headerBackgroundColor: const Color.fromARGB(255, 210, 150, 150),
+            headerBackgroundColorOpened:
+                const Color.fromARGB(255, 223, 136, 136),
+            contentBorderColor: const Color.fromARGB(255, 210, 150, 150),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -150,14 +181,19 @@ class _AccordionPageState extends State<AccordionUtility> {
               height: 40.0,
             ),
             headerPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             header: const Text("LIME & DOLO CALCINATION PLANT",
                 style: AccordionUtility.headerStyle),
             content: const LdcpUt(),
           ),
           AccordionSection(
-            headerBackgroundColor: const Color.fromARGB(255, 212, 196, 52),
-            contentBorderColor: const Color.fromARGB(255, 131, 152, 89),
+            rightIcon: _rightIcon(),
+            paddingBetweenClosedSections: 5,
+            paddingBetweenOpenSections: 5,
+            headerBackgroundColor: const Color.fromARGB(255, 169, 181, 123),
+            headerBackgroundColorOpened:
+                const Color.fromARGB(255, 179, 196, 108),
+            contentBorderColor: const Color.fromARGB(255, 169, 181, 123),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -166,7 +202,7 @@ class _AccordionPageState extends State<AccordionUtility> {
               height: 40.0,
             ),
             headerPadding:
-                const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
             header: const Text("CBM", style: AccordionUtility.headerStyle),
             content: const CbmUt(),
           ),
@@ -176,4 +212,10 @@ class _AccordionPageState extends State<AccordionUtility> {
   }
 } //__
 
-
+Widget _rightIcon() {
+  return const Icon(
+    Icons.arrow_drop_down,
+    size: 35,
+    color: Color.fromARGB(255, 69, 69, 69),
+  );
+}
