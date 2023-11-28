@@ -29,16 +29,17 @@ class MainDrawer extends StatelessWidget {
             children: [
               const Icon(
                 Icons.perm_identity_rounded,
-                size: 48,
-                color: Color.fromARGB(234, 56, 23, 34),
+                size: 40,
+                color: Color.fromARGB(234, 255, 255, 255),
               ),
               const SizedBox(width: 18),
               Text(
                 "${data["firstname"]} ${data["lastname"] ?? ""}",
                 style: const TextStyle(
-                  fontSize: 26,
-                  fontWeight: FontWeight.w200,
-                ),
+                    fontSize: 25,
+                    fontWeight: FontWeight.w200,
+                    fontFamily: "CustomFont",
+                    color: Color.fromARGB(255, 255, 255, 255)),
               )
             ],
           ),
@@ -52,9 +53,7 @@ class MainDrawer extends StatelessWidget {
           title: const Text(
             'Overview',
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-            ),
+                color: Colors.black, fontSize: 18, fontFamily: "CustomFont"),
           ),
           onTap: () {
             Navigator.replace(
@@ -77,9 +76,7 @@ class MainDrawer extends StatelessWidget {
           title: const Text(
             'Iron',
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-            ),
+                color: Colors.black, fontSize: 18, fontFamily: "CustomFont"),
           ),
           onTap: () {
             Navigator.replace(
@@ -99,9 +96,7 @@ class MainDrawer extends StatelessWidget {
           title: const Text(
             'Steel/Mills',
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-            ),
+                color: Colors.black, fontSize: 18, fontFamily: "CustomFont"),
           ),
           onTap: () {
             Navigator.replace(
@@ -121,9 +116,7 @@ class MainDrawer extends StatelessWidget {
           title: const Text(
             'Utility',
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-            ),
+                color: Colors.black, fontSize: 18, fontFamily: "CustomFont"),
           ),
           onTap: () {
             Navigator.replace(
@@ -234,9 +227,7 @@ class MainDrawer extends StatelessWidget {
           title: const Text(
             'Sign out',
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-            ),
+                color: Colors.black, fontSize: 18, fontFamily: "CustomFont"),
           ),
           onTap: () {
             showDialog(
