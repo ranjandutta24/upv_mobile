@@ -321,7 +321,7 @@ class ColState extends State<Col> {
                         ),
                       ),
                       padding: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 3),
+                          vertical: 0, horizontal: 0),
                       child: _row(
                           r["head"],
                           r["data"],
@@ -351,7 +351,7 @@ Widget _row(h, d, color, i) {
             ),
           ),
           child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
             child: Text(
               h,
               style: TextStyle(color: color),
@@ -371,7 +371,7 @@ Widget _row(h, d, color, i) {
                             : const Color.fromARGB(0, 252, 252, 252)),
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                      const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                   child: Text(
                     d,
                     style: TextStyle(color: color),
@@ -386,7 +386,7 @@ Widget _row(h, d, color, i) {
                 decoration: const BoxDecoration(),
                 child: Padding(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
+                      const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                   child: Text(
                     d,
                     style: TextStyle(color: color),
