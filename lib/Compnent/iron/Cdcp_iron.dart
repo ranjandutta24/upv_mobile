@@ -60,10 +60,10 @@ class CdcpState extends State<Cdcp> {
             rows = [
               {
                 "head": "Steam Flow[TPH]",
-                "data1": cdcpData["BOILER1FIR523"].toStringAsFixed(2),
-                "data2": cdcpData["BOILER2FIR523"].toStringAsFixed(2),
-                "data3": cdcpData["BOILER3FIR523"].toStringAsFixed(2),
-                "data4": cdcpData["BOILER4FIR523"].toStringAsFixed(2),
+                "data1": cdcpData["BOILER1FIR523"].toStringAsFixed(1),
+                "data2": cdcpData["BOILER2FIR523"].toStringAsFixed(1),
+                "data3": cdcpData["BOILER3FIR523"].toStringAsFixed(1),
+                "data4": cdcpData["BOILER4FIR523"].toStringAsFixed(1),
                 "selected": false,
                 "i": 0,
               },
@@ -182,7 +182,7 @@ class CdcpState extends State<Cdcp> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
-                      flex: 7,
+                      flex: 12,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -204,7 +204,7 @@ class CdcpState extends State<Cdcp> {
                       ),
                     ),
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -226,7 +226,7 @@ class CdcpState extends State<Cdcp> {
                       ),
                     ),
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -248,7 +248,7 @@ class CdcpState extends State<Cdcp> {
                       ),
                     ),
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Container(
                         decoration: const BoxDecoration(
                           border: Border(
@@ -270,7 +270,7 @@ class CdcpState extends State<Cdcp> {
                       ),
                     ),
                     Expanded(
-                      flex: 1,
+                      flex: 2,
                       child: Container(
                         decoration: const BoxDecoration(),
                         padding: const EdgeInsets.symmetric(
@@ -323,7 +323,7 @@ class CdcpState extends State<Cdcp> {
 Widget _row(h, d1, d2, d3, d4, color, i) {
   return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
     Expanded(
-      flex: 7,
+      flex: 12,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -337,13 +337,13 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
           child: Text(
             h,
-            style: TextStyle(color: color, fontSize: 12),
+            style: TextStyle(color: color, fontSize: 10),
           ),
         ),
       ),
     ),
     Expanded(
-      flex: 1,
+      flex: 2,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -364,7 +364,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
       ),
     ),
     Expanded(
-      flex: 1,
+      flex: 2,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -381,7 +381,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
       ),
     ),
     Expanded(
-      flex: 1,
+      flex: 2,
       child: Container(
         decoration: const BoxDecoration(
           border: Border(
@@ -398,7 +398,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
       ),
     ),
     Expanded(
-      flex: 1,
+      flex: 2,
       child: Container(
         decoration: const BoxDecoration(),
         padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),

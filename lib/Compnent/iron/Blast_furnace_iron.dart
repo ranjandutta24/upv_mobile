@@ -337,10 +337,7 @@ Widget _row(h, d, color, i) {
         ),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
-          child: Text(
-            h,
-            style: TextStyle(color: color),
-          ),
+          child: Text(h, style: TextStyle(color: color, fontSize: 12)),
         ),
       ),
     ),
@@ -352,7 +349,7 @@ Widget _row(h, d, color, i) {
           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
           child: Text(
             d,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontSize: 12),
             textAlign: TextAlign.center,
           ),
         ),

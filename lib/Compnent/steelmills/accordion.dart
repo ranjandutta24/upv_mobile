@@ -74,8 +74,8 @@ class _AccordionPageState extends State<AccordionSteel> {
           AccordionSection(
             headerPadding:
                 const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
-            headerBackgroundColor: const Color.fromARGB(255, 53, 197, 180),
-            contentBorderColor: const Color.fromARGB(255, 53, 197, 180),
+            headerBackgroundColor: const Color.fromARGB(255, 59, 80, 133),
+            contentBorderColor: const Color.fromARGB(255, 59, 80, 133),
             isOpen: false,
             contentVerticalPadding: 10,
             contentHorizontalPadding: 0,

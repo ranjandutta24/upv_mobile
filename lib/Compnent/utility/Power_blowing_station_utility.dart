@@ -160,7 +160,7 @@ class PbsUtState extends State<PbsUt> {
             ];
             if (num != -1) {
               rows[num]["selected"] = true;
-              rows2[num]["selected"] = true;
+              // rows2[num]["selected"] = true;
             }
             loading = false;
           });
