@@ -59,14 +59,16 @@ class PbsUtState extends State<PbsUt> {
       // print("call");
       await powerblowingstation().then((data) {
         if (mounted) {
-          // print(data.body);
+          print(data.body);
           setState(() {
             pbsData = json.decode(data.body);
             rows = [
               {
                 "head": "Steam Flow [TPH]",
                 "data1": pbsData["PBS_B1MSF"].toString(),
-                "data2": pbsData["PBS_B2MSF"].toString(),
+                "data2": pbsData["PBS_B2MSF"] == null
+                    ? "0"
+                    : pbsData["PBS_B2MSF"].toString(),
                 "data3": pbsData["PBS_B3MSF"].toString(),
                 "selected": false,
                 "i": 0,
@@ -251,17 +253,22 @@ class PbsUtState extends State<PbsUt> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: const Border(
-                                right: BorderSide(
-                                  color: Color.fromARGB(113, 44, 129, 227),
-                                  width: 2.0,
-                                ),
+                            border: const Border(
+                              right: BorderSide(
+                                color: Color.fromARGB(113, 44, 129, 227),
+                                width: 2.0,
                               ),
-                              color: double.parse(rows[0]["data2"]) <= 10
-                                  ? myColors["deactive"]
-                                  : double.parse(rows[0]["data2"]) > 10
-                                      ? myColors["active"]
-                                      : const Color.fromARGB(0, 255, 193, 7)),
+                            ),
+
+                            // *error
+                            color: rows[0]["data2"] == "null"
+                                ? myColors["deactive"]
+                                : double.parse(rows[0]["data2"]) <= 10
+                                    ? myColors["deactive"]
+                                    : double.parse(rows[0]["data2"]) > 10
+                                        ? myColors["active"]
+                                        : const Color.fromARGB(0, 255, 193, 7),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: Text("BOILER2",
