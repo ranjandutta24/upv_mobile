@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:upv_mobile/Compnent/utility/accordion.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
@@ -33,6 +34,8 @@ class _UtilityScreenState extends State<Utilitycreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Utility'),
+          backgroundColor: myColors["theme"],
+          foregroundColor: myColors["white"],
         ),
         drawer: MainDrawer(
           data: widget.data,

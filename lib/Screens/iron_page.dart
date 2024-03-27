@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Compnent/iron/accordion.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
@@ -28,6 +29,8 @@ class _IronsScreenState extends State<IronScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Iron'),
+          backgroundColor: myColors["theme"],
+          foregroundColor: myColors["white"],
         ),
         drawer: MainDrawer(
           data: widget.data,

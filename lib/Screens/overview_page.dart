@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+// import 'dart:ui';
 
 import 'package:upv_mobile/Compnent/overview/accordion.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
@@ -32,7 +35,17 @@ class _OverviewsScreenState extends State<OverviewScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('Home'),
+          title: Text(
+            'Home',
+            // style: GoogleFonts.play(
+            //   textStyle: const TextStyle(
+            //     // color: myColors["icon"], // Change text color
+            //     fontSize: 20, // Change font size
+            //   ),
+            // ),
+          ),
+          backgroundColor: myColors["theme"],
+          foregroundColor: myColors["white"],
         ),
         drawer: MainDrawer(
           data: widget.data,

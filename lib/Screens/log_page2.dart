@@ -16,6 +16,8 @@ class _LoginState extends State<Login> {
   bool _obscureText = true;
   late Map<String, dynamic> jsonMap;
   final _formKey = GlobalKey<FormState>();
+  String id = "";
+  String password = "";
   TextEditingController usernameController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
 
@@ -88,129 +90,149 @@ class _LoginState extends State<Login> {
               ),
             ),
             // Login Form
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 16.0),
-                padding: const EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.9), //,
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Image.asset(
-                      'assets/images/logo.png',
-                      height: 130,
-                      width: 130,
-                      fit: BoxFit.cover,
-                    ),
-                    const Text(
-                      'SAIL-ISP',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.blue),
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    const Text(
-                      'Unified Plant View ',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
+            SingleChildScrollView(
+              child: Center(
+                child: Container(
+                  margin: const EdgeInsets.symmetric(
+                      horizontal: 16.0, vertical: 100),
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white.withOpacity(0.9), //,
+                    borderRadius: BorderRadius.circular(10.0),
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Image.asset(
+                        'assets/images/logo.png',
+                        height: 130,
+                        width: 130,
+                        fit: BoxFit.cover,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    const SizedBox(
-                      height: 14,
-                    ),
-                    Form(
-                      key: _formKey,
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 16),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            TextFormField(
-                              controller: usernameController,
-                              decoration: const InputDecoration(
-                                labelText: 'User ID',
-                              ),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Username / Mobile Number is required';
-                                }
-                                // You can add more email validation logic here if needed
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: 16.0),
-                            TextFormField(
-                              obscureText: _obscureText,
-                              controller: passwordController,
-                              decoration: InputDecoration(
-                                labelText: 'Password',
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _obscureText =
-                                          !_obscureText; // Toggle the value of _obscureText
-                                    });
-                                  },
-                                  icon: Icon(
-                                    _obscureText
-                                        ? Icons.visibility
-                                        : Icons.visibility_off,
-                                  ),
-                                ),
-                              ),
-                              validator: (value) {
-                                if (value!.isEmpty) {
-                                  return 'Password is required';
-                                }
-                                return null;
-                              },
-                            ),
-                            const SizedBox(height: 16.0),
-                            SizedBox(
-                                width: double.infinity,
-                                child: ElevatedButton(
-                                  onPressed: () async {
-                                    loginUser();
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    //minimumSize: const Size.fromHeight(50),
-                                    backgroundColor:
-                                        const Color.fromARGB(255, 7, 102, 255),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
-                                    ),
-                                  ),
-                                  child: const Padding(
-                                    padding: EdgeInsets.symmetric(
-                                        vertical: 6, horizontal: 20),
-                                    child: Text('Login'),
-                                  ),
-                                )),
-                          ],
+                      const Text(
+                        'SAIL-ISP',
+                        style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.blue),
+                      ),
+                      const SizedBox(
+                        height: 6,
+                      ),
+                      const Text(
+                        'Unified Plant View ',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                    ),
-                    // TextButton(
-                    //   onPressed: () {
-                    //     forgotPassword();
-                    //   },
-                    //   child: const Text(
-                    //     'Forgot Password?',
-                    //     style: TextStyle(color: Color(0xff000071)),
-                    //   ),
-                    // )
-                  ],
+                      const SizedBox(
+                        height: 6,
+                      ),
+                      const SizedBox(
+                        height: 14,
+                      ),
+                      Form(
+                        key: _formKey,
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              TextFormField(
+                                onChanged: (value) {
+                                  setState(() {
+                                    id = value;
+                                  });
+                                },
+                                controller: usernameController,
+                                decoration: const InputDecoration(
+                                  labelText: 'User ID',
+                                ),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Username / Mobile Number is required';
+                                  }
+                                  // You can add more email validation logic here if needed
+                                  return null;
+                                },
+                              ),
+                              const SizedBox(height: 16.0),
+                              TextFormField(
+                                onChanged: (value) {
+                                  setState(() {
+                                    password = value;
+                                  });
+                                },
+                                obscureText: _obscureText,
+                                controller: passwordController,
+                                decoration: InputDecoration(
+                                  labelText: 'Password',
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        _obscureText =
+                                            !_obscureText; // Toggle the value of _obscureText
+                                      });
+                                    },
+                                    icon: Icon(
+                                      _obscureText
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
+                                    ),
+                                  ),
+                                ),
+                                validator: (value) {
+                                  if (value!.isEmpty) {
+                                    return 'Password is required';
+                                  }
+                                  return null;
+                                },
+                              ),
+                              const SizedBox(height: 16.0),
+                              SizedBox(
+                                  width: double.infinity,
+                                  child: ElevatedButton(
+                                    //  final username = usernameController.text;
+                                    //   final password = passwordController.text;
+
+                                    onPressed:
+                                        id.trim == "" || password.trim() == ""
+                                            ? null
+                                            : () async {
+                                                loginUser();
+                                              },
+                                    style: ElevatedButton.styleFrom(
+                                      //minimumSize: const Size.fromHeight(50),
+                                      backgroundColor: const Color.fromARGB(
+                                          255, 7, 102, 255),
+                                      foregroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                    ),
+                                    child: const Padding(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 6, horizontal: 20),
+                                      child: Text('Login'),
+                                    ),
+                                  )),
+                            ],
+                          ),
+                        ),
+                      ),
+                      // TextButton(
+                      //   onPressed: () {
+                      //     forgotPassword();
+                      //   },
+                      //   child: const Text(
+                      //     'Forgot Password?',
+                      //     style: TextStyle(color: Color(0xff000071)),
+                      //   ),
+                      // )
+                    ],
+                  ),
                 ),
               ),
             ),

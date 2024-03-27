@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:upv_mobile/Compnent/steelmills/accordion.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 import 'package:upv_mobile/Widgets/main_drawer.dart';
 
@@ -29,6 +30,8 @@ class _SteelMillssScreenState extends State<SteelMillsScreen> {
     return Scaffold(
         appBar: AppBar(
           title: const Text('Steel/Mills'),
+          backgroundColor: myColors["theme"],
+          foregroundColor: myColors["white"],
         ),
         drawer: MainDrawer(
           data: widget.data,
