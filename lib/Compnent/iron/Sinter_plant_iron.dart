@@ -466,6 +466,7 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 4,
         child: Container(
+          height: 40,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -484,6 +485,7 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 1,
         child: Container(
+          height: 40,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -501,6 +503,7 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 1,
         child: Container(
+          height: 40,
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,

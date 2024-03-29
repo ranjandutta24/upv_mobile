@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 import 'package:upv_mobile/Utils/colors.dart';
+import 'package:upv_mobile/Widgets/loader.dart';
 
 class SinterPlant extends StatefulWidget {
   const SinterPlant({super.key});
@@ -172,7 +173,10 @@ class SinterPlantState extends State<SinterPlant> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
-          ? const Text("")
+          ? Container(
+              padding: const EdgeInsets.all(10),
+              child: const MyLoader(),
+            )
           : Column(
               children: [
                 Container(

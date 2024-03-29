@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
 import 'package:upv_mobile/Utils/colors.dart';
+import 'package:upv_mobile/Widgets/loader.dart';
 
 class BOF extends StatefulWidget {
   const BOF({super.key});
@@ -18,6 +19,7 @@ class BOF extends StatefulWidget {
 class BOFState extends State<BOF> {
   late dynamic bofData;
   var loading = true;
+
   var num = -1;
   @override
   void initState() {
@@ -223,8 +225,10 @@ class BOFState extends State<BOF> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading || !mounted
-          ? const SizedBox(
-              height: 30, width: 30, child: CircularProgressIndicator())
+          ? Container(
+              padding: const EdgeInsets.all(10),
+              child: const MyLoader(),
+            )
           : Column(
               children: [
                 Container(
@@ -241,7 +245,7 @@ class BOFState extends State<BOF> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        flex: 4,
+                        flex: 7,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -262,7 +266,7 @@ class BOFState extends State<BOF> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
                             border: const Border(
@@ -286,7 +290,7 @@ class BOFState extends State<BOF> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
                               border: const Border(
@@ -309,7 +313,7 @@ class BOFState extends State<BOF> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
                               color: rows[1]["data3"] == "Stop"
@@ -366,8 +370,9 @@ Widget _row(h, d1, d2, d3, color, i) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Expanded(
-        flex: 4,
+        flex: 7,
         child: Container(
+          height: 46,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -378,6 +383,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
+            // "$h\n",
             h,
             style: TextStyle(color: color, fontSize: 12),
           ),
@@ -385,8 +391,9 @@ Widget _row(h, d1, d2, d3, color, i) {
       ),
       i == 11 || i == 12
           ? (Expanded(
-              flex: 3,
+              flex: 6,
               child: Container(
+                height: 46,
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
@@ -395,8 +402,9 @@ Widget _row(h, d1, d2, d3, color, i) {
               ),
             ))
           : Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
+                height: 46,
                 decoration: const BoxDecoration(
                   border: Border(
                     right: BorderSide(
@@ -417,8 +425,9 @@ Widget _row(h, d1, d2, d3, color, i) {
       i == 11 || i == 12
           ? const Text("")
           : Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
+                height: 46,
                 decoration: const BoxDecoration(
                   border: Border(
                     right: BorderSide(
@@ -436,8 +445,9 @@ Widget _row(h, d1, d2, d3, color, i) {
       i == 11 || i == 12
           ? const Text("")
           : Expanded(
-              flex: 1,
+              flex: 2,
               child: Container(
+                height: 46,
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d3,

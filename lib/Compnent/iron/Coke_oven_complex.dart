@@ -134,7 +134,7 @@ class CocState extends State<Coc> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(113, 43, 76, 98),
+                      color: const Color.fromARGB(113, 44, 129, 227),
                       width: 2.0,
                     ),
                   ),
@@ -149,7 +149,7 @@ class CocState extends State<Coc> {
                             decoration: const BoxDecoration(
                               border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 74, 104, 156),
+                                  color: Color.fromARGB(113, 44, 129, 227),
                                   width: 2.0,
                                 ),
                               ),

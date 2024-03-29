@@ -121,16 +121,16 @@ Widget _heaad(text) {
           width: double.infinity,
           decoration: BoxDecoration(
               border: Border.all(
-                color: const Color.fromARGB(113, 44, 129, 227), // Border color
+                color: Color.fromARGB(123, 44, 129, 227), // Border color
                 width: 2.0, // Border width
               ),
               color: const Color.fromARGB(113, 44, 129, 227)),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 8),
             child: Text(
               text,
               style: const TextStyle(
-                  color: Color.fromARGB(255, 56, 56, 56),
+                  color: Color.fromARGB(255, 109, 109, 109),
                   fontWeight: FontWeight.w500),
             ),
           )),

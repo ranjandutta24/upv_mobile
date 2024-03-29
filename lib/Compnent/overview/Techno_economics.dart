@@ -194,7 +194,7 @@ class TechnoEcoState extends State<TechnoEco> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        flex: 4,
+                        flex: 7,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -216,7 +216,7 @@ class TechnoEcoState extends State<TechnoEco> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -238,7 +238,7 @@ class TechnoEcoState extends State<TechnoEco> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -260,7 +260,7 @@ class TechnoEcoState extends State<TechnoEco> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: const BoxDecoration(
                             border: Border(
@@ -282,7 +282,7 @@ class TechnoEcoState extends State<TechnoEco> {
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           decoration: const BoxDecoration(),
                           padding: const EdgeInsets.symmetric(
@@ -338,8 +338,9 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Expanded(
-        flex: 4,
+        flex: 7,
         child: Container(
+          height: 40,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -356,8 +357,9 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         ),
       ),
       Expanded(
-        flex: 1,
+        flex: 2,
         child: Container(
+          height: 40,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -373,8 +375,9 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         ),
       ),
       Expanded(
-        flex: 1,
+        flex: 2,
         child: Container(
+          height: 40,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -390,8 +393,9 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         ),
       ),
       Expanded(
-        flex: 1,
+        flex: 2,
         child: Container(
+          height: 40,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -407,8 +411,9 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         ),
       ),
       Expanded(
-        flex: 1,
+        flex: 2,
         child: Container(
+          height: 40,
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d4,

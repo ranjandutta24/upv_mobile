@@ -482,6 +482,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
       Expanded(
         flex: 8,
         child: Container(
+          height: 46,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -501,6 +502,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           ? (Expanded(
               flex: 9,
               child: Container(
+                height: 46,
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
@@ -511,6 +513,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           : Expanded(
               flex: 3,
               child: Container(
+                height: 46,
                 decoration: BoxDecoration(
                     border: const Border(
                       right: BorderSide(
@@ -537,6 +540,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           : Expanded(
               flex: 3,
               child: Container(
+                height: 46,
                 decoration: BoxDecoration(
                     border: const Border(
                       right: BorderSide(
@@ -560,6 +564,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           : Expanded(
               flex: 3,
               child: Container(
+                height: 46,
                 decoration: BoxDecoration(
                     color: i == 15
                         ? status[0]["BOF3"] == "On"

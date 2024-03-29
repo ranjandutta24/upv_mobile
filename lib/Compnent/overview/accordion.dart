@@ -299,7 +299,7 @@ class _AccordionPageState extends State<AccordionPage> {
             paddingBetweenClosedSections: 5,
             paddingBetweenOpenSections: 5,
             headerBackgroundColor: const Color.fromARGB(255, 119, 145, 183),
-            contentBorderColor: const Color.fromARGB(255, 112, 61, 174),
+            contentBorderColor: const Color.fromARGB(255, 126, 159, 207),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -318,7 +318,7 @@ class _AccordionPageState extends State<AccordionPage> {
             paddingBetweenClosedSections: 5,
             paddingBetweenOpenSections: 5,
             headerBackgroundColor: const Color.fromARGB(255, 199, 154, 197),
-            contentBorderColor: const Color.fromARGB(255, 161, 61, 174),
+            contentBorderColor: const Color.fromARGB(255, 195, 153, 247),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(
@@ -337,7 +337,7 @@ class _AccordionPageState extends State<AccordionPage> {
             paddingBetweenClosedSections: 5,
             paddingBetweenOpenSections: 5,
             headerBackgroundColor: const Color.fromARGB(255, 156, 144, 170),
-            contentBorderColor: const Color.fromARGB(255, 195, 153, 247),
+            contentBorderColor: const Color.fromARGB(255, 161, 131, 196),
             isOpen: false,
             contentVerticalPadding: 10,
             leftIcon: Image.asset(

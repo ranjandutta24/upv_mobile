@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Widgets/loader.dart';
 
 class Col extends StatefulWidget {
   const Col({super.key});
@@ -238,19 +239,20 @@ class ColState extends State<Col> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading
-          ? const Text("")
+          ? Container(
+              padding: const EdgeInsets.all(10),
+              child: const MyLoader(),
+            )
           : Column(
               children: [
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
+                          123, 44, 129, 227), // Border color
                       width: 2.0, // Border width
                     ),
                   ),
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -258,6 +260,7 @@ class ColState extends State<Col> {
                         flex: 7,
                         child: Container(
                           decoration: const BoxDecoration(
+                            // color: Color.fromARGB(112, 103, 160, 225),
                             border: Border(
                               right: BorderSide(
                                 color: Color.fromARGB(113, 44, 129, 227),
@@ -266,26 +269,34 @@ class ColState extends State<Col> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: const Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                                color: Color.fromARGB(255, 109, 109, 109)),
                           ),
                         ),
                       ),
                       Expanded(
                         flex: 3,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: const BoxDecoration(
+                              // color: Color.fromARGB(112, 103, 160, 225),
+                              // border: Border(
+                              //   left: BorderSide(
+                              //     color: Color.fromARGB(113, 44, 129, 227),
+                              //     width: 1.0,
+                              //   ),
+                              // ),
+                              ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: const Text(
                             "Value",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 152, 152, 152),
+                              color: Color.fromARGB(255, 109, 109, 109),
                             ),
                             textAlign: TextAlign.right,
                           ),

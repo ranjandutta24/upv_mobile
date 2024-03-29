@@ -182,7 +182,7 @@ class LhfState extends State<Lhf> {
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
+                                vertical: 5, horizontal: 3),
                             child: const Text('Parameters',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
@@ -277,6 +277,7 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 10,
         child: Container(
+          height: 46,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -295,6 +296,7 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 4,
         child: Container(
+          height: 46,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -311,6 +313,7 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 4,
         child: Container(
+          height: 46,
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
