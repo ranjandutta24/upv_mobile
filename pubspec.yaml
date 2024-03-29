@@ -38,6 +38,12 @@ dependencies:
   accordion: ^2.6.0
   collapsible: ^1.0.0
   google_fonts: ^6.2.0
+  flutter_riverpod: ^2.5.1
+  path_provider: ^2.1.2
+  path: ^1.8.3
+  sqflite: ^2.3.2
+  # sqflite_common_ffi: ^2.3.2+1
+  # flutter_riverpod: ^2.4.9
 
 dev_dependencies:
   flutter_test:

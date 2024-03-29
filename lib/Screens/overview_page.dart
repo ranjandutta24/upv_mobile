@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'dart:ui';
 
@@ -6,17 +7,21 @@ import 'package:upv_mobile/Compnent/overview/accordion.dart';
 import 'package:upv_mobile/Utils/colors.dart';
 
 import 'package:upv_mobile/Widgets/main_drawer.dart';
+import 'package:upv_mobile/providers/user.dart';
 
-class OverviewScreen extends StatefulWidget {
-  const OverviewScreen({super.key, required this.data});
-  final dynamic data;
+class OverviewScreen extends ConsumerStatefulWidget {
+  const OverviewScreen({
+    super.key,
+  });
+  // final dynamic data;
   @override
-  State<OverviewScreen> createState() {
-    return _OverviewsScreenState();
-  }
+  _OverviewsScreenState createState() => _OverviewsScreenState();
+  // State<OverviewScreen> createState() {
+  //   return _OverviewsScreenState();
+  // }
 }
 
-class _OverviewsScreenState extends State<OverviewScreen> {
+class _OverviewsScreenState extends ConsumerState<OverviewScreen> {
   late dynamic blastData;
   var loading = true;
 
@@ -33,9 +38,11 @@ class _OverviewsScreenState extends State<OverviewScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final dynamic currentUserData = ref.watch(userProvider);
+    print(currentUserData);
     return Scaffold(
         appBar: AppBar(
-          title: Text(
+          title: const Text(
             'Home',
             // style: GoogleFonts.play(
             //   textStyle: const TextStyle(
@@ -48,7 +55,7 @@ class _OverviewsScreenState extends State<OverviewScreen> {
           foregroundColor: myColors["white"],
         ),
         drawer: MainDrawer(
-          data: widget.data,
+          data: currentUserData,
         ),
         body: _accordion());
   }

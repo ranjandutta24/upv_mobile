@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Screens/iron_page.dart';
+import 'package:upv_mobile/Screens/log_page2.dart';
 import 'package:upv_mobile/Screens/overview_page.dart';
 import 'package:upv_mobile/Screens/steel_mills_page.dart';
 import 'package:upv_mobile/Screens/utility_page.dart';
 import 'package:upv_mobile/Utils/colors.dart';
+import 'package:upv_mobile/providers/user.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.data});
@@ -81,9 +83,7 @@ class MainDrawer extends StatelessWidget {
               context,
               oldRoute: ModalRoute.of(context)!,
               newRoute: MaterialPageRoute(
-                  builder: (context) => OverviewScreen(
-                        data: data,
-                      )),
+                  builder: (context) => const OverviewScreen()),
             );
           },
         ),
@@ -278,10 +278,14 @@ class MainDrawer extends StatelessWidget {
                     child: const Text('No'),
                   ),
                   TextButton(
-                    onPressed: () {
-                      Navigator.pop(ctx);
-                      Navigator.pop(ctx);
-                      Navigator.pop(ctx);
+                    onPressed: () async {
+                      await deleteAllUsersData();
+                      Navigator.popUntil(context, (route) => route.isFirst);
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => Login()),
+                      );
                     },
                     child: const Text('Yes'),
                   ),
@@ -292,5 +296,20 @@ class MainDrawer extends StatelessWidget {
         ),
       ],
     )));
+  }
+
+  Future<void> deleteAllUsersData() async {
+    final db = await getDatabase();
+
+    // Delete all rows from the 'users_data' table
+    await db.delete('user_collections');
+    // await db.delete('users_data');
+    // await db.delete('organization_data');
+    // await db.delete('academic_data');
+
+    // Alternatively, you can use the raw SQL query to achieve the same
+    // await db.rawDelete('DELETE FROM users_data');
+
+    await db.close();
   }
 }

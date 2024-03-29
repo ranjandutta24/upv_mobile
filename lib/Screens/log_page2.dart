@@ -1,18 +1,22 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sqflite/sqflite.dart';
 import 'package:upv_mobile/Screens/overview_page.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/providers/user.dart';
 
-class Login extends StatefulWidget {
+class Login extends ConsumerStatefulWidget {
   const Login({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
   _LoginState createState() => _LoginState();
+  // _LoginState createState() => _LoginState();
 }
 
-class _LoginState extends State<Login> {
+class _LoginState extends ConsumerState<Login> {
   bool _obscureText = true;
   late Map<String, dynamic> jsonMap;
   final _formKey = GlobalKey<FormState>();
@@ -20,6 +24,33 @@ class _LoginState extends State<Login> {
   String password = "";
   TextEditingController usernameController = TextEditingController(text: "");
   TextEditingController passwordController = TextEditingController(text: "");
+
+  saveToDB(data) async {
+    final db = await getDatabase();
+
+    try {
+      db.insert(
+        "user_collections",
+        {
+          'id': json.encode(data['_id']),
+          'user_data': json.encode(data),
+        },
+        conflictAlgorithm:
+            ConflictAlgorithm.replace, // or ConflictAlgorithm.ignore
+      );
+      await db.close();
+
+      Navigator.popUntil(context, (route) => route.isFirst);
+
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => OverviewScreen()),
+      );
+    } catch (e) {
+      print("Error: $e");
+      // Handle the error or show a custom snackbar
+    }
+  }
 
   loginUser() async {
     final username = usernameController.text;
@@ -34,14 +65,16 @@ class _LoginState extends State<Login> {
     if (response.statusCode == 200) {
       jsonMap = json.decode(response.body);
       // print(jsonMap);
+      ref.read(userProvider.notifier).saveUser(jsonMap);
+      await saveToDB(jsonMap);
       // ignore: use_build_context_synchronously
-      Navigator.of(context).push(
-        MaterialPageRoute(
-          builder: (ctx) => OverviewScreen(
-            data: jsonMap,
-          ),
-        ),
-      );
+      // Navigator.of(context).push(
+      //   MaterialPageRoute(
+      //     builder: (ctx) => const OverviewScreen(
+      //         // data: jsonMap,
+      //         ),
+      //   ),
+      // );
     } else {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).clearSnackBars();
