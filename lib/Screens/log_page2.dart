@@ -18,6 +18,7 @@ class Login extends ConsumerStatefulWidget {
 
 class _LoginState extends ConsumerState<Login> {
   bool _obscureText = true;
+  bool loading = false;
   late Map<String, dynamic> jsonMap;
   final _formKey = GlobalKey<FormState>();
   String id = "";
@@ -53,7 +54,10 @@ class _LoginState extends ConsumerState<Login> {
   }
 
   loginUser() async {
-    final username = usernameController.text;
+    setState(() {
+      loading = true;
+    });
+    final username = usernameController.text.trim();
     final password = passwordController.text;
 
     var response = await login(
@@ -75,6 +79,9 @@ class _LoginState extends ConsumerState<Login> {
       //         ),
       //   ),
       // );
+      setState(() {
+        loading = false;
+      });
     } else {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).clearSnackBars();
@@ -88,6 +95,9 @@ class _LoginState extends ConsumerState<Login> {
           action: SnackBarAction(label: '', onPressed: () {}),
         ),
       );
+      setState(() {
+        loading = false;
+      });
     }
   }
 
@@ -224,33 +234,41 @@ class _LoginState extends ConsumerState<Login> {
                                 },
                               ),
                               const SizedBox(height: 16.0),
-                              SizedBox(
-                                  width: double.infinity,
-                                  child: ElevatedButton(
-                                    //  final username = usernameController.text;
-                                    //   final password = passwordController.text;
+                              loading
+                                  ? const SizedBox(
+                                      height: 35,
+                                      child: CircularProgressIndicator(),
+                                    )
+                                  : SizedBox(
+                                      width: double.infinity,
+                                      height: 35,
+                                      child: ElevatedButton(
+                                        //  final username = usernameController.text;
+                                        //   final password = passwordController.text;
 
-                                    onPressed:
-                                        id.trim == "" || password.trim() == ""
+                                        onPressed: id.trim == "" ||
+                                                password.trim() == ""
                                             ? null
                                             : () async {
                                                 loginUser();
                                               },
-                                    style: ElevatedButton.styleFrom(
-                                      //minimumSize: const Size.fromHeight(50),
-                                      backgroundColor: const Color.fromARGB(
-                                          255, 7, 102, 255),
-                                      foregroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(8),
+                                        style: ElevatedButton.styleFrom(
+                                          //minimumSize: const Size.fromHeight(50),
+                                          backgroundColor: const Color.fromARGB(
+                                              255, 7, 102, 255),
+                                          foregroundColor: Colors.white,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                          ),
+                                        ),
+                                        child: const Padding(
+                                          padding: EdgeInsets.symmetric(
+                                              vertical: 6, horizontal: 20),
+                                          child: Text('Login'),
+                                        ),
                                       ),
                                     ),
-                                    child: const Padding(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 6, horizontal: 20),
-                                      child: Text('Login'),
-                                    ),
-                                  )),
                             ],
                           ),
                         ),

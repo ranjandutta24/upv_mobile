@@ -267,7 +267,7 @@ class LdcpState extends State<Ldcp> {
                                   : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: Text("KILN 4",
+                          child: Text("KILN \n 4",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
@@ -317,7 +317,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
       Expanded(
         flex: 4,
         child: Container(
-          height: 40,
+          height: 45,
           decoration: const BoxDecoration(
             border: Border(
               right: BorderSide(
@@ -337,7 +337,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ? Expanded(
               flex: 4,
               child: Container(
-                height: 40,
+                height: 45,
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
@@ -348,7 +348,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           : Expanded(
               flex: 1,
               child: Container(
-                height: 40,
+                height: 45,
                 decoration: const BoxDecoration(
                   border: Border(
                     right: BorderSide(
@@ -368,7 +368,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           : Expanded(
               flex: 1,
               child: Container(
-                height: 40,
+                height: 45,
                 decoration: const BoxDecoration(
                   border: Border(
                     right: BorderSide(
@@ -388,7 +388,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           : Expanded(
               flex: 1,
               child: Container(
-                height: 40,
+                height: 45,
                 decoration: const BoxDecoration(
                   border: Border(
                     right: BorderSide(
@@ -408,7 +408,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           : Expanded(
               flex: 1,
               child: Container(
-                height: 40,
+                height: 45,
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d4,

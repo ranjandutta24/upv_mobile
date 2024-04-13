@@ -66,11 +66,15 @@ class PbsState extends State<Pbs> {
             rows = [
               {
                 "head": "Steam Flow [TPH]",
-                "data1": pbsData["PBS_B1MSF"].toString(),
+                "data1": pbsData["PBS_B1MSF"] == null
+                    ? "0"
+                    : pbsData["PBS_B1MSF"].toString(),
                 "data2": pbsData["PBS_B2MSF"] == null
                     ? "0"
                     : pbsData["PBS_B2MSF"].toString(),
-                "data3": pbsData["PBS_B3MSF"].toString(),
+                "data3": pbsData["PBS_B3MSF"] == null
+                    ? "0"
+                    : pbsData["PBS_B3MSF"].toString(),
                 "selected": false,
                 "i": 0,
               },

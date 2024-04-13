@@ -6,6 +6,7 @@ import 'package:upv_mobile/Screens/steel_mills_page.dart';
 import 'package:upv_mobile/Screens/utility_page.dart';
 import 'package:upv_mobile/Utils/colors.dart';
 import 'package:upv_mobile/providers/user.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.data});
@@ -34,33 +35,33 @@ class MainDrawer extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              const Icon(
+                Icons.perm_identity_rounded,
+                size: 30,
+                color: Color.fromARGB(234, 254, 254, 254),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(
-                    Icons.perm_identity_rounded,
-                    size: 30,
-                    color: Color.fromARGB(234, 254, 254, 254),
-                  ),
                   const SizedBox(width: 5),
                   Text(
                     "${data["firstname"]} ${data["lastname"] ?? ""}",
-                    style: const TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w100,
-                      fontFamily: "CustomFont",
-                      color: Color.fromARGB(234, 255, 255, 255),
+                    style: GoogleFonts.openSans(
+                      textStyle: const TextStyle(
+                          color: Color.fromARGB(255, 207, 207, 207),
+                          fontSize: 20,
+                          fontWeight: FontWeight.w200),
                     ),
                   ),
                 ],
               ),
               const SizedBox(
-                height: 10,
+                height: 8,
               ),
               Text(
                 "${data["role"]}",
                 style: const TextStyle(
-                  fontSize: 15,
+                  fontSize: 12,
                   fontWeight: FontWeight.w600,
                   fontFamily: "CustomFont",
                   color: Color.fromARGB(234, 255, 255, 255),
