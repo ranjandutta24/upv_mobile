@@ -29,7 +29,7 @@ class BOFState extends State<BOF> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -234,9 +234,8 @@ class BOFState extends State<BOF> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
-                      width: 2.0, // Border width
+                      color: borderColor, // Border color
+                      width: 1.0, // Border width
                     ),
                   ),
                   padding:
@@ -248,6 +247,7 @@ class BOFState extends State<BOF> {
                         flex: 7,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -257,11 +257,11 @@ class BOFState extends State<BOF> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                                color: borderColor),
                           ),
                         ),
                       ),
@@ -343,8 +343,7 @@ class BOFState extends State<BOF> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -385,7 +384,8 @@ Widget _row(h, d1, d2, d3, color, i) {
           child: Text(
             // "$h\n",
             h,
-            style: TextStyle(color: color, fontSize: 12),
+            style: TextStyle(
+                color: color, fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -397,7 +397,7 @@ Widget _row(h, d1, d2, d3, color, i) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ))
@@ -417,7 +417,10 @@ Widget _row(h, d1, d2, d3, color, i) {
                   padding:
                       const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                   child: Text(d1,
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                       textAlign: TextAlign.center),
                 ),
               ),
@@ -438,7 +441,10 @@ Widget _row(h, d1, d2, d3, color, i) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -451,7 +457,10 @@ Widget _row(h, d1, d2, d3, color, i) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d3,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),

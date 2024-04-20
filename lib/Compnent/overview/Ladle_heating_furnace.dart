@@ -29,7 +29,7 @@ class LhfState extends State<Lhf> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -162,7 +162,7 @@ class LhfState extends State<Lhf> {
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: const Color.fromARGB(113, 43, 76, 98),
+                    color: borderColor,
                     width: 2.0,
                   )),
                   padding:
@@ -173,29 +173,30 @@ class LhfState extends State<Lhf> {
                       Expanded(
                           flex: 10,
                           child: Container(
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 74, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 3),
-                            child: const Text('Parameters',
+                            child: Text('Parameters',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
+                                  color: borderColor,
                                 )),
                           )),
                       Expanded(
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
-                            border: const Border(
+                            border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 56, 104, 156),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -203,14 +204,14 @@ class LhfState extends State<Lhf> {
                                 ? myColors["deactive"]
                                 : state[0]["data1"] >= 1.0
                                     ? myColors["active"]
-                                    : const Color.fromARGB(0, 255, 193, 7),
+                                    : borderColor,
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: Text("LF1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -230,7 +231,7 @@ class LhfState extends State<Lhf> {
                           child: Text("LF2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -249,8 +250,7 @@ class LhfState extends State<Lhf> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -289,7 +289,7 @@ Widget _row(h, d1, d2, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -307,7 +307,8 @@ Widget _row(h, d1, d2, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -317,7 +318,8 @@ Widget _row(h, d1, d2, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
     ],

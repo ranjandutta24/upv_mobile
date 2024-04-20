@@ -27,7 +27,7 @@ class CbmState extends State<Cbm> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -121,13 +121,12 @@ class CbmState extends State<Cbm> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
+                      color: borderColor, // Border color
                       width: 2.0, // Border width
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -135,6 +134,7 @@ class CbmState extends State<Cbm> {
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -143,25 +143,27 @@ class CbmState extends State<Cbm> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text(
+                              vertical: 5, horizontal: 3),
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                                color: borderColor),
                           ),
                         ),
                       ),
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
+                          ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text("Value",
+                              vertical: 5, horizontal: 3),
+                          child: Text("Value",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -180,8 +182,7 @@ class CbmState extends State<Cbm> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -218,7 +219,7 @@ Widget _row(h, d1, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -228,7 +229,8 @@ Widget _row(h, d1, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
     ],

@@ -29,7 +29,7 @@ class PbsState extends State<Pbs> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -194,6 +194,7 @@ class PbsState extends State<Pbs> {
                           flex: 4,
                           child: Container(
                             decoration: BoxDecoration(
+                              color: const Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
                                   color: borderColor,
@@ -203,10 +204,10 @@ class PbsState extends State<Pbs> {
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 3),
-                            child: const Text('Parameter',
+                            child: Text('Parameter',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
+                                  color: borderColor,
                                   fontSize: 11,
                                 )),
                           )),
@@ -231,7 +232,7 @@ class PbsState extends State<Pbs> {
                           child: Text("BOILER1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -257,7 +258,7 @@ class PbsState extends State<Pbs> {
                           child: Text("BOILER2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -277,7 +278,7 @@ class PbsState extends State<Pbs> {
                           child: Text("BOILER3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -297,8 +298,7 @@ class PbsState extends State<Pbs> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -329,6 +329,7 @@ class PbsState extends State<Pbs> {
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -338,12 +339,12 @@ class PbsState extends State<Pbs> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                                color: borderColor),
                           ),
                         ),
                       ),
@@ -368,7 +369,7 @@ class PbsState extends State<Pbs> {
                           child: Text("STG1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -395,7 +396,7 @@ class PbsState extends State<Pbs> {
                           child: Text("STG2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -416,7 +417,7 @@ class PbsState extends State<Pbs> {
                           child: Text("STG3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -436,8 +437,7 @@ class PbsState extends State<Pbs> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -468,6 +468,7 @@ class PbsState extends State<Pbs> {
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -477,12 +478,12 @@ class PbsState extends State<Pbs> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 11,
-                              color: Color.fromARGB(255, 152, 152, 152),
+                              color: borderColor,
                             ),
                           ),
                         ),
@@ -508,7 +509,7 @@ class PbsState extends State<Pbs> {
                           child: Text("STB1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -535,7 +536,7 @@ class PbsState extends State<Pbs> {
                           child: Text("STB2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -556,7 +557,7 @@ class PbsState extends State<Pbs> {
                           child: Text("STB3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -576,8 +577,7 @@ class PbsState extends State<Pbs> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -600,7 +600,7 @@ class PbsState extends State<Pbs> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -608,6 +608,7 @@ class PbsState extends State<Pbs> {
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -616,13 +617,13 @@ class PbsState extends State<Pbs> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text(
+                              vertical: 5, horizontal: 3),
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 11,
-                              color: Color.fromARGB(255, 152, 152, 152),
+                              color: borderColor,
                             ),
                           ),
                         ),
@@ -646,7 +647,7 @@ class PbsState extends State<Pbs> {
                           child: Text("BPTG1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -671,7 +672,7 @@ class PbsState extends State<Pbs> {
                           child: Text("TRTG",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -680,7 +681,9 @@ class PbsState extends State<Pbs> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("",
@@ -706,8 +709,7 @@ class PbsState extends State<Pbs> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -747,9 +749,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           child: Text(
             h,
             style: TextStyle(
-              color: color,
-              fontSize: 11,
-            ),
+                color: color, fontSize: 11, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -767,9 +767,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
               style: TextStyle(
-                color: color,
-                fontSize: 11,
-              ),
+                  color: color, fontSize: 11, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
@@ -787,9 +785,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
               style: TextStyle(
-                color: color,
-                fontSize: 11,
-              ),
+                  color: color, fontSize: 11, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
@@ -800,9 +796,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d3,
               style: TextStyle(
-                color: color,
-                fontSize: 11,
-              ),
+                  color: color, fontSize: 11, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
