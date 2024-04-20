@@ -193,10 +193,10 @@ Widget _row(h, d1, color, i) {
       Expanded(
         flex: 10,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),

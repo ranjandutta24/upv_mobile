@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Gcp extends StatefulWidget {
   const Gcp({super.key});
@@ -129,8 +130,7 @@ class GcpState extends State<Gcp> {
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color:
-                        const Color.fromARGB(113, 44, 129, 227), // Border color
+                    color: borderColor, // Border color
                     width: 2.0, // Border width
                   ),
                 ),
@@ -141,10 +141,10 @@ class GcpState extends State<Gcp> {
                     Expanded(
                       flex: 6,
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border(
                             right: BorderSide(
-                              color: Color.fromARGB(113, 44, 129, 227),
+                              color: borderColor,
                               width: 2.0,
                             ),
                           ),
@@ -215,10 +215,10 @@ Widget _row(h, d1, color, i) {
       Expanded(
         flex: 6,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),

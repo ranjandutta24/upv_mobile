@@ -299,7 +299,7 @@ class LdcpUtState extends State<LdcpUt> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(113, 44, 129, 227),
+                          color: borderColor,
                           width: 1.0,
                         ),
                       ),
@@ -326,10 +326,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
       Expanded(
         flex: 4,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -355,10 +355,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           : Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),

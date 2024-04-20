@@ -360,10 +360,10 @@ class SinterPlantState extends State<SinterPlant> {
                       Expanded(
                         flex: 4,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -382,9 +382,9 @@ class SinterPlantState extends State<SinterPlant> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                            border: const Border(
+                            border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -467,10 +467,10 @@ Widget _row(h, d1, d2, color, i) {
         flex: 4,
         child: Container(
           height: 40,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -486,10 +486,10 @@ Widget _row(h, d1, d2, color, i) {
         flex: 1,
         child: Container(
           height: 40,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),

@@ -11,6 +11,7 @@ import 'package:upv_mobile/Compnent/overview/Mills.dart';
 import 'package:upv_mobile/Compnent/overview/Power_blowing_station.dart';
 import 'package:upv_mobile/Compnent/overview/Sinter_plant.dart';
 import 'package:upv_mobile/Compnent/overview/Techno_economics.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Overview extends StatefulWidget {
   const Overview({super.key});
@@ -124,14 +125,13 @@ Widget _heaad(text) {
                 color: Color.fromARGB(123, 44, 129, 227), // Border color
                 width: 2.0, // Border width
               ),
-              color: const Color.fromARGB(113, 44, 129, 227)),
+              color: borderColor),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 8),
             child: Text(
               text,
-              style: const TextStyle(
-                  color: Color.fromARGB(255, 109, 109, 109),
-                  fontWeight: FontWeight.w500),
+              style:
+                  TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
             ),
           )),
     ),

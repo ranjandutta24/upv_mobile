@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Stoves extends StatefulWidget {
   const Stoves({super.key});
@@ -140,8 +141,7 @@ class StovesState extends State<Stoves> {
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color:
-                        const Color.fromARGB(113, 44, 129, 227), // Border color
+                    color: borderColor, // Border color
                     width: 2.0, // Border width
                   ),
                 ),
@@ -152,10 +152,10 @@ class StovesState extends State<Stoves> {
                     Expanded(
                       flex: 7,
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border(
                             right: BorderSide(
-                              color: Color.fromARGB(113, 44, 129, 227),
+                              color: borderColor,
                               width: 3.0,
                             ),
                           ),
@@ -226,10 +226,10 @@ Widget _row(h, d1, color, i) {
       Expanded(
         flex: 7,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),

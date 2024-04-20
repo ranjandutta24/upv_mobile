@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class TechnoEco extends StatefulWidget {
   const TechnoEco({super.key});
@@ -196,10 +197,10 @@ class TechnoEcoState extends State<TechnoEco> {
                       Expanded(
                         flex: 7,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -218,10 +219,10 @@ class TechnoEcoState extends State<TechnoEco> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -240,10 +241,10 @@ class TechnoEcoState extends State<TechnoEco> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -262,10 +263,10 @@ class TechnoEcoState extends State<TechnoEco> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -341,10 +342,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         flex: 7,
         child: Container(
           height: 40,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -360,10 +361,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         flex: 2,
         child: Container(
           height: 40,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -378,10 +379,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         flex: 2,
         child: Container(
           height: 40,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -396,10 +397,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
         flex: 2,
         child: Container(
           height: 40,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),

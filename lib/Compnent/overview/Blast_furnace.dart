@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 import 'package:upv_mobile/Widgets/loader.dart';
 
 class Col extends StatefulWidget {
@@ -29,7 +30,7 @@ class ColState extends State<Col> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -248,9 +249,8 @@ class ColState extends State<Col> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(
-                          123, 44, 129, 227), // Border color
-                      width: 2.0, // Border width
+                      color: borderColor, // Border color
+                      width: 1.0, // Border width
                     ),
                   ),
                   child: Row(
@@ -259,22 +259,22 @@ class ColState extends State<Col> {
                       Expanded(
                         flex: 7,
                         child: Container(
-                          decoration: const BoxDecoration(
-                            // color: Color.fromARGB(112, 103, 160, 225),
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 109, 109, 109)),
+                                color: borderColor),
                           ),
                         ),
                       ),
@@ -282,21 +282,21 @@ class ColState extends State<Col> {
                         flex: 3,
                         child: Container(
                           decoration: const BoxDecoration(
-                              // color: Color.fromARGB(112, 103, 160, 225),
-                              // border: Border(
-                              //   left: BorderSide(
-                              //     color: Color.fromARGB(113, 44, 129, 227),
-                              //     width: 1.0,
-                              //   ),
-                              // ),
-                              ),
+                            color: Color.fromARGB(238, 205, 205, 205),
+                            // border: Border(
+                            //   left: BorderSide(
+                            //     color: Color.fromARGB(113, 44, 129, 227),
+                            //     width: 1.0,
+                            //   ),
+                            // ),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Value",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 109, 109, 109),
+                              color: borderColor,
                             ),
                             textAlign: TextAlign.right,
                           ),
@@ -326,8 +326,7 @@ class ColState extends State<Col> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -353,10 +352,10 @@ Widget _row(h, d, color, i) {
       Expanded(
         flex: 7,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -365,7 +364,7 @@ Widget _row(h, d, color, i) {
             padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
             child: Text(
               h,
-              style: TextStyle(color: color),
+              style: TextStyle(color: color, fontWeight: FontWeight.w500),
             ),
           ),
         ),
@@ -385,7 +384,7 @@ Widget _row(h, d, color, i) {
                       const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                   child: Text(
                     d,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w500),
                     textAlign: TextAlign.right,
                   ),
                 ),
@@ -400,7 +399,7 @@ Widget _row(h, d, color, i) {
                       const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                   child: Text(
                     d,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w500),
                     textAlign: TextAlign.right,
                   ),
                 ),

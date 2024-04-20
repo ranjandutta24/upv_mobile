@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Coc extends StatefulWidget {
   const Coc({super.key});
@@ -134,7 +135,7 @@ class CocState extends State<Coc> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(113, 44, 129, 227),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
@@ -146,10 +147,10 @@ class CocState extends State<Coc> {
                         Expanded(
                           flex: 6,
                           child: Container(
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
@@ -239,10 +240,10 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 6,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -257,10 +258,10 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 2,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),

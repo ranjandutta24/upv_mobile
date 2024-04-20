@@ -28,7 +28,7 @@ class SinterPlantState extends State<SinterPlant> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 40, 33, 33);
+  final Color _textColor = const Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -182,9 +182,8 @@ class SinterPlantState extends State<SinterPlant> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
-                      width: 2.0, // Border width
+                      color: borderColor, // Border color
+                      width: 1.0, // Border width
                     ),
                   ),
                   padding:
@@ -195,21 +194,22 @@ class SinterPlantState extends State<SinterPlant> {
                       Expanded(
                         flex: 4,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                                color: borderColor),
                           ),
                         ),
                       ),
@@ -217,9 +217,9 @@ class SinterPlantState extends State<SinterPlant> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                            border: const Border(
+                            border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -231,10 +231,10 @@ class SinterPlantState extends State<SinterPlant> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("SP1",
+                          child: Text("SP1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 94, 93, 93),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -251,10 +251,10 @@ class SinterPlantState extends State<SinterPlant> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("SP2",
+                          child: Text("SP2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 94, 93, 93),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -273,8 +273,7 @@ class SinterPlantState extends State<SinterPlant> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -301,10 +300,10 @@ Widget _row(h, d1, d2, color, i) {
       Expanded(
         flex: 4,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -312,7 +311,7 @@ Widget _row(h, d1, d2, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -323,37 +322,37 @@ Widget _row(h, d1, d2, color, i) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             )
           : Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
 
       i == 0 || i == 1
-          ? Text("")
+          ? const Text("")
           : Expanded(
               flex: 1,
               child: Container(
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),

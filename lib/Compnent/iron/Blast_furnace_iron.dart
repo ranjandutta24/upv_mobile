@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Bfi extends StatefulWidget {
   const Bfi({super.key});
@@ -254,10 +255,10 @@ class BfiState extends State<Bfi> {
                       Expanded(
                         flex: 6,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -327,10 +328,10 @@ Widget _row(h, d, color, i) {
     Expanded(
       flex: 6,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
             right: BorderSide(
-              color: Color.fromARGB(113, 44, 129, 227),
+              color: borderColor,
               width: 2.0,
             ),
           ),

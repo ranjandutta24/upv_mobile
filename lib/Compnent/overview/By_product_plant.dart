@@ -127,7 +127,7 @@ class BpplantState extends State<Bpplant> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(113, 44, 129, 227),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
@@ -233,10 +233,10 @@ Widget _row(h, d1, d2, color, i, state) {
       Expanded(
         flex: 6,
         child: Container(
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -252,9 +252,9 @@ Widget _row(h, d1, d2, color, i, state) {
         flex: 2,
         child: Container(
           decoration: BoxDecoration(
-            border: const Border(
+            border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),

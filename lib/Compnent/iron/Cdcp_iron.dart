@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Cdcp extends StatefulWidget {
   const Cdcp({super.key});
@@ -172,8 +173,7 @@ class CdcpState extends State<Cdcp> {
               Container(
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color:
-                        const Color.fromARGB(113, 44, 129, 227), // Border color
+                    color: borderColor, // Border color
                     width: 2.0, // Border width
                   ),
                 ),
@@ -184,10 +184,10 @@ class CdcpState extends State<Cdcp> {
                     Expanded(
                       flex: 12,
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border(
                             right: BorderSide(
-                              color: Color.fromARGB(113, 44, 129, 227),
+                              color: borderColor,
                               width: 2.0,
                             ),
                           ),
@@ -206,10 +206,10 @@ class CdcpState extends State<Cdcp> {
                     Expanded(
                       flex: 2,
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border(
                             right: BorderSide(
-                              color: Color.fromARGB(113, 44, 129, 227),
+                              color: borderColor,
                               width: 2.0,
                             ),
                           ),
@@ -228,10 +228,10 @@ class CdcpState extends State<Cdcp> {
                     Expanded(
                       flex: 2,
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border(
                             right: BorderSide(
-                              color: Color.fromARGB(113, 44, 129, 227),
+                              color: borderColor,
                               width: 2.0,
                             ),
                           ),
@@ -250,10 +250,10 @@ class CdcpState extends State<Cdcp> {
                     Expanded(
                       flex: 2,
                       child: Container(
-                        decoration: const BoxDecoration(
+                        decoration: BoxDecoration(
                           border: Border(
                             right: BorderSide(
-                              color: Color.fromARGB(113, 44, 129, 227),
+                              color: borderColor,
                               width: 2.0,
                             ),
                           ),
@@ -325,10 +325,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
     Expanded(
       flex: 12,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
             right: BorderSide(
-              color: Color.fromARGB(113, 44, 129, 227),
+              color: borderColor,
               width: 2.0,
             ),
           ),
@@ -345,10 +345,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
     Expanded(
       flex: 2,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
             right: BorderSide(
-              color: Color.fromARGB(113, 44, 129, 227),
+              color: borderColor,
               width: 2.0,
             ),
           ),
@@ -366,10 +366,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
     Expanded(
       flex: 2,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
             right: BorderSide(
-              color: Color.fromARGB(113, 44, 129, 227),
+              color: borderColor,
               width: 2.0,
             ),
           ),
@@ -383,10 +383,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
     Expanded(
       flex: 2,
       child: Container(
-        decoration: const BoxDecoration(
+        decoration: BoxDecoration(
           border: Border(
             right: BorderSide(
-              color: Color.fromARGB(113, 44, 129, 227),
+              color: borderColor,
               width: 2.0,
             ),
           ),

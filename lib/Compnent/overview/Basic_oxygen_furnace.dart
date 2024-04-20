@@ -247,10 +247,10 @@ class BOFState extends State<BOF> {
                       Expanded(
                         flex: 7,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -269,9 +269,9 @@ class BOFState extends State<BOF> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                            border: const Border(
+                            border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 44, 129, 227),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -293,9 +293,9 @@ class BOFState extends State<BOF> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: const Border(
+                              border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 44, 129, 227),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
@@ -373,10 +373,10 @@ Widget _row(h, d1, d2, d3, color, i) {
         flex: 7,
         child: Container(
           height: 46,
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             border: Border(
               right: BorderSide(
-                color: Color.fromARGB(113, 44, 129, 227),
+                color: borderColor,
                 width: 2.0,
               ),
             ),
@@ -405,10 +405,10 @@ Widget _row(h, d1, d2, d3, color, i) {
               flex: 2,
               child: Container(
                 height: 46,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
@@ -428,10 +428,10 @@ Widget _row(h, d1, d2, d3, color, i) {
               flex: 2,
               child: Container(
                 height: 46,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
-                      color: Color.fromARGB(113, 44, 129, 227),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
