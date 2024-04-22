@@ -228,7 +228,7 @@ class MillsState extends State<Mills> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
+                              vertical: 5, horizontal: 3),
                           child: Text(
                             "Parameter",
                             style: TextStyle(

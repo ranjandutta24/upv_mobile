@@ -30,7 +30,7 @@ class StovesState extends State<Stoves> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -145,7 +145,7 @@ class StovesState extends State<Stoves> {
                     width: 2.0, // Border width
                   ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -153,6 +153,7 @@ class StovesState extends State<Stoves> {
                       flex: 7,
                       child: Container(
                         decoration: BoxDecoration(
+                          color: Color.fromARGB(238, 205, 205, 205),
                           border: Border(
                             right: BorderSide(
                               color: borderColor,
@@ -161,26 +162,27 @@ class StovesState extends State<Stoves> {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 0),
-                        child: const Text(
+                            vertical: 5, horizontal: 3),
+                        child: Text(
                           "Parameters",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 152, 152, 152)),
+                              fontWeight: FontWeight.bold, color: borderColor),
                         ),
                       ),
                     ),
                     Expanded(
                       flex: 3,
                       child: Container(
-                        decoration: const BoxDecoration(),
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(238, 205, 205, 205),
+                        ),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 0),
-                        child: const Text(
+                            vertical: 5, horizontal: 3),
+                        child: Text(
                           "Value",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 152, 152, 152),
+                            color: borderColor,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -200,8 +202,7 @@ class StovesState extends State<Stoves> {
                           ? _containerColor
                           : _containerColora,
                       border: Border.all(
-                        color: const Color.fromARGB(
-                            113, 44, 129, 227), // Border color
+                        color: borderColor, // Border color
                         width: 1.0, // Border width
                       ),
                     ),
@@ -238,7 +239,7 @@ Widget _row(h, d1, color, i) {
             padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
             child: Text(
               h,
-              style: TextStyle(color: color),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
             ),
           ),
         ),
@@ -251,7 +252,7 @@ Widget _row(h, d1, color, i) {
             padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
             child: Text(
               d1,
-              style: TextStyle(color: color),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center,
             ),
           ),

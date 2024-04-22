@@ -29,7 +29,7 @@ class BfshState extends State<Bfsh> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -223,7 +223,7 @@ class BfshState extends State<Bfsh> {
                     width: 2.0, // Border width
                   ),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -231,6 +231,7 @@ class BfshState extends State<Bfsh> {
                       flex: 7,
                       child: Container(
                         decoration: BoxDecoration(
+                          color: Color.fromARGB(238, 205, 205, 205),
                           border: Border(
                             right: BorderSide(
                               color: borderColor,
@@ -239,26 +240,27 @@ class BfshState extends State<Bfsh> {
                           ),
                         ),
                         padding: const EdgeInsets.symmetric(
-                            vertical: 5, horizontal: 0),
-                        child: const Text(
+                            vertical: 5, horizontal: 3),
+                        child: Text(
                           "Parameter",
                           style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 152, 152, 152)),
+                              fontWeight: FontWeight.bold, color: borderColor),
                         ),
                       ),
                     ),
                     Expanded(
                       flex: 3,
                       child: Container(
-                        decoration: const BoxDecoration(),
+                        decoration: const BoxDecoration(
+                          color: Color.fromARGB(238, 205, 205, 205),
+                        ),
                         padding: const EdgeInsets.symmetric(
                             vertical: 5, horizontal: 0),
-                        child: const Text(
+                        child: Text(
                           "Value",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 152, 152, 152),
+                            color: borderColor,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -278,8 +280,7 @@ class BfshState extends State<Bfsh> {
                           ? _containerColor
                           : _containerColora,
                       border: Border.all(
-                        color: const Color.fromARGB(
-                            113, 44, 129, 227), // Border color
+                        color: borderColor, // Border color
                         width: 1.0, // Border width
                       ),
                     ),
@@ -319,7 +320,7 @@ Widget _row(
           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -332,7 +333,7 @@ Widget _row(
           padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 5),
           child: Text(
             d,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
             textAlign: TextAlign.center,
           ),
         ),
