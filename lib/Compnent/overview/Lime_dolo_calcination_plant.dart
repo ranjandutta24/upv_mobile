@@ -168,21 +168,22 @@ class LdcpState extends State<Ldcp> {
                       Expanded(
                         flex: 4,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 74, 104, 156),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 3),
-                          child: const Text('Parameter',
+                              vertical: 11, horizontal: 3),
+                          child: Text('Parameter',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey,
-                                fontSize: 11,
+                                color: borderColor,
+                                // fontSize: 11,
                               )),
                         ),
                       ),
@@ -201,11 +202,11 @@ class LdcpState extends State<Ldcp> {
                                   : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: Text("KILN 1",
+                          child: Text("KILN \n 1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -225,11 +226,11 @@ class LdcpState extends State<Ldcp> {
                                   : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: Text("KILN 2",
+                          child: Text("KILN \n 2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -249,11 +250,11 @@ class LdcpState extends State<Ldcp> {
                                   : myColors["active"]),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: Text("KILN 3",
+                          child: Text("KILN \n 3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -271,7 +272,7 @@ class LdcpState extends State<Ldcp> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -329,7 +330,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color, fontSize: 12),
+            style: TextStyle(
+                color: color, fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -341,7 +343,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             )
@@ -359,7 +364,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -379,7 +387,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -399,7 +410,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d3,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -412,7 +426,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d4,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),

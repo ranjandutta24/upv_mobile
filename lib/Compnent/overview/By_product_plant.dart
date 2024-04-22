@@ -29,7 +29,7 @@ class BpplantState extends State<Bpplant> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -132,47 +132,49 @@ class BpplantState extends State<Bpplant> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 3, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Expanded(
                           flex: 6,
                           child: Container(
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 74, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
-                            child: const Text('Parameters',
+                                vertical: 5, horizontal: 3),
+                            child: Text('Parameters',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
+                                  color: borderColor,
                                 )),
                           ),
                         ),
                         Expanded(
                           flex: 2,
                           child: Container(
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 56, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 0),
-                            child: const Text("BPP11",
+                            child: Text("BPP11",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 152, 152, 152),
+                                  color: borderColor,
                                 ),
                                 textAlign: TextAlign.center),
                           ),
@@ -180,13 +182,15 @@ class BpplantState extends State<Bpplant> {
                         Expanded(
                           flex: 2,
                           child: Container(
-                            decoration: const BoxDecoration(),
+                            decoration: const BoxDecoration(
+                              color: Color.fromARGB(238, 205, 205, 205),
+                            ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 0),
-                            child: const Text("BPP10",
+                            child: Text("BPP10",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Color.fromARGB(255, 152, 152, 152),
+                                  color: borderColor,
                                 ),
                                 textAlign: TextAlign.center),
                           ),
@@ -204,8 +208,7 @@ class BpplantState extends State<Bpplant> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -244,7 +247,7 @@ Widget _row(h, d1, d2, color, i, state) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -270,7 +273,8 @@ Widget _row(h, d1, d2, color, i, state) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
           child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -289,7 +293,8 @@ Widget _row(h, d1, d2, color, i, state) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
     ],

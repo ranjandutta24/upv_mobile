@@ -27,7 +27,7 @@ class TechnoEcoState extends State<TechnoEco> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -184,13 +184,12 @@ class TechnoEcoState extends State<TechnoEco> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
+                      color: borderColor, // Border color
                       width: 2.0, // Border width
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -198,6 +197,7 @@ class TechnoEcoState extends State<TechnoEco> {
                         flex: 7,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -206,13 +206,13 @@ class TechnoEcoState extends State<TechnoEco> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text(
+                              vertical: 5, horizontal: 3),
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 9,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                                color: borderColor),
                           ),
                         ),
                       ),
@@ -220,6 +220,7 @@ class TechnoEcoState extends State<TechnoEco> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -229,11 +230,11 @@ class TechnoEcoState extends State<TechnoEco> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("NORM",
+                          child: Text("NORM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 9,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -242,6 +243,7 @@ class TechnoEcoState extends State<TechnoEco> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -251,11 +253,11 @@ class TechnoEcoState extends State<TechnoEco> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("ACTUAL",
+                          child: Text("ACTUAL",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 9,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -264,6 +266,7 @@ class TechnoEcoState extends State<TechnoEco> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -273,11 +276,11 @@ class TechnoEcoState extends State<TechnoEco> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("CPLM",
+                          child: Text("CPLM",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 9,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -285,14 +288,16 @@ class TechnoEcoState extends State<TechnoEco> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("CPLY",
+                          child: Text("CPLY",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 9,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -311,8 +316,7 @@ class TechnoEcoState extends State<TechnoEco> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -353,7 +357,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color, fontSize: 12),
+            style: TextStyle(
+                color: color, fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -371,7 +376,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color, fontSize: 12),
+              style: TextStyle(
+                  color: color, fontSize: 12, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
@@ -389,7 +395,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color, fontSize: 12),
+              style: TextStyle(
+                  color: color, fontSize: 12, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
@@ -407,7 +414,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d3,
-              style: TextStyle(color: color, fontSize: 12),
+              style: TextStyle(
+                  color: color, fontSize: 12, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
@@ -418,7 +426,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d4,
-              style: TextStyle(color: color, fontSize: 12),
+              style: TextStyle(
+                  color: color, fontSize: 12, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),

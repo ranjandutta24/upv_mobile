@@ -27,7 +27,7 @@ class CokeOvensState extends State<CokeOvens> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -139,27 +139,28 @@ class CokeOvensState extends State<CokeOvens> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
+                      color: borderColor, // Border color
                       width: 2.0, // Border width
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
                         flex: 4,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
+                          ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text(
+                              vertical: 9, horizontal: 3),
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                                color: borderColor),
                           ),
                         ),
                       ),
@@ -167,6 +168,7 @@ class CokeOvensState extends State<CokeOvens> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               left: BorderSide(
                                 color: borderColor,
@@ -180,11 +182,11 @@ class CokeOvensState extends State<CokeOvens> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("Pushing COB11",
+                          child: Text("Pushing COB11",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -193,6 +195,7 @@ class CokeOvensState extends State<CokeOvens> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -202,11 +205,11 @@ class CokeOvensState extends State<CokeOvens> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("Charging COB11",
+                          child: Text("Charging COB11",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -215,6 +218,7 @@ class CokeOvensState extends State<CokeOvens> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -224,11 +228,11 @@ class CokeOvensState extends State<CokeOvens> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("Pushing COB10",
+                          child: Text("Pushing COB10",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -236,14 +240,16 @@ class CokeOvensState extends State<CokeOvens> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
-                          child: const Text("Charging COB10",
+                          child: Text("Charging COB10",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 10,
-                                color: Color.fromARGB(255, 152, 152, 152),
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -262,8 +268,7 @@ class CokeOvensState extends State<CokeOvens> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -296,7 +301,7 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -317,7 +322,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -333,7 +339,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -349,7 +356,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d3,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
       Expanded(
@@ -358,7 +366,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d4,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
     ],
