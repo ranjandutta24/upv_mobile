@@ -140,7 +140,7 @@ class CocState extends State<Coc> {
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 3, vertical: 0),
+                      const EdgeInsets.symmetric(horizontal: 0, vertical: 0),
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -148,6 +148,28 @@ class CocState extends State<Coc> {
                           flex: 6,
                           child: Container(
                             decoration: BoxDecoration(
+                              color: const Color.fromARGB(238, 205, 205, 205),
+                              border: Border(
+                                right: BorderSide(
+                                  color: borderColor,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 5, horizontal: 3),
+                            child: Text('Production',
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: borderColor,
+                                    fontSize: 13)),
+                          ),
+                        ),
+                        Expanded(
+                          flex: 2,
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
                                   color: borderColor,
@@ -157,30 +179,10 @@ class CocState extends State<Coc> {
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 0),
-                            child: const Text('Production',
+                            child: Text("Value 1",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
-                                    fontSize: 13)),
-                          ),
-                        ),
-                        Expanded(
-                          flex: 2,
-                          child: Container(
-                            decoration: const BoxDecoration(
-                              border: Border(
-                                right: BorderSide(
-                                  color: Color.fromARGB(113, 56, 104, 156),
-                                  width: 2.0,
-                                ),
-                              ),
-                            ),
-                            padding: const EdgeInsets.symmetric(
-                                vertical: 5, horizontal: 0),
-                            child: const Text("Value 1",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 152, 152, 152),
+                                    color: borderColor,
                                     fontSize: 13),
                                 textAlign: TextAlign.center),
                           ),
@@ -188,13 +190,15 @@ class CocState extends State<Coc> {
                         Expanded(
                           flex: 2,
                           child: Container(
-                            decoration: const BoxDecoration(),
+                            decoration: const BoxDecoration(
+                              color: const Color.fromARGB(238, 205, 205, 205),
+                            ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 0),
-                            child: const Text("Value 2",
+                            child: Text("Value 2",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
-                                    color: Color.fromARGB(255, 152, 152, 152),
+                                    color: borderColor,
                                     fontSize: 13),
                                 textAlign: TextAlign.center),
                           ),
@@ -212,8 +216,7 @@ class CocState extends State<Coc> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -251,7 +254,8 @@ Widget _row(h, d1, d2, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color, fontSize: 12),
+            style: TextStyle(
+                color: color, fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -268,7 +272,8 @@ Widget _row(h, d1, d2, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color, fontSize: 12),
+              style: TextStyle(
+                  color: color, fontSize: 12, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
@@ -278,7 +283,8 @@ Widget _row(h, d1, d2, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color, fontSize: 12),
+              style: TextStyle(
+                  color: color, fontSize: 12, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),

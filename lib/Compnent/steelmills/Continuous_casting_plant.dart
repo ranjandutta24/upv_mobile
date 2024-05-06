@@ -453,8 +453,7 @@ class CcpsmState extends State<Ccpsm> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
+                      color: borderColor, // Border color
                       width: 2.0, // Border width
                     ),
                   ),
@@ -466,6 +465,7 @@ class CcpsmState extends State<Ccpsm> {
                         flex: 8,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -475,11 +475,12 @@ class CcpsmState extends State<Ccpsm> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                              fontWeight: FontWeight.bold,
+                              color: borderColor,
+                            ),
                           ),
                         ),
                       ),
@@ -624,7 +625,10 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color),
+                    style: TextStyle(
+                      color: color,
+                      fontWeight: FontWeight.w600,
+                    ),
                     textAlign: TextAlign.center),
               ),
             )
@@ -666,7 +670,11 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color, fontSize: 11),
+                    style: TextStyle(
+                      color: color,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -710,7 +718,11 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
-                    style: TextStyle(color: color, fontSize: 11),
+                    style: TextStyle(
+                      color: color,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -740,7 +752,11 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d3,
-                    style: TextStyle(color: color, fontSize: 11),
+                    style: TextStyle(
+                      color: color,
+                      fontSize: 11,
+                      fontWeight: FontWeight.w600,
+                    ),
                     textAlign: TextAlign.center),
               ),
             ),

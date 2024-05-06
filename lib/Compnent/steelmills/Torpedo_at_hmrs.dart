@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class Hmrs extends StatefulWidget {
   const Hmrs({super.key});
@@ -219,8 +220,7 @@ class HmrsState extends State<Hmrs> {
                         //     ? _containerColor
                         //     : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -259,7 +259,7 @@ Widget _row(t, d1, d2) {
                 padding: EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   "Time",
-                  // style: TextStyle(color: color),
+                  style: TextStyle(fontWeight: FontWeight.w600),
                 ),
               ),
             ),
@@ -274,6 +274,9 @@ Widget _row(t, d1, d2) {
                   // getTime(h).day.toString(),
 
                   "${getTime(t).day.toString()}/${getTime(t).month.toString()}/${getTime(t).year.toString()}, ${getTime(t).hour.toString()}:${getTime(t).minute.toString()}",
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
                   // style: TextStyle(color: color),
                   textAlign: TextAlign.center,
                 ),
@@ -293,7 +296,9 @@ Widget _row(t, d1, d2) {
                 padding: EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   "Torpedo No.",
-                  // style: TextStyle(color: color),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
@@ -306,7 +311,9 @@ Widget _row(t, d1, d2) {
                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   d1.toString(),
-                  // style: TextStyle(color: color),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -325,7 +332,9 @@ Widget _row(t, d1, d2) {
                 padding: EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   "Torpedo Net Weight [in tons]",
-                  // style: TextStyle(color: color),
+                  style: TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
             ),
@@ -338,7 +347,9 @@ Widget _row(t, d1, d2) {
                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
                   double.parse(d2).toStringAsFixed(2),
-                  // style: TextStyle(color: color),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w600,
+                  ),
                   textAlign: TextAlign.center,
                 ),
               ),

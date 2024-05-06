@@ -111,7 +111,7 @@ class clwsmState extends State<clwsm> {
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: const Color.fromARGB(113, 43, 76, 98),
+                    color: borderColor,
                     width: 2.0,
                   )),
                   padding:
@@ -122,32 +122,35 @@ class clwsmState extends State<clwsm> {
                       Expanded(
                           flex: 10,
                           child: Container(
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 74, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 3),
-                            child: const Text('Parameters',
+                            child: Text('Parameters',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
+                                  color: borderColor,
                                 )),
                           )),
                       Expanded(
                         flex: 8,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: Text("Value",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -166,8 +169,7 @@ class clwsmState extends State<clwsm> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -204,7 +206,7 @@ Widget _row(h, d1, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -214,7 +216,8 @@ Widget _row(h, d1, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color), textAlign: TextAlign.center),
+              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              textAlign: TextAlign.center),
         ),
       ),
     ],

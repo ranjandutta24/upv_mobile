@@ -142,7 +142,7 @@ class GcpState extends State<Gcp> {
                       flex: 6,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: Color.fromARGB(238, 205, 205, 205),
+                          color: const Color.fromARGB(238, 205, 205, 205),
                           border: Border(
                             right: BorderSide(
                               color: borderColor,
