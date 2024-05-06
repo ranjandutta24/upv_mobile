@@ -117,7 +117,7 @@ class LhfsmState extends State<Lhfsm> {
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: const Color.fromARGB(113, 43, 76, 98),
+                    color: borderColor,
                     width: 2.0,
                   )),
                   padding:
@@ -128,29 +128,29 @@ class LhfsmState extends State<Lhfsm> {
                       Expanded(
                           flex: 10,
                           child: Container(
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
+                              color: Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 74, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 3),
-                            child: const Text('Parameters',
+                            child: Text('Parameters',
                                 style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
-                                )),
+                                    fontWeight: FontWeight.bold,
+                                    color: borderColor)),
                           )),
                       Expanded(
                         flex: 8,
                         child: Container(
                           decoration: BoxDecoration(
-                            border: const Border(
+                            border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 56, 104, 156),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -165,7 +165,7 @@ class LhfsmState extends State<Lhfsm> {
                           child: Text("LF1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -185,7 +185,7 @@ class LhfsmState extends State<Lhfsm> {
                           child: Text("LF2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -204,8 +204,7 @@ class LhfsmState extends State<Lhfsm> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -243,7 +242,10 @@ Widget _row(h, d1, d2, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(
+              color: color,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
       ),
@@ -260,7 +262,11 @@ Widget _row(h, d1, d2, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color, fontSize: 12),
+              style: TextStyle(
+                color: color,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
               textAlign: TextAlign.center),
         ),
       ),
@@ -270,7 +276,11 @@ Widget _row(h, d1, d2, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color, fontSize: 12),
+              style: TextStyle(
+                color: color,
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+              ),
               textAlign: TextAlign.center),
         ),
       ),

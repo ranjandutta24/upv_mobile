@@ -573,8 +573,7 @@ class CcpsmState extends State<Ccpsm> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -614,7 +613,11 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
           child: Text(
             h,
-            style: TextStyle(color: color, fontSize: 11),
+            style: TextStyle(
+              color: color,
+              fontSize: 11,
+              fontWeight: FontWeight.w600,
+            ),
           ),
         ),
       ),
@@ -626,6 +629,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
                     style: TextStyle(
+                      fontSize: 11,
                       color: color,
                       fontWeight: FontWeight.w600,
                     ),
