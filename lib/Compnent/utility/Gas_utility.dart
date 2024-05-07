@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class GasUt extends StatefulWidget {
   const GasUt({super.key});
@@ -314,8 +315,7 @@ class GasUtState extends State<GasUt> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -352,7 +352,8 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 h,
-                style: TextStyle(color: color, fontWeight: FontWeight.w600),
+                style:
+                    TextStyle(color: borderColor, fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -368,7 +369,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "BF Gas",
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -379,7 +380,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d1,
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -395,7 +396,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "CO Gas",
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -406,7 +407,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d2,
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -422,7 +423,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "CBM Gas",
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -433,7 +434,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d3,
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -449,7 +450,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "Oxygen",
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -460,7 +461,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d4,
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -476,7 +477,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "Nitrogen",
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -487,7 +488,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d5,
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -503,7 +504,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "Mixed Gas",
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -514,7 +515,7 @@ Widget _row(h, d1, d2, d3, d4, d5, d6, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d6,
-                style: TextStyle(color: color),
+                style: TextStyle(color: color, fontWeight: FontWeight.w600),
               ),
             ),
           )

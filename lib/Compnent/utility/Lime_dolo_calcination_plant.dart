@@ -165,7 +165,7 @@ class LdcpUtState extends State<LdcpUt> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(113, 43, 76, 98),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
@@ -177,20 +177,21 @@ class LdcpUtState extends State<LdcpUt> {
                       Expanded(
                         flex: 4,
                         child: Container(
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 74, 104, 156),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text('Parameter',
+                          child: Text('Parameter',
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Colors.grey,
+                                color: borderColor,
                                 fontSize: 11,
                               )),
                         ),
@@ -199,9 +200,9 @@ class LdcpUtState extends State<LdcpUt> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: const Border(
+                              border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 56, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
@@ -214,7 +215,7 @@ class LdcpUtState extends State<LdcpUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -223,9 +224,9 @@ class LdcpUtState extends State<LdcpUt> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: const Border(
+                              border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 74, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
@@ -238,7 +239,7 @@ class LdcpUtState extends State<LdcpUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -247,9 +248,9 @@ class LdcpUtState extends State<LdcpUt> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                              border: const Border(
+                              border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 56, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
@@ -262,7 +263,7 @@ class LdcpUtState extends State<LdcpUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -280,7 +281,7 @@ class LdcpUtState extends State<LdcpUt> {
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 11,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -337,7 +338,8 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color, fontSize: 12),
+            style: TextStyle(
+                color: color, fontSize: 12, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -348,7 +350,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             )
@@ -365,7 +370,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -374,17 +382,20 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           : Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
-                      color: Color.fromARGB(113, 74, 104, 156),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -393,17 +404,20 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
           : Expanded(
               flex: 1,
               child: Container(
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   border: Border(
                     right: BorderSide(
-                      color: Color.fromARGB(113, 74, 104, 156),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d3,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -415,7 +429,10 @@ Widget _row(h, d1, d2, d3, d4, color, i) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d4,
-                    style: TextStyle(color: color, fontSize: 12),
+                    style: TextStyle(
+                        color: color,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),

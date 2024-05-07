@@ -211,8 +211,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(
-                          113, 44, 129, 227), // Border color
+                      color: borderColor, // Border color
                       width: 2.0, // Border width
                     ),
                   ),
@@ -225,6 +224,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                         flex: 6,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -233,12 +233,12 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text(
+                              vertical: 5, horizontal: 3),
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: Color.fromARGB(255, 152, 152, 152)),
+                                color: borderColor),
                           ),
                         ),
                       ),
@@ -263,7 +263,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                           child: Text("PLANT 1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -283,7 +283,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                           child: Text("PLANT 2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                               ),
                               textAlign: TextAlign.center),
                         ),
@@ -302,8 +302,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -342,7 +341,7 @@ Widget _row(h, d1, d2, color, i, state) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
           child: Text(
             h,
-            style: TextStyle(color: color),
+            style: TextStyle(color: color, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -362,7 +361,7 @@ Widget _row(h, d1, d2, color, i, state) {
                 decoration: const BoxDecoration(),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             )
@@ -384,7 +383,7 @@ Widget _row(h, d1, d2, color, i, state) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d1,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),
@@ -411,7 +410,7 @@ Widget _row(h, d1, d2, color, i, state) {
                 ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d2,
-                    style: TextStyle(color: color),
+                    style: TextStyle(color: color, fontWeight: FontWeight.w600),
                     textAlign: TextAlign.center),
               ),
             ),

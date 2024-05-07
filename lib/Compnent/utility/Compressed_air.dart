@@ -5,6 +5,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:upv_mobile/Services/service_page.dart';
+import 'package:upv_mobile/Utils/colors.dart';
 
 class CasUt extends StatefulWidget {
   const CasUt({super.key});
@@ -26,7 +27,7 @@ class CasUtState extends State<CasUt> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = const Color.fromARGB(255, 44, 44, 44);
+  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {
@@ -180,8 +181,7 @@ class CasUtState extends State<CasUt> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -209,8 +209,7 @@ class CasUtState extends State<CasUt> {
                         //     ? _containerColor
                         //     : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0, // Border width
                         ),
                       ),
@@ -245,7 +244,8 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 h,
-                style: TextStyle(color: color, fontWeight: FontWeight.w600),
+                style:
+                    TextStyle(color: borderColor, fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -263,7 +263,8 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                 (i == 0 || i == 1 || i == 2 || i == 3)
                     ? "Compressor"
                     : "Compressor 1",
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -274,7 +275,8 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d1,
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -288,7 +290,10 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
                       "Compressor 2",
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -302,7 +307,10 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
                       d2,
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 )
@@ -323,7 +331,10 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
                       "Compressor 3",
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -335,7 +346,10 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
                       d3,
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -347,7 +361,10 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
                       "Compressor 4",
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -359,7 +376,10 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
                       d4,
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 )
@@ -378,7 +398,10 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
                       "Compressor 5",
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -390,7 +413,10 @@ Widget _row(h, d1, d2, d3, d4, d5, color, i) {
                         const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                     child: Text(
                       d5,
-                      style: TextStyle(color: color, fontSize: 12),
+                      style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600),
                     ),
                   ),
                 ),
@@ -413,7 +439,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 h,
-                style: TextStyle(color: color, fontWeight: FontWeight.w600),
+                style:
+                    TextStyle(color: borderColor, fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -429,7 +456,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "Instrument Grade Flow (Nm3/hr)",
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -443,7 +471,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d1,
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -459,7 +488,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "Instrument Grade Pressure (kg/cm2)",
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -473,7 +503,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d2,
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           )
@@ -489,7 +520,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "Plant Grade Flow (Nm3/hr)",
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -503,7 +535,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d3,
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -519,7 +552,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 "Plant Grade Pressure (kg/cm2)",
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           ),
@@ -533,7 +567,8 @@ Widget _row2(h, d1, d2, d3, d4, color, i) {
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
               child: Text(
                 d4,
-                style: TextStyle(color: color, fontSize: 12),
+                style: TextStyle(
+                    color: color, fontSize: 12, fontWeight: FontWeight.w600),
               ),
             ),
           )
