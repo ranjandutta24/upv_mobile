@@ -65,7 +65,9 @@ class PbsUtState extends State<PbsUt> {
             rows = [
               {
                 "head": "Steam Flow [TPH]",
-                "data1": pbsData["PBS_B1MSF"].toString(),
+                "data1": pbsData["PBS_B1MSF"] == null
+                    ? "0"
+                    : pbsData["PBS_B1MSF"].toString(),
                 "data2": pbsData["PBS_B2MSF"] == null
                     ? "0"
                     : pbsData["PBS_B2MSF"].toString(),
@@ -117,9 +119,15 @@ class PbsUtState extends State<PbsUt> {
             rows2 = [
               {
                 "head": "Generation [MW]",
-                "data1": pbsData["PBS_STG1GEN"].toStringAsFixed(2),
-                "data2": pbsData["PBS_STG2GEN"].toStringAsFixed(2),
-                "data3": pbsData["PBS_STG3GEN"].toStringAsFixed(2),
+                "data1": pbsData["PBS_STG1GEN"] == null
+                    ? "0"
+                    : pbsData["PBS_STG1GEN"].toStringAsFixed(2),
+                "data2": pbsData["PBS_STG2GEN"] == null
+                    ? "0"
+                    : pbsData["PBS_STG2GEN"].toStringAsFixed(2),
+                "data3": pbsData["PBS_STG3GEN"] == null
+                    ? "0"
+                    : pbsData["PBS_STG3GEN"].toStringAsFixed(2),
                 "selected": false,
                 "i": 4,
               },
@@ -135,9 +143,15 @@ class PbsUtState extends State<PbsUt> {
             rows3 = [
               {
                 "head": "Discharge [Nm3/min]",
-                "data1": pbsData["PBS_BL1DF"].toStringAsFixed(2),
-                "data2": pbsData["PBS_BL2DF"].toStringAsFixed(2),
-                "data3": pbsData["PBS_BL3DF"].toStringAsFixed(2),
+                "data1": pbsData["PBS_BL1DF"] == null
+                    ? "0"
+                    : pbsData["PBS_BL1DF"].toStringAsFixed(2),
+                "data2": pbsData["PBS_BL2DF"] == null
+                    ? "0"
+                    : pbsData["PBS_BL2DF"].toStringAsFixed(2),
+                "data3": pbsData["PBS_BL3DF"] == null
+                    ? "0"
+                    : pbsData["PBS_BL3DF"].toStringAsFixed(2),
                 "selected": false,
                 "i": 6,
               },
@@ -194,7 +208,7 @@ class PbsUtState extends State<PbsUt> {
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(
-                    color: const Color.fromARGB(113, 43, 76, 98),
+                    color: borderColor,
                     width: 2.0,
                   )),
                   padding:
@@ -205,20 +219,21 @@ class PbsUtState extends State<PbsUt> {
                       Expanded(
                           flex: 4,
                           child: Container(
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
+                              color: const Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
-                                  color: Color.fromARGB(113, 74, 104, 156),
+                                  color: borderColor,
                                   width: 2.0,
                                 ),
                               ),
                             ),
                             padding: const EdgeInsets.symmetric(
                                 vertical: 5, horizontal: 3),
-                            child: const Text('Parameter',
+                            child: Text('Parameter',
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.grey,
+                                  color: borderColor,
                                   fontSize: 11,
                                 )),
                           )),
@@ -226,9 +241,9 @@ class PbsUtState extends State<PbsUt> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                            border: const Border(
+                            border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 56, 104, 156),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -243,7 +258,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("BOILER1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -274,7 +289,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("BOILER2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -294,7 +309,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("BOILER3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -314,8 +329,7 @@ class PbsUtState extends State<PbsUt> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -333,7 +347,7 @@ class PbsUtState extends State<PbsUt> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(113, 43, 76, 98),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
@@ -346,6 +360,7 @@ class PbsUtState extends State<PbsUt> {
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -355,11 +370,11 @@ class PbsUtState extends State<PbsUt> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 152, 152, 152),
+                              color: borderColor,
                               fontSize: 11,
                             ),
                           ),
@@ -369,9 +384,9 @@ class PbsUtState extends State<PbsUt> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                            border: const Border(
+                            border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 56, 104, 156),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -386,7 +401,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("STG1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -413,7 +428,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("STG2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -434,7 +449,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("STG3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -454,8 +469,7 @@ class PbsUtState extends State<PbsUt> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -473,7 +487,7 @@ class PbsUtState extends State<PbsUt> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(113, 43, 76, 98),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
@@ -486,6 +500,7 @@ class PbsUtState extends State<PbsUt> {
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -495,11 +510,11 @@ class PbsUtState extends State<PbsUt> {
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 3),
-                          child: const Text(
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 152, 152, 152),
+                              color: borderColor,
                               fontSize: 11,
                             ),
                           ),
@@ -526,7 +541,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("STB1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -553,7 +568,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("STB2",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -574,7 +589,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("STB3",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -594,8 +609,7 @@ class PbsUtState extends State<PbsUt> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -613,12 +627,12 @@ class PbsUtState extends State<PbsUt> {
                 Container(
                   decoration: BoxDecoration(
                     border: Border.all(
-                      color: const Color.fromARGB(113, 43, 76, 98),
+                      color: borderColor,
                       width: 2.0,
                     ),
                   ),
                   padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 0, horizontal: 0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -626,6 +640,7 @@ class PbsUtState extends State<PbsUt> {
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
@@ -634,12 +649,12 @@ class PbsUtState extends State<PbsUt> {
                             ),
                           ),
                           padding: const EdgeInsets.symmetric(
-                              vertical: 5, horizontal: 0),
-                          child: const Text(
+                              vertical: 5, horizontal: 3),
+                          child: Text(
                             "Parameter",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              color: Color.fromARGB(255, 152, 152, 152),
+                              color: borderColor,
                               fontSize: 11,
                             ),
                           ),
@@ -649,9 +664,9 @@ class PbsUtState extends State<PbsUt> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                            border: const Border(
+                            border: Border(
                               right: BorderSide(
-                                color: Color.fromARGB(113, 56, 104, 156),
+                                color: borderColor,
                                 width: 2.0,
                               ),
                             ),
@@ -664,7 +679,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("BPTG1",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -689,7 +704,7 @@ class PbsUtState extends State<PbsUt> {
                           child: Text("TRTG",
                               style: TextStyle(
                                 fontWeight: FontWeight.bold,
-                                color: myColors["header"],
+                                color: borderColor,
                                 fontSize: 11,
                               ),
                               textAlign: TextAlign.center),
@@ -698,7 +713,9 @@ class PbsUtState extends State<PbsUt> {
                       Expanded(
                         flex: 2,
                         child: Container(
-                          decoration: const BoxDecoration(),
+                          decoration: const BoxDecoration(
+                            color: Color.fromARGB(238, 205, 205, 205),
+                          ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
                           child: const Text("",
@@ -724,8 +741,7 @@ class PbsUtState extends State<PbsUt> {
                             ? _containerColor
                             : _containerColora,
                         border: Border.all(
-                          color: const Color.fromARGB(
-                              113, 44, 129, 227), // Border color
+                          color: borderColor, // Border color
                           width: 1.0,
                         ),
                       ),
@@ -765,9 +781,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           child: Text(
             h,
             style: TextStyle(
-              color: color,
-              fontSize: 11,
-            ),
+                color: color, fontSize: 11, fontWeight: FontWeight.w600),
           ),
         ),
       ),
@@ -785,9 +799,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
               style: TextStyle(
-                color: color,
-                fontSize: 11,
-              ),
+                  color: color, fontSize: 11, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
@@ -805,9 +817,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
               style: TextStyle(
-                color: color,
-                fontSize: 11,
-              ),
+                  color: color, fontSize: 11, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),
@@ -818,9 +828,7 @@ Widget _row(h, d1, d2, d3, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d3,
               style: TextStyle(
-                color: color,
-                fontSize: 11,
-              ),
+                  color: color, fontSize: 11, fontWeight: FontWeight.w600),
               textAlign: TextAlign.center),
         ),
       ),

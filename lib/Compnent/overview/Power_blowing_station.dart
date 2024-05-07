@@ -124,9 +124,15 @@ class PbsState extends State<Pbs> {
             rows3 = [
               {
                 "head": "Discharge [Nm3/min]",
-                "data1": pbsData["PBS_BL1DF"].toStringAsFixed(2),
-                "data2": pbsData["PBS_BL2DF"].toStringAsFixed(2),
-                "data3": pbsData["PBS_BL3DF"].toStringAsFixed(2),
+                "data1": pbsData["PBS_BL1DF"] == null
+                    ? "0"
+                    : pbsData["PBS_BL1DF"].toStringAsFixed(2),
+                "data2": pbsData["PBS_BL2DF"] == null
+                    ? "0"
+                    : pbsData["PBS_BL2DF"].toStringAsFixed(2),
+                "data3": pbsData["PBS_BL3DF"] == null
+                    ? "0"
+                    : pbsData["PBS_BL3DF"].toStringAsFixed(2),
                 "selected": false,
                 "i": 6,
               },
