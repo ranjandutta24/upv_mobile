@@ -80,25 +80,43 @@ class PbsState extends State<Pbs> {
               },
               {
                 "head": "BFG FLOW [Nm3/hr]",
-                "data1": pbsData["PBS_B1BFGF"].toString(),
-                "data2": pbsData["PBS_B2BFGF"].toString(),
-                "data3": pbsData["PBS_B3BFGF"].toString(),
+                "data1": pbsData["PBS_B1BFGF"] == null
+                    ? "0"
+                    : pbsData["PBS_B1BFGF"].toString(),
+                "data2": pbsData["PBS_B2BFGF"] == null
+                    ? "0"
+                    : pbsData["PBS_B2BFGF"].toString(),
+                "data3": pbsData["PBS_B3BFGF"] == null
+                    ? "0"
+                    : pbsData["PBS_B3BFGF"].toString(),
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "COG FLOW [Nm3/hr]",
-                "data1": pbsData["PBS_B1COGF"].toString(),
-                "data2": pbsData["PBS_B2COGF"].toString(),
-                "data3": pbsData["PBS_B3COGF"].toString(),
+                "data1": pbsData["PBS_B1COGF"] == null
+                    ? "0"
+                    : pbsData["PBS_B1COGF"].toString(),
+                "data2": pbsData["PBS_B2COGF"] == null
+                    ? "0"
+                    : pbsData["PBS_B2COGF"].toString(),
+                "data3": pbsData["PBS_B3COGF"] == null
+                    ? "0"
+                    : pbsData["PBS_B3COGF"].toString(),
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "CBM FLOW [Nm3/hr]",
-                "data1": pbsData["PBS_B1CBMF"].toString(),
-                "data2": pbsData["PBS_B2CBMF"].toString(),
-                "data3": pbsData["PBS_B3CBMF"].toString(),
+                "data1": pbsData["PBS_B1CBMF"] == null
+                    ? "0"
+                    : pbsData["PBS_B1CBMF"].toString(),
+                "data2": pbsData["PBS_B2CBMF"] == null
+                    ? "0"
+                    : pbsData["PBS_B2CBMF"].toString(),
+                "data3": pbsData["PBS_B3CBMF"] == null
+                    ? "0"
+                    : pbsData["PBS_B3CBMF"].toString(),
                 "selected": false,
                 "i": 3,
               }
@@ -106,17 +124,29 @@ class PbsState extends State<Pbs> {
             rows2 = [
               {
                 "head": "Generation [MW]",
-                "data1": pbsData["PBS_STG1GEN"].toStringAsFixed(2),
-                "data2": pbsData["PBS_STG2GEN"].toStringAsFixed(2),
-                "data3": pbsData["PBS_STG3GEN"].toStringAsFixed(2),
+                "data1": pbsData["PBS_STG1GEN"] == null
+                    ? "0"
+                    : pbsData["PBS_STG1GEN"].toStringAsFixed(2),
+                "data2": pbsData["PBS_STG2GEN"] == null
+                    ? "0"
+                    : pbsData["PBS_STG2GEN"].toStringAsFixed(2),
+                "data3": pbsData["PBS_STG3GEN"] == null
+                    ? "0"
+                    : pbsData["PBS_STG3GEN"].toStringAsFixed(2),
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "Steam Flow [TPH]",
-                "data1": pbsData["PBS_STG1SF"].toStringAsFixed(2),
-                "data2": pbsData["PBS_STG2SF"].toStringAsFixed(2),
-                "data3": pbsData["PBS_STG3SF"].toStringAsFixed(2),
+                "data1": pbsData["PBS_STG1SF"] == null
+                    ? "0"
+                    : pbsData["PBS_STG1SF"].toStringAsFixed(2),
+                "data2": pbsData["PBS_STG2SF"] == null
+                    ? "0"
+                    : pbsData["PBS_STG2SF"].toStringAsFixed(2),
+                "data3": pbsData["PBS_STG3SF"] == null
+                    ? "0"
+                    : pbsData["PBS_STG3SF"].toStringAsFixed(2),
                 "selected": false,
                 "i": 5,
               },
@@ -138,9 +168,15 @@ class PbsState extends State<Pbs> {
               },
               {
                 "head": "Steam Flow [TPH]",
-                "data1": pbsData["PBS_STB1SF"].toStringAsFixed(2),
-                "data2": pbsData["PBS_STB2SF"].toStringAsFixed(2),
-                "data3": pbsData["PBS_STB3SF"].toStringAsFixed(2),
+                "data1": pbsData["PBS_STB1SF"] == null
+                    ? "0"
+                    : pbsData["PBS_STB1SF"].toStringAsFixed(2),
+                "data2": pbsData["PBS_STB2SF"] == null
+                    ? "0"
+                    : pbsData["PBS_STB2SF"].toStringAsFixed(2),
+                "data3": pbsData["PBS_STB3SF"] == null
+                    ? "0"
+                    : pbsData["PBS_STB3SF"].toStringAsFixed(2),
                 "selected": false,
                 "i": 7,
               },
@@ -148,8 +184,12 @@ class PbsState extends State<Pbs> {
             rows4 = [
               {
                 "head": "Generation [MW]",
-                "data1": pbsData["PBS_BPTGEN"].toStringAsFixed(2),
-                "data2": pbsData["BF_TRTGMW"].toStringAsFixed(2),
+                "data1": pbsData["PBS_BPTGEN"] == null
+                    ? "0"
+                    : pbsData["PBS_BPTGEN"].toStringAsFixed(2),
+                "data2": pbsData["BF_TRTGMW"] == null
+                    ? "0"
+                    : pbsData["BF_TRTGMW"].toStringAsFixed(2),
                 "data3": "",
                 "selected": false,
                 "i": 8,

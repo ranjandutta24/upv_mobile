@@ -289,7 +289,8 @@ Widget _row(h, d1, d2, color, i) {
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(
             h,
-            style: TextStyle(color: color, fontWeight: FontWeight.w600),
+            style: TextStyle(
+                color: color, fontWeight: FontWeight.w600, fontSize: 12),
           ),
         ),
       ),
@@ -307,7 +308,8 @@ Widget _row(h, d1, d2, color, i) {
           ),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d1,
-              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                  color: color, fontWeight: FontWeight.w600, fontSize: 12),
               textAlign: TextAlign.center),
         ),
       ),
@@ -318,7 +320,8 @@ Widget _row(h, d1, d2, color, i) {
           decoration: const BoxDecoration(),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
           child: Text(d2,
-              style: TextStyle(color: color, fontWeight: FontWeight.w600),
+              style: TextStyle(
+                  color: color, fontWeight: FontWeight.w600, fontSize: 12),
               textAlign: TextAlign.center),
         ),
       ),
