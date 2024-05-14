@@ -4,8 +4,8 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:upv_mobile/Services/service_page.dart';
-import 'package:upv_mobile/Utils/colors.dart';
+import 'package:in.iisco.upv/Services/service_page.dart';
+import 'package:in.iisco.upv/Utils/colors.dart';
 
 class Lhfsm extends StatefulWidget {
   const Lhfsm({super.key});

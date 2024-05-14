@@ -2,20 +2,20 @@ import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Compnent/overview/Blast_furnace.dart';
-import 'package:upv_mobile/Compnent/overview/Basic_oxygen_furnace.dart';
-import 'package:upv_mobile/Compnent/overview/By_product_plant.dart';
-import 'package:upv_mobile/Compnent/overview/CBM.dart';
-import 'package:upv_mobile/Compnent/overview/Coke_ovens.dart';
-import 'package:upv_mobile/Compnent/overview/Continuous_casting_plant.dart';
-import 'package:upv_mobile/Compnent/overview/Ladle_heating_furnace.dart';
-import 'package:upv_mobile/Compnent/overview/Lime_dolo_calcination_plant.dart';
-import 'package:upv_mobile/Compnent/overview/Mills.dart';
-import 'package:upv_mobile/Compnent/overview/Oxygen_plant.dart';
-import 'package:upv_mobile/Compnent/overview/Power_blowing_station.dart';
-import 'package:upv_mobile/Compnent/overview/Sinter_plant.dart';
-import 'package:upv_mobile/Compnent/overview/Techno_economics.dart';
-import 'package:upv_mobile/Compnent/overview/overview.dart';
+import 'package:in.iisco.upv/Compnent/overview/Blast_furnace.dart';
+import 'package:in.iisco.upv/Compnent/overview/Basic_oxygen_furnace.dart';
+import 'package:in.iisco.upv/Compnent/overview/By_product_plant.dart';
+import 'package:in.iisco.upv/Compnent/overview/CBM.dart';
+import 'package:in.iisco.upv/Compnent/overview/Coke_ovens.dart';
+import 'package:in.iisco.upv/Compnent/overview/Continuous_casting_plant.dart';
+import 'package:in.iisco.upv/Compnent/overview/Ladle_heating_furnace.dart';
+import 'package:in.iisco.upv/Compnent/overview/Lime_dolo_calcination_plant.dart';
+import 'package:in.iisco.upv/Compnent/overview/Mills.dart';
+import 'package:in.iisco.upv/Compnent/overview/Oxygen_plant.dart';
+import 'package:in.iisco.upv/Compnent/overview/Power_blowing_station.dart';
+import 'package:in.iisco.upv/Compnent/overview/Sinter_plant.dart';
+import 'package:in.iisco.upv/Compnent/overview/Techno_economics.dart';
+import 'package:in.iisco.upv/Compnent/overview/overview.dart';
 
 class AccordionPage extends StatefulWidget {
   static const headerStyle = TextStyle(

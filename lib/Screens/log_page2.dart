@@ -3,9 +3,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:upv_mobile/Screens/overview_page.dart';
-import 'package:upv_mobile/Services/service_page.dart';
-import 'package:upv_mobile/providers/user.dart';
+import 'package:in.iisco.upv/Screens/overview_page.dart';
+import 'package:in.iisco.upv/Services/service_page.dart';
+import 'package:in.iisco.upv/providers/user.dart';
 
 class Login extends ConsumerStatefulWidget {
   const Login({super.key});

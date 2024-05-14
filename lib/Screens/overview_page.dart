@@ -3,11 +3,11 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // import 'package:google_fonts/google_fonts.dart';
 // import 'dart:ui';
 
-import 'package:upv_mobile/Compnent/overview/accordion.dart';
-import 'package:upv_mobile/Utils/colors.dart';
+import 'package:in.iisco.upv/Compnent/overview/accordion.dart';
+import 'package:in.iisco.upv/Utils/colors.dart';
 
-import 'package:upv_mobile/Widgets/main_drawer.dart';
-import 'package:upv_mobile/providers/user.dart';
+import 'package:in.iisco.upv/Widgets/main_drawer.dart';
+import 'package:in.iisco.upv/providers/user.dart';
 
 class OverviewScreen extends ConsumerStatefulWidget {
   const OverviewScreen({

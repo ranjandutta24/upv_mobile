@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Compnent/utility/accordion.dart';
-import 'package:upv_mobile/Utils/colors.dart';
+import 'package:in.iisco.upv/Compnent/utility/accordion.dart';
+import 'package:in.iisco.upv/Utils/colors.dart';
 
-import 'package:upv_mobile/Widgets/main_drawer.dart';
+import 'package:in.iisco.upv/Widgets/main_drawer.dart';
 
 class Utilitycreen extends StatefulWidget {
   const Utilitycreen({super.key, required this.data});

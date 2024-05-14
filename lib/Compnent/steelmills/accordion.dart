@@ -2,12 +2,12 @@ import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Compnent/steelmills/Basic_oxygen_furnace.dart';
-import 'package:upv_mobile/Compnent/steelmills/Continuous_casting_plant.dart';
-import 'package:upv_mobile/Compnent/steelmills/Crane_ladle_weight.dart';
-import 'package:upv_mobile/Compnent/steelmills/Ladle_heating_furnace.dart';
-import 'package:upv_mobile/Compnent/steelmills/Mills.dart';
-import 'package:upv_mobile/Compnent/steelmills/Torpedo_at_hmrs.dart';
+import 'package:in.iisco.upv/Compnent/steelmills/Basic_oxygen_furnace.dart';
+import 'package:in.iisco.upv/Compnent/steelmills/Continuous_casting_plant.dart';
+import 'package:in.iisco.upv/Compnent/steelmills/Crane_ladle_weight.dart';
+import 'package:in.iisco.upv/Compnent/steelmills/Ladle_heating_furnace.dart';
+import 'package:in.iisco.upv/Compnent/steelmills/Mills.dart';
+import 'package:in.iisco.upv/Compnent/steelmills/Torpedo_at_hmrs.dart';
 
 class AccordionSteel extends StatefulWidget {
   static const headerStyle = TextStyle(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:upv_mobile/Compnent/iron/accordion.dart';
-import 'package:upv_mobile/Utils/colors.dart';
+import 'package:in.iisco.upv/Compnent/iron/accordion.dart';
+import 'package:in.iisco.upv/Utils/colors.dart';
 
-import 'package:upv_mobile/Widgets/main_drawer.dart';
+import 'package:in.iisco.upv/Widgets/main_drawer.dart';
 
 class IronScreen extends StatefulWidget {
   const IronScreen({super.key, required this.data});

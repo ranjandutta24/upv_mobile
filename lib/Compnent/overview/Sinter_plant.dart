@@ -4,9 +4,9 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:upv_mobile/Services/service_page.dart';
-import 'package:upv_mobile/Utils/colors.dart';
-import 'package:upv_mobile/Widgets/loader.dart';
+import 'package:in.iisco.upv/Services/service_page.dart';
+import 'package:in.iisco.upv/Utils/colors.dart';
+import 'package:in.iisco.upv/Widgets/loader.dart';
 
 class SinterPlant extends StatefulWidget {
   const SinterPlant({super.key});

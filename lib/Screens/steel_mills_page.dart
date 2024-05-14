@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Compnent/steelmills/accordion.dart';
-import 'package:upv_mobile/Utils/colors.dart';
+import 'package:in.iisco.upv/Compnent/steelmills/accordion.dart';
+import 'package:in.iisco.upv/Utils/colors.dart';
 
-import 'package:upv_mobile/Widgets/main_drawer.dart';
+import 'package:in.iisco.upv/Widgets/main_drawer.dart';
 
 class SteelMillsScreen extends StatefulWidget {
   const SteelMillsScreen({super.key, required this.data});

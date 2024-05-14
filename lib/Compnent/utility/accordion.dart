@@ -1,14 +1,14 @@
 import 'package:accordion/accordion.dart';
 import 'package:accordion/controllers.dart';
 import 'package:flutter/material.dart';
-import 'package:upv_mobile/Compnent/utility/BOF_gas_holder.dart';
+import 'package:in.iisco.upv/Compnent/utility/BOF_gas_holder.dart';
 
-import 'package:upv_mobile/Compnent/utility/CBM.dart';
-import 'package:upv_mobile/Compnent/utility/Compressed_air.dart';
-import 'package:upv_mobile/Compnent/utility/Gas_utility.dart';
-import 'package:upv_mobile/Compnent/utility/Lime_dolo_calcination_plant.dart';
-import 'package:upv_mobile/Compnent/utility/Oxygen_plant.dart';
-import 'package:upv_mobile/Compnent/utility/Power_blowing_station_utility.dart';
+import 'package:in.iisco.upv/Compnent/utility/CBM.dart';
+import 'package:in.iisco.upv/Compnent/utility/Compressed_air.dart';
+import 'package:in.iisco.upv/Compnent/utility/Gas_utility.dart';
+import 'package:in.iisco.upv/Compnent/utility/Lime_dolo_calcination_plant.dart';
+import 'package:in.iisco.upv/Compnent/utility/Oxygen_plant.dart';
+import 'package:in.iisco.upv/Compnent/utility/Power_blowing_station_utility.dart';
 
 class AccordionUtility extends StatefulWidget {
   static const headerStyle = TextStyle(

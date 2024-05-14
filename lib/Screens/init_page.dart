@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:upv_mobile/Screens/log_page2.dart';
-import 'package:upv_mobile/Screens/overview_page.dart';
-import 'package:upv_mobile/Widgets/loader.dart';
-import 'package:upv_mobile/providers/user.dart';
+import 'package:in.iisco.upv/Screens/log_page2.dart';
+import 'package:in.iisco.upv/Screens/overview_page.dart';
+import 'package:in.iisco.upv/Widgets/loader.dart';
+import 'package:in.iisco.upv/providers/user.dart';
 
 class Init extends ConsumerStatefulWidget {
   const Init({super.key});

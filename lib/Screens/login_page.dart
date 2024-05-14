@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:upv_mobile/Screens/overview_page.dart';
-import 'package:upv_mobile/Services/service_page.dart';
+import 'package:in.iisco.upv/Screens/overview_page.dart';
+import 'package:in.iisco.upv/Services/service_page.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});

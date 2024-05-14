@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-import 'package:upv_mobile/Utils/colors.dart';
+import 'package:in.iisco.upv/Utils/colors.dart';
 
 class Demo extends StatefulWidget {
   const Demo({super.key});

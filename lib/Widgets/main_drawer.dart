@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:upv_mobile/Screens/iron_page.dart';
-import 'package:upv_mobile/Screens/log_page2.dart';
-import 'package:upv_mobile/Screens/overview_page.dart';
-import 'package:upv_mobile/Screens/steel_mills_page.dart';
-import 'package:upv_mobile/Screens/utility_page.dart';
-import 'package:upv_mobile/Utils/colors.dart';
-import 'package:upv_mobile/providers/user.dart';
+import 'package:in.iisco.upv/Screens/iron_page.dart';
+import 'package:in.iisco.upv/Screens/log_page2.dart';
+import 'package:in.iisco.upv/Screens/overview_page.dart';
+import 'package:in.iisco.upv/Screens/steel_mills_page.dart';
+import 'package:in.iisco.upv/Screens/utility_page.dart';
+import 'package:in.iisco.upv/Utils/colors.dart';
+import 'package:in.iisco.upv/providers/user.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class MainDrawer extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:upv_mobile/Screens/init_page.dart';
-// import 'package:upv_mobile/Screens/log_page2.dart';
+import 'package:in.iisco.upv/Screens/init_page.dart';
+// import 'package:in.iisco.upv/Screens/log_page2.dart';
 
 void main() {
   runApp(
