@@ -86,6 +86,62 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
                 "selected": false,
                 "i": 3,
               },
+              {
+                "head": "Totaliser LD Gas(Mills+PBS) (Nm3)",
+                "data1": gasholdData["PBS_totaliser"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Totaliser LD Gas Mills (Nm3)",
+                "data1": gasholdData["Mills_totaliser"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 5,
+              },
+              {
+                "head": "LD Gas (Mills+PBS) A Shift (Nm3)",
+                "data1": gasholdData["a_pbs_totaliser"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 6,
+              },
+              {
+                "head": "LD Gas (Mills+PBS) B Shift (Nm3)",
+                "data1": gasholdData["b_pbs_totaliser"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 7,
+              },
+              {
+                "head": "LD Gas (Mills+PBS) C Shift (Nm3)",
+                "data1": gasholdData["c_pbs_totaliser"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 8,
+              },
+              {
+                "head": "LD Gas Mills A Shift (Nm3)",
+                "data1": gasholdData["a_mills_totaliser"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 9,
+              },
+              {
+                "head": "LD Gas Mills B Shift (Nm3)",
+                "data1": gasholdData["b_mills_totaliser"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 10,
+              },
+              {
+                "head": "LD Gas Mills C Shift (Nm3)",
+                "data1": gasholdData["c_mills_totaliser"].toStringAsFixed(2),
+                "data2": "",
+                "selected": false,
+                "i": 11,
+              },
             ];
             if (num != -1) {
               rows[num]["selected"] = true;

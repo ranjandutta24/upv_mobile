@@ -1,4 +1,4 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.example.in.iisco.upv">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="in.iisco.upv">
 <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:label="UPV"
