@@ -60,7 +60,7 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
   fun() {
     if (mounted) {
       bofgasholderService();
-      var duration = const Duration(seconds: 30);
+      var duration = const Duration(seconds: 1);
       Timer.periodic(duration, (Timer timer) {
         bofgasholderService();
       });
@@ -74,7 +74,7 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
     if (mounted) {
       await bofgasholder().then((data) {
         if (data != null) {
-          print(data.body);
+          // print(data.body);
           setState(() {
             gasholdData = json.decode(data.body);
             rows = [

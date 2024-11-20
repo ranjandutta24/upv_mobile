@@ -62,6 +62,7 @@ class PbsUtState extends State<PbsUt> {
           // print(data.body);
           setState(() {
             pbsData = json.decode(data.body);
+
             rows = [
               {
                 "head": "Steam Flow [TPH]",
@@ -71,7 +72,9 @@ class PbsUtState extends State<PbsUt> {
                 "data2": pbsData["PBS_B2MSF"] == null
                     ? "0"
                     : pbsData["PBS_B2MSF"].toString(),
-                "data3": pbsData["PBS_B3MSF"].toString(),
+                "data3": pbsData["PBS_B3MSF"] == null
+                    ? "0"
+                    : pbsData["PBS_B3MSF"].toString(),
                 "selected": false,
                 "i": 0,
               },
