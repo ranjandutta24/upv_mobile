@@ -157,7 +157,7 @@ class ColState extends State<Col> {
               {
                 "head": "Curr. Day HM Prod[Ton] A/B/C",
                 "data":
-                    "${blastData["LADLE_BOFA"]}/${blastData["LADLE_BOFB"] == null ? "0" : blastData["LADLE_BOFB"]}/${blastData["LADLE_BOFC"] ?? "0"}",
+                    "${blastData["LADLE_BOFA"].toStringAsFixed(0)}/${blastData["LADLE_BOFB"] == null ? "0" : blastData["LADLE_BOFB"]}/${blastData["LADLE_BOFC"] ?? "0"}",
                 "selected": false,
                 "i": 15
               },

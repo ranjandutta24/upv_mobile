@@ -44,7 +44,7 @@ class BfiState extends State<Bfi> {
 
   fun() {
     blastfurnacedata();
-    var duration = const Duration(seconds: 30);
+    var duration = const Duration(seconds: 10);
     Timer.periodic(duration, (Timer timer) {
       blastfurnacedata();
     });
@@ -58,6 +58,7 @@ class BfiState extends State<Bfi> {
         if (data != null) {
           setState(() {
             bfiData = json.decode(data.body);
+            print(bfiData["OXY_FL_NL"].runtimeType);
             rows = [
               {
                 "head": "Blast Volume [Nm3/min]",
@@ -132,53 +133,67 @@ class BfiState extends State<Bfi> {
                 "selected": false,
                 "i": 11
               },
+
+              {
+                "head": "O2 Flow (new line) [Nm3/hr]",
+                "data": (double.parse(bfiData["OXY_FL_NL"])).toStringAsFixed(2),
+                "selected": false,
+                "i": 12
+              },
+              {
+                "head": "O2 Pressure (new line) [Kg/cm2]",
+                "data": (double.parse(bfiData["OXY_PR_NL"])).toStringAsFixed(2),
+                "selected": false,
+                "i": 13
+              },
+
               {
                 "head": "Heat Load[Mcal]",
                 "data": "${bfiData["TOTAL_HEAT_LOAD"].toStringAsFixed(2)}",
                 "selected": false,
-                "i": 12
+                "i": 14
               },
               {
                 "head": "ETA CO [%]",
                 "data": "${bfiData["BF_CO"].toStringAsFixed(2)}",
                 "selected": false,
-                "i": 13
+                "i": 15
               },
               {
                 "head": "Charge Count",
                 "data": "${bfiData["BF_CHARGE"].toStringAsFixed(2)}",
                 "selected": false,
-                "i": 14
+                "i": 16
               },
               {
                 "head": "Ore Coke Ratio",
                 "data": "${bfiData["OREBYCOKE"].toStringAsFixed(2)}",
                 "selected": false,
-                "i": 15
+                "i": 17
               },
               {
                 "head": "Production rate",
                 "data": "${bfiData["PROD_RATE"].toStringAsFixed(2)}",
                 "selected": false,
-                "i": 16
+                "i": 18
               },
               {
                 "head": "Last Day HM Prod [Ton]",
                 "data": "${bfiData["LADLE_BFTLMSPROD"].toStringAsFixed(2)}",
                 "selected": false,
-                "i": 17
+                "i": 19
               },
               {
                 "head": "Flare Stack Flow [Nm3/hr]",
                 "data": "${bfiData["BF_FLAREF"].toStringAsFixed(0)}",
                 "selected": false,
-                "i": 18
+                "i": 20
               },
               {
                 "head": "Flare Stack Pressure [mmwc]",
                 "data": "${bfiData["BF_FLAREP"].toStringAsFixed(0)}",
                 "selected": false,
-                "i": 19
+                "i": 21
               },
               // {
               //   "head": "Snort Position[%]",
@@ -191,21 +206,23 @@ class BfiState extends State<Bfi> {
                 "data":
                     "${bfiData["LAB_SI"].toStringAsFixed(2)}@${bfiData["LAB_HR"] ?? "0"}:${bfiData["LAB_MIN"] ?? "0"}",
                 "selected": false,
-                "i": 20
+                "i": 22
               },
               {
                 "head": "Toredo Car 1/2/3/4 Level [%]",
                 "data":
                     "${bfiData["TORPEDO1"].toStringAsFixed(0)}/${bfiData["TORPEDO2"].toStringAsFixed(0)}/${bfiData["TORPEDO3"].toStringAsFixed(0)}/${bfiData["TORPEDO4"].toStringAsFixed(0)}",
                 "selected": false,
-                "i": 21
+                "i": 23
               },
               {
                 "head": "Toredo Car 5/6/7/8 Level [%]",
-                "data":
-                    "${bfiData["TORPEDO5"].toStringAsFixed(0)}/${bfiData["TORPEDO6"].toStringAsFixed(0)}/${bfiData["TORPEDO7"].toStringAsFixed(0)}/${bfiData["TORPEDO8"].toStringAsFixed(0)}",
+                "data": "${bfiData["TORPEDO5"] != null ? bfiData["TORPEDO5"].toStringAsFixed(0) : "0"}/"
+                    "${bfiData["TORPEDO6"] != null ? bfiData["TORPEDO6"].toStringAsFixed(0) : "0"}/"
+                    "${bfiData["TORPEDO7"] != null ? bfiData["TORPEDO7"].toStringAsFixed(0) : "0"}/"
+                    "${bfiData["TORPEDO8"] != null ? bfiData["TORPEDO8"].toStringAsFixed(0) : "0"}",
                 "selected": false,
-                "i": 22
+                "i": 24
               },
             ];
             if (num != -1) {
