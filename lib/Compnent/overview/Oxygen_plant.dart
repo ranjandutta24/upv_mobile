@@ -55,7 +55,7 @@ class OxygenPlantState extends State<OxygenPlant> {
   oxygenplantService() async {
     if (mounted) {
       await oxygenplant().then((data) {
-        if (data != null) {
+        if (data != null && mounted) {
           // print(data.body);
           setState(() {
             oxygenData = json.decode(data.body);

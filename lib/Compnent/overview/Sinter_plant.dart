@@ -55,7 +55,7 @@ class SinterPlantState extends State<SinterPlant> {
   sinterplantService() async {
     if (mounted) {
       await sinterplant().then((data) {
-        if (data != null) {
+        if (data != null && mounted) {
           // print(data.body);
           setState(() {
             sinterData = json.decode(data.body);

@@ -59,7 +59,7 @@ class PbsState extends State<Pbs> {
   pbService() async {
     if (mounted) {
       await powerblowingstation().then((data) {
-        if (data != null) {
+        if (data != null && mounted) {
           // print(data.body);
           setState(() {
             pbsData = json.decode(data.body);

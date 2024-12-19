@@ -55,64 +55,71 @@ class BpplantState extends State<Bpplant> {
   List<dynamic> state = [];
 
   byproductplantService() async {
-    if (mounted) {
-      await byproductplant().then((data) {
-        if (data != null) {
-          // print(data.body);
-          setState(() {
-            bpplantData = json.decode(data.body);
-            rows = [
-              {
-                "head": "CO Gas Make [Nm3/hr]",
-                "data1": bpplantData["FT0600F003_C"].toStringAsFixed(0),
-                "data2": bpplantData["FT0600F003_C"].toStringAsFixed(0),
-                "selected": false,
-                "i": 0,
-              },
-              {
-                "head": "Exhauster BPP 11",
-                "data1": "EX#1",
-                "data2": "EX#2",
-                "selected": false,
-                "i": 1,
-              },
-              {
-                "head": "Exhauster BPP 10",
-                "data1": "EX#3",
-                "data2": "EX#4",
-                "selected": false,
-                "i": 2,
-              },
-            ];
-            state = [
-              {
-                "d1": bpplantData["EX1"],
-                "d2": bpplantData["EX2"],
-              },
-              {
-                "d1": bpplantData["BPP_EX3ON"],
-                "d2": bpplantData["BPP_EX4ON"],
-              }
-            ];
-            if (num != -1) {
-              rows[num]["selected"] = true;
+    if (!mounted) return;
+    try {
+      final data = await byproductplant();
+
+      if (data != null && mounted) {
+        // print(data.body);
+        setState(() {
+          bpplantData = json.decode(data.body);
+          rows = [
+            {
+              "head": "CO Gas Make [Nm3/hr]",
+              "data1": bpplantData["FT0600F003_C"].toStringAsFixed(0),
+              "data2": bpplantData["FT0600F003_C"].toStringAsFixed(0),
+              "selected": false,
+              "i": 0,
+            },
+            {
+              "head": "Exhauster BPP 11",
+              "data1": "EX#1",
+              "data2": "EX#2",
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "Exhauster BPP 10",
+              "data1": "EX#3",
+              "data2": "EX#4",
+              "selected": false,
+              "i": 2,
+            },
+          ];
+          state = [
+            {
+              "d1": bpplantData["EX1"],
+              "d2": bpplantData["EX2"],
+            },
+            {
+              "d1": bpplantData["BPP_EX3ON"],
+              "d2": bpplantData["BPP_EX4ON"],
             }
-            loading = false;
-          });
-        } else {
-          ScaffoldMessenger.of(context).clearSnackBars();
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 3),
-              content: const Center(
-                child: Text('Something wrong'),
-              ),
-              action: SnackBarAction(label: '', onPressed: () {}),
+          ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
+        });
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Something wrong'),
             ),
-          );
-        }
-      });
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
     }
   }
 

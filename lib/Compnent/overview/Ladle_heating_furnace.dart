@@ -57,7 +57,7 @@ class LhfState extends State<Lhf> {
   ladleheatingfurnaceService() async {
     if (mounted) {
       await ladleheatingfurnace().then((data) {
-        if (data != null) {
+        if (data != null && mounted) {
           // print(data.body);
           setState(() {
             lhfData = json.decode(data.body);

@@ -54,7 +54,7 @@ class TechnoEcoState extends State<TechnoEco> {
   technoeconomicsService() async {
     if (mounted) {
       await technoeconomics().then((data) {
-        if (data != null) {
+        if (data != null && mounted) {
           // print(data.body);
           setState(() {
             technoData = json.decode(data.body);

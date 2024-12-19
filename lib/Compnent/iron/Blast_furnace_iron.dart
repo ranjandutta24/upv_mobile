@@ -44,7 +44,7 @@ class BfiState extends State<Bfi> {
 
   fun() {
     blastfurnacedata();
-    var duration = const Duration(seconds: 10);
+    var duration = const Duration(seconds: 30);
     Timer.periodic(duration, (Timer timer) {
       blastfurnacedata();
     });

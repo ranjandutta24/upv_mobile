@@ -56,7 +56,7 @@ class LdcpState extends State<Ldcp> {
   llcService() async {
     if (mounted) {
       await limedolocalcinationplant().then((data) {
-        if (data != null) {
+        if (data != null && mounted) {
           setState(() {
             ldcpData = json.decode(data.body);
             rows = [

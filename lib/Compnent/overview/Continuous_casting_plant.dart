@@ -55,7 +55,7 @@ class CcpState extends State<Ccp> {
   ccpService() async {
     if (mounted) {
       await continuouscastingplant().then((data) {
-        if (data != null) {
+        if (data != null && mounted) {
           // print(data.body);
           setState(() {
             ccpData = json.decode(data.body);
