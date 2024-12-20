@@ -55,99 +55,105 @@ class LhfState extends State<Lhf> {
   List<dynamic> state = [];
 
   ladleheatingfurnaceService() async {
-    if (mounted) {
-      await ladleheatingfurnace().then((data) {
-        if (data != null && mounted) {
-          // print(data.body);
-          setState(() {
-            lhfData = json.decode(data.body);
-            rows = [
-              {
-                "head": "Temp [DegC]",
-                "data1":
-                    "${lhfData["LF1_TEMP1"].toString()}/${lhfData["LF1_TEMP2"].toString()}/${lhfData["LF1_TEMP3"].toString()}",
-                "data2":
-                    "${lhfData["LF2_TEMP1"].toString()}/${lhfData["LF2_TEMP2"].toString()}/${lhfData["LF2_TEMP3"].toString()}",
-                "selected": false,
-                "i": 0,
-              },
-              {
-                "head": "CaSi/Fe Wire Spd SP/Act",
-                "data1":
-                    "${lhfData["SPACTSPD1"] == null ? '0' : lhfData["SPACTSPD1"].toString()}/${lhfData["ACTSPD1"] == null ? '0' : lhfData["ACTSPD1"].toString()}",
-                "data2":
-                    "${lhfData["SPACTSPD3"] == null ? '0' : lhfData["SPACTSPD3"].toString()}/${lhfData["ACTSPD3"] == null ? '0' : lhfData["ACTSPD3"].toString()}",
-                "selected": false,
-                "i": 1,
-              },
-              {
-                "head": "CaSi/Fe Wire Lth SP/Act",
-                "data1":
-                    "${lhfData["SPACTLENGTH1"] == null ? '0' : lhfData["SPACTLENGTH1"].toString()}/${lhfData["ACTLENGTH1"] == null ? '0' : lhfData["ACTLENGTH1"].toString()}",
-                "data2":
-                    "${lhfData["SPACTLENGTH3"] == null ? '0' : lhfData["SPACTLENGTH3"].toString()}/${lhfData["ACTLENGTH3"] == null ? '0' : lhfData["ACTLENGTH3"].toString()}",
-                "selected": false,
-                "i": 2,
-              },
-              {
-                "head": "CaSi/Fe Wire Wt SP/Act ",
-                "data1":
-                    "${lhfData["SPACTWT1"] == null ? '0' : lhfData["SPACTWT1"].toString()}/${lhfData["ACTWT1"] == null ? '0' : lhfData["ACTWT1"].toString()}",
-                "data2":
-                    "${lhfData["SPACTWT3"] == null ? '0' : lhfData["SPACTWT3"].toString()}/${lhfData["ACTWT3"] == null ? '0' : lhfData["ACTWT3"].toString()}",
-                "selected": false,
-                "i": 3,
-              },
-              {
-                "head": "Al Wire Spd SP/Act ",
-                "data1":
-                    "${lhfData["SPACTSPD2"] == null ? '0' : lhfData["SPACTSPD2"].toString()}/${lhfData["ACTSPD2"] == null ? '0' : lhfData["ACTSPD2"].toString()}",
-                "data2":
-                    "${lhfData["SPACTSPD4"] == null ? '0' : lhfData["SPACTSPD4"].toString()}/${lhfData["ACTSPD4"] == null ? '0' : lhfData["ACTSPD4"].toString()}",
-                "selected": false,
-                "i": 4,
-              },
-              {
-                "head": "Al Wire SP/Act ",
-                "data1":
-                    "${lhfData["SPACTLENGTH2"] == null ? '0' : lhfData["SPACTLENGTH2"].toString()}/${lhfData["ACTLENGTH2"] == null ? '0' : lhfData["ACTLENGTH2"].toString()}",
-                "data2":
-                    "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"].toString()}/${lhfData["ACTLENGTH4"] == null ? '0' : lhfData["ACTLENGTH4"].toString()}",
-                "selected": false,
-                "i": 5,
-              },
-              {
-                "head": "Al Wire Wt SP/Act ",
-                "data1":
-                    "${lhfData["SPACTWT2"] == null ? '0' : lhfData["SPACTWT2"].toString()}/${lhfData["ACTWT2"] == null ? '0' : lhfData["ACTWT2"].toString()}",
-                "data2":
-                    "${lhfData["SPACTWT4"] == null ? '0' : lhfData["SPACTWT4"].toString()}/${lhfData["ACTWT4"] == null ? '0' : lhfData["ACTWT4"].toString()}",
-                "selected": false,
-                "i": 6,
-              },
-            ];
-            state = [
-              {"data1": lhfData["LF1_I1"], "data2": lhfData["LF2_I1"]}
-            ];
-            if (num != -1) {
-              rows[num]["selected"] = true;
-            }
-            loading = false;
-          });
-        } else {
-          ScaffoldMessenger.of(context).clearSnackBars();
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 3),
-              content: const Center(
-                child: Text('Something wrong'),
-              ),
-              action: SnackBarAction(label: '', onPressed: () {}),
+    if (!mounted) return;
+    try {
+      final data = await ladleheatingfurnace();
+      if (data != null && mounted) {
+        // print(data.body);
+        setState(() {
+          lhfData = json.decode(data.body);
+          rows = [
+            {
+              "head": "Temp [DegC]",
+              "data1":
+                  "${lhfData["LF1_TEMP1"].toString()}/${lhfData["LF1_TEMP2"].toString()}/${lhfData["LF1_TEMP3"].toString()}",
+              "data2":
+                  "${lhfData["LF2_TEMP1"].toString()}/${lhfData["LF2_TEMP2"].toString()}/${lhfData["LF2_TEMP3"].toString()}",
+              "selected": false,
+              "i": 0,
+            },
+            {
+              "head": "CaSi/Fe Wire Spd SP/Act",
+              "data1":
+                  "${lhfData["SPACTSPD1"] == null ? '0' : lhfData["SPACTSPD1"].toString()}/${lhfData["ACTSPD1"] == null ? '0' : lhfData["ACTSPD1"].toString()}",
+              "data2":
+                  "${lhfData["SPACTSPD3"] == null ? '0' : lhfData["SPACTSPD3"].toString()}/${lhfData["ACTSPD3"] == null ? '0' : lhfData["ACTSPD3"].toString()}",
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "CaSi/Fe Wire Lth SP/Act",
+              "data1":
+                  "${lhfData["SPACTLENGTH1"] == null ? '0' : lhfData["SPACTLENGTH1"].toString()}/${lhfData["ACTLENGTH1"] == null ? '0' : lhfData["ACTLENGTH1"].toString()}",
+              "data2":
+                  "${lhfData["SPACTLENGTH3"] == null ? '0' : lhfData["SPACTLENGTH3"].toString()}/${lhfData["ACTLENGTH3"] == null ? '0' : lhfData["ACTLENGTH3"].toString()}",
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "CaSi/Fe Wire Wt SP/Act ",
+              "data1":
+                  "${lhfData["SPACTWT1"] == null ? '0' : lhfData["SPACTWT1"].toString()}/${lhfData["ACTWT1"] == null ? '0' : lhfData["ACTWT1"].toString()}",
+              "data2":
+                  "${lhfData["SPACTWT3"] == null ? '0' : lhfData["SPACTWT3"].toString()}/${lhfData["ACTWT3"] == null ? '0' : lhfData["ACTWT3"].toString()}",
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "Al Wire Spd SP/Act ",
+              "data1":
+                  "${lhfData["SPACTSPD2"] == null ? '0' : lhfData["SPACTSPD2"].toString()}/${lhfData["ACTSPD2"] == null ? '0' : lhfData["ACTSPD2"].toString()}",
+              "data2":
+                  "${lhfData["SPACTSPD4"] == null ? '0' : lhfData["SPACTSPD4"].toString()}/${lhfData["ACTSPD4"] == null ? '0' : lhfData["ACTSPD4"].toString()}",
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "Al Wire SP/Act ",
+              "data1":
+                  "${lhfData["SPACTLENGTH2"] == null ? '0' : lhfData["SPACTLENGTH2"].toString()}/${lhfData["ACTLENGTH2"] == null ? '0' : lhfData["ACTLENGTH2"].toString()}",
+              "data2":
+                  "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"].toString()}/${lhfData["ACTLENGTH4"] == null ? '0' : lhfData["ACTLENGTH4"].toString()}",
+              "selected": false,
+              "i": 5,
+            },
+            {
+              "head": "Al Wire Wt SP/Act ",
+              "data1":
+                  "${lhfData["SPACTWT2"] == null ? '0' : lhfData["SPACTWT2"].toString()}/${lhfData["ACTWT2"] == null ? '0' : lhfData["ACTWT2"].toString()}",
+              "data2":
+                  "${lhfData["SPACTWT4"] == null ? '0' : lhfData["SPACTWT4"].toString()}/${lhfData["ACTWT4"] == null ? '0' : lhfData["ACTWT4"].toString()}",
+              "selected": false,
+              "i": 6,
+            },
+          ];
+          state = [
+            {"data1": lhfData["LF1_I1"], "data2": lhfData["LF2_I1"]}
+          ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
+        });
+      } else if (mounted) {
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Something wrong'),
             ),
-          );
-        }
-      });
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
     }
   }
 

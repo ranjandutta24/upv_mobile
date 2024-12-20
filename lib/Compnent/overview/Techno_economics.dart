@@ -52,124 +52,132 @@ class TechnoEcoState extends State<TechnoEco> {
   List<dynamic> rows = [];
 
   technoeconomicsService() async {
-    if (mounted) {
-      await technoeconomics().then((data) {
-        if (data != null && mounted) {
-          // print(data.body);
-          setState(() {
-            technoData = json.decode(data.body);
-            rows = [
-              {
-                "head": "BFCokeRate[Kg/THM]",
-                "data1": technoData["BFCOKE_NORM"].toString(),
-                "data2": technoData["BFCOKE_ACTUAL"].toString(),
-                "data3": technoData["BFCOKE_CPLM"].toString(),
-                "data4": technoData["BFCOKE_CPLY"].toString(),
-                "selected": false,
-                "i": 0,
-              },
-              {
-                "head": "CDI Rate[Kg/THM]",
-                "data1": technoData["CDIRATE_NORM"].toString(),
-                "data2": technoData["CDIRATE_ACTUAL"].toString(),
-                "data3": technoData["CDIRATE_CPLM"].toString(),
-                "data4": technoData["CDIRATE_CPLY"].toString(),
-                "selected": false,
-                "i": 1,
-              },
-              {
-                "head": "Fuel Rate[Kg/THM]",
-                "data1": technoData["FUELRATE_NORM"].toString(),
-                "data2": technoData["FUELRATE_ACTUAL"].toString(),
-                "data3": technoData["FUELRATE_CPLM"].toString(),
-                "data4": technoData["FUELRATE_CPLY"].toString(),
-                "selected": false,
-                "i": 2,
-              },
-              {
-                "head": "BF Prod [T/m3/Day]",
-                "data1": technoData["BFPRO_NORM"].toStringAsFixed(2),
-                "data2": technoData["BFPRO_ACTUAL"].toStringAsFixed(2),
-                "data3": technoData["BFPRO_CPLM"].toStringAsFixed(2),
-                "data4": technoData["BFPRO_CPLY"].toStringAsFixed(2),
-                "selected": false,
-                "i": 3,
-              },
-              {
-                "head": "HM Consm[Kg/TCS]",
-                "data1": technoData["HMCON_NORM"].toString(),
-                "data2": technoData["HMCON_ACTUAL"].toString(),
-                "data3": technoData["HMCON_CPLM"].toString(),
-                "data4": technoData["HMCON_CPLY"].toString(),
-                "selected": false,
-                "i": 4,
-              },
-              {
-                "head": "Scrap Consm[Kg/TCS]",
-                "data1": technoData["SCRAP_NORM"].toString(),
-                "data2": technoData["SCRAP_ACTUAL"].toString(),
-                "data3": technoData["SCRAP_CPLM"].toString(),
-                "data4": technoData["SCRAP_CPLY"].toString(),
-                "selected": false,
-                "i": 5,
-              },
-              {
-                "head": "TMI[Kg/TCS]",
-                "data1": technoData["TMI_NORM"].toString(),
-                "data2": technoData["TMI_ACTUAL"].toString(),
-                "data3": technoData["TMI_CPLM"].toString(),
-                "data4": technoData["TMI_CPLY"].toString(),
-                "selected": false,
-                "i": 6,
-              },
-              {
-                "head": "Power[Kwh/TCS]",
-                "data1": technoData["POWER_NORM"].toString(),
-                "data2": technoData["POWER_ACTUAL"].toString(),
-                "data3": technoData["POWER_CPLM"].toString(),
-                "data4": technoData["POWER_CPLY"].toString(),
-                "selected": false,
-                "i": 7,
-              },
-              {
-                "head": "SPEnergy[GCal/TSS]",
-                "data1": technoData["SPENERGY_NORM"].toStringAsFixed(2),
-                "data2": technoData["SPENERGY_ACTUAL"].toStringAsFixed(2),
-                "data3": technoData["SPENERGY_CPLM"].toStringAsFixed(2),
-                "data4": technoData["SPENERGY_CPLY"].toStringAsFixed(2),
-                "selected": false,
-                "i": 8,
-              },
-              {
-                "head": "SpWaterConsump[m3/TCS]",
-                "data1": technoData["SPWATER_NORM"].toStringAsFixed(2),
-                "data2": technoData["SPWATER_ACTUAL"].toStringAsFixed(2),
-                "data3": technoData["SPWATER_CPLM"].toStringAsFixed(2),
-                "data4": technoData["SWATER_CPLY"].toStringAsFixed(2),
-                "selected": false,
-                "i": 9,
-              },
-            ];
-            if (num != -1) {
-              rows[num]["selected"] = true;
-            }
-            loading = false;
-          });
-        } else {
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).clearSnackBars();
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 3),
-              content: const Center(
-                child: Text('Something wrong'),
-              ),
-              action: SnackBarAction(label: '', onPressed: () {}),
+    if (!mounted) return;
+
+    try {
+      final data = await technoeconomics();
+
+      if (data != null && mounted) {
+        // print(data.body);
+        setState(() {
+          technoData = json.decode(data.body);
+          rows = [
+            {
+              "head": "BFCokeRate[Kg/THM]",
+              "data1": technoData["BFCOKE_NORM"].toString(),
+              "data2": technoData["BFCOKE_ACTUAL"].toString(),
+              "data3": technoData["BFCOKE_CPLM"].toString(),
+              "data4": technoData["BFCOKE_CPLY"].toString(),
+              "selected": false,
+              "i": 0,
+            },
+            {
+              "head": "CDI Rate[Kg/THM]",
+              "data1": technoData["CDIRATE_NORM"].toString(),
+              "data2": technoData["CDIRATE_ACTUAL"].toString(),
+              "data3": technoData["CDIRATE_CPLM"].toString(),
+              "data4": technoData["CDIRATE_CPLY"].toString(),
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "Fuel Rate[Kg/THM]",
+              "data1": technoData["FUELRATE_NORM"].toString(),
+              "data2": technoData["FUELRATE_ACTUAL"].toString(),
+              "data3": technoData["FUELRATE_CPLM"].toString(),
+              "data4": technoData["FUELRATE_CPLY"].toString(),
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "BF Prod [T/m3/Day]",
+              "data1": technoData["BFPRO_NORM"].toStringAsFixed(2),
+              "data2": technoData["BFPRO_ACTUAL"].toStringAsFixed(2),
+              "data3": technoData["BFPRO_CPLM"].toStringAsFixed(2),
+              "data4": technoData["BFPRO_CPLY"].toStringAsFixed(2),
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "HM Consm[Kg/TCS]",
+              "data1": technoData["HMCON_NORM"].toString(),
+              "data2": technoData["HMCON_ACTUAL"].toString(),
+              "data3": technoData["HMCON_CPLM"].toString(),
+              "data4": technoData["HMCON_CPLY"].toString(),
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "Scrap Consm[Kg/TCS]",
+              "data1": technoData["SCRAP_NORM"].toString(),
+              "data2": technoData["SCRAP_ACTUAL"].toString(),
+              "data3": technoData["SCRAP_CPLM"].toString(),
+              "data4": technoData["SCRAP_CPLY"].toString(),
+              "selected": false,
+              "i": 5,
+            },
+            {
+              "head": "TMI[Kg/TCS]",
+              "data1": technoData["TMI_NORM"].toString(),
+              "data2": technoData["TMI_ACTUAL"].toString(),
+              "data3": technoData["TMI_CPLM"].toString(),
+              "data4": technoData["TMI_CPLY"].toString(),
+              "selected": false,
+              "i": 6,
+            },
+            {
+              "head": "Power[Kwh/TCS]",
+              "data1": technoData["POWER_NORM"].toString(),
+              "data2": technoData["POWER_ACTUAL"].toString(),
+              "data3": technoData["POWER_CPLM"].toString(),
+              "data4": technoData["POWER_CPLY"].toString(),
+              "selected": false,
+              "i": 7,
+            },
+            {
+              "head": "SPEnergy[GCal/TSS]",
+              "data1": technoData["SPENERGY_NORM"].toStringAsFixed(2),
+              "data2": technoData["SPENERGY_ACTUAL"].toStringAsFixed(2),
+              "data3": technoData["SPENERGY_CPLM"].toStringAsFixed(2),
+              "data4": technoData["SPENERGY_CPLY"].toStringAsFixed(2),
+              "selected": false,
+              "i": 8,
+            },
+            {
+              "head": "SpWaterConsump[m3/TCS]",
+              "data1": technoData["SPWATER_NORM"].toStringAsFixed(2),
+              "data2": technoData["SPWATER_ACTUAL"].toStringAsFixed(2),
+              "data3": technoData["SPWATER_CPLM"].toStringAsFixed(2),
+              "data4": technoData["SWATER_CPLY"].toStringAsFixed(2),
+              "selected": false,
+              "i": 9,
+            },
+          ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
+        });
+      } else if (mounted) {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Something wrong'),
             ),
-          );
-        }
-      });
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
     }
   }
 

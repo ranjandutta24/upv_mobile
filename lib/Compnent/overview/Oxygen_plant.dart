@@ -53,115 +53,122 @@ class OxygenPlantState extends State<OxygenPlant> {
   List<dynamic> state = [];
 
   oxygenplantService() async {
-    if (mounted) {
-      await oxygenplant().then((data) {
-        if (data != null && mounted) {
-          // print(data.body);
-          setState(() {
-            oxygenData = json.decode(data.body);
-            rows = [
-              {
-                "head": "HPGOX (Nm3/hr)",
-                "data1": oxygenData["HPGOXP1"].toString(),
-                "data2": oxygenData["HPGOXP2"].toString(),
-                "selected": false,
-                "i": 0,
-              },
-              {
-                "head": "PGOX (Nm3/hr)",
-                "data1": oxygenData["PGOXP1"].toString(),
-                "data2": oxygenData["PGOXP2"].toString(),
-                "selected": false,
-                "i": 1,
-              },
-              {
-                "head": "HPGAN (Nm3/hr)",
-                "data1": oxygenData["HPGANP1"].toString(),
-                "data2": oxygenData["HPGANP2"].toString(),
-                "selected": false,
-                "i": 2,
-              },
-              {
-                "head": "PGAN (Nm3/hr)",
-                "data1": oxygenData["PGANP1"].toString(),
-                "data2": oxygenData["PGANP2"].toString(),
-                "selected": false,
-                "i": 3,
-              },
-              {
-                "head": "Ar Flow BOF (Nm3/hr)",
-                "data1": oxygenData["ARFLBOF"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
-                "selected": false,
-                "i": 4,
-              },
-              {
-                "head": "O2 Flow BF (Nm3/hr)",
-                "data1": oxygenData["OXBF"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
-                "selected": false,
-                "i": 5,
-              },
-              {
-                "head": "O2 Flow CCP (Nm3/hr)",
-                "data1": oxygenData["OFCCP"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
-                "selected": false,
-                "i": 6,
-              },
-              {
-                "head": "O2 Flow BOFS1 (Nm3/hr)",
-                "data1": oxygenData["OFBOFS1"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
-                "selected": false,
-                "i": 7,
-              },
-              {
-                "head": "O2 Flow BOFS2 (Nm3/hr)",
-                "data1": oxygenData["OFBOFS2"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
-                "selected": false,
-                "i": 8,
-              },
-              {
-                "head": "MAC Status",
-                "data1": "MAC 1",
-                "data2": "MAC 2",
-                "selected": false,
-                "i": 9,
-              },
-              {
-                "head": "BAC Status",
-                "data1": "BAC 1",
-                "data2": "BAC 2",
-                "selected": false,
-                "i": 10,
-              },
-            ];
-            state = [
-              {"d1": oxygenData["MAC1_STAT"], "d2": oxygenData["BAC1_STAT"]},
-              {"d1": oxygenData["MAC2_STAT"], "d2": oxygenData["BAC2_STAT"]}
-            ];
-            if (num != -1) {
-              rows[num]["selected"] = true;
-            }
-            loading = false;
-          });
-        } else {
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).clearSnackBars();
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 3),
-              content: const Center(
-                child: Text('Something wrong'),
-              ),
-              action: SnackBarAction(label: '', onPressed: () {}),
+    if (!mounted) return;
+
+    try {
+      final data = await oxygenplant();
+      if (data != null && mounted) {
+        // print(data.body);
+        setState(() {
+          oxygenData = json.decode(data.body);
+          rows = [
+            {
+              "head": "HPGOX (Nm3/hr)",
+              "data1": oxygenData["HPGOXP1"].toString(),
+              "data2": oxygenData["HPGOXP2"].toString(),
+              "selected": false,
+              "i": 0,
+            },
+            {
+              "head": "PGOX (Nm3/hr)",
+              "data1": oxygenData["PGOXP1"].toString(),
+              "data2": oxygenData["PGOXP2"].toString(),
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "HPGAN (Nm3/hr)",
+              "data1": oxygenData["HPGANP1"].toString(),
+              "data2": oxygenData["HPGANP2"].toString(),
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "PGAN (Nm3/hr)",
+              "data1": oxygenData["PGANP1"].toString(),
+              "data2": oxygenData["PGANP2"].toString(),
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "Ar Flow BOF (Nm3/hr)",
+              "data1": oxygenData["ARFLBOF"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "O2 Flow BF (Nm3/hr)",
+              "data1": oxygenData["OXBF"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 5,
+            },
+            {
+              "head": "O2 Flow CCP (Nm3/hr)",
+              "data1": oxygenData["OFCCP"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 6,
+            },
+            {
+              "head": "O2 Flow BOFS1 (Nm3/hr)",
+              "data1": oxygenData["OFBOFS1"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 7,
+            },
+            {
+              "head": "O2 Flow BOFS2 (Nm3/hr)",
+              "data1": oxygenData["OFBOFS2"].toString(),
+              "data2": oxygenData["ARFLBOF"].toString(),
+              "selected": false,
+              "i": 8,
+            },
+            {
+              "head": "MAC Status",
+              "data1": "MAC 1",
+              "data2": "MAC 2",
+              "selected": false,
+              "i": 9,
+            },
+            {
+              "head": "BAC Status",
+              "data1": "BAC 1",
+              "data2": "BAC 2",
+              "selected": false,
+              "i": 10,
+            },
+          ];
+          state = [
+            {"d1": oxygenData["MAC1_STAT"], "d2": oxygenData["BAC1_STAT"]},
+            {"d1": oxygenData["MAC2_STAT"], "d2": oxygenData["BAC2_STAT"]}
+          ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
+        });
+      } else if (mounted) {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Something wrong'),
             ),
-          );
-        }
-      });
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
     }
   }
 

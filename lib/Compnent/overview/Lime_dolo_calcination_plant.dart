@@ -54,95 +54,103 @@ class LdcpState extends State<Ldcp> {
   List<dynamic> state = [];
 
   llcService() async {
-    if (mounted) {
-      await limedolocalcinationplant().then((data) {
-        if (data != null && mounted) {
-          setState(() {
-            ldcpData = json.decode(data.body);
-            rows = [
-              {
-                "head": "Kiln Temperature[DegC]",
-                "data1": ldcpData["LDCP_K1TEMP"].toString(),
-                "data2": ldcpData["LDCP_K2TEMP"].toString(),
-                "data3": ldcpData["LDCP_K3TEMP"].toString(),
-                "data4": ldcpData["LDCP_K4TEMP"].toString(),
-                "selected": false,
-                "i": 0,
-              },
-              {
-                "head": "Mixed Gas Flow[Nm3/hr]",
-                "data1": ldcpData["K1_MG"].toString(),
-                "data2": ldcpData["K2_MG"].toString(),
-                "data3": ldcpData["K3_MG"].toString(),
-                "data4": ldcpData["K4_MG"].toString(),
-                "selected": false,
-                "i": 1,
-              },
-              {
-                "head": "Exhaust Gas Temperature[DegC]",
-                "data1": ldcpData["ETK1"].toString(),
-                "data2": ldcpData["ETK2"].toString(),
-                "data3": ldcpData["ETK3"].toString(),
-                "data4": ldcpData["ETK4"].toString(),
-                "selected": false,
-                "i": 2,
-              },
-              {
-                "head": "Current Production[ton]",
-                "data1": ldcpData["K1_PRODN"].toStringAsFixed(1),
-                "data2": ldcpData["K2_PRODN"].toStringAsFixed(1),
-                "data3": ldcpData["K3_PRODN"].toStringAsFixed(1),
-                "data4": ldcpData["K4_PRODN"].toStringAsFixed(1),
-                "selected": false,
-                "i": 3,
-              },
-              {
-                "head": "Calorific Value[KCal/Nm3]",
-                "data1": ldcpData["CV"].toString(),
-                "data2": ldcpData["ETK1"].toString(),
-                "data3": ldcpData["ETK1"].toString(),
-                "data4": ldcpData["ETK1"].toString(),
-                "selected": false,
-                "i": 4,
-              },
-              {
-                "head": "Inlet Pressure[mbar]",
-                "data1": ldcpData["INLETPRES"].toString(),
-                "data2": ldcpData["INLETPRES"].toString(),
-                "data3": ldcpData["ETK1"].toString(),
-                "data4": ldcpData["ETK1"].toString(),
-                "selected": false,
-                "i": 5,
-              },
-            ];
-            state = [
-              {
-                "k1": ldcpData["LDCP_K1R"].toString(),
-                "k2": ldcpData["LDCP_K2R"].toString(),
-                "k3": ldcpData["LDCP_K3R"].toString(),
-                "k4": ldcpData["LDCP_K4R"].toString(),
-              }
-            ];
-            if (num != -1) {
-              rows[num]["selected"] = true;
+    if (!mounted) return;
+
+    try {
+      final data = await limedolocalcinationplant();
+
+      if (data != null && mounted) {
+        setState(() {
+          ldcpData = json.decode(data.body);
+          rows = [
+            {
+              "head": "Kiln Temperature[DegC]",
+              "data1": ldcpData["LDCP_K1TEMP"].toString(),
+              "data2": ldcpData["LDCP_K2TEMP"].toString(),
+              "data3": ldcpData["LDCP_K3TEMP"].toString(),
+              "data4": ldcpData["LDCP_K4TEMP"].toString(),
+              "selected": false,
+              "i": 0,
+            },
+            {
+              "head": "Mixed Gas Flow[Nm3/hr]",
+              "data1": ldcpData["K1_MG"].toString(),
+              "data2": ldcpData["K2_MG"].toString(),
+              "data3": ldcpData["K3_MG"].toString(),
+              "data4": ldcpData["K4_MG"].toString(),
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "Exhaust Gas Temperature[DegC]",
+              "data1": ldcpData["ETK1"].toString(),
+              "data2": ldcpData["ETK2"].toString(),
+              "data3": ldcpData["ETK3"].toString(),
+              "data4": ldcpData["ETK4"].toString(),
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "Current Production[ton]",
+              "data1": ldcpData["K1_PRODN"].toStringAsFixed(1),
+              "data2": ldcpData["K2_PRODN"].toStringAsFixed(1),
+              "data3": ldcpData["K3_PRODN"].toStringAsFixed(1),
+              "data4": ldcpData["K4_PRODN"].toStringAsFixed(1),
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "Calorific Value[KCal/Nm3]",
+              "data1": ldcpData["CV"].toString(),
+              "data2": ldcpData["ETK1"].toString(),
+              "data3": ldcpData["ETK1"].toString(),
+              "data4": ldcpData["ETK1"].toString(),
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "Inlet Pressure[mbar]",
+              "data1": ldcpData["INLETPRES"].toString(),
+              "data2": ldcpData["INLETPRES"].toString(),
+              "data3": ldcpData["ETK1"].toString(),
+              "data4": ldcpData["ETK1"].toString(),
+              "selected": false,
+              "i": 5,
+            },
+          ];
+          state = [
+            {
+              "k1": ldcpData["LDCP_K1R"].toString(),
+              "k2": ldcpData["LDCP_K2R"].toString(),
+              "k3": ldcpData["LDCP_K3R"].toString(),
+              "k4": ldcpData["LDCP_K4R"].toString(),
             }
-            loading = false;
-          });
-        } else {
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).clearSnackBars();
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 3),
-              content: const Center(
-                child: Text('Something wrong'),
-              ),
-              action: SnackBarAction(label: '', onPressed: () {}),
+          ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
+        });
+      } else if (mounted) {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Something wrong'),
             ),
-          );
-        }
-      });
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
     }
   }
 

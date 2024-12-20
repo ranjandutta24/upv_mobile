@@ -30,7 +30,7 @@ class ColState extends State<Col> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
+  final Color _textColor = const Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     if (mounted) {
@@ -47,7 +47,7 @@ class ColState extends State<Col> {
   fun() {
     if (mounted) {
       blastfurnacedata();
-      var duration = const Duration(seconds: 30);
+      var duration = const Duration(seconds: 10);
       Timer.periodic(duration, (Timer timer) {
         blastfurnacedata();
       });
@@ -64,6 +64,7 @@ class ColState extends State<Col> {
       if (data != null && mounted) {
         setState(() {
           blastData = json.decode(data.body);
+          print(blastData);
           rows = [
             {
               "head": "Blast Volume [Nm3/min]",
@@ -154,7 +155,7 @@ class ColState extends State<Col> {
             },
             {
               "head": "Last Day HM Prod [Ton]",
-              "data": "${blastData["LADLE_BFTLMSPROD"]}",
+              "data": "${blastData["LADLE_BFTLMSPROD"].toStringAsFixed(2)}",
               "selected": false,
               "i": 14
             },
@@ -281,7 +282,7 @@ class ColState extends State<Col> {
                         flex: 7,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Color.fromARGB(238, 205, 205, 205),
+                            color: const Color.fromARGB(238, 205, 205, 205),
                             border: Border(
                               right: BorderSide(
                                 color: borderColor,
