@@ -65,8 +65,8 @@ class ColState extends State<Col> {
       if (data != null && mounted) {
         setState(() {
           blastData = json.decode(data.body);
-          print(blastData);
-          print((blastData["DELTAP"].runtimeType));
+          // print(blastData);
+          // print((blastData["DELTAP"].runtimeType));
           rows = [
             {
               "head": "Blast Volume [Nm3/min]",
@@ -414,6 +414,7 @@ Widget _row(h, d, color, i) {
                       const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                   child: Counting(
                     value: d[0],
+                    color: color,
                   ),
                 ),
               ),
@@ -429,9 +430,8 @@ Widget _row(h, d, color, i) {
                       ? Text(
                           "${d[0].toStringAsFixed(0)}/${d[1].toStringAsFixed(0)}",
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
-                            color: Colors
-                                .black, // Replace with your color variable
+                          style: TextStyle(
+                            color: color,
                             fontWeight: FontWeight.w600,
                           ),
                         )
@@ -439,9 +439,8 @@ Widget _row(h, d, color, i) {
                           ? Text(
                               "${d[0].toStringAsFixed(0)}/${d[1].toStringAsFixed(0)}/${d[2].toStringAsFixed(0)}",
                               textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors
-                                    .black, // Replace with your color variable
+                              style: TextStyle(
+                                color: color,
                                 fontWeight: FontWeight.w600,
                               ),
                             )
@@ -449,14 +448,15 @@ Widget _row(h, d, color, i) {
                               ? Text(
                                   "${d[0].toStringAsFixed(2)}@${d[1].toStringAsFixed(0)}:${d[2].toStringAsFixed(0)}",
                                   textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    color: Colors
-                                        .black, // Replace with your color variable
+                                  style: TextStyle(
+                                    color:
+                                        color, // Replace with your color variable
                                     fontWeight: FontWeight.w600,
                                   ),
                                 )
                               : Counting(
                                   value: d[0],
+                                  color: color,
                                 ),
                 ),
               ),

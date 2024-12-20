@@ -332,7 +332,10 @@ Widget _row(h, d1, color, i) {
         child: Container(
             decoration: const BoxDecoration(),
             padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-            child: Counting(value: d1)),
+            child: Counting(
+              value: d1,
+              color: color,
+            )),
       ),
     ],
   );
@@ -347,7 +350,7 @@ Widget _tableRow(h, a, b, c, color, i) {
           Expanded(
             child: Container(
               decoration: BoxDecoration(
-                color: Color.fromARGB(255, 150, 172, 206),
+                color: const Color.fromARGB(255, 150, 172, 206),
                 border: Border(
                   bottom: BorderSide(
                     color: borderColor,
@@ -379,9 +382,7 @@ Widget _tableRow(h, a, b, c, color, i) {
                 ),
               ),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-              child: Counting(
-                value: a,
-              ),
+              child: Counting(value: a, color: Colors.black),
             ),
           ),
           Expanded(
@@ -396,9 +397,7 @@ Widget _tableRow(h, a, b, c, color, i) {
                 ),
               ),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-              child: Counting(
-                value: b,
-              ),
+              child: Counting(value: b, color: Colors.black),
             ),
           ),
           Expanded(
@@ -406,9 +405,7 @@ Widget _tableRow(h, a, b, c, color, i) {
             child: Container(
               decoration: const BoxDecoration(),
               padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-              child: Counting(
-                value: c,
-              ),
+              child: Counting(value: c, color: Colors.black),
             ),
           ),
         ],
