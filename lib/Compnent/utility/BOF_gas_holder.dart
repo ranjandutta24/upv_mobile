@@ -75,6 +75,8 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
       await bofgasholder().then((data) {
         if (data != null) {
           // print(data.body);
+
+          // {"GASHOLDERLVL":15.025959968566895,"GASHOLDERPRES":204.85549926757812,"GASHOLDERTEMP":52.54999923706055,"EXPORTEDGAS":0,"GAS_FLOW_mills":null,"Mills_totaliser":null,"PBS_totaliser":2650404,"a_mills_totaliser":0,"b_mills_totaliser":0,"c_mills_totaliser":0,"a_pbs_totaliser":207993,"b_pbs_totaliser":200789,"c_pbs_totaliser":38760,"SHIFT_A":0,"SHIFT_B":0,"SHIFT_C":18914.099609375}
           setState(() {
             gasholdData = json.decode(data.body);
             rows = [
@@ -107,29 +109,30 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
               },
               {
                 "head": "Exported Gas Mills [Nm3/hr]",
-                "data1": gasholdData["GAS_FLOW_mills"],
+                "data1": gasholdData["GAS_FLOW_mills"] ?? 0,
                 "data2": "",
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "Totaliser LD Gas(Mills+PBS) (Nm3)",
-                "data1": gasholdData["PBS_totaliser"],
+                "data1": gasholdData["PBS_totaliser"] ?? 0,
                 "data2": "",
                 "selected": false,
                 "i": 5,
               },
               {
                 "head": "Totaliser LD Gas Mills (Nm3)",
-                "data1": gasholdData["Mills_totaliser"],
+                "data1": gasholdData["Mills_totaliser"] ?? 0,
                 "data2": "",
                 "selected": false,
                 "i": 6,
               },
               {
                 "head": "Totaliser LD Gas PBS (Nm3)",
-                "data1": (gasholdData["PBS_totaliser"] -
-                    gasholdData["Mills_totaliser"]),
+                "data1": (gasholdData["PBS_totaliser"] ??
+                    0 - gasholdData["Mills_totaliser"] ??
+                    0),
                 "data2": "",
                 "selected": false,
                 "i": 7,
@@ -138,28 +141,31 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
             shiftTable = [
               {
                 "head": "LD Gas Mills+PBS Shift (Nm3)",
-                "aShift": gasholdData["a_pbs_totaliser"],
-                "bShift": gasholdData["b_pbs_totaliser"],
-                "cShift": gasholdData["c_pbs_totaliser"],
+                "aShift": gasholdData["a_pbs_totaliser"] ?? 0,
+                "bShift": gasholdData["b_pbs_totaliser"] ?? 0,
+                "cShift": gasholdData["c_pbs_totaliser"] ?? 0,
                 "i": 0,
                 "selected": false,
               },
               {
                 "head": "LD Gas Mills Shift (Nm3)",
-                "aShift": gasholdData["a_mills_totaliser"],
-                "bShift": gasholdData["b_mills_totaliser"],
-                "cShift": gasholdData["c_mills_totaliser"],
+                "aShift": gasholdData["a_mills_totaliser"] ?? 0,
+                "bShift": gasholdData["b_mills_totaliser"] ?? 0,
+                "cShift": gasholdData["c_mills_totaliser"] ?? 0,
                 "i": 1,
                 "selected": false,
               },
               {
                 "head": "LD Gas PBS Shift (Nm3)",
-                "aShift": (gasholdData["a_pbs_totaliser"] -
-                    gasholdData["a_mills_totaliser"]),
-                "bShift": (gasholdData["b_pbs_totaliser"] -
-                    gasholdData["b_mills_totaliser"]),
-                "cShift": (gasholdData["c_pbs_totaliser"] -
-                    gasholdData["c_mills_totaliser"]),
+                "aShift": (gasholdData["a_pbs_totaliser"] ??
+                    0 - gasholdData["a_mills_totaliser"] ??
+                    0),
+                "bShift": (gasholdData["b_pbs_totaliser"] ??
+                    0 - gasholdData["b_mills_totaliser"] ??
+                    0),
+                "cShift": (gasholdData["c_pbs_totaliser"] ??
+                    0 - gasholdData["c_mills_totaliser"] ??
+                    0),
                 "i": 2,
                 "selected": false,
               },
