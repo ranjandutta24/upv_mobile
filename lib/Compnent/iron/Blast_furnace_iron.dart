@@ -167,7 +167,7 @@ class BfiState extends State<Bfi> {
               },
               {
                 "head": "Ore Coke Ratio",
-                "data": "${bfiData["OREBYCOKE"].toStringAsFixed(2)}",
+                "data": "${bfiData["OREBYCOKE"]?.toStringAsFixed(2)}",
                 "selected": false,
                 "i": 17
               },

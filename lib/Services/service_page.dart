@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-var baseUrl = 'http://59.97.132.209:4060/api';
-// var baseUrl = 'http://10.150.6.15:4060/api';
+// var baseUrl = 'http://59.97.132.209:4060/api';
+var baseUrl = 'http://10.150.6.15:4060/api';
 
 login(payload) async {
   try {
@@ -21,6 +21,16 @@ login(payload) async {
       action: SnackBarAction(label: '', onPressed: () {}),
     );
   }
+}
+
+Future<http.Response> getinfo() async {
+  final url = Uri.parse('$baseUrl/setting/info');
+  Map<String, String> headers = {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer c2lzeFVQVkF1dGg6aUk1YzAkUzE5TA=='
+  };
+
+  return http.get(url, headers: headers);
 }
 
 blastfurnace() async {

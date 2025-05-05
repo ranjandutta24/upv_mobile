@@ -109,7 +109,9 @@ class SinterPlantState extends State<SinterPlant> {
               },
               {
                 "head": "SPM [mg/Nm]",
-                "data1": spiData["SP1_OPCA"].toStringAsFixed(2),
+                "data1": spiData["SP1_OPCA"]
+                    ? spiData["SP1_OPCA"].toStringAsFixed(2)
+                    : "",
                 "data2": spiData["SP2_OPCA"].toStringAsFixed(2),
                 "selected": false,
                 "i": 7,
