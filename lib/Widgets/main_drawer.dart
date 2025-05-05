@@ -4,6 +4,7 @@ import 'package:in.iisco.upv/Screens/log_page2.dart';
 import 'package:in.iisco.upv/Screens/overview_page.dart';
 import 'package:in.iisco.upv/Screens/steel_mills_page.dart';
 import 'package:in.iisco.upv/Screens/utility_page.dart';
+import 'package:in.iisco.upv/Screens/wmd_page.dart';
 import 'package:in.iisco.upv/Utils/colors.dart';
 import 'package:in.iisco.upv/providers/user.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -132,6 +133,30 @@ class MainDrawer extends StatelessWidget {
                     oldRoute: ModalRoute.of(context)!,
                     newRoute: MaterialPageRoute(
                         builder: (context) => SteelMillsScreen(data: data)),
+                  );
+                },
+              )
+            : const SizedBox(),
+        data["role"] != "OVERVIEW"
+            ? ListTile(
+                leading: Icon(
+                  Icons.water,
+                  size: 26,
+                  color: myColors["theme"],
+                ),
+                title: Text(
+                  'WMD',
+                  style: TextStyle(
+                      color: myColors["theme"],
+                      fontSize: 18,
+                      fontFamily: "CustomFont"),
+                ),
+                onTap: () {
+                  Navigator.replace(
+                    context,
+                    oldRoute: ModalRoute.of(context)!,
+                    newRoute: MaterialPageRoute(
+                        builder: (context) => WMDScreen(data: data)),
                   );
                 },
               )

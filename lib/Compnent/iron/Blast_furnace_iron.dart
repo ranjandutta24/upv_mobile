@@ -210,8 +210,14 @@ class BfiState extends State<Bfi> {
               },
               {
                 "head": "Toredo Car 1/2/3/4 Level [%]",
-                "data":
-                    "${bfiData["TORPEDO1"].toStringAsFixed(0)}/${bfiData["TORPEDO2"].toStringAsFixed(0)}/${bfiData["TORPEDO3"].toStringAsFixed(0)}/${bfiData["TORPEDO4"].toStringAsFixed(0)}",
+                // "data": "dgrgr",
+                "data": "${bfiData["TORPEDO1"] != null ? bfiData["TORPEDO1"].toStringAsFixed(0) : "0"}/"
+                    "${bfiData["TORPEDO2"] != null ? bfiData["TORPEDO2"].toStringAsFixed(0) : "0"}/"
+                    "${bfiData["TORPEDO3"] != null ? bfiData["TORPEDO3"].toStringAsFixed(0) : "0"}/"
+                    "${bfiData["TORPEDO4"] != null ? bfiData["TORPEDO4"].toStringAsFixed(0) : "0"}",
+
+                // "data":
+                //     "${bfiData["TORPEDO1"].toStringAsFixed(0)}/${bfiData["TORPEDO2"].toStringAsFixed(0)}/${bfiData["TORPEDO3"].toStringAsFixed(0)}/${bfiData["TORPEDO4"].toStringAsFixed(0)}",
                 "selected": false,
                 "i": 23
               },
