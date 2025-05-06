@@ -54,8 +54,6 @@ class swwsmState extends State<swwsm> {
     if (mounted) {
       await swws().then((data) {
         if (data != null) {
-          print("call");
-          print(data.body);
           setState(() {
             carData = json.decode(data.body);
             rows = [

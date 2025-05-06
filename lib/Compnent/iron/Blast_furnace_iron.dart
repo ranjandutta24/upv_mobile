@@ -58,7 +58,7 @@ class BfiState extends State<Bfi> {
         if (data != null) {
           setState(() {
             bfiData = json.decode(data.body);
-            print(bfiData["OXY_FL_NL"].runtimeType);
+            // print(bfiData["OXY_FL_NL"].runtimeType);
             rows = [
               {
                 "head": "Blast Volume [Nm3/min]",

@@ -55,7 +55,6 @@ class wmdState extends State<wmd> {
     if (mounted) {
       await wmdpumphouse().then((data) {
         if (data != null) {
-          // print(data.body);
           setState(() {
             bfshData = json.decode(data.body);
             rows = [
