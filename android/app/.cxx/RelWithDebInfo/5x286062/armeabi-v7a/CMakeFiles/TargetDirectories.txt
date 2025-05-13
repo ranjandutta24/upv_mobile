@@ -1,0 +1,2 @@
+C:/Project/flutter/upv_mobile/android/app/.cxx/RelWithDebInfo/5x286062/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Project/flutter/upv_mobile/android/app/.cxx/RelWithDebInfo/5x286062/armeabi-v7a/CMakeFiles/rebuild_cache.dir
