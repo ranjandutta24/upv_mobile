@@ -313,7 +313,9 @@ class CcpsmState extends State<Ccpsm> {
               },
               {
                 "head": "Casting Speed Strand 4",
-                "data1": ccpData["WITHDRAWALSPEED1_4"].toStringAsFixed(2),
+                "data1": ccpData["WITHDRAWALSPEED1_4"] != null
+                    ? ccpData["WITHDRAWALSPEED1_4"].toStringAsFixed(2)
+                    : "0.00",
                 "data2": ccpData["WITHDRAWALSPEED2_4"].toStringAsFixed(2),
                 "data3": ccpData["WITHDRAWALSPEED3_4"].toStringAsFixed(2),
                 "selected": false,
@@ -337,48 +339,80 @@ class CcpsmState extends State<Ccpsm> {
               },
               {
                 "head": "Stopper Position Strand 1",
-                "data1": ccpData["C1_S1"].toStringAsFixed(2),
-                "data2": ccpData["C2_S1"].toStringAsFixed(2),
-                "data3": ccpData["C3_S1"].toStringAsFixed(2),
+                "data1": ccpData["C1_S1"] == null
+                    ? "0.00"
+                    : ccpData["C1_S1"].toStringAsFixed(2),
+                "data2": ccpData["C2_S1"] == null
+                    ? "0.00"
+                    : ccpData["C2_S1"].toStringAsFixed(2),
+                "data3": ccpData["C3_S1"] == null
+                    ? "0.00"
+                    : ccpData["C3_S1"].toStringAsFixed(2),
                 "selected": false,
                 "i": 31,
               },
               {
                 "head": "Stopper Position Strand 2",
-                "data1": ccpData["C1_S2"].toStringAsFixed(2),
-                "data2": ccpData["C2_S2"].toStringAsFixed(2),
-                "data3": ccpData["C3_S2"].toStringAsFixed(2),
+                "data1": ccpData["C1_S2"] == null
+                    ? "0.00"
+                    : ccpData["C1_S2"].toStringAsFixed(2),
+                "data2": ccpData["C2_S2"] == null
+                    ? "0.00"
+                    : ccpData["C2_S2"].toStringAsFixed(2),
+                "data3": ccpData["C3_S2"] == null
+                    ? "0.00"
+                    : ccpData["C3_S2"].toStringAsFixed(2),
                 "selected": false,
                 "i": 32,
               },
               {
                 "head": "Stopper Position Strand 3",
-                "data1": ccpData["C1_S3"].toStringAsFixed(2),
-                "data2": ccpData["C2_S3"].toStringAsFixed(2),
-                "data3": ccpData["C3_S3"].toStringAsFixed(2),
+                "data1": ccpData["C1_S3"] == null
+                    ? "0.00"
+                    : ccpData["C1_S3"].toStringAsFixed(2),
+                "data2": ccpData["C2_S3"] == null
+                    ? "0.00"
+                    : ccpData["C2_S3"].toStringAsFixed(2),
+                "data3": ccpData["C3_S3"] == null
+                    ? "0.00"
+                    : ccpData["C3_S3"].toStringAsFixed(2),
                 "selected": false,
                 "i": 33,
               },
               {
                 "head": "Stopper Position Strand 4",
-                "data1": ccpData["C1_S4"].toStringAsFixed(2),
-                "data2": ccpData["C2_S4"].toStringAsFixed(2),
-                "data3": ccpData["C3_S4"].toStringAsFixed(2),
+                "data1": ccpData["C1_S4"] == null
+                    ? "0.00"
+                    : ccpData["C1_S4"].toStringAsFixed(2),
+                "data2": ccpData["C2_S4"] == null
+                    ? "0.00"
+                    : ccpData["C2_S4"].toStringAsFixed(2),
+                "data3": ccpData["C3_S4"] == null
+                    ? "0.00"
+                    : ccpData["C3_S4"].toStringAsFixed(2),
                 "selected": false,
                 "i": 34,
               },
               {
                 "head": "Stopper Position Strand 5",
-                "data1": ccpData["C1_S5"].toStringAsFixed(2),
-                "data2": ccpData["C2_S5"].toStringAsFixed(2),
+                "data1": ccpData["C1_S5"] == null
+                    ? "0.00"
+                    : ccpData["C1_S5"].toStringAsFixed(2),
+                "data2": ccpData["C2_S5"] == null
+                    ? "0.00"
+                    : ccpData["C2_S5"].toStringAsFixed(2),
                 "data3": "",
                 "selected": false,
                 "i": 35,
               },
               {
                 "head": "Stopper Position Strand 6",
-                "data1": ccpData["C1_S6"].toStringAsFixed(2),
-                "data2": ccpData["C2_S6"].toStringAsFixed(2),
+                "data1": ccpData["C1_S6"] == null
+                    ? "0.00"
+                    : ccpData["C1_S6"].toStringAsFixed(2),
+                "data2": ccpData["C2_S6"] == null
+                    ? "0.00"
+                    : ccpData["C2_S6"].toStringAsFixed(2),
                 "data3": "",
                 "selected": false,
                 "i": 36,
