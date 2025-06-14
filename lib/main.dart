@@ -8,7 +8,6 @@ void main() {
     const ProviderScope(
       child: MyApp(),
     ),
-    // const MyApp(),
   );
 }
 
