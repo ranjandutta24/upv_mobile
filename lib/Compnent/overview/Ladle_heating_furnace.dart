@@ -62,6 +62,19 @@ class LhfState extends State<Lhf> {
         // print(data.body);
         setState(() {
           lhfData = json.decode(data.body);
+
+          /*   "
+ 
+
+    "LF2_WIREFEEDER_STD1_WEIGHT_PV": 0,
+    "LF2_WIREFEEDER_STD1_WEIGHT_SP": 10,
+   
+ 
+
+
+
+
+    */
           rows = [
             {
               "head": "Temp [DegC]",
@@ -75,54 +88,54 @@ class LhfState extends State<Lhf> {
             {
               "head": "CaSi/Fe Wire Spd SP/Act",
               "data1":
-                  "${lhfData["SPACTSPD1"] == null ? '0' : lhfData["SPACTSPD1"].toString()}/${lhfData["ACTSPD1"] == null ? '0' : lhfData["ACTSPD1"].toString()}",
+                  "${lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"].toString()}/${lhfData["ACTSPD1"] == null ? '0' : lhfData["ACTSPD1"].toString()}",
               "data2":
-                  "${lhfData["SPACTSPD3"] == null ? '0' : lhfData["SPACTSPD3"].toString()}/${lhfData["ACTSPD3"] == null ? '0' : lhfData["ACTSPD3"].toString()}",
+                  "${lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"].toString()}/${lhfData["ACTSPD3"] == null ? '0' : lhfData["ACTSPD3"].toString()}",
               "selected": false,
               "i": 1,
             },
             {
               "head": "CaSi/Fe Wire Lth SP/Act",
               "data1":
-                  "${lhfData["SPACTLENGTH1"] == null ? '0' : lhfData["SPACTLENGTH1"].toString()}/${lhfData["ACTLENGTH1"] == null ? '0' : lhfData["ACTLENGTH1"].toString()}",
+                  "${lhfData["SPACTLENGTH1"] == null ? '0' : lhfData["SPACTLENGTH1"].toString()}/${lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"].toString()}",
               "data2":
-                  "${lhfData["SPACTLENGTH3"] == null ? '0' : lhfData["SPACTLENGTH3"].toString()}/${lhfData["ACTLENGTH3"] == null ? '0' : lhfData["ACTLENGTH3"].toString()}",
+                  "${lhfData["SPACTLENGTH3"] == null ? '0' : lhfData["SPACTLENGTH3"].toString()}/${lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"].toString()}",
               "selected": false,
               "i": 2,
             },
             {
               "head": "CaSi/Fe Wire Wt SP/Act ",
               "data1":
-                  "${lhfData["SPACTWT1"] == null ? '0' : lhfData["SPACTWT1"].toString()}/${lhfData["ACTWT1"] == null ? '0' : lhfData["ACTWT1"].toString()}",
+                  "${lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"].toString()}/${lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"].toString()}",
               "data2":
-                  "${lhfData["SPACTWT3"] == null ? '0' : lhfData["SPACTWT3"].toString()}/${lhfData["ACTWT3"] == null ? '0' : lhfData["ACTWT3"].toString()}",
+                  "${lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"].toString()}/${lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"].toString()}",
               "selected": false,
               "i": 3,
             },
             {
               "head": "Al Wire Spd SP/Act ",
               "data1":
-                  "${lhfData["SPACTSPD2"] == null ? '0' : lhfData["SPACTSPD2"].toString()}/${lhfData["ACTSPD2"] == null ? '0' : lhfData["ACTSPD2"].toString()}",
+                  "${lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"].toString()}/${lhfData["ACTSPD2"] == null ? '0' : lhfData["ACTSPD2"].toString()}",
               "data2":
-                  "${lhfData["SPACTSPD4"] == null ? '0' : lhfData["SPACTSPD4"].toString()}/${lhfData["ACTSPD4"] == null ? '0' : lhfData["ACTSPD4"].toString()}",
+                  "${lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"].toString()}/${lhfData["ACTSPD4"] == null ? '0' : lhfData["ACTSPD4"].toString()}",
               "selected": false,
               "i": 4,
             },
             {
-              "head": "Al Wire SP/Act ",
+              "head": "Al Wire Lth SP/Act ",
               "data1":
-                  "${lhfData["SPACTLENGTH2"] == null ? '0' : lhfData["SPACTLENGTH2"].toString()}/${lhfData["ACTLENGTH2"] == null ? '0' : lhfData["ACTLENGTH2"].toString()}",
+                  "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"].toString()}/${lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"].toStringAsFixed(2)}",
               "data2":
-                  "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"].toString()}/${lhfData["ACTLENGTH4"] == null ? '0' : lhfData["ACTLENGTH4"].toString()}",
+                  "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"].toString()}/${lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"].toStringAsFixed(2)}",
               "selected": false,
               "i": 5,
             },
             {
               "head": "Al Wire Wt SP/Act ",
               "data1":
-                  "${lhfData["SPACTWT2"] == null ? '0' : lhfData["SPACTWT2"].toString()}/${lhfData["ACTWT2"] == null ? '0' : lhfData["ACTWT2"].toString()}",
+                  "${lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"].toString()}/${lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"].toString()}",
               "data2":
-                  "${lhfData["SPACTWT4"] == null ? '0' : lhfData["SPACTWT4"].toString()}/${lhfData["ACTWT4"] == null ? '0' : lhfData["ACTWT4"].toString()}",
+                  "${lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"].toString()}/${lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"].toString()}",
               "selected": false,
               "i": 6,
             },

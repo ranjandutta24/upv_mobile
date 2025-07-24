@@ -67,7 +67,7 @@ class BpplantState extends State<Bpplant> {
             {
               "head": "CO Gas Make [Nm3/hr]",
               "data1": bpplantData["FT0600F003_C"].toStringAsFixed(0),
-              "data2": bpplantData["FT0600F003_C"].toStringAsFixed(0),
+              "data2": bpplantData["COB10_GASMAKEF"].toStringAsFixed(0),
               "selected": false,
               "i": 0,
             },
