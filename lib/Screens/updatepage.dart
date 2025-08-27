@@ -16,7 +16,7 @@ class UpdatePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             // Update Icon
-            Icon(
+            const Icon(
               Icons.system_update,
               size: 100,
               color: Colors.black,

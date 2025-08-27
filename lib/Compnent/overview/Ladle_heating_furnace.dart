@@ -219,11 +219,13 @@ class LhfState extends State<Lhf> {
                                 width: 2.0,
                               ),
                             ),
-                            color: state[0]["data1"] <= 0.1
+                            color: state[0]["data1"] == null
                                 ? myColors["deactive"]
-                                : state[0]["data1"] >= 1.0
-                                    ? myColors["active"]
-                                    : borderColor,
+                                : state[0]["data1"] <= 0.1
+                                    ? myColors["deactive"]
+                                    : state[0]["data1"] >= 1.0
+                                        ? myColors["active"]
+                                        : borderColor,
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
@@ -239,11 +241,13 @@ class LhfState extends State<Lhf> {
                         flex: 4,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: state[0]["data2"] <= 0.1
+                            color: state[0]["data2"] == null
                                 ? myColors["deactive"]
-                                : state[0]["data2"] >= 1.0
-                                    ? myColors["active"]
-                                    : const Color.fromARGB(0, 255, 193, 7),
+                                : state[0]["data2"] <= 0.1
+                                    ? myColors["deactive"]
+                                    : state[0]["data2"] >= 1.0
+                                        ? myColors["active"]
+                                        : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),

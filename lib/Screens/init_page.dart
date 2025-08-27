@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in.iisco.upv/Screens/log_page2.dart';
+import 'package:in.iisco.upv/Screens/maintanence_page.dart';
 import 'package:in.iisco.upv/Screens/overview_page.dart';
 import 'package:in.iisco.upv/Screens/updatepage.dart';
 import 'package:in.iisco.upv/Services/service_page.dart' as service_page;
@@ -25,6 +26,7 @@ class _InitState extends ConsumerState<Init>
   dynamic orginfo;
   dynamic ainfo;
   String appLink = "";
+  String m_text = "";
 
   @override
   void initState() {
@@ -54,8 +56,17 @@ class _InitState extends ConsumerState<Init>
     );
   }
 
+  void _navigateToMaintance() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MaintancePage(m_text: m_text),
+      ),
+    );
+  }
+
   Future<void> checkAppVer() async {
-    print("checkAppVer called");
+    // print("checkAppVer called");
     final data = await service_page.getinfo();
 
     if (data.statusCode == 200) {
@@ -64,9 +75,15 @@ class _InitState extends ConsumerState<Init>
       saveInfoDetails(response);
       String apiVersion = response['version'];
       appLink = response['appLink'];
+      m_text = response['maintence_text'];
       PackageInfo packageInfo = await PackageInfo.fromPlatform();
-      print(packageInfo);
+
+      // print(packageInfo);
       var appversion = packageInfo.version;
+
+      if (response['under_maintenance'] == true) {
+        _navigateToMaintance();
+      }
 
       // print(apiVersion);
       // appLink = response['appLink'];
