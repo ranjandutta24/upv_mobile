@@ -1,9 +1,16 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:in.iisco.upv/Screens/log_page2.dart';
+import 'package:in.iisco.upv/Screens/maintanence_page.dart';
 import 'package:in.iisco.upv/Screens/overview_page.dart';
+import 'package:in.iisco.upv/Screens/updatepage.dart';
+import 'package:in.iisco.upv/Services/service_page.dart' as service_page;
+import 'package:in.iisco.upv/Utils/functions.dart';
 import 'package:in.iisco.upv/Widgets/loader.dart';
 import 'package:in.iisco.upv/providers/user.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 
 class Init extends ConsumerStatefulWidget {
   const Init({super.key});
@@ -18,11 +25,13 @@ class _InitState extends ConsumerState<Init>
   dynamic userinfo;
   dynamic orginfo;
   dynamic ainfo;
+  String appLink = "";
+  String m_text = "";
 
   @override
   void initState() {
     super.initState();
-    check();
+    checkAppVer();
 
     _controller = AnimationController(
       vsync: this,
@@ -36,6 +45,60 @@ class _InitState extends ConsumerState<Init>
     _controller.dispose();
 
     super.dispose();
+  }
+
+  void _navigateToUpdate() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => UpdatePage(appLink: appLink),
+      ),
+    );
+  }
+
+  void _navigateToMaintance() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(
+        builder: (context) => MaintancePage(m_text: m_text),
+      ),
+    );
+  }
+
+  Future<void> checkAppVer() async {
+    // print("checkAppVer called");
+    final data = await service_page.getinfo();
+
+    if (data.statusCode == 200) {
+      var response = jsonDecode(data.body);
+      print(response);
+      saveInfoDetails(response);
+      String apiVersion = response['version'];
+      appLink = response['appLink'];
+      m_text = response['maintence_text'];
+      PackageInfo packageInfo = await PackageInfo.fromPlatform();
+
+      // print(packageInfo);
+      var appversion = packageInfo.version;
+
+      if (response['under_maintenance'] == true) {
+        _navigateToMaintance();
+      }
+
+      // print(apiVersion);
+      // appLink = response['appLink'];
+
+      // if (version == version) {
+      // print(apiVersion);
+      // print(appversion);
+      if (apiVersion == appversion) {
+        check();
+      } else {
+        _navigateToUpdate();
+      }
+    } else {
+      print(data);
+    }
   }
 
   check() async {

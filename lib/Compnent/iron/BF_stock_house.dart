@@ -29,7 +29,7 @@ class BfshState extends State<Bfsh> {
 
   final Color _containerColor = const Color.fromARGB(255, 17, 156, 43);
   final Color _containerColora = const Color.fromARGB(255, 255, 255, 255);
-  final Color _textColor = Color.fromARGB(255, 0, 0, 0);
+  final Color _textColor = const Color.fromARGB(255, 0, 0, 0);
 
   _changeColor(no) {
     setState(() {

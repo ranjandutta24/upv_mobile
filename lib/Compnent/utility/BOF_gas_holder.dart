@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:in.iisco.upv/Services/service_page.dart';
 import 'package:in.iisco.upv/Utils/colors.dart';
+import 'package:in.iisco.upv/Widgets/counting.dart';
 
 class BofGasHoldUt extends StatefulWidget {
   const BofGasHoldUt({super.key});
@@ -31,6 +32,9 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
 
   _changeColor(no) {
     setState(() {
+      for (int i = 0; i < shiftTable.length; i++) {
+        shiftTable[i]["selected"] = false;
+      }
       for (int i = 0; i < rows.length; i++) {
         rows[i]["selected"] = false;
       }
@@ -39,10 +43,24 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
     });
   }
 
+  _changeColortable(no) {
+    setState(() {
+      for (int i = 0; i < rows.length; i++) {
+        rows[i]["selected"] = false;
+      }
+      for (int i = 0; i < shiftTable.length; i++) {
+        shiftTable[i]["selected"] = false;
+      }
+
+      shiftTable[no]["selected"] = true;
+      // num = no;
+    });
+  }
+
   fun() {
     if (mounted) {
       bofgasholderService();
-      var duration = const Duration(seconds: 30);
+      var duration = const Duration(seconds: 1);
       Timer.periodic(duration, (Timer timer) {
         bofgasholderService();
       });
@@ -50,101 +68,111 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
   }
 
   List<dynamic> rows = [];
+  List<dynamic> shiftTable = [];
 
   bofgasholderService() async {
     if (mounted) {
       await bofgasholder().then((data) {
         if (data != null) {
           // print(data.body);
+
+          // {"GASHOLDERLVL":15.025959968566895,"GASHOLDERPRES":204.85549926757812,"GASHOLDERTEMP":52.54999923706055,"EXPORTEDGAS":0,"GAS_FLOW_mills":null,"Mills_totaliser":null,"PBS_totaliser":2650404,"a_mills_totaliser":0,"b_mills_totaliser":0,"c_mills_totaliser":0,"a_pbs_totaliser":207993,"b_pbs_totaliser":200789,"c_pbs_totaliser":38760,"SHIFT_A":0,"SHIFT_B":0,"SHIFT_C":18914.099609375}
           setState(() {
             gasholdData = json.decode(data.body);
             rows = [
               {
                 "head": "Gas Holder Level [metre]",
-                "data1": gasholdData["GASHOLDERLVL"].toStringAsFixed(2),
+                "data1": gasholdData["GASHOLDERLVL"],
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "Gas Holder Pressure [mmWC]",
-                "data1": gasholdData["GASHOLDERPRES"].toStringAsFixed(2),
+                "data1": gasholdData["GASHOLDERPRES"],
                 "data2": "",
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "Gas Holder Temperature [DegC]",
-                "data1": gasholdData["GASHOLDERTEMP"].toStringAsFixed(2),
+                "data1": gasholdData["GASHOLDERTEMP"],
                 "data2": "",
                 "selected": false,
                 "i": 2,
               },
               {
-                "head": "Exported Gas [Nm3/hr]",
-                "data1": gasholdData["EXPORTEDGAS"].toStringAsFixed(2),
+                "head": "Exported Gas PBS [Nm3/hr]",
+                "data1": gasholdData["EXPORTEDGAS"],
                 "data2": "",
                 "selected": false,
                 "i": 3,
               },
               {
-                "head": "Totaliser LD Gas(Mills+PBS) (Nm3)",
-                "data1": gasholdData["PBS_totaliser"].toStringAsFixed(2),
+                "head": "Exported Gas Mills [Nm3/hr]",
+                "data1": gasholdData["GAS_FLOW_mills"] ?? 0,
                 "data2": "",
                 "selected": false,
                 "i": 4,
               },
               {
-                "head": "Totaliser LD Gas Mills (Nm3)",
-                "data1": gasholdData["Mills_totaliser"].toStringAsFixed(2),
+                "head": "Totaliser LD Gas(Mills+PBS) (Nm3)",
+                "data1": gasholdData["PBS_totaliser"] ?? 0,
                 "data2": "",
                 "selected": false,
                 "i": 5,
               },
               {
-                "head": "LD Gas (Mills+PBS) A Shift (Nm3)",
-                "data1": gasholdData["a_pbs_totaliser"].toStringAsFixed(2),
+                "head": "Totaliser LD Gas Mills (Nm3)",
+                "data1": gasholdData["Mills_totaliser"] ?? 0,
                 "data2": "",
                 "selected": false,
                 "i": 6,
               },
               {
-                "head": "LD Gas (Mills+PBS) B Shift (Nm3)",
-                "data1": gasholdData["b_pbs_totaliser"].toStringAsFixed(2),
+                "head": "Totaliser LD Gas PBS (Nm3)",
+                "data1": (gasholdData["PBS_totaliser"] ??
+                    0 - gasholdData["Mills_totaliser"] ??
+                    0),
                 "data2": "",
                 "selected": false,
                 "i": 7,
               },
+            ];
+            shiftTable = [
               {
-                "head": "LD Gas (Mills+PBS) C Shift (Nm3)",
-                "data1": gasholdData["c_pbs_totaliser"].toStringAsFixed(2),
-                "data2": "",
+                "head": "LD Gas Mills+PBS Shift (Nm3)",
+                "aShift": gasholdData["a_pbs_totaliser"] ?? 0,
+                "bShift": gasholdData["b_pbs_totaliser"] ?? 0,
+                "cShift": gasholdData["c_pbs_totaliser"] ?? 0,
+                "i": 0,
                 "selected": false,
-                "i": 8,
               },
               {
-                "head": "LD Gas Mills A Shift (Nm3)",
-                "data1": gasholdData["a_mills_totaliser"].toStringAsFixed(2),
-                "data2": "",
+                "head": "LD Gas Mills Shift (Nm3)",
+                "aShift": gasholdData["a_mills_totaliser"] ?? 0,
+                "bShift": gasholdData["b_mills_totaliser"] ?? 0,
+                "cShift": gasholdData["c_mills_totaliser"] ?? 0,
+                "i": 1,
                 "selected": false,
-                "i": 9,
               },
               {
-                "head": "LD Gas Mills B Shift (Nm3)",
-                "data1": gasholdData["b_mills_totaliser"].toStringAsFixed(2),
-                "data2": "",
+                "head": "LD Gas PBS Shift (Nm3)",
+                "aShift": (gasholdData["a_pbs_totaliser"] ??
+                    0 - gasholdData["a_mills_totaliser"] ??
+                    0),
+                "bShift": (gasholdData["b_pbs_totaliser"] ??
+                    0 - gasholdData["b_mills_totaliser"] ??
+                    0),
+                "cShift": (gasholdData["c_pbs_totaliser"] ??
+                    0 - gasholdData["c_mills_totaliser"] ??
+                    0),
+                "i": 2,
                 "selected": false,
-                "i": 10,
-              },
-              {
-                "head": "LD Gas Mills C Shift (Nm3)",
-                "data1": gasholdData["c_mills_totaliser"].toStringAsFixed(2),
-                "data2": "",
-                "selected": false,
-                "i": 11,
               },
             ];
             if (num != -1) {
               rows[num]["selected"] = true;
+              shiftTable[num]["selected"] = true;
             }
             loading = false;
           });
@@ -251,6 +279,32 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
                           r["i"]),
                     ),
                   ),
+                for (final Map r in shiftTable)
+                  GestureDetector(
+                    onTap: () {
+                      _changeColortable(r["i"]);
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: r["selected"] == true
+                            ? _containerColor
+                            : _containerColora,
+                        border: Border.all(
+                          color: borderColor, // Border color
+                          width: 1.0, // Border width
+                        ),
+                      ),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 0),
+                      child: _tableRow(
+                          r["head"],
+                          r["aShift"],
+                          r["bShift"],
+                          r["cShift"],
+                          r["selected"] == true ? _containerColora : _textColor,
+                          r["i"]),
+                    ),
+                  ),
               ],
             ),
     );
@@ -282,13 +336,86 @@ Widget _row(h, d1, color, i) {
       Expanded(
         flex: 2,
         child: Container(
-          decoration: const BoxDecoration(),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d1,
-              style: TextStyle(color: color, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.center),
-        ),
+            decoration: const BoxDecoration(),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+            child: Counting(
+              value: d1,
+              color: color,
+            )),
       ),
+    ],
+  );
+}
+
+Widget _tableRow(h, a, b, c, color, i) {
+  return Column(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Row(
+        children: [
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color.fromARGB(255, 150, 172, 206),
+                border: Border(
+                  bottom: BorderSide(
+                    color: borderColor,
+                    width: 2.0,
+                  ),
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+              child: Text(
+                h,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.w600),
+              ),
+            ),
+          ),
+        ],
+      ),
+      Row(
+        children: [
+          Expanded(
+            // flex: 4,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  right: BorderSide(
+                    color: borderColor,
+                    width: 2.0,
+                  ),
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Counting(value: a, color: Colors.black),
+            ),
+          ),
+          Expanded(
+            // flex: 4,
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border(
+                  right: BorderSide(
+                    color: borderColor,
+                    width: 2.0,
+                  ),
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Counting(value: b, color: Colors.black),
+            ),
+          ),
+          Expanded(
+            // flex: 2,
+            child: Container(
+              decoration: const BoxDecoration(),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+              child: Counting(value: c, color: Colors.black),
+            ),
+          ),
+        ],
+      )
     ],
   );
 }

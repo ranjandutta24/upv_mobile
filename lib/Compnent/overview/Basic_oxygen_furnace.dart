@@ -54,169 +54,176 @@ class BOFState extends State<BOF> {
   List<dynamic> rows = [];
 
   BOFService() async {
-    if (mounted) {
-      await basicoxygenfurnace().then((data) {
-        if (data != null) {
-          // print(data.body);
-          setState(() {
-            bofData = json.decode(data.body);
-            rows = [
-              {
-                "head": "Heat A/B/C",
-                "data1":
-                    "${bofData["BOF1_A"].toStringAsFixed(0)}/${bofData["BOF1_B"].toString()}/${bofData["BOF1_C"].toString()}",
-                "data2":
-                    "${bofData["BOF2_A"].toStringAsFixed(0)}/${bofData["BOF2_B"].toString()}/${bofData["BOF2_C"].toString()}",
-                "data3":
-                    "${bofData["BOF3_A"].toStringAsFixed(0)}/${bofData["BOF3_B"].toString()}/${bofData["BOF3_C"].toString()}",
-                "selected": false,
-                "i": 0,
-              },
-              {
-                "head": "Status",
-                "data1": "${bofData["BOF1_STATUS"]}",
-                "data2": "${bofData["BOF2_STATUS"]}",
-                "data3": "${bofData["BOF3_STATUS"]}",
-                "selected": false,
-                "i": 1,
-              },
-              {
-                "head": "Last Blow Duration(Mins)",
-                "data1": bofData["BOF1_LASTHEATDURATION"] == null
-                    ? "N/A"
-                    : bofData["BOF1_LASTHEATDURATION"].toString(),
-                "data2": bofData["BOF2_LASTHEATDURATION"] == null
-                    ? "N/A"
-                    : bofData["BOF2_LASTHEATDURATION"].toString(),
-                "data3": bofData["BOF3_LASTHEATDURATION"] == null
-                    ? "N/A"
-                    : bofData["BOF3_LASTHEATDURATION"].toString(),
-                "selected": false,
-                "i": 2,
-              },
-              {
-                "head": "Last Blow Start Time",
-                "data1": bofData["BOF1_HEATSTART"],
-                "data2": bofData["BOF2_HEATSTART"],
-                "data3": bofData["BOF3_HEATSTART"],
-                "selected": false,
-                "i": 3,
-              },
-              {
-                "head": "Charge To Tap Duration (Mins)",
-                "data1": bofData["BOF1_LASTC2T"] == null
-                    ? "N/A"
-                    : bofData["BOF1_LASTC2T"].toString(),
-                "data2": bofData["BOF2_LASTC2T"] == null
-                    ? "N/A"
-                    : bofData["BOF2_LASTC2T"].toString(),
-                "data3": bofData["BOF3_LASTC2T"] == null
-                    ? "N/A"
-                    : bofData["BOF3_LASTC2T"].toString(),
-                "selected": false,
-                "i": 4,
-              },
-              {
-                "head": "Tap To Tap Duration(Mins)",
-                "data1": bofData["BOF1_LASTT2T"] == null
-                    ? "N/A"
-                    : bofData["BOF1_LASTT2T"].toString(),
-                "data2": bofData["BOF2_LASTT2T"] == null
-                    ? "N/A"
-                    : bofData["BOF2_LASTT2T"].toString(),
-                "data3": bofData["BOF3_LASTT2T"] == null
-                    ? "N/A"
-                    : bofData["BOF3_LASTT2T"].toString(),
-                "selected": false,
-                "i": 5,
-              },
-              {
-                "head": "Last Tapping Finish Time",
-                "data1": bofData["BOF1_LAST"] ?? "N/A",
-                "data2": bofData["BOF2_LAST"] ?? "N/A",
-                "data3": bofData["BOF3_LAST"] ?? "N/A",
-                "selected": false,
-                "i": 6,
-              },
-              {
-                "head": "Temp [DegC]",
-                "data1": bofData["TEMP_1"].toString(),
-                "data2": bofData["TEMP_2"].toString(),
-                "data3": bofData["TEMP_3"].toString(),
-                "selected": false,
-                "i": 7,
-              },
-              {
-                "head": "O2 Consm [Nm3]",
-                "data1": bofData["O2FLOWL11"].toStringAsFixed(0),
-                "data2": bofData["O2FLOWL22"].toStringAsFixed(0),
-                "data3": bofData["O2FLOWL33"].toStringAsFixed(0),
-                "selected": false,
-                "i": 8,
-              },
-              {
-                "head": "Gas Recovery [Nm3]x 1000",
-                "data1": bofData["BOF1_GASRECTOT"].toStringAsFixed(0),
-                "data2": bofData["BOF2_GASRECTOT"].toStringAsFixed(0),
-                "data3": bofData["BOF3_GASRECTOT"].toStringAsFixed(0),
-                "selected": false,
-                "i": 9,
-              },
-              {
-                "head": "Lining Life",
-                "data1": bofData["LINING_1"].toString(),
-                "data2": bofData["LINING_2"].toString(),
-                "data3": bofData["LINING_3"].toString(),
-                "selected": false,
-                "i": 10,
-              },
-              {
-                "head": "Total Heat",
-                "data1": (bofData["BOF1_A"] +
-                        bofData["BOF1_B"] +
-                        bofData["BOF1_C"] +
-                        bofData["BOF2_A"] +
-                        bofData["BOF2_B"] +
-                        bofData["BOF2_C"] +
-                        bofData["BOF3_A"] +
-                        bofData["BOF3_B"] +
-                        bofData["BOF3_C"])
-                    .toString(),
-                "data2": bofData["BOF2_PDAY"].toString(),
-                "data3": bofData["BOF3_PDAY"].toString(),
-                "selected": false,
-                "i": 11,
-              },
-              {
-                "head": "Prev. Day Heat",
-                "data1":
-                    "${(bofData["BOF1_PDAY"] + bofData["BOF2_PDAY"] + bofData["BOF3_PDAY"]).toString()} (${bofData["BOF1_PDAY"].toString()} + ${bofData["BOF2_PDAY"].toString()} + ${bofData["BOF3_PDAY"].toString()})",
-                "data2": bofData["BOF2_PDAY"].toString(),
-                "data3": bofData["BOF3_PDAY"].toString(),
-                "selected": false,
-                "i": 12,
-              },
-            ];
-            if (num != -1) {
-              rows[num]["selected"] = true;
-            }
-            loading = false;
-          });
-        } else {
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).clearSnackBars();
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 3),
-              content: const Center(
-                child: Text('Something wrong'),
-              ),
-              action: SnackBarAction(label: '', onPressed: () {}),
+    if (!mounted) return;
+
+    try {
+      final data = await basicoxygenfurnace();
+      if (data != null && mounted) {
+        // print(data.body);
+        setState(() {
+          bofData = json.decode(data.body);
+          rows = [
+            {
+              "head": "Heat A/B/C",
+              "data1":
+                  "${bofData["BOF1_A"].toStringAsFixed(0)}/${bofData["BOF1_B"].toString()}/${bofData["BOF1_C"].toString()}",
+              "data2":
+                  "${bofData["BOF2_A"].toStringAsFixed(0)}/${bofData["BOF2_B"].toString()}/${bofData["BOF2_C"].toString()}",
+              "data3":
+                  "${bofData["BOF3_A"].toStringAsFixed(0)}/${bofData["BOF3_B"].toString()}/${bofData["BOF3_C"].toString()}",
+              "selected": false,
+              "i": 0,
+            },
+            {
+              "head": "Status",
+              "data1": "${bofData["BOF1_STATUS"]}",
+              "data2": "${bofData["BOF2_STATUS"]}",
+              "data3": "${bofData["BOF3_STATUS"]}",
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "Last Blow Duration(Mins)",
+              "data1": bofData["BOF1_LASTHEATDURATION"] == null
+                  ? "N/A"
+                  : bofData["BOF1_LASTHEATDURATION"].toString(),
+              "data2": bofData["BOF2_LASTHEATDURATION"] == null
+                  ? "N/A"
+                  : bofData["BOF2_LASTHEATDURATION"].toString(),
+              "data3": bofData["BOF3_LASTHEATDURATION"] == null
+                  ? "N/A"
+                  : bofData["BOF3_LASTHEATDURATION"].toString(),
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "Last Blow Start Time",
+              "data1": bofData["BOF1_HEATSTART"],
+              "data2": bofData["BOF2_HEATSTART"],
+              "data3": bofData["BOF3_HEATSTART"],
+              "selected": false,
+              "i": 3,
+            },
+            {
+              "head": "Charge To Tap Duration (Mins)",
+              "data1": bofData["BOF1_LASTC2T"] == null
+                  ? "N/A"
+                  : bofData["BOF1_LASTC2T"].toString(),
+              "data2": bofData["BOF2_LASTC2T"] == null
+                  ? "N/A"
+                  : bofData["BOF2_LASTC2T"].toString(),
+              "data3": bofData["BOF3_LASTC2T"] == null
+                  ? "N/A"
+                  : bofData["BOF3_LASTC2T"].toString(),
+              "selected": false,
+              "i": 4,
+            },
+            {
+              "head": "Tap To Tap Duration(Mins)",
+              "data1": bofData["BOF1_LASTT2T"] == null
+                  ? "N/A"
+                  : bofData["BOF1_LASTT2T"].toString(),
+              "data2": bofData["BOF2_LASTT2T"] == null
+                  ? "N/A"
+                  : bofData["BOF2_LASTT2T"].toString(),
+              "data3": bofData["BOF3_LASTT2T"] == null
+                  ? "N/A"
+                  : bofData["BOF3_LASTT2T"].toString(),
+              "selected": false,
+              "i": 5,
+            },
+            {
+              "head": "Last Tapping Finish Time",
+              "data1": bofData["BOF1_LAST"] ?? "N/A",
+              "data2": bofData["BOF2_LAST"] ?? "N/A",
+              "data3": bofData["BOF3_LAST"] ?? "N/A",
+              "selected": false,
+              "i": 6,
+            },
+            {
+              "head": "Temp [DegC]",
+              "data1": bofData["TEMP_1"].toString(),
+              "data2": bofData["TEMP_2"].toString(),
+              "data3": bofData["TEMP_3"].toString(),
+              "selected": false,
+              "i": 7,
+            },
+            {
+              "head": "O2 Consm [Nm3]",
+              "data1": bofData["O2FLOWL11"].toStringAsFixed(0),
+              "data2": bofData["O2FLOWL22"].toStringAsFixed(0),
+              "data3": bofData["O2FLOWL33"].toStringAsFixed(0),
+              "selected": false,
+              "i": 8,
+            },
+            {
+              "head": "Gas Recovery [Nm3]x 1000",
+              "data1": bofData["BOF1_GASRECTOT"].toStringAsFixed(0),
+              "data2": bofData["BOF2_GASRECTOT"].toStringAsFixed(0),
+              "data3": bofData["BOF3_GASRECTOT"].toStringAsFixed(0),
+              "selected": false,
+              "i": 9,
+            },
+            {
+              "head": "Lining Life",
+              "data1": bofData["LINING_1"].toString(),
+              "data2": bofData["LINING_2"].toString(),
+              "data3": bofData["LINING_3"].toString(),
+              "selected": false,
+              "i": 10,
+            },
+            {
+              "head": "Total Heat",
+              "data1": (bofData["BOF1_A"] +
+                      bofData["BOF1_B"] +
+                      bofData["BOF1_C"] +
+                      bofData["BOF2_A"] +
+                      bofData["BOF2_B"] +
+                      bofData["BOF2_C"] +
+                      bofData["BOF3_A"] +
+                      bofData["BOF3_B"] +
+                      bofData["BOF3_C"])
+                  .toString(),
+              "data2": bofData["BOF2_PDAY"].toString(),
+              "data3": bofData["BOF3_PDAY"].toString(),
+              "selected": false,
+              "i": 11,
+            },
+            {
+              "head": "Prev. Day Heat",
+              "data1":
+                  "${(bofData["BOF1_PDAY"] + bofData["BOF2_PDAY"] + bofData["BOF3_PDAY"]).toString()} (${bofData["BOF1_PDAY"].toString()} + ${bofData["BOF2_PDAY"].toString()} + ${bofData["BOF3_PDAY"].toString()})",
+              "data2": bofData["BOF2_PDAY"].toString(),
+              "data3": bofData["BOF3_PDAY"].toString(),
+              "selected": false,
+              "i": 12,
+            },
+          ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
+        });
+      } else if (mounted) {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Something wrong'),
             ),
-          );
-        }
-      });
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
     }
   }
 

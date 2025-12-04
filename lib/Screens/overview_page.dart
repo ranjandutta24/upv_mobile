@@ -39,7 +39,7 @@ class _OverviewsScreenState extends ConsumerState<OverviewScreen> {
   @override
   Widget build(BuildContext context) {
     final dynamic currentUserData = ref.watch(userProvider);
-    print(currentUserData);
+    // print(currentUserData);
     return Scaffold(
         appBar: AppBar(
           title: const Text(

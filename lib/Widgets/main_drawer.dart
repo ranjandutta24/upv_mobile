@@ -4,6 +4,7 @@ import 'package:in.iisco.upv/Screens/log_page2.dart';
 import 'package:in.iisco.upv/Screens/overview_page.dart';
 import 'package:in.iisco.upv/Screens/steel_mills_page.dart';
 import 'package:in.iisco.upv/Screens/utility_page.dart';
+import 'package:in.iisco.upv/Screens/wmd_page.dart';
 import 'package:in.iisco.upv/Utils/colors.dart';
 import 'package:in.iisco.upv/providers/user.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,54 +21,53 @@ class MainDrawer extends StatelessWidget {
             child: Column(
       children: [
         DrawerHeader(
-          padding: const EdgeInsets.all(10),
+          padding: const EdgeInsets.all(0),
           decoration: const BoxDecoration(
-              gradient: LinearGradient(
-            colors: [
-              Color.fromARGB(255, 39, 66, 116),
-              Color.fromARGB(255, 39, 66, 116),
-              // Theme.of(context).colorScheme.primaryContainer,
-              // Theme.of(context).colorScheme.primaryContainer.withOpacity(0.8),
-            ],
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-          )),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Icon(
-                Icons.perm_identity_rounded,
-                size: 30,
-                color: Color.fromARGB(234, 254, 254, 254),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const SizedBox(width: 5),
-                  Text(
-                    "${data["firstname"]} ${data["lastname"] ?? ""}",
-                    style: GoogleFonts.openSans(
-                      textStyle: const TextStyle(
-                          color: Color.fromARGB(255, 207, 207, 207),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w200),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 8,
-              ),
-              Text(
-                "${data["role"]}",
-                style: const TextStyle(
-                  fontSize: 12,
-                  fontWeight: FontWeight.w600,
-                  fontFamily: "CustomFont",
-                  color: Color.fromARGB(234, 255, 255, 255),
+            image: DecorationImage(
+              image: AssetImage('assets/images/OIP.jpg'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Container(
+            color: Colors.black
+                .withOpacity(0.5), // Add a semi-transparent dark overlay
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Icon(
+                  Icons.perm_identity_rounded,
+                  size: 40,
+                  color: Color.fromARGB(234, 254, 254, 254),
                 ),
-              )
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const SizedBox(width: 5),
+                    Text(
+                      "${data["firstname"]} ${data["lastname"] ?? ""}",
+                      style: GoogleFonts.openSans(
+                        textStyle: const TextStyle(
+                            color: Color.fromARGB(255, 255, 255, 255),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w200),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 8,
+                ),
+                Text(
+                  "${data["role"]}",
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "CustomFont",
+                    color: Color.fromARGB(255, 245, 234, 140),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
         ListTile(
@@ -133,6 +133,30 @@ class MainDrawer extends StatelessWidget {
                     oldRoute: ModalRoute.of(context)!,
                     newRoute: MaterialPageRoute(
                         builder: (context) => SteelMillsScreen(data: data)),
+                  );
+                },
+              )
+            : const SizedBox(),
+        data["role"] != "OVERVIEW"
+            ? ListTile(
+                leading: Icon(
+                  Icons.water,
+                  size: 26,
+                  color: myColors["theme"],
+                ),
+                title: Text(
+                  'WMD',
+                  style: TextStyle(
+                      color: myColors["theme"],
+                      fontSize: 18,
+                      fontFamily: "CustomFont"),
+                ),
+                onTap: () {
+                  Navigator.replace(
+                    context,
+                    oldRoute: ModalRoute.of(context)!,
+                    newRoute: MaterialPageRoute(
+                        builder: (context) => WMDScreen(data: data)),
                   );
                 },
               )

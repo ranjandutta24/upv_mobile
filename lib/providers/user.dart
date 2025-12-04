@@ -4,11 +4,19 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:path/path.dart' as path;
 import 'package:sqflite/sqflite.dart' as sql;
 import 'package:sqflite/sqlite_api.dart';
+<<<<<<< HEAD
 // import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 Future<Database> getDatabase() async {
   // sqfliteFfiInit();
   // databaseFactory = databaseFactoryFfi;
+=======
+// import 'package:sqflite_common_ffi/sqflite_ffi.dart'; // comment it for mobile
+
+Future<Database> getDatabase() async {
+  // sqfliteFfiInit(); // comment it for mobile
+  // databaseFactory = databaseFactoryFfi; // comment it for mobile
+>>>>>>> 3e5e54a87a91abfdf7a3ee9becc3d98e32fda87b
 
   final dbPath = await sql.getDatabasesPath();
   final db = await sql.openDatabase(path.join(dbPath, 'upvlocal.db'),

@@ -68,7 +68,9 @@ class StovesState extends State<Stoves> {
               },
               {
                 "head": "Stv 1 Dome Temp. [DegC]",
-                "data1": stovesData["SDT1"].toStringAsFixed(0),
+                "data1": stovesData["SDT1"] != null
+                    ? stovesData["SDT1"].toStringAsFixed(0)
+                    : "0",
                 "selected": false,
                 "i": 1,
               },

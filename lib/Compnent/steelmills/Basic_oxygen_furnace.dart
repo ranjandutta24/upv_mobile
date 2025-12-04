@@ -572,11 +572,12 @@ Widget _row(h, d1, d2, d3, color, i, status) {
               child: Container(
                 height: 46,
                 decoration: BoxDecoration(
-                    color: i == 15
-                        ? status[0]["BOF3"] == "On"
-                            ? myColors["active"]
-                            : myColors["deactive"]
-                        : const Color.fromARGB(0, 255, 7, 7)),
+                  color: i == 15
+                      ? status[0]["BOF3"] == "On"
+                          ? myColors["active"]
+                          : myColors["deactive"]
+                      : const Color.fromARGB(0, 255, 7, 7),
+                ),
                 padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
                 child: Text(d3,
                     style: TextStyle(

@@ -52,61 +52,67 @@ class CbmState extends State<Cbm> {
   List<dynamic> rows = [];
 
   cbmService() async {
-    if (mounted) {
-      await cbm().then((data) {
-        if (data != null) {
-          // print(data.body);
-          setState(() {
-            cbmData = json.decode(data.body);
-            rows = [
-              {
-                "head": "METER 1 FLOW [SCM/hr]",
-                "data1": cbmData["M1FLOW"].toString(),
-                "selected": false,
-                "i": 0,
-              },
-              {
-                "head": "METER 2 FLOW [SCM/hr]",
-                "data1": cbmData["M2FLOW"].toStringAsFixed(2),
-                "data2": "",
-                "selected": false,
-                "i": 1,
-              },
-              {
-                "head": "INLET PRESSURE [kg/cm2]",
-                "data1": cbmData["INLETPRESSURE"].toStringAsFixed(2),
-                "data2": "",
-                "selected": false,
-                "i": 2,
-              },
-              {
-                "head": "OUTLET PRESSURE [kg/cm2]",
-                "data1": cbmData["OUTLETPRESSURE"].toStringAsFixed(2),
-                "data2": "",
-                "selected": false,
-                "i": 3,
-              },
-            ];
-            if (num != -1) {
-              rows[num]["selected"] = true;
-            }
-            loading = false;
-          });
-        } else {
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).clearSnackBars();
-          // ignore: use_build_context_synchronously
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              duration: const Duration(seconds: 3),
-              content: const Center(
-                child: Text('Something wrong'),
-              ),
-              action: SnackBarAction(label: '', onPressed: () {}),
+    if (!mounted) return;
+    try {
+      final data = await cbm();
+      if (data != null && mounted) {
+        // print(data.body);
+        setState(() {
+          cbmData = json.decode(data.body);
+          rows = [
+            {
+              "head": "METER 1 FLOW [SCM/hr]",
+              "data1": cbmData["M1FLOW"].toString(),
+              "selected": false,
+              "i": 0,
+            },
+            {
+              "head": "METER 2 FLOW [SCM/hr]",
+              "data1": cbmData["M2FLOW"].toStringAsFixed(2),
+              "data2": "",
+              "selected": false,
+              "i": 1,
+            },
+            {
+              "head": "INLET PRESSURE [kg/cm2]",
+              "data1": cbmData["INLETPRESSURE"].toStringAsFixed(2),
+              "data2": "",
+              "selected": false,
+              "i": 2,
+            },
+            {
+              "head": "OUTLET PRESSURE [kg/cm2]",
+              "data1": cbmData["OUTLETPRESSURE"].toStringAsFixed(2),
+              "data2": "",
+              "selected": false,
+              "i": 3,
+            },
+          ];
+          if (num != -1) {
+            rows[num]["selected"] = true;
+          }
+          loading = false;
+        });
+      } else if (mounted) {
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).clearSnackBars();
+        // ignore: use_build_context_synchronously
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            duration: const Duration(seconds: 3),
+            content: const Center(
+              child: Text('Something wrong'),
             ),
-          );
-        }
-      });
+            action: SnackBarAction(label: '', onPressed: () {}),
+          ),
+        );
+      }
+    } catch (e) {
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Error: ${e.toString()}')),
+        );
+      }
     }
   }
 
