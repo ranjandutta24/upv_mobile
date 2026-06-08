@@ -54,6 +54,7 @@ class GasUtState extends State<GasUt> {
   gasutilityService() async {
     if (mounted) {
       await gasutility().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -61,9 +62,9 @@ class GasUtState extends State<GasUt> {
             rows = [
               {
                 "head": "Production (Nm3/hr)",
-                "data1": gasUtilityData["BF_GASFLOWHI"].toString(),
+                "data1": gasUtilityData["BF_GASFLOWHI"]?.toString() ?? '--',
                 "data2":
-                    "${gasUtilityData["BPP_COMAKE_F"].toString()}[11] + ${gasUtilityData["COB10_GASMAKEF"].toString()}[10]",
+                    "${gasUtilityData["BPP_COMAKE_F"]?.toString() ?? '--'}[11] + ${gasUtilityData["COB10_GASMAKEF"]?.toString() ?? '--'}[10]",
                 "data3": "NA",
                 "data4": "0",
                 "data5": "0",
@@ -73,9 +74,9 @@ class GasUtState extends State<GasUt> {
               },
               {
                 "head": "Produced Gas Press.",
-                "data1": gasUtilityData["BF_CONP"].toString(),
+                "data1": gasUtilityData["BF_CONP"]?.toString() ?? '--',
                 "data2":
-                    "${gasUtilityData["BPP_COMAKE_P"].toString()}[11] / ${gasUtilityData["COB10_COGSUPPLY"].toString()}[10]",
+                    "${gasUtilityData["BPP_COMAKE_P"]?.toString() ?? '--'}[11] / ${gasUtilityData["COB10_COGSUPPLY"]?.toString() ?? '--'}[10]",
                 "data3": "NA",
                 "data4": "NA",
                 "data5": "NA",
@@ -85,12 +86,12 @@ class GasUtState extends State<GasUt> {
               },
               {
                 "head": "BF Consumption(Nm3/hr)",
-                "data1": gasUtilityData["BF_CONF"].toString(),
-                "data2": gasUtilityData["BF_COF"].toString(),
+                "data1": gasUtilityData["BF_CONF"]?.toString() ?? '--',
+                "data2": gasUtilityData["BF_COF"]?.toString() ?? '--',
                 "data3": "NA",
-                "data4": gasUtilityData["BF_O2EN"].toString(),
-                "data5": gasUtilityData["BF_N2F"].toString(),
-                "data6": gasUtilityData["BF_STVGF"].toString(),
+                "data4": gasUtilityData["BF_O2EN"]?.toString() ?? '--',
+                "data5": gasUtilityData["BF_N2F"]?.toString() ?? '--',
+                "data6": gasUtilityData["BF_STVGF"]?.toString() ?? '--',
                 "selected": false,
                 "i": 2,
               },
@@ -100,26 +101,26 @@ class GasUtState extends State<GasUt> {
                 "data2": "0",
                 "data3": "NA",
                 "data4": "NA",
-                "data5": gasUtilityData["BFCDI_N2F"].toString(),
+                "data5": gasUtilityData["BFCDI_N2F"]?.toString() ?? '--',
                 "data6": "NA",
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "PBS#2 Consumption(Nm3/hr)",
-                "data1": gasUtilityData["PBS_BBFGF"].toString(),
-                "data2": gasUtilityData["PBS_BCOGF"].toString(),
-                "data3": gasUtilityData["PBS_BCBMF"].toString(),
+                "data1": gasUtilityData["PBS_BBFGF"]?.toString() ?? '--',
+                "data2": gasUtilityData["PBS_BCOGF"]?.toString() ?? '--',
+                "data3": gasUtilityData["PBS_BCBMF"]?.toString() ?? '--',
                 "data4": "NA",
                 "data5": "NA",
-                "data6": gasUtilityData["PBS_BOFTOT"].toString(),
+                "data6": gasUtilityData["PBS_BOFTOT"]?.toString() ?? '--',
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "COB#10 Consumption(Nm3/hr)",
                 "data1": "NA",
-                "data2": gasUtilityData["COB10_COGCON"].toString(),
+                "data2": gasUtilityData["COB10_COGCON"]?.toString() ?? '--',
                 "data3": "NA",
                 "data4": "NA",
                 "data5": "NA",
@@ -130,10 +131,10 @@ class GasUtState extends State<GasUt> {
               {
                 "head": "COB#11 Consumption(Nm3/hr)",
                 "data1": "NA",
-                "data2": gasUtilityData["CO_GAS_F"].toString(),
+                "data2": gasUtilityData["CO_GAS_F"]?.toString() ?? '--',
                 "data3": "NA",
                 "data4": "NA",
-                "data5": gasUtilityData["CD_N2_CON_F"].toString(),
+                "data5": gasUtilityData["CD_N2_CON_F"]?.toString() ?? '--',
                 "data6": "NA",
                 "selected": false,
                 "i": 6,
@@ -142,9 +143,9 @@ class GasUtState extends State<GasUt> {
                 "head": "BOF Consumption(Nm3/hr)",
                 "data1": "NA",
                 "data2": "NA",
-                "data3": gasUtilityData["BOF_CBMF"].toString(),
-                "data4": gasUtilityData["O2_TOTAL"].toString(),
-                "data5": gasUtilityData["BOF_PRSF"].toString(),
+                "data3": gasUtilityData["BOF_CBMF"]?.toString() ?? '--',
+                "data4": gasUtilityData["O2_TOTAL"]?.toString() ?? '--',
+                "data5": gasUtilityData["BOF_PRSF"]?.toString() ?? '--',
                 "data6": "NA",
                 "selected": false,
                 "i": 7,
@@ -155,10 +156,10 @@ class GasUtState extends State<GasUt> {
               {
                 "head": "CCP Consumption(Nm3/hr)",
                 "data1": "NA",
-                "data2": gasUtilityData["CCP_COF"].toString(),
-                "data3": gasUtilityData["CCP_CBMF"].toString(),
-                "data4": gasUtilityData["CCP_O2F"].toString(),
-                "data5": gasUtilityData["CCP_N2F"].toString(),
+                "data2": gasUtilityData["CCP_COF"]?.toString() ?? '--',
+                "data3": gasUtilityData["CCP_CBMF"]?.toString() ?? '--',
+                "data4": gasUtilityData["CCP_O2F"]?.toString() ?? '--',
+                "data5": gasUtilityData["CCP_N2F"]?.toString() ?? '--',
                 "data6": "NA",
                 "selected": false,
                 "i": 8,
@@ -166,18 +167,18 @@ class GasUtState extends State<GasUt> {
               {
                 "head": "MILLS Consumption(Nm3/hr)",
                 "data1": "NA",
-                "data2": gasUtilityData["GMS_CO_FLOW"].toString(),
+                "data2": gasUtilityData["GMS_CO_FLOW"]?.toString() ?? '--',
                 "data3": "NA",
                 "data4": "NA",
                 "data5": "NA",
-                "data6": gasUtilityData["MILLS_MIXED"].toString(),
+                "data6": gasUtilityData["MILLS_MIXED"]?.toString() ?? '--',
                 "selected": false,
                 "i": 9,
               },
               {
                 "head": "SINTER Consumption (Nm3/hr)",
                 "data1": "NA",
-                "data2": gasUtilityData["SP_CO_GAS"].toString(),
+                "data2": gasUtilityData["SP_CO_GAS"]?.toString() ?? '--',
                 "data3": "NA",
                 "data4": "NA",
                 "data5": "NA",
@@ -188,17 +189,17 @@ class GasUtState extends State<GasUt> {
               {
                 "head": "LDCP Consumption(Nm3/hr)",
                 "data1": "NA",
-                "data2": gasUtilityData["COG_FLOW_GMS"].toString(),
-                "data3": gasUtilityData["LDCP_CBMF"].toString(),
+                "data2": gasUtilityData["COG_FLOW_GMS"]?.toString() ?? '--',
+                "data3": gasUtilityData["LDCP_CBMF"]?.toString() ?? '--',
                 "data4": "NA",
-                "data5": gasUtilityData["LDCP_N2F"].toString(),
-                "data6": gasUtilityData["LDCP_MIXGASF"].toString(),
+                "data5": gasUtilityData["LDCP_N2F"]?.toString() ?? '--',
+                "data6": gasUtilityData["LDCP_MIXGASF"]?.toString() ?? '--',
                 "selected": false,
                 "i": 11,
               },
               {
                 "head": "Flare(Nm3/hr)",
-                "data1": gasUtilityData["BF_FLAREF"].toString(),
+                "data1": gasUtilityData["BF_FLAREF"]?.toString() ?? '--',
                 "data2": "0",
                 "data3": "NA",
                 "data4": "NA",
@@ -209,16 +210,16 @@ class GasUtState extends State<GasUt> {
               },
               {
                 "head": "Total Production",
-                "data1": gasUtilityData["total_Production_BF"].toString(),
+                "data1": gasUtilityData["total_Production_BF"]?.toString() ?? '--',
 
                 // this.gasutility.BPP_COMAKE_F + this.gasutility.COB10_GASMAKEF
                 "data2": (gasUtilityData["BPP_COMAKE_F"] +
                         gasUtilityData["COB10_GASMAKEF"])
                     .toString(),
-                "data3": gasUtilityData["total_Production_CBM"].toString(),
-                "data4": gasUtilityData["total_Production_Oxygen"].toString(),
-                "data5": gasUtilityData["total_Production_Nitrogen"].toString(),
-                "data6": gasUtilityData["total_Production_Mixed"].toString(),
+                "data3": gasUtilityData["total_Production_CBM"]?.toString() ?? '--',
+                "data4": gasUtilityData["total_Production_Oxygen"]?.toString() ?? '--',
+                "data5": gasUtilityData["total_Production_Nitrogen"]?.toString() ?? '--',
+                "data6": gasUtilityData["total_Production_Mixed"]?.toString() ?? '--',
                 "selected": false,
                 "i": 13,
               },
@@ -263,7 +264,7 @@ class GasUtState extends State<GasUt> {
               },
               {
                 "head": "Total Flare",
-                "data1": gasUtilityData["BF_FLAREF"].toString(),
+                "data1": gasUtilityData["BF_FLAREF"]?.toString() ?? '--',
                 "data2": "0",
                 "data3": "0",
                 "data4": "0",
@@ -284,7 +285,7 @@ class GasUtState extends State<GasUt> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

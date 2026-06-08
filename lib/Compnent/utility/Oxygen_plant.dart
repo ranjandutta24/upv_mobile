@@ -55,6 +55,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
   oxygenplantService() async {
     if (mounted) {
       await oxygenplant().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -62,98 +63,98 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
             rows = [
               {
                 "head": "HPGOX (Nm3/hr)",
-                "data1": oxygenData["HPGOXP1"].toString(),
-                "data2": oxygenData["HPGOXP2"].toString(),
+                "data1": oxygenData["HPGOXP1"]?.toString() ?? '--',
+                "data2": oxygenData["HPGOXP2"]?.toString() ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "PGOX (Nm3/hr)",
-                "data1": oxygenData["PGOXP1"].toString(),
-                "data2": oxygenData["PGOXP2"].toString(),
+                "data1": oxygenData["PGOXP1"]?.toString() ?? '--',
+                "data2": oxygenData["PGOXP2"]?.toString() ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "HPGAN (Nm3/hr)",
-                "data1": oxygenData["HPGANP1"].toString(),
-                "data2": oxygenData["HPGANP2"].toString(),
+                "data1": oxygenData["HPGANP1"]?.toString() ?? '--',
+                "data2": oxygenData["HPGANP2"]?.toString() ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "PGAN (Nm3/hr)",
-                "data1": oxygenData["PGANP1"].toString(),
-                "data2": oxygenData["PGANP2"].toString(),
+                "data1": oxygenData["PGANP1"]?.toString() ?? '--',
+                "data2": oxygenData["PGANP2"]?.toString() ?? '--',
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Ar Flow BOF (Nm3/hr)",
-                "data1": oxygenData["ARFLBOF"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
+                "data1": oxygenData["ARFLBOF"]?.toString() ?? '--',
+                "data2": oxygenData["ARFLBOF"]?.toString() ?? '--',
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "O2 Flow BF (Nm3/hr)",
-                "data1": oxygenData["OXBF"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
+                "data1": oxygenData["OXBF"]?.toString() ?? '--',
+                "data2": oxygenData["ARFLBOF"]?.toString() ?? '--',
                 "selected": false,
                 "i": 5,
               },
               {
                 "head": "O2 Flow CCP (Nm3/hr)",
-                "data1": oxygenData["OFCCP"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
+                "data1": oxygenData["OFCCP"]?.toString() ?? '--',
+                "data2": oxygenData["ARFLBOF"]?.toString() ?? '--',
                 "selected": false,
                 "i": 6,
               },
               {
                 "head": "O2 Flow BOFS1 (Nm3/hr)",
-                "data1": oxygenData["OFBOFS1"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
+                "data1": oxygenData["OFBOFS1"]?.toString() ?? '--',
+                "data2": oxygenData["ARFLBOF"]?.toString() ?? '--',
                 "selected": false,
                 "i": 7,
               },
               {
                 "head": "O2 Flow BOFS2 (Nm3/hr)",
-                "data1": oxygenData["OFBOFS2"].toString(),
-                "data2": oxygenData["ARFLBOF"].toString(),
+                "data1": oxygenData["OFBOFS2"]?.toString() ?? '--',
+                "data2": oxygenData["ARFLBOF"]?.toString() ?? '--',
                 "selected": false,
                 "i": 8,
               },
               {
                 "head": "Ar Consumption A Shift (ton)",
-                "data1": oxygenData["AR_A"].toStringAsFixed(2),
+                "data1": double.tryParse(oxygenData["AR_A"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 9,
               },
               {
                 "head": "Ar Consumption B Shift (ton)",
-                "data1": oxygenData["AR_B"].toStringAsFixed(2),
+                "data1": double.tryParse(oxygenData["AR_B"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 10,
               },
               {
                 "head": "Ar Consumption C Shift (ton)",
-                "data1": oxygenData["AR_C"].toStringAsFixed(2),
+                "data1": double.tryParse(oxygenData["AR_C"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 11,
               },
               {
                 "head": "Ar Consumption Today (ton)",
-                "data1": oxygenData["AR_CUR"].toStringAsFixed(2),
+                "data1": double.tryParse(oxygenData["AR_CUR"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 12,
               },
               {
                 "head": "Ar Consumption Prev Day (ton)",
-                "data1": oxygenData["AR_PRED"].toStringAsFixed(2),
+                "data1": double.tryParse(oxygenData["AR_PRED"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 13,
@@ -188,7 +189,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),
@@ -252,7 +253,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows[0]["data1"]) >= 5000 &&
+                            color: (double.tryParse(rows[0]["data1"].toString()) ?? 0.0) >= 5000 &&
                                     state[0]["d1"] == 1 &&
                                     state[0]["d2"] == 1
                                 ? myColors["active"]
@@ -272,7 +273,7 @@ class OxygenPlantUtState extends State<OxygenPlantUt> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: double.parse(rows[0]["data2"]) >= 5000 &&
+                            color: (double.tryParse(rows[0]["data2"].toString()) ?? 0.0) >= 5000 &&
                                     state[1]["d1"] == 1 &&
                                     state[1]["d2"] == 1
                                 ? myColors["active"]

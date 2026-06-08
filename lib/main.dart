@@ -1,9 +1,15 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:in.iisco.upv/Screens/init_page.dart';
 // import 'package:in.iisco.upv/Screens/log_page2.dart';
 
 void main() {
+  if (Platform.isWindows || Platform.isLinux) {
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
+  }
   runApp(
     const ProviderScope(
       child: MyApp(),

@@ -63,85 +63,85 @@ class SinterPlantState extends State<SinterPlant> {
           rows = [
             {
               "head": "Emerg. Bunker Level[Ton]",
-              "data1": sinterData["SP1_ESSB"].toString(),
+              "data1": sinterData["SP1_ESSB"]?.toString() ?? '--',
               "data2": "",
               "selected": false,
               "i": 0,
             },
             {
               "head": "SLS Level[%]",
-              "data1": sinterData["SP1_SLS_LEVEL"].toStringAsFixed(2),
+              "data1": double.tryParse(sinterData["SP1_SLS_LEVEL"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": "",
               "selected": false,
               "i": 1,
             },
             {
               "head": "Suction Pressure[mmwc]",
-              "data1": sinterData["SP1_SUCTION"].toStringAsFixed(0),
-              "data2": sinterData["SP2_SUCTION"].toStringAsFixed(0),
+              "data1": double.tryParse(sinterData["SP1_SUCTION"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_SUCTION"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 2,
             },
             {
               "head": "Burner Avg Temp [Deg C]",
-              "data1": sinterData["SP1_BUNERAVGTEMP"].toStringAsFixed(0),
-              "data2": sinterData["SP2_BUNERAVGTEMP"].toStringAsFixed(0),
+              "data1": double.tryParse(sinterData["SP1_BUNERAVGTEMP"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_BUNERAVGTEMP"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 3,
             },
             {
               "head": "Machine Speed [m/min]",
-              "data1": sinterData["SP1_MCSPEED"].toStringAsFixed(2),
-              "data2": sinterData["SP2_MCSPEED"].toStringAsFixed(2),
+              "data1": double.tryParse(sinterData["SP1_MCSPEED"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_MCSPEED"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "selected": false,
               "i": 4,
             },
             {
               "head": "Waste Gas Fan [RPM]",
-              "data1": sinterData["SP1_WGRPM"].toStringAsFixed(0),
-              "data2": sinterData["SP2_WGRPM"].toStringAsFixed(0),
+              "data1": double.tryParse(sinterData["SP1_WGRPM"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_WGRPM"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 5,
             },
             {
               "head": "Mix Gas Flow [Nm3/hr]",
-              "data1": sinterData["SP1_MIXGASF"].toStringAsFixed(0),
-              "data2": sinterData["SP2_MIXGASF"].toStringAsFixed(0),
+              "data1": double.tryParse(sinterData["SP1_MIXGASF"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_MIXGASF"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 6,
             },
             {
               "head": "A Shift Prod",
-              "data1": sinterData["SP1_A"].toStringAsFixed(0),
-              "data2": sinterData["SP2_A"].toStringAsFixed(0),
+              "data1": double.tryParse(sinterData["SP1_A"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_A"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 7,
             },
             {
               "head": "B Shift Prod",
-              "data1": sinterData["SP1_B"].toStringAsFixed(0),
-              "data2": sinterData["SP2_B"].toStringAsFixed(0),
+              "data1": double.tryParse(sinterData["SP1_B"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_B"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 8,
             },
             {
               "head": "C Shift Prod",
-              "data1": sinterData["SP1_C"].toStringAsFixed(0),
-              "data2": sinterData["SP2_C"].toStringAsFixed(0),
+              "data1": double.tryParse(sinterData["SP1_C"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_C"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 9,
             },
             {
               "head": "Production [Ton]",
-              "data1": sinterData["SP1_PROD"].toStringAsFixed(0),
-              "data2": sinterData["SP2_PROD"].toStringAsFixed(0),
+              "data1": double.tryParse(sinterData["SP1_PROD"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_PROD"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 10,
             },
             {
               "head": "Cooler Pressure [mbar]",
-              "data1": sinterData["SP1_COOLERPRESS"].toStringAsFixed(2),
-              "data2": sinterData["SP2_COOLERPRESS"].toStringAsFixed(2),
+              "data1": double.tryParse(sinterData["SP1_COOLERPRESS"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_COOLERPRESS"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "selected": false,
               "i": 11,
             },
@@ -157,7 +157,7 @@ class SinterPlantState extends State<SinterPlant> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 2),
             content: const Center(
               child: Text('something wrong '),
             ),
@@ -168,7 +168,10 @@ class SinterPlantState extends State<SinterPlant> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
+          SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text('Error: ${e.toString()}'),
+          ),
         );
       }
     }
@@ -229,9 +232,9 @@ class SinterPlantState extends State<SinterPlant> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows[4]["data1"]) < 0.1
+                            color: (double.tryParse(rows[4]["data1"].toString()) ?? 0.0) < 0.1
                                 ? myColors["deactive"]
-                                : double.parse(rows[4]["data1"]) > 1
+                                : (double.tryParse(rows[4]["data1"].toString()) ?? 0.0) > 1
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),
@@ -249,9 +252,9 @@ class SinterPlantState extends State<SinterPlant> {
                         flex: 1,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: double.parse(rows[4]["data2"]) < 0.1
+                            color: (double.tryParse(rows[4]["data2"].toString()) ?? 0.0) < 0.1
                                 ? myColors["deactive"]
-                                : double.parse(rows[4]["data2"]) > 1
+                                : (double.tryParse(rows[4]["data2"].toString()) ?? 0.0) > 1
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),

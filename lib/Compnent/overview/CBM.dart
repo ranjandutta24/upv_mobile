@@ -62,27 +62,27 @@ class CbmState extends State<Cbm> {
           rows = [
             {
               "head": "METER 1 FLOW [SCM/hr]",
-              "data1": cbmData["M1FLOW"].toString(),
+              "data1": cbmData["M1FLOW"]?.toString() ?? '--',
               "selected": false,
               "i": 0,
             },
             {
               "head": "METER 2 FLOW [SCM/hr]",
-              "data1": cbmData["M2FLOW"].toStringAsFixed(2),
+              "data1": double.tryParse(cbmData["M2FLOW"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": "",
               "selected": false,
               "i": 1,
             },
             {
               "head": "INLET PRESSURE [kg/cm2]",
-              "data1": cbmData["INLETPRESSURE"].toStringAsFixed(2),
+              "data1": double.tryParse(cbmData["INLETPRESSURE"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": "",
               "selected": false,
               "i": 2,
             },
             {
               "head": "OUTLET PRESSURE [kg/cm2]",
-              "data1": cbmData["OUTLETPRESSURE"].toStringAsFixed(2),
+              "data1": double.tryParse(cbmData["OUTLETPRESSURE"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": "",
               "selected": false,
               "i": 3,
@@ -99,7 +99,7 @@ class CbmState extends State<Cbm> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 2),
             content: const Center(
               child: Text('Something wrong'),
             ),
@@ -110,7 +110,10 @@ class CbmState extends State<Cbm> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
+          SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text('Error: ${e.toString()}'),
+          ),
         );
       }
     }

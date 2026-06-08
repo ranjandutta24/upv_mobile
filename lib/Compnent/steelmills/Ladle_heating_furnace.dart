@@ -57,6 +57,7 @@ class LhfsmState extends State<Lhfsm> {
   lfService() async {
     if (mounted) {
       await ladleheatingfurnace().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -65,24 +66,24 @@ class LhfsmState extends State<Lhfsm> {
               {
                 "head": "Temp [DegC]",
                 "data1":
-                    "${lhfData["LF1_TEMP1"].toString()}/${lhfData["LF1_TEMP2"].toString()}/${lhfData["LF1_TEMP3"].toString()}",
+                    "${lhfData["LF1_TEMP1"]?.toString() ?? '--'}/${lhfData["LF1_TEMP2"]?.toString() ?? '--'}/${lhfData["LF1_TEMP3"]?.toString() ?? '--'}",
                 "data2":
-                    "${lhfData["LF2_TEMP1"].toString()}/${lhfData["LF2_TEMP2"].toString()}/${lhfData["LF2_TEMP3"].toString()}",
+                    "${lhfData["LF2_TEMP1"]?.toString() ?? '--'}/${lhfData["LF2_TEMP2"]?.toString() ?? '--'}/${lhfData["LF2_TEMP3"]?.toString() ?? '--'}",
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "Current [Amp]",
                 "data1":
-                    "${lhfData["LF1_I1"].toStringAsFixed(1)}/${lhfData["LF1_I2"].toStringAsFixed(1)}/${lhfData["LF1_I3"].toStringAsFixed(1)}",
+                    "${double.tryParse(lhfData["LF1_I1"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--'}/${double.tryParse(lhfData["LF1_I2"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--'}/${double.tryParse(lhfData["LF1_I3"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--'}",
                 "data2":
-                    "${lhfData["LF2_I1"].toStringAsFixed(1)}/${lhfData["LF2_I2"].toStringAsFixed(1)}/${lhfData["LF2_I3"].toStringAsFixed(1)}",
+                    "${double.tryParse(lhfData["LF2_I1"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--'}/${double.tryParse(lhfData["LF2_I2"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--'}/${double.tryParse(lhfData["LF2_I3"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--'}",
                 "selected": false,
                 "i": 1,
               },
             ];
             state = [
-              {"data1": lhfData["LF1_I1"], "data2": lhfData["LF2_I1"]}
+              {"data1": lhfData["LF1_I1"] ?? 0.0, "data2": lhfData["LF2_I1"] ?? 0.0}
             ];
             if (num != -1) {
               rows[num]["selected"] = true;
@@ -94,7 +95,7 @@ class LhfsmState extends State<Lhfsm> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

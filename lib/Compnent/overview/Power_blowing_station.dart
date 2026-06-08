@@ -71,13 +71,13 @@ class PbsState extends State<Pbs> {
               "head": "Steam Flow [TPH]",
               "data1": pbsData["PBS_B1MSF"] == null
                   ? "0"
-                  : pbsData["PBS_B1MSF"].toString(),
+                  : pbsData["PBS_B1MSF"]?.toString() ?? '--',
               "data2": pbsData["PBS_B2MSF"] == null
                   ? "0"
-                  : pbsData["PBS_B2MSF"].toString(),
+                  : pbsData["PBS_B2MSF"]?.toString() ?? '--',
               "data3": pbsData["PBS_B3MSF"] == null
                   ? "0"
-                  : pbsData["PBS_B3MSF"].toString(),
+                  : pbsData["PBS_B3MSF"]?.toString() ?? '--',
               "selected": false,
               "i": 0,
             },
@@ -85,13 +85,13 @@ class PbsState extends State<Pbs> {
               "head": "BFG FLOW [Nm3/hr]",
               "data1": pbsData["PBS_B1BFGF"] == null
                   ? "0"
-                  : pbsData["PBS_B1BFGF"].toString(),
+                  : pbsData["PBS_B1BFGF"]?.toString() ?? '--',
               "data2": pbsData["PBS_B2BFGF"] == null
                   ? "0"
-                  : pbsData["PBS_B2BFGF"].toString(),
+                  : pbsData["PBS_B2BFGF"]?.toString() ?? '--',
               "data3": pbsData["PBS_B3BFGF"] == null
                   ? "0"
-                  : pbsData["PBS_B3BFGF"].toString(),
+                  : pbsData["PBS_B3BFGF"]?.toString() ?? '--',
               "selected": false,
               "i": 1,
             },
@@ -99,13 +99,13 @@ class PbsState extends State<Pbs> {
               "head": "COG FLOW [Nm3/hr]",
               "data1": pbsData["PBS_B1COGF"] == null
                   ? "0"
-                  : pbsData["PBS_B1COGF"].toString(),
+                  : pbsData["PBS_B1COGF"]?.toString() ?? '--',
               "data2": pbsData["PBS_B2COGF"] == null
                   ? "0"
-                  : pbsData["PBS_B2COGF"].toString(),
+                  : pbsData["PBS_B2COGF"]?.toString() ?? '--',
               "data3": pbsData["PBS_B3COGF"] == null
                   ? "0"
-                  : pbsData["PBS_B3COGF"].toString(),
+                  : pbsData["PBS_B3COGF"]?.toString() ?? '--',
               "selected": false,
               "i": 2,
             },
@@ -113,13 +113,13 @@ class PbsState extends State<Pbs> {
               "head": "CBM FLOW [Nm3/hr]",
               "data1": pbsData["PBS_B1CBMF"] == null
                   ? "0"
-                  : pbsData["PBS_B1CBMF"].toString(),
+                  : pbsData["PBS_B1CBMF"]?.toString() ?? '--',
               "data2": pbsData["PBS_B2CBMF"] == null
                   ? "0"
-                  : pbsData["PBS_B2CBMF"].toString(),
+                  : pbsData["PBS_B2CBMF"]?.toString() ?? '--',
               "data3": pbsData["PBS_B3CBMF"] == null
                   ? "0"
-                  : pbsData["PBS_B3CBMF"].toString(),
+                  : pbsData["PBS_B3CBMF"]?.toString() ?? '--',
               "selected": false,
               "i": 3,
             }
@@ -129,13 +129,13 @@ class PbsState extends State<Pbs> {
               "head": "Generation [MW]",
               "data1": pbsData["PBS_STG1GEN"] == null
                   ? "0"
-                  : pbsData["PBS_STG1GEN"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STG1GEN"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": pbsData["PBS_STG2GEN"] == null
                   ? "0"
-                  : pbsData["PBS_STG2GEN"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STG2GEN"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data3": pbsData["PBS_STG3GEN"] == null
                   ? "0"
-                  : pbsData["PBS_STG3GEN"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STG3GEN"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "selected": false,
               "i": 4,
             },
@@ -143,13 +143,13 @@ class PbsState extends State<Pbs> {
               "head": "Steam Flow [TPH]",
               "data1": pbsData["PBS_STG1SF"] == null
                   ? "0"
-                  : pbsData["PBS_STG1SF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STG1SF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": pbsData["PBS_STG2SF"] == null
                   ? "0"
-                  : pbsData["PBS_STG2SF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STG2SF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data3": pbsData["PBS_STG3SF"] == null
                   ? "0"
-                  : pbsData["PBS_STG3SF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STG3SF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "selected": false,
               "i": 5,
             },
@@ -159,13 +159,13 @@ class PbsState extends State<Pbs> {
               "head": "Discharge [Nm3/min]",
               "data1": pbsData["PBS_BL1DF"] == null
                   ? "0"
-                  : pbsData["PBS_BL1DF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_BL1DF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": pbsData["PBS_BL2DF"] == null
                   ? "0"
-                  : pbsData["PBS_BL2DF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_BL2DF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data3": pbsData["PBS_BL3DF"] == null
                   ? "0"
-                  : pbsData["PBS_BL3DF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_BL3DF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "selected": false,
               "i": 6,
             },
@@ -173,13 +173,13 @@ class PbsState extends State<Pbs> {
               "head": "Steam Flow [TPH]",
               "data1": pbsData["PBS_STB1SF"] == null
                   ? "0"
-                  : pbsData["PBS_STB1SF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STB1SF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": pbsData["PBS_STB2SF"] == null
                   ? "0"
-                  : pbsData["PBS_STB2SF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STB2SF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data3": pbsData["PBS_STB3SF"] == null
                   ? "0"
-                  : pbsData["PBS_STB3SF"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_STB3SF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "selected": false,
               "i": 7,
             },
@@ -189,10 +189,10 @@ class PbsState extends State<Pbs> {
               "head": "Generation [MW]",
               "data1": pbsData["PBS_BPTGEN"] == null
                   ? "0"
-                  : pbsData["PBS_BPTGEN"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["PBS_BPTGEN"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": pbsData["BF_TRTGMW"] == null
                   ? "0"
-                  : pbsData["BF_TRTGMW"].toStringAsFixed(2),
+                  : double.tryParse(pbsData["BF_TRTGMW"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data3": "",
               "selected": false,
               "i": 8,
@@ -208,7 +208,7 @@ class PbsState extends State<Pbs> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 2),
             content: const Center(
               child: Text('Something wrong'),
             ),
@@ -219,7 +219,10 @@ class PbsState extends State<Pbs> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
+          SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text('Error: ${e.toString()}'),
+          ),
         );
       }
     }
@@ -275,9 +278,9 @@ class PbsState extends State<Pbs> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows[0]["data1"]) <= 10
+                            color: (double.tryParse(rows[0]["data1"].toString()) ?? 0.0) <= 10
                                 ? myColors["deactive"]
-                                : double.parse(rows[0]["data1"]) > 10
+                                : (double.tryParse(rows[0]["data1"].toString()) ?? 0.0) > 10
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 255, 193, 7),
                           ),
@@ -302,9 +305,9 @@ class PbsState extends State<Pbs> {
                                   width: 2.0,
                                 ),
                               ),
-                              color: double.parse(rows[0]["data2"]) <= 10
+                              color: (double.tryParse(rows[0]["data2"].toString()) ?? 0.0) <= 10
                                   ? myColors["deactive"]
-                                  : double.parse(rows[0]["data2"]) > 10
+                                  : (double.tryParse(rows[0]["data2"].toString()) ?? 0.0) > 10
                                       ? myColors["active"]
                                       : const Color.fromARGB(0, 255, 193, 7)),
                           padding: const EdgeInsets.symmetric(
@@ -322,9 +325,9 @@ class PbsState extends State<Pbs> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                              color: double.parse(rows[0]["data3"]) <= 10
+                              color: (double.tryParse(rows[0]["data3"].toString()) ?? 0.0) <= 10
                                   ? myColors["deactive"]
-                                  : double.parse(rows[0]["data3"]) > 10
+                                  : (double.tryParse(rows[0]["data3"].toString()) ?? 0.0) > 10
                                       ? myColors["active"]
                                       : const Color.fromARGB(0, 255, 193, 7)),
                           padding: const EdgeInsets.symmetric(
@@ -412,9 +415,9 @@ class PbsState extends State<Pbs> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows2[0]["data1"]) <= 1
+                            color: (double.tryParse(rows2[0]["data1"].toString()) ?? 0.0) <= 1
                                 ? myColors["deactive"]
-                                : double.parse(rows2[0]["data1"]) > 3
+                                : (double.tryParse(rows2[0]["data1"].toString()) ?? 0.0) > 3
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 255, 193, 7),
                           ),
@@ -439,9 +442,9 @@ class PbsState extends State<Pbs> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows2[0]["data2"]) <= 1
+                            color: (double.tryParse(rows2[0]["data2"].toString()) ?? 0.0) <= 1
                                 ? myColors["deactive"]
-                                : double.parse(rows2[0]["data2"]) > 3
+                                : (double.tryParse(rows2[0]["data2"].toString()) ?? 0.0) > 3
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 255, 193, 7),
                           ),
@@ -460,9 +463,9 @@ class PbsState extends State<Pbs> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: double.parse(rows2[0]["data3"]) <= 1
+                            color: (double.tryParse(rows2[0]["data3"].toString()) ?? 0.0) <= 1
                                 ? myColors["deactive"]
-                                : double.parse(rows2[0]["data3"]) > 3
+                                : (double.tryParse(rows2[0]["data3"].toString()) ?? 0.0) > 3
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 255, 193, 7),
                           ),
@@ -552,9 +555,9 @@ class PbsState extends State<Pbs> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows3[0]["data1"]) <= 300
+                            color: (double.tryParse(rows3[0]["data1"].toString()) ?? 0.0) <= 300
                                 ? myColors["deactive"]
-                                : double.parse(rows3[0]["data1"]) > 300
+                                : (double.tryParse(rows3[0]["data1"].toString()) ?? 0.0) > 300
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 255, 193, 7),
                           ),
@@ -579,9 +582,9 @@ class PbsState extends State<Pbs> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows3[0]["data2"]) <= 300
+                            color: (double.tryParse(rows3[0]["data2"].toString()) ?? 0.0) <= 300
                                 ? myColors["deactive"]
-                                : double.parse(rows3[0]["data2"]) > 300
+                                : (double.tryParse(rows3[0]["data2"].toString()) ?? 0.0) > 300
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 255, 193, 7),
                           ),
@@ -600,9 +603,9 @@ class PbsState extends State<Pbs> {
                         flex: 2,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: double.parse(rows3[0]["data3"]) <= 300
+                            color: (double.tryParse(rows3[0]["data3"].toString()) ?? 0.0) <= 300
                                 ? myColors["deactive"]
-                                : double.parse(rows3[0]["data3"]) > 300
+                                : (double.tryParse(rows3[0]["data3"].toString()) ?? 0.0) > 300
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 255, 193, 7),
                           ),
@@ -692,7 +695,7 @@ class PbsState extends State<Pbs> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows4[0]["data1"]) < 1
+                            color: (double.tryParse(rows4[0]["data1"].toString()) ?? 0.0) < 1
                                 ? myColors["deactive"]
                                 : myColors["active"],
                           ),
@@ -717,7 +720,7 @@ class PbsState extends State<Pbs> {
                                 width: 2.0,
                               ),
                             ),
-                            color: double.parse(rows4[0]["data2"]) < 0.1
+                            color: (double.tryParse(rows4[0]["data2"].toString()) ?? 0.0) < 0.1
                                 ? myColors["deactive"]
                                 : myColors["active"],
                           ),

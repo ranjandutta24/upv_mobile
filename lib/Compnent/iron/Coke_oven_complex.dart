@@ -54,6 +54,7 @@ class CocState extends State<Coc> {
   cocService() async {
     if (mounted) {
       await cokeovencomplexservice().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -61,43 +62,43 @@ class CocState extends State<Coc> {
             rows = [
               {
                 "head": "COG Flow Block 1/2 [Nm3/hr]",
-                "data1": cocData["CO_GAS1_F"].toStringAsFixed(0),
-                "data2": cocData["CO_GAS2_F"].toStringAsFixed(0),
+                "data1": double.tryParse(cocData["CO_GAS1_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(cocData["CO_GAS2_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "COG Press.Block 1/2 [MMWC]",
-                "data1": cocData["CO_GAS1_P"].toStringAsFixed(0),
-                "data2": cocData["CO_GAS2_P"].toStringAsFixed(0),
+                "data1": double.tryParse(cocData["CO_GAS1_P"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(cocData["CO_GAS2_P"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "LP Steam Press.1/2 [Kg/cm2]",
-                "data1": cocData["CD_PR_LPS1_P"].toStringAsFixed(0),
-                "data2": cocData["CD_PR_LPS2_P"].toStringAsFixed(0),
+                "data1": double.tryParse(cocData["CD_PR_LPS1_P"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(cocData["CD_PR_LPS2_P"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "LP Steam Flow.1/2 [tph]",
-                "data1": cocData["CD_PR_LPS1_F"].toStringAsFixed(0),
-                "data2": cocData["CD_PR_LPS2_F"].toStringAsFixed(0),
+                "data1": double.tryParse(cocData["CD_PR_LPS1_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(cocData["CD_PR_LPS2_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "HP Steam Press.1/2[Kg/cm2]",
-                "data1": cocData["CD_HPS1_P"].toStringAsFixed(0),
-                "data2": cocData["CD_HPS2_P"].toStringAsFixed(0),
+                "data1": double.tryParse(cocData["CD_HPS1_P"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(cocData["CD_HPS2_P"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "HP Steam Flow[tph]",
-                "data1": cocData["CD_HPS1_F"].toStringAsFixed(0),
-                "data2": cocData["CD_HPS2_F"].toStringAsFixed(0),
+                "data1": double.tryParse(cocData["CD_HPS1_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(cocData["CD_HPS2_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 5,
               },
@@ -112,7 +113,7 @@ class CocState extends State<Coc> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

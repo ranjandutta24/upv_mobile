@@ -88,7 +88,7 @@ class _LoginState extends ConsumerState<Login> {
       // ignore: use_build_context_synchronously
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          duration: const Duration(seconds: 3),
+          duration: const Duration(seconds: 2),
           content: const Center(
             child: Text('Login Failed, wrong userid or password'),
           ),

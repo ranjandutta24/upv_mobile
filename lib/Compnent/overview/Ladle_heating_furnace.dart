@@ -79,63 +79,63 @@ class LhfState extends State<Lhf> {
             {
               "head": "Temp [DegC]",
               "data1":
-                  "${lhfData["LF1_TEMP1"].toString()}/${lhfData["LF1_TEMP2"].toString()}/${lhfData["LF1_TEMP3"].toString()}",
+                  "${lhfData["LF1_TEMP1"]?.toString() ?? '--'}/${lhfData["LF1_TEMP2"]?.toString() ?? '--'}/${lhfData["LF1_TEMP3"]?.toString() ?? '--'}",
               "data2":
-                  "${lhfData["LF2_TEMP1"].toString()}/${lhfData["LF2_TEMP2"].toString()}/${lhfData["LF2_TEMP3"].toString()}",
+                  "${lhfData["LF2_TEMP1"]?.toString() ?? '--'}/${lhfData["LF2_TEMP2"]?.toString() ?? '--'}/${lhfData["LF2_TEMP3"]?.toString() ?? '--'}",
               "selected": false,
               "i": 0,
             },
             {
               "head": "CaSi/Fe Wire Spd SP/Act",
               "data1":
-                  "${lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"].toString()}/${lhfData["ACTSPD1"] == null ? '0' : lhfData["ACTSPD1"].toString()}",
+                  "${lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"]?.toString() ?? '--'}/${lhfData["ACTSPD1"] == null ? '0' : lhfData["ACTSPD1"]?.toString() ?? '--'}",
               "data2":
-                  "${lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"].toString()}/${lhfData["ACTSPD3"] == null ? '0' : lhfData["ACTSPD3"].toString()}",
+                  "${lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"]?.toString() ?? '--'}/${lhfData["ACTSPD3"] == null ? '0' : lhfData["ACTSPD3"]?.toString() ?? '--'}",
               "selected": false,
               "i": 1,
             },
             {
               "head": "CaSi/Fe Wire Lth SP/Act",
               "data1":
-                  "${lhfData["SPACTLENGTH1"] == null ? '0' : lhfData["SPACTLENGTH1"].toString()}/${lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"].toString()}",
+                  "${lhfData["SPACTLENGTH1"] == null ? '0' : lhfData["SPACTLENGTH1"]?.toString() ?? '--'}/${lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"]?.toString() ?? '--'}",
               "data2":
-                  "${lhfData["SPACTLENGTH3"] == null ? '0' : lhfData["SPACTLENGTH3"].toString()}/${lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"].toString()}",
+                  "${lhfData["SPACTLENGTH3"] == null ? '0' : lhfData["SPACTLENGTH3"]?.toString() ?? '--'}/${lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"]?.toString() ?? '--'}",
               "selected": false,
               "i": 2,
             },
             {
               "head": "CaSi/Fe Wire Wt SP/Act ",
               "data1":
-                  "${lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"].toString()}/${lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"].toString()}",
+                  "${lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"]?.toString() ?? '--'}/${lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"]?.toString() ?? '--'}",
               "data2":
-                  "${lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"].toString()}/${lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"].toString()}",
+                  "${lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"]?.toString() ?? '--'}/${lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"]?.toString() ?? '--'}",
               "selected": false,
               "i": 3,
             },
             {
               "head": "Al Wire Spd SP/Act ",
               "data1":
-                  "${lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"].toString()}/${lhfData["ACTSPD2"] == null ? '0' : lhfData["ACTSPD2"].toString()}",
+                  "${lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"]?.toString() ?? '--'}/${lhfData["ACTSPD2"] == null ? '0' : lhfData["ACTSPD2"]?.toString() ?? '--'}",
               "data2":
-                  "${lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"].toString()}/${lhfData["ACTSPD4"] == null ? '0' : lhfData["ACTSPD4"].toString()}",
+                  "${lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"]?.toString() ?? '--'}/${lhfData["ACTSPD4"] == null ? '0' : lhfData["ACTSPD4"]?.toString() ?? '--'}",
               "selected": false,
               "i": 4,
             },
             {
               "head": "Al Wire Lth SP/Act ",
               "data1":
-                  "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"].toString()}/${lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"].toStringAsFixed(2)}",
+                  "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"]?.toString() ?? '--'}/${lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"] == null ? '0' : double.tryParse(lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
               "data2":
-                  "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"].toString()}/${lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"].toStringAsFixed(2)}",
+                  "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"]?.toString() ?? '--'}/${lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"] == null ? '0' : double.tryParse(lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
               "selected": false,
               "i": 5,
             },
             {
               "head": "Al Wire Wt SP/Act ",
               "data1":
-                  "${lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"].toString()}/${lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"].toString()}",
+                  "${lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"]?.toString() ?? '--'}/${lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"]?.toString() ?? '--'}",
               "data2":
-                  "${lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"].toString()}/${lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"].toString()}",
+                  "${lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"]?.toString() ?? '--'}/${lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"]?.toString() ?? '--'}",
               "selected": false,
               "i": 6,
             },
@@ -153,7 +153,7 @@ class LhfState extends State<Lhf> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 2),
             content: const Center(
               child: Text('Something wrong'),
             ),
@@ -164,7 +164,10 @@ class LhfState extends State<Lhf> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
+          SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text('Error: ${e.toString()}'),
+          ),
         );
       }
     }

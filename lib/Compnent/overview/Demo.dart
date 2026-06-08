@@ -92,7 +92,7 @@ class DemoState extends State<Demo> {
                             color: status[0]["CCP1"] <= 0.0
                                 ? myColors["deactive"]
                                 : status[0]["CCP1"] >= 0.2 &&
-                                        double.parse(rows[3]["data1"]) > 2
+                                        (double.tryParse(rows[3]["data1"].toString()) ?? 0.0) > 2
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),
@@ -119,7 +119,7 @@ class DemoState extends State<Demo> {
                             color: status[0]["CCP2"] <= 0.0
                                 ? myColors["deactive"]
                                 : status[0]["CCP2"] >= 0.2 &&
-                                        double.parse(rows[3]["data2"]) > 2
+                                        (double.tryParse(rows[3]["data2"].toString()) ?? 0.0) > 2
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),
@@ -140,7 +140,7 @@ class DemoState extends State<Demo> {
                             color: status[0]["CCP3"] <= 0.0
                                 ? myColors["deactive"]
                                 : status[0]["CCP3"] >= 0.2 &&
-                                        double.parse(rows[3]["data3"]) > 2
+                                        (double.tryParse(rows[3]["data3"].toString()) ?? 0.0) > 2
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),

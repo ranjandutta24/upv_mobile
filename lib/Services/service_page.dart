@@ -14,7 +14,7 @@ login(payload) async {
         body: payload);
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -44,7 +44,7 @@ blastfurnace() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -64,7 +64,7 @@ basicoxygenfurnace() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -84,7 +84,7 @@ mills() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -104,7 +104,7 @@ technoeconomics() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -124,7 +124,7 @@ sinterplant() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -144,7 +144,7 @@ continuouscastingplant() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -164,7 +164,7 @@ powerblowingstation() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -184,7 +184,7 @@ cbm() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -204,7 +204,7 @@ cokeovens() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -224,7 +224,7 @@ ladleheatingfurnace() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -244,7 +244,7 @@ byproductplant() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -264,7 +264,7 @@ limedolocalcinationplant() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -284,7 +284,7 @@ oxygenplant() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -304,7 +304,7 @@ bfstockhouse() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -324,7 +324,7 @@ wmdpumphouse() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -344,7 +344,7 @@ cdcpservice() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -364,7 +364,7 @@ stoveservice() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -384,7 +384,7 @@ gcpservice() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -404,7 +404,7 @@ cokeovencomplexservice() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -424,7 +424,7 @@ bofgasholder() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -444,7 +444,7 @@ gasutility() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -464,7 +464,7 @@ compressedairstation() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -484,7 +484,7 @@ swws() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -504,7 +504,7 @@ craneladleweight() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),
@@ -524,7 +524,7 @@ torpedoathmrs() async {
     );
   } catch (error) {
     SnackBar(
-      duration: const Duration(seconds: 3),
+      duration: const Duration(seconds: 2),
       content: const Center(
         child: Text('api call error'),
       ),

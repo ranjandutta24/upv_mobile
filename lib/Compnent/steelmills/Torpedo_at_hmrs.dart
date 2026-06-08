@@ -41,6 +41,7 @@ class HmrsState extends State<Hmrs> {
   hmrsService() async {
     if (mounted) {
       await torpedoathmrs().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
 
@@ -55,9 +56,9 @@ class HmrsState extends State<Hmrs> {
                 {
                   "head":
                       "${time.day.toString()}/${time.month.toString()}/${time.year.toString()}, ${time.hour.toString()}:${time.minute.toString()}",
-                  "data1": hmrsData[0]["TLCNO"].toString(),
+                  "data1": hmrsData[0]["TLCNO"]?.toString() ?? '--',
                   "data2":
-                      double.parse(hmrsData[0]["NETWT"]).toStringAsFixed(2),
+                      (double.tryParse(hmrsData[0]["NETWT"].toString()) ?? 0.0).toStringAsFixed(2),
                   "selected": false,
                   "i": 0,
                 },
@@ -78,7 +79,7 @@ class HmrsState extends State<Hmrs> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),
@@ -238,7 +239,7 @@ Widget _row(t, d1, d2) {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                 child: Text(
-                  double.parse(d2).toStringAsFixed(2),
+                  (double.tryParse(d2.toString()) ?? 0.0).toStringAsFixed(2),
                   style: const TextStyle(
                     fontWeight: FontWeight.w600,
                   ),

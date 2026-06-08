@@ -54,6 +54,7 @@ class CbmUtState extends State<CbmUt> {
   cbmService() async {
     if (mounted) {
       await cbm().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -61,39 +62,39 @@ class CbmUtState extends State<CbmUt> {
             rows = [
               {
                 "head": "METER 1 VOLUME [SCM]",
-                "data1": cbmData["M1VOLUME"].toString(),
+                "data1": cbmData["M1VOLUME"]?.toString() ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "METER 1 FLOW [SCM/hr]",
-                "data1": cbmData["M1FLOW"].toString(),
+                "data1": cbmData["M1FLOW"]?.toString() ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "METER 2 VOLUME [SCM]",
-                "data1": cbmData["M2VOLUME"].toString(),
+                "data1": cbmData["M2VOLUME"]?.toString() ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "METER 2 FLOW [SCM/hr]",
-                "data1": cbmData["M2FLOW"].toStringAsFixed(2),
+                "data1": double.tryParse(cbmData["M2FLOW"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "INLET PRESSURE [kg/cm2]",
-                "data1": cbmData["INLETPRESSURE"].toStringAsFixed(2),
+                "data1": double.tryParse(cbmData["INLETPRESSURE"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "OUTLET PRESSURE [kg/cm2]",
-                "data1": cbmData["OUTLETPRESSURE"].toStringAsFixed(2),
+                "data1": double.tryParse(cbmData["OUTLETPRESSURE"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 5,
@@ -110,7 +111,7 @@ class CbmUtState extends State<CbmUt> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

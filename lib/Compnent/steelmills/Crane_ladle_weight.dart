@@ -57,6 +57,7 @@ class clwsmState extends State<clwsm> {
   craneladleweightService() async {
     if (mounted) {
       await craneladleweight().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -64,13 +65,13 @@ class clwsmState extends State<clwsm> {
             rows = [
               {
                 "head": "Weight Crane 1223 [Ton]",
-                "data1": cldData["CRANE3"].toString(),
+                "data1": cldData["CRANE3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "Weight Crane 1224 [Ton]",
-                "data1": cldData["CRANE4"].toString(),
+                "data1": cldData["CRANE4"]?.toString() ?? '--',
                 "selected": false,
                 "i": 1,
               },
@@ -88,7 +89,7 @@ class clwsmState extends State<clwsm> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),
