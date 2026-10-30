@@ -54,33 +54,182 @@ class LhfsmState extends State<Lhfsm> {
   List<dynamic> rows = [];
   List<dynamic> state = [];
 
+  // Helper: resolve LF heat status number to text
+  String _statusText(dynamic statusCode) {
+    if (statusCode == 1) return "Start of Heat";
+    if (statusCode == 3) return "Arcing";
+    if (statusCode == 5) return "Arcing Stopped";
+    if (statusCode == 8) return "Heat End";
+    return "Stopped";
+  }
+
+  // Helper: resolve LF heat status number to color
+  Color _statusColor(dynamic statusCode) {
+    if (statusCode == 1) return const Color(0xFFFFC700);
+    if (statusCode == 3) return const Color(0xFF416D19);
+    if (statusCode == 5) return const Color(0xFF9A031E);
+    if (statusCode == 8) return const Color(0xFF9A031E);
+    return const Color(0xFF9A031E);
+  }
+
+  // Safe string conversion
+  String _safe(dynamic v, {String def = '0'}) =>
+      v == null ? def : v.toString();
+
+  // Safe double toFixed
+  String _safeFixed(dynamic v, int decimals, {String def = '0.00'}) {
+    if (v == null) return def;
+    final d = double.tryParse(v.toString());
+    if (d == null || d.isNaN) return def;
+    return d.toStringAsFixed(decimals);
+  }
+
+  // Safe int round
+  String _safeRound(dynamic v, {String def = '0'}) {
+    if (v == null) return def;
+    final d = double.tryParse(v.toString());
+    if (d == null || d.isNaN) return def;
+    return d.round().toString();
+  }
+
+  // Mimics JS: parseFloat(v).toFixed(2)
+  // Returns "NaN" when value is null or not a number — intentional, matching web behaviour
+  String _jsFixed(dynamic v, int decimals) {
+    if (v == null) return 'NaN';
+    final d = double.tryParse(v.toString());
+    if (d == null || d.isNaN) return 'NaN';
+    return d.toStringAsFixed(decimals);
+  }
+
   lfService() async {
     if (mounted) {
       await ladleheatingfurnace().then((data) {
-        if (data != null) {
-          // print(data.body);
+        if (data != null && mounted) {
           setState(() {
             lhfData = json.decode(data.body);
+
+            final lf1StatusColor = _statusColor(lhfData["LF1_HEAT_STATUS"]);
+            final lf2StatusColor = _statusColor(lhfData["LF2_HEAT_STATUS"]);
+            final lf1StatusText = _statusText(lhfData["LF1_HEAT_STATUS"]);
+            final lf2StatusText = _statusText(lhfData["LF2_HEAT_STATUS"]);
+
             rows = [
               {
-                "head": "Temp [DegC]",
-                "data1":
-                    "${lhfData["LF1_TEMP1"].toString()}/${lhfData["LF1_TEMP2"].toString()}/${lhfData["LF1_TEMP3"].toString()}",
-                "data2":
-                    "${lhfData["LF2_TEMP1"].toString()}/${lhfData["LF2_TEMP2"].toString()}/${lhfData["LF2_TEMP3"].toString()}",
+                "head": "Status",
+                "data1": lf1StatusText,
+                "data2": lf2StatusText,
+                "color1": lf1StatusColor,
+                "color2": lf2StatusColor,
+                "isStatus": true,
                 "selected": false,
                 "i": 0,
               },
               {
-                "head": "Current [Amp]",
-                "data1":
-                    "${lhfData["LF1_I1"].toStringAsFixed(1)}/${lhfData["LF1_I2"].toStringAsFixed(1)}/${lhfData["LF1_I3"].toStringAsFixed(1)}",
-                "data2":
-                    "${lhfData["LF2_I1"].toStringAsFixed(1)}/${lhfData["LF2_I2"].toStringAsFixed(1)}/${lhfData["LF2_I3"].toStringAsFixed(1)}",
+                "head": "Arcing Time [min]",
+                "data1": _safe(lhfData["LF1_ARCHING_TIME"]),
+                "data2": _safe(lhfData["LF2_ARCHING_TIME"]),
+                "isStatus": false,
                 "selected": false,
                 "i": 1,
               },
+              {
+                "head": "Treatment Time [min]",
+                "data1": _safe(lhfData["LF1_TREATMENT_TIME"]),
+                "data2": _safe(lhfData["LF2_TREATMENT_TIME"]),
+                "isStatus": false,
+                "selected": false,
+                "i": 2,
+              },
+              {
+                "head": "Tap_Selected",
+                "data1": _safe(lhfData["LF1_TRAFO_TAP"]),
+                "data2": _safe(lhfData["LF2_TRAFO_TAP"]),
+                "isStatus": false,
+                "selected": false,
+                "i": 3,
+              },
+              {
+                "head": "Energy_Consm [MWh]",
+                "data1": _safeFixed(lhfData["LF1_ACT_ENERGY_CONS"], 2),
+                "data2": _safeFixed(lhfData["LF2_ACT_ENERGY_CONS"], 2),
+                "isStatus": false,
+                "selected": false,
+                "i": 4,
+              },
+              {
+                "head": "Ladle No",
+                "data1": _safe(lhfData["LF1_LADLE_ID"]),
+                "data2": _safe(lhfData["LF2_LADLE_ID"]),
+                "isStatus": false,
+                "selected": false,
+                "i": 5,
+              },
+              {
+                "head": "Booster Fan Status",
+                "data1": (lhfData["LF1_BOOSTERFAN_ON"] == 1) ? "On" : "Off",
+                "data2": (lhfData["LF2_BOOSTERFAN_ON"] == 1) ? "On" : "Off",
+                "isStatus": false,
+                "selected": false,
+                "i": 6,
+              },
+              {
+                "head": "CaSi/Fe Wire Spd SP/Act",
+                "data1":
+                    "${_safeRound(lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"])} / ${_jsFixed(lhfData["ACTSPD1"], 2)}",
+                "data2":
+                    "${_safeRound(lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"])} / ${_jsFixed(lhfData["ACTSPD3"], 2)}",
+                "isStatus": false,
+                "selected": false,
+                "i": 7,
+              },
+              {
+                "head": "CaSi/Fe Wire Lth Act",
+                "data1": _safeRound(lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"]),
+                "data2": _safeRound(lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"]),
+                "isStatus": false,
+                "selected": false,
+                "i": 8,
+              },
+              {
+                "head": "CaSi/Fe Wire Wt SP/Act",
+                "data1":
+                    "${_safeRound(lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"])} / ${_safeRound(lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"])}",
+                "data2":
+                    "${_safeRound(lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"])} / ${_safeRound(lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"])}",
+                "isStatus": false,
+                "selected": false,
+                "i": 9,
+              },
+              {
+                "head": "Al Wire Spd SP/Act",
+                "data1":
+                    "${_safeRound(lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"])} / ${_jsFixed(lhfData["ACTSPD4"], 2)}",
+                "data2":
+                    "${_safeRound(lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"])} / ${_jsFixed(lhfData["ACTSPD4"], 2)}",
+                "isStatus": false,
+                "selected": false,
+                "i": 10,
+              },
+              {
+                "head": "Al Wire Lth Act",
+                "data1": _safeRound(lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"]),
+                "data2": _safeRound(lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"]),
+                "isStatus": false,
+                "selected": false,
+                "i": 11,
+              },
+              {
+                "head": "Al Wire Wt SP/Act",
+                "data1":
+                    "${_safeRound(lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"])} / ${_safeRound(lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"])}",
+                "data2":
+                    "${_safeRound(lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"])} / ${_safeRound(lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"])}",
+                "isStatus": false,
+                "selected": false,
+                "i": 12,
+              },
             ];
+
             state = [
               {"data1": lhfData["LF1_I1"], "data2": lhfData["LF2_I1"]}
             ];
@@ -89,7 +238,7 @@ class LhfsmState extends State<Lhfsm> {
             }
             loading = false;
           });
-        } else {
+        } else if (mounted) {
           ScaffoldMessenger.of(context).clearSnackBars();
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
@@ -114,6 +263,7 @@ class LhfsmState extends State<Lhfsm> {
           ? const Text(" ")
           : Column(
               children: [
+                // Header row
                 Container(
                   decoration: BoxDecoration(
                       border: Border.all(
@@ -129,7 +279,7 @@ class LhfsmState extends State<Lhfsm> {
                           flex: 10,
                           child: Container(
                             decoration: BoxDecoration(
-                              color: Color.fromARGB(238, 205, 205, 205),
+                              color: const Color.fromARGB(238, 205, 205, 205),
                               border: Border(
                                 right: BorderSide(
                                   color: borderColor,
@@ -154,11 +304,13 @@ class LhfsmState extends State<Lhfsm> {
                                 width: 2.0,
                               ),
                             ),
-                            color: state[0]["data1"] <= 0.1
+                            color: state[0]["data1"] == null
                                 ? myColors["deactive"]
-                                : state[0]["data1"] >= 1.0
-                                    ? myColors["active"]
-                                    : const Color.fromARGB(0, 255, 193, 7),
+                                : (double.tryParse(state[0]["data1"].toString()) ?? 0) <= 0.1
+                                    ? myColors["deactive"]
+                                    : (double.tryParse(state[0]["data1"].toString()) ?? 0) >= 1.0
+                                        ? myColors["active"]
+                                        : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
@@ -174,11 +326,13 @@ class LhfsmState extends State<Lhfsm> {
                         flex: 8,
                         child: Container(
                           decoration: BoxDecoration(
-                            color: state[0]["data2"] <= 0.1
+                            color: state[0]["data2"] == null
                                 ? myColors["deactive"]
-                                : state[0]["data2"] >= 1.0
-                                    ? myColors["active"]
-                                    : const Color.fromARGB(0, 255, 193, 7),
+                                : (double.tryParse(state[0]["data2"].toString()) ?? 0) <= 0.1
+                                    ? myColors["deactive"]
+                                    : (double.tryParse(state[0]["data2"].toString()) ?? 0) >= 1.0
+                                        ? myColors["active"]
+                                        : const Color.fromARGB(0, 255, 193, 7),
                           ),
                           padding: const EdgeInsets.symmetric(
                               vertical: 5, horizontal: 0),
@@ -198,30 +352,115 @@ class LhfsmState extends State<Lhfsm> {
                     onTap: () {
                       _changeColor(r["i"]);
                     },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: r["selected"] == true
-                            ? _containerColor
-                            : _containerColora,
-                        border: Border.all(
-                          color: borderColor, // Border color
-                          width: 1.0,
-                        ),
-                      ),
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 0, horizontal: 3),
-                      child: _row(
-                          r["head"],
-                          r["data1"],
-                          r["data2"],
-                          r["selected"] == true ? _containerColora : _textColor,
-                          r["i"]),
-                    ),
+                    child: r["isStatus"] == true
+                        ? _statusRow(
+                            r["head"],
+                            r["data1"],
+                            r["data2"],
+                            r["color1"] as Color,
+                            r["color2"] as Color,
+                          )
+                        : Container(
+                            decoration: BoxDecoration(
+                              color: r["selected"] == true
+                                  ? _containerColor
+                                  : _containerColora,
+                              border: Border.all(
+                                color: borderColor,
+                                width: 1.0,
+                              ),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                                vertical: 0, horizontal: 3),
+                            child: _row(
+                                r["head"],
+                                r["data1"],
+                                r["data2"],
+                                r["selected"] == true
+                                    ? _containerColora
+                                    : _textColor,
+                                r["i"]),
+                          ),
                   ),
               ],
             ),
     );
   }
+}
+
+// Status row with coloured cells per LF
+Widget _statusRow(
+  String head,
+  String d1,
+  String d2,
+  Color color1,
+  Color color2,
+) {
+  return Container(
+    decoration: BoxDecoration(
+      border: Border.all(color: borderColor, width: 1.0),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Expanded(
+          flex: 10,
+          child: Container(
+            height: 40,
+            decoration: BoxDecoration(
+              color: const Color.fromARGB(238, 205, 205, 205),
+              border: Border(
+                right: BorderSide(color: borderColor, width: 2.0),
+              ),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 3),
+            child: Text(
+              head,
+              style: TextStyle(
+                  fontWeight: FontWeight.bold, color: borderColor, fontSize: 12),
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 8,
+          child: Container(
+            height: 40,
+            decoration: BoxDecoration(
+              color: color1,
+              border: Border(
+                right: BorderSide(color: borderColor, width: 2.0),
+              ),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 2),
+            child: Text(
+              d1,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 11),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 8,
+          child: Container(
+            height: 40,
+            color: color2,
+            padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 2),
+            child: Text(
+              d2,
+              style: const TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 11),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }
 
 Widget _row(h, d1, d2, color, i) {
@@ -245,6 +484,7 @@ Widget _row(h, d1, d2, color, i) {
             style: TextStyle(
               color: color,
               fontWeight: FontWeight.w600,
+              fontSize: 12,
             ),
           ),
         ),
