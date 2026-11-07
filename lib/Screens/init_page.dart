@@ -31,13 +31,12 @@ class _InitState extends ConsumerState<Init>
   @override
   void initState() {
     super.initState();
-    checkAppVer();
-
     _controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
     );
     _controller.repeat(reverse: true);
+    checkAppVer();
   }
 
   @override
