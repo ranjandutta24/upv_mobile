@@ -55,6 +55,7 @@ class CasUtState extends State<CasUt> {
   compressedairstationService() async {
     if (mounted) {
       await compressedairstation().then((data) {
+        if (!mounted) return;
         if (data != null) {
           print(data.body);
           setState(() {
@@ -62,47 +63,47 @@ class CasUtState extends State<CasUt> {
             rows = [
               {
                 "head": "IGCA Flow (Nm3/hr)",
-                "data1": carData["FT56_SCL"].toString(),
+                "data1": carData["FT56_SCL"]?.toString() ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "IGCA Pressure (kg/cm2)",
-                "data1": carData["PT161_SCL"].toStringAsFixed(2),
+                "data1": double.tryParse(carData["PT161_SCL"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "PGCA Flow (Nm3/hr)",
-                "data1": carData["FT56A_SCL"].toString(),
+                "data1": carData["FT56A_SCL"]?.toString() ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "PGCA Pressure (kg/cm2)",
-                "data1": carData["PT161A_SCL"].toStringAsFixed(2),
+                "data1": double.tryParse(carData["PT161A_SCL"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Compressor Flow (Nm3/hr)",
-                "data1": carData["AI_6_COMP1"].toStringAsFixed(0),
-                "data2": carData["AI_6_COMP2"].toStringAsFixed(0),
-                "data3": carData["AI_6_COMP3"].toStringAsFixed(0),
-                "data4": carData["AI_6_COMP4"].toStringAsFixed(0),
-                "data5": carData["AI_6_COMP5"].toStringAsFixed(0),
-                "data6": carData["AI_6_COMP6"].toStringAsFixed(0),
+                "data1": double.tryParse(carData["AI_6_COMP1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(carData["AI_6_COMP2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(carData["AI_6_COMP3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data4": double.tryParse(carData["AI_6_COMP4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data5": double.tryParse(carData["AI_6_COMP5"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data6": double.tryParse(carData["AI_6_COMP6"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "Current (amp)",
-                "data1": carData["MOTOR_CURR_COMP1"].toStringAsFixed(0),
-                "data2": carData["MOTOR_CURR_COMP2"].toStringAsFixed(0),
-                "data3": carData["MOTOR_CURR_COMP3"].toStringAsFixed(0),
-                "data4": carData["MOTOR_CURR_COMP4"].toStringAsFixed(0),
-                "data5": carData["MOTOR_CURR_COMP5"].toStringAsFixed(0),
-                "data6": carData["MOTOR_CURR_COMP6"].toStringAsFixed(0),
+                "data1": double.tryParse(carData["MOTOR_CURR_COMP1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(carData["MOTOR_CURR_COMP2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(carData["MOTOR_CURR_COMP3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data4": double.tryParse(carData["MOTOR_CURR_COMP4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data5": double.tryParse(carData["MOTOR_CURR_COMP5"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data6": double.tryParse(carData["MOTOR_CURR_COMP6"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 5,
               },
@@ -110,17 +111,17 @@ class CasUtState extends State<CasUt> {
             rows2 = [
               {
                 "head": "Blast Furnace",
-                "data1": carData["INST_AIR_F"].toStringAsFixed(2),
-                "data2": carData["INST_AIR_P"].toStringAsFixed(2),
-                "data3": carData["PLANT_AIR_F"].toStringAsFixed(2),
-                "data4": carData["PLANT_AIR_P"].toStringAsFixed(2),
+                "data1": double.tryParse(carData["INST_AIR_F"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(carData["INST_AIR_P"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data3": double.tryParse(carData["PLANT_AIR_F"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data4": double.tryParse(carData["PLANT_AIR_P"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "LDCP",
-                "data1": carData["INST_F"].toStringAsFixed(2),
-                "data2": carData["INST_P"].toStringAsFixed(2),
+                "data1": double.tryParse(carData["INST_F"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(carData["INST_P"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": "NA",
                 "data4": "NA",
                 "selected": false,
@@ -132,10 +133,10 @@ class CasUtState extends State<CasUt> {
                 "data2": "0",
                 "data3": carData["COMP_AIR_FLOW"] == null
                     ? "NA"
-                    : carData["COMP_AIR_FLOW"].toStringAsFixed(0),
+                    : double.tryParse(carData["COMP_AIR_FLOW"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data4": carData["COMP_AIR_PRESSURE"] == null
                     ? "NA"
-                    : carData["COMP_AIR_PRESSURE"].toStringAsFixed(0),
+                    : double.tryParse(carData["COMP_AIR_PRESSURE"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 1,
               },
@@ -152,7 +153,7 @@ class CasUtState extends State<CasUt> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

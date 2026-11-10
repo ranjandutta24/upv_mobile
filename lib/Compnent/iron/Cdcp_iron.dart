@@ -54,6 +54,7 @@ class CdcpState extends State<Cdcp> {
   cdcpserviceWrap() async {
     if (mounted) {
       await cdcpservice().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -61,29 +62,29 @@ class CdcpState extends State<Cdcp> {
             rows = [
               {
                 "head": "Steam Flow[TPH]",
-                "data1": cdcpData["BOILER1FIR523"].toStringAsFixed(1),
-                "data2": cdcpData["BOILER2FIR523"].toStringAsFixed(1),
-                "data3": cdcpData["BOILER3FIR523"].toStringAsFixed(1),
-                "data4": cdcpData["BOILER4FIR523"].toStringAsFixed(1),
+                "data1": double.tryParse(cdcpData["BOILER1FIR523"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--',
+                "data2": double.tryParse(cdcpData["BOILER2FIR523"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--',
+                "data3": double.tryParse(cdcpData["BOILER3FIR523"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--',
+                "data4": double.tryParse(cdcpData["BOILER4FIR523"]?.toString() ?? '')?.toStringAsFixed(1) ?? '--',
                 "selected": false,
                 "i": 0,
               },
-              //"${bfshData["BF_ORE2"].toStringAsFixed(2)}",
+              //"${double.tryParse(bfshData["BF_ORE2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
               {
                 "head": "Steam Pr [Kg/cm2]",
-                "data1": cdcpData["BOILER1PI520"].toStringAsFixed(0),
-                "data2": cdcpData["BOILER2PI520"].toStringAsFixed(0),
-                "data3": cdcpData["BOILER3PI520"].toStringAsFixed(0),
-                "data4": cdcpData["BOILER4PI520"].toStringAsFixed(0),
+                "data1": double.tryParse(cdcpData["BOILER1PI520"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(cdcpData["BOILER2PI520"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(cdcpData["BOILER3PI520"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data4": double.tryParse(cdcpData["BOILER4PI520"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "Current. Shift Charge Count",
-                "data1": cdcpData["LIFTER1CHARGINGQ1"].toStringAsFixed(0),
-                "data2": cdcpData["LIFTER2CHARGINGQ1"].toStringAsFixed(0),
-                "data3": cdcpData["LIFTER3CHARGINGQ1"].toStringAsFixed(0),
-                "data4": cdcpData["LIFTER4CHARGINGQ1"].toStringAsFixed(0),
+                "data1": double.tryParse(cdcpData["LIFTER1CHARGINGQ1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(cdcpData["LIFTER2CHARGINGQ1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(cdcpData["LIFTER3CHARGINGQ1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data4": double.tryParse(cdcpData["LIFTER4CHARGINGQ1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 2,
               },
@@ -91,16 +92,16 @@ class CdcpState extends State<Cdcp> {
                 "head": "Previous 1 Shift Charge Count",
                 "data1": cdcpData["LIFTER1CHARGINGQ2"] == null
                     ? "0"
-                    : cdcpData["LIFTER1CHARGINGQ2"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER1CHARGINGQ2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": cdcpData["LIFTER2CHARGINGQ2"] == null
                     ? "0"
-                    : cdcpData["LIFTER2CHARGINGQ2"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER2CHARGINGQ2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data3": cdcpData["LIFTER3CHARGINGQ2"] == null
                     ? "0"
-                    : cdcpData["LIFTER3CHARGINGQ2"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER3CHARGINGQ2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data4": cdcpData["LIFTER4CHARGINGQ2"] == null
                     ? "0"
-                    : cdcpData["LIFTER4CHARGINGQ2"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER4CHARGINGQ2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 3,
               },
@@ -109,16 +110,16 @@ class CdcpState extends State<Cdcp> {
                 "head": "Next Previous 2 Shift Charge",
                 "data1": cdcpData["LIFTER1CHARGINGQ3"] == null
                     ? "0"
-                    : cdcpData["LIFTER1CHARGINGQ3"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER1CHARGINGQ3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": cdcpData["LIFTER2CHARGINGQ3"] == null
                     ? "0"
-                    : cdcpData["LIFTER2CHARGINGQ3"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER2CHARGINGQ3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data3": cdcpData["LIFTER3CHARGINGQ3"] == null
                     ? "0"
-                    : cdcpData["LIFTER3CHARGINGQ3"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER3CHARGINGQ3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data4": cdcpData["LIFTER4CHARGINGQ3"] == null
                     ? "0"
-                    : cdcpData["LIFTER4CHARGINGQ3"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER4CHARGINGQ3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 4,
               },
@@ -126,16 +127,16 @@ class CdcpState extends State<Cdcp> {
                 "head": "Next Next Previous 3 Shift Charge",
                 "data1": cdcpData["LIFTER1CHARGINGQ4"] == null
                     ? "0"
-                    : cdcpData["LIFTER1CHARGINGQ4"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER1CHARGINGQ4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": cdcpData["LIFTER2CHARGINGQ4"] == null
                     ? "0"
-                    : cdcpData["LIFTER2CHARGINGQ4"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER2CHARGINGQ4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data3": cdcpData["LIFTER3CHARGINGQ4"] == null
                     ? "0"
-                    : cdcpData["LIFTER3CHARGINGQ4"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER3CHARGINGQ4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data4": cdcpData["LIFTER4CHARGINGQ4"] == null
                     ? "0"
-                    : cdcpData["LIFTER4CHARGINGQ4"].toStringAsFixed(0),
+                    : double.tryParse(cdcpData["LIFTER4CHARGINGQ4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 5,
               },
@@ -151,7 +152,7 @@ class CdcpState extends State<Cdcp> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

@@ -55,6 +55,7 @@ class CcpsmState extends State<Ccpsm> {
   ccpService() async {
     if (mounted) {
       await continuouscastingplant().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -63,41 +64,41 @@ class CcpsmState extends State<Ccpsm> {
               {
                 "head": "Cast",
                 "data1":
-                    "${ccpData["CCP1_A"].toString()}/${ccpData["CCP1_B"].toString()}/${ccpData["CCP1_C"].toString()}",
+                    "${ccpData["CCP1_A"]?.toString() ?? '--'}/${ccpData["CCP1_B"]?.toString() ?? '--'}/${ccpData["CCP1_C"]?.toString() ?? '--'}",
                 "data2":
-                    "${ccpData["CCP2_A"].toString()}/${ccpData["CCP2_B"].toString()}/${ccpData["CCP3_C"].toString()}",
+                    "${ccpData["CCP2_A"]?.toString() ?? '--'}/${ccpData["CCP2_B"]?.toString() ?? '--'}/${ccpData["CCP3_C"]?.toString() ?? '--'}",
                 "data3":
-                    "${ccpData["CCP3_A"].toString()}/${ccpData["CCP3_B"].toString()}/${ccpData["CCP3_C"].toString()}",
+                    "${ccpData["CCP3_A"]?.toString() ?? '--'}/${ccpData["CCP3_B"]?.toString() ?? '--'}/${ccpData["CCP3_C"]?.toString() ?? '--'}",
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "Ladle Weight [Ton]",
-                "data1": ccpData["LADLEWEIGHT1"].toStringAsFixed(2),
-                "data2": ccpData["LADLEWEIGHT2"].toStringAsFixed(2),
-                "data3": ccpData["LADLEWEIGHT3"].toStringAsFixed(2),
+                "data1": double.tryParse(ccpData["LADLEWEIGHT1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(ccpData["LADLEWEIGHT2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data3": double.tryParse(ccpData["LADLEWEIGHT3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "Tundish Temp [DegC]",
-                "data1": ccpData["TUNDISHTEMP1"].toString(),
-                "data2": ccpData["TUNDISHTEMP2"].toString(),
-                "data3": ccpData["TUNDISHTEMP3"].toString(),
+                "data1": ccpData["TUNDISHTEMP1"]?.toString() ?? '--',
+                "data2": ccpData["TUNDISHTEMP2"]?.toString() ?? '--',
+                "data3": ccpData["TUNDISHTEMP3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "Tundish Weight [Ton]",
-                "data1": ccpData["TUNDISHWEIGHT1"].toString(),
-                "data2": ccpData["TUNDISHWEIGHT2"].toString(),
-                "data3": ccpData["TUNDISHWEIGHT3"].toString(),
+                "data1": ccpData["TUNDISHWEIGHT1"]?.toString() ?? '--',
+                "data2": ccpData["TUNDISHWEIGHT2"]?.toString() ?? '--',
+                "data3": ccpData["TUNDISHWEIGHT3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Tundish",
-                "data1": "${ccpData["CCP_1TCCAR"]}",
+                "data1": ccpData["CCP_1TCCAR"]?.toString() ?? '--',
                 "data2": "",
                 "data3": "",
                 "selected": false,
@@ -114,48 +115,48 @@ class CcpsmState extends State<Ccpsm> {
               },
               {
                 "head": "Strand 1",
-                "data1": "${ccpData["CCP_1WDSPDSD1S"]}",
-                "data2": "${ccpData["CCP_2WDSPDSD1S"]}",
-                "data3": "${ccpData["CCP_3WDSPDSD1S"]}",
+                "data1": ccpData["CCP_1WDSPDSD1S"]?.toString() ?? '--',
+                "data2": ccpData["CCP_2WDSPDSD1S"]?.toString() ?? '--',
+                "data3": ccpData["CCP_3WDSPDSD1S"]?.toString() ?? '--',
                 "selected": false,
                 "i": 6,
               },
               {
                 "head": "Strand 2",
-                "data1": "${ccpData["CCP_1WDSPDSD2S"]}",
-                "data2": "${ccpData["CCP_2WDSPDSD2S"]}",
-                "data3": "${ccpData["CCP_3WDSPDSD2S"]}",
+                "data1": ccpData["CCP_1WDSPDSD2S"]?.toString() ?? '--',
+                "data2": ccpData["CCP_2WDSPDSD2S"]?.toString() ?? '--',
+                "data3": ccpData["CCP_3WDSPDSD2S"]?.toString() ?? '--',
                 "selected": false,
                 "i": 7,
               },
               {
                 "head": "Strand 3",
-                "data1": "${ccpData["CCP_1WDSPDSD3S"]}",
-                "data2": "${ccpData["CCP_2WDSPDSD3S"]}",
-                "data3": "${ccpData["CCP_3WDSPDSD3S"]}",
+                "data1": ccpData["CCP_1WDSPDSD3S"]?.toString() ?? '--',
+                "data2": ccpData["CCP_2WDSPDSD3S"]?.toString() ?? '--',
+                "data3": ccpData["CCP_3WDSPDSD3S"]?.toString() ?? '--',
                 "selected": false,
                 "i": 8,
               },
               {
                 "head": "Strand 4",
-                "data1": "${ccpData["CCP_1WDSPDSD4S"]}",
-                "data2": "${ccpData["CCP_2WDSPDSD4S"]}",
-                "data3": "${ccpData["CCP_3WDSPDSD4S"]}",
+                "data1": ccpData["CCP_1WDSPDSD4S"]?.toString() ?? '--',
+                "data2": ccpData["CCP_2WDSPDSD4S"]?.toString() ?? '--',
+                "data3": ccpData["CCP_3WDSPDSD4S"]?.toString() ?? '--',
                 "selected": false,
                 "i": 9,
               },
               {
                 "head": "Strand 5",
-                "data1": "${ccpData["CCP_1WDSPDSD5S"]}",
-                "data2": "${ccpData["CCP_2WDSPDSD5S"]}",
+                "data1": ccpData["CCP_1WDSPDSD5S"]?.toString() ?? '--',
+                "data2": ccpData["CCP_2WDSPDSD5S"]?.toString() ?? '--',
                 "data3": "",
                 "selected": false,
                 "i": 10,
               },
               {
                 "head": "Strand 6",
-                "data1": "${ccpData["CCP_1WDSPDSD6S"]}",
-                "data2": "${ccpData["CCP_2WDSPDSD6S"]}",
+                "data1": ccpData["CCP_1WDSPDSD6S"]?.toString() ?? '--',
+                "data2": ccpData["CCP_2WDSPDSD6S"]?.toString() ?? '--',
                 "data3": "",
                 "selected": false,
                 "i": 11,
@@ -163,53 +164,53 @@ class CcpsmState extends State<Ccpsm> {
               {
                 "head": "Strand 1 Duration ",
                 "data1":
-                    "${ccpData["HH1_1"].toStringAsFixed(0)}:${ccpData["MM1_1"].toString()}:${ccpData["SS1_1"].toString()}",
+                    "${double.tryParse(ccpData["HH1_1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM1_1"]?.toString() ?? '--'}:${ccpData["SS1_1"]?.toString() ?? '--'}",
                 "data2":
-                    "${ccpData["HH2_1"].toStringAsFixed(0)}:${ccpData["MM2_1"].toString()}:${ccpData["SS2_1"].toString()}",
+                    "${double.tryParse(ccpData["HH2_1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM2_1"]?.toString() ?? '--'}:${ccpData["SS2_1"]?.toString() ?? '--'}",
                 "data3":
-                    "${ccpData["HH3_1"].toStringAsFixed(0)}:${ccpData["MM3_1"].toString()}:${ccpData["SS3_1"].toString()}",
+                    "${double.tryParse(ccpData["HH3_1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM3_1"]?.toString() ?? '--'}:${ccpData["SS3_1"]?.toString() ?? '--'}",
                 "selected": false,
                 "i": 12,
               },
               {
                 "head": "Strand 2 Duration ",
                 "data1":
-                    "${ccpData["HH1_2"].toStringAsFixed(0)}:${ccpData["MM1_2"].toString()}:${ccpData["SS1_2"].toString()}",
+                    "${double.tryParse(ccpData["HH1_2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM1_2"]?.toString() ?? '--'}:${ccpData["SS1_2"]?.toString() ?? '--'}",
                 "data2":
-                    "${ccpData["HH2_2"].toStringAsFixed(0)}:${ccpData["MM2_2"].toString()}:${ccpData["SS2_2"].toString()}",
+                    "${double.tryParse(ccpData["HH2_2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM2_2"]?.toString() ?? '--'}:${ccpData["SS2_2"]?.toString() ?? '--'}",
                 "data3":
-                    "${ccpData["HH3_2"].toStringAsFixed(0)}:${ccpData["MM3_2"].toString()}:${ccpData["SS3_2"].toString()}",
+                    "${double.tryParse(ccpData["HH3_2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM3_2"]?.toString() ?? '--'}:${ccpData["SS3_2"]?.toString() ?? '--'}",
                 "selected": false,
                 "i": 13,
               },
               {
                 "head": "Strand 3 Duration ",
                 "data1":
-                    "${ccpData["HH1_3"].toStringAsFixed(0)}:${ccpData["MM1_3"].toString()}:${ccpData["SS1_3"].toString()}",
+                    "${double.tryParse(ccpData["HH1_3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM1_3"]?.toString() ?? '--'}:${ccpData["SS1_3"]?.toString() ?? '--'}",
                 "data2":
-                    "${ccpData["HH2_3"].toStringAsFixed(0)}:${ccpData["MM2_3"].toString()}:${ccpData["SS2_3"].toString()}",
+                    "${double.tryParse(ccpData["HH2_3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM2_3"]?.toString() ?? '--'}:${ccpData["SS2_3"]?.toString() ?? '--'}",
                 "data3":
-                    "${ccpData["HH3_3"].toStringAsFixed(0)}:${ccpData["MM3_3"].toString()}:${ccpData["SS3_3"].toString()}",
+                    "${double.tryParse(ccpData["HH3_3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM3_3"]?.toString() ?? '--'}:${ccpData["SS3_3"]?.toString() ?? '--'}",
                 "selected": false,
                 "i": 14,
               },
               {
                 "head": "Strand 4 Duration ",
                 "data1":
-                    "${ccpData["HH1_4"].toStringAsFixed(0)}:${ccpData["MM1_4"].toString()}:${ccpData["SS1_4"].toString()}",
+                    "${double.tryParse(ccpData["HH1_4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM1_4"]?.toString() ?? '--'}:${ccpData["SS1_4"]?.toString() ?? '--'}",
                 "data2":
-                    "${ccpData["HH2_4"].toStringAsFixed(0)}:${ccpData["MM2_4"].toString()}:${ccpData["SS2_4"].toString()}",
+                    "${double.tryParse(ccpData["HH2_4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM2_4"]?.toString() ?? '--'}:${ccpData["SS2_4"]?.toString() ?? '--'}",
                 "data3":
-                    "${ccpData["HH3_4"].toStringAsFixed(0)}:${ccpData["MM3_4"].toString()}:${ccpData["SS3_4"].toString()}",
+                    "${double.tryParse(ccpData["HH3_4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM3_4"]?.toString() ?? '--'}:${ccpData["SS3_4"]?.toString() ?? '--'}",
                 "selected": false,
                 "i": 15,
               },
               {
                 "head": "Strand 5 Duration ",
                 "data1":
-                    "${ccpData["HH1_5"].toStringAsFixed(0)}:${ccpData["MM1_5"].toString()}:${ccpData["SS1_5"].toString()}",
+                    "${double.tryParse(ccpData["HH1_5"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM1_5"]?.toString() ?? '--'}:${ccpData["SS1_5"]?.toString() ?? '--'}",
                 "data2":
-                    "${ccpData["HH2_5"].toStringAsFixed(0)}:${ccpData["MM2_5"].toString()}:${ccpData["SS2_5"].toString()}",
+                    "${double.tryParse(ccpData["HH2_5"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM2_5"]?.toString() ?? '--'}:${ccpData["SS2_5"]?.toString() ?? '--'}",
                 "data3": "",
                 "selected": false,
                 "i": 16,
@@ -217,9 +218,9 @@ class CcpsmState extends State<Ccpsm> {
               {
                 "head": "Strand 6 Duration ",
                 "data1":
-                    "${ccpData["HH1_6"].toStringAsFixed(0)}:${ccpData["MM1_6"].toString()}:${ccpData["SS1_6"].toString()}",
+                    "${double.tryParse(ccpData["HH1_6"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM1_6"]?.toString() ?? '--'}:${ccpData["SS1_6"]?.toString() ?? '--'}",
                 "data2":
-                    "${ccpData["HH2_6"].toStringAsFixed(0)}:${ccpData["MM2_6"].toString()}:${ccpData["SS2_6"].toString()}",
+                    "${double.tryParse(ccpData["HH2_6"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}:${ccpData["MM2_6"]?.toString() ?? '--'}:${ccpData["SS2_6"]?.toString() ?? '--'}",
                 "data3": "",
                 "selected": false,
                 "i": 17,
@@ -228,7 +229,7 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "Oxygen Consm.[Nm3/hr]",
                 "data1": ccpData["O2_F"] == null
                     ? "0"
-                    : ccpData["O2_F"].toStringAsFixed(0),
+                    : double.tryParse(ccpData["O2_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": "",
                 "data3": "",
                 "selected": false,
@@ -238,7 +239,7 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "N2 Consm.[Nm3/hr]",
                 "data1": ccpData["N2_F"] == null
                     ? "0"
-                    : ccpData["N2_F"].toStringAsFixed(0),
+                    : double.tryParse(ccpData["N2_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": "",
                 "data3": "",
                 "selected": false,
@@ -256,7 +257,7 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "CBM Consm.[Nm3/hr]",
                 "data1": ccpData["CBM_F"] == null
                     ? "0"
-                    : ccpData["CBM_F"].toStringAsFixed(0),
+                    : double.tryParse(ccpData["CBM_F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": "",
                 "data3": "",
                 "selected": false,
@@ -272,7 +273,7 @@ class CcpsmState extends State<Ccpsm> {
               },
               {
                 "head": "Prev. Day Cast",
-                "data1": ccpData["CCPPRETOTAL"].toString(),
+                "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
                 "data2": "",
                 "data3": "",
                 "selected": false,
@@ -280,59 +281,59 @@ class CcpsmState extends State<Ccpsm> {
               },
               {
                 "head": "Ladle Running Count.",
-                "data1": ccpData["LADLENO_1"].toString(),
-                "data2": ccpData["LADLENO_2"].toString(),
-                "data3": ccpData["LADLENO_3"].toString(),
+                "data1": ccpData["LADLENO_1"]?.toString() ?? '--',
+                "data2": ccpData["LADLENO_2"]?.toString() ?? '--',
+                "data3": ccpData["LADLENO_3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 24,
               },
 
               {
                 "head": "Casting Speed Strand 1",
-                "data1": ccpData["WITHDRAWALSPEED1_1"].toStringAsFixed(2),
-                "data2": ccpData["WITHDRAWALSPEED2_1"].toStringAsFixed(2),
-                "data3": ccpData["WITHDRAWALSPEED3_1"].toStringAsFixed(2),
+                "data1": double.tryParse(ccpData["WITHDRAWALSPEED1_1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(ccpData["WITHDRAWALSPEED2_1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data3": double.tryParse(ccpData["WITHDRAWALSPEED3_1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 25,
               },
               {
                 "head": "Casting Speed Strand 2",
-                "data1": ccpData["WITHDRAWALSPEED1_2"].toStringAsFixed(2),
-                "data2": ccpData["WITHDRAWALSPEED2_2"].toStringAsFixed(2),
-                "data3": ccpData["WITHDRAWALSPEED3_2"].toStringAsFixed(2),
+                "data1": double.tryParse(ccpData["WITHDRAWALSPEED1_2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(ccpData["WITHDRAWALSPEED2_2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data3": double.tryParse(ccpData["WITHDRAWALSPEED3_2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 26,
               },
               {
                 "head": "Casting Speed Strand 3",
-                "data1": ccpData["WITHDRAWALSPEED1_3"].toStringAsFixed(2),
-                "data2": ccpData["WITHDRAWALSPEED2_3"].toStringAsFixed(2),
-                "data3": ccpData["WITHDRAWALSPEED3_3"].toStringAsFixed(2),
+                "data1": double.tryParse(ccpData["WITHDRAWALSPEED1_3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(ccpData["WITHDRAWALSPEED2_3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data3": double.tryParse(ccpData["WITHDRAWALSPEED3_3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 27,
               },
               {
                 "head": "Casting Speed Strand 4",
                 "data1": ccpData["WITHDRAWALSPEED1_4"] != null
-                    ? ccpData["WITHDRAWALSPEED1_4"].toStringAsFixed(2)
+                    ? double.tryParse(ccpData["WITHDRAWALSPEED1_4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'
                     : "0.00",
-                "data2": ccpData["WITHDRAWALSPEED2_4"].toStringAsFixed(2),
-                "data3": ccpData["WITHDRAWALSPEED3_4"].toStringAsFixed(2),
+                "data2": double.tryParse(ccpData["WITHDRAWALSPEED2_4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data3": double.tryParse(ccpData["WITHDRAWALSPEED3_4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 28,
               },
               {
                 "head": "Casting Speed Strand 5",
-                "data1": ccpData["WITHDRAWALSPEED1_5"].toStringAsFixed(2),
-                "data2": ccpData["WITHDRAWALSPEED2_5"].toStringAsFixed(2),
+                "data1": double.tryParse(ccpData["WITHDRAWALSPEED1_5"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(ccpData["WITHDRAWALSPEED2_5"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": "",
                 "selected": false,
                 "i": 29,
               },
               {
                 "head": "Casting Speed Strand 6",
-                "data1": ccpData["WITHDRAWALSPEED1_6"].toStringAsFixed(2),
-                "data2": ccpData["WITHDRAWALSPEED2_6"].toStringAsFixed(2),
+                "data1": double.tryParse(ccpData["WITHDRAWALSPEED1_6"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(ccpData["WITHDRAWALSPEED2_6"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": "",
                 "selected": false,
                 "i": 30,
@@ -341,13 +342,13 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "Stopper Position Strand 1",
                 "data1": ccpData["C1_S1"] == null
                     ? "0.00"
-                    : ccpData["C1_S1"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C1_S1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": ccpData["C2_S1"] == null
                     ? "0.00"
-                    : ccpData["C2_S1"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C2_S1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": ccpData["C3_S1"] == null
                     ? "0.00"
-                    : ccpData["C3_S1"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C3_S1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 31,
               },
@@ -355,13 +356,13 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "Stopper Position Strand 2",
                 "data1": ccpData["C1_S2"] == null
                     ? "0.00"
-                    : ccpData["C1_S2"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C1_S2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": ccpData["C2_S2"] == null
                     ? "0.00"
-                    : ccpData["C2_S2"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C2_S2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": ccpData["C3_S2"] == null
                     ? "0.00"
-                    : ccpData["C3_S2"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C3_S2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 32,
               },
@@ -369,13 +370,13 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "Stopper Position Strand 3",
                 "data1": ccpData["C1_S3"] == null
                     ? "0.00"
-                    : ccpData["C1_S3"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C1_S3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": ccpData["C2_S3"] == null
                     ? "0.00"
-                    : ccpData["C2_S3"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C2_S3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": ccpData["C3_S3"] == null
                     ? "0.00"
-                    : ccpData["C3_S3"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C3_S3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 33,
               },
@@ -383,13 +384,13 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "Stopper Position Strand 4",
                 "data1": ccpData["C1_S4"] == null
                     ? "0.00"
-                    : ccpData["C1_S4"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C1_S4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": ccpData["C2_S4"] == null
                     ? "0.00"
-                    : ccpData["C2_S4"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C2_S4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": ccpData["C3_S4"] == null
                     ? "0.00"
-                    : ccpData["C3_S4"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C3_S4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 34,
               },
@@ -397,10 +398,10 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "Stopper Position Strand 5",
                 "data1": ccpData["C1_S5"] == null
                     ? "0.00"
-                    : ccpData["C1_S5"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C1_S5"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": ccpData["C2_S5"] == null
                     ? "0.00"
-                    : ccpData["C2_S5"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C2_S5"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": "",
                 "selected": false,
                 "i": 35,
@@ -409,10 +410,10 @@ class CcpsmState extends State<Ccpsm> {
                 "head": "Stopper Position Strand 6",
                 "data1": ccpData["C1_S6"] == null
                     ? "0.00"
-                    : ccpData["C1_S6"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C1_S6"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": ccpData["C2_S6"] == null
                     ? "0.00"
-                    : ccpData["C2_S6"].toStringAsFixed(2),
+                    : double.tryParse(ccpData["C2_S6"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data3": "",
                 "selected": false,
                 "i": 36,
@@ -464,7 +465,7 @@ class CcpsmState extends State<Ccpsm> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),
@@ -531,7 +532,7 @@ class CcpsmState extends State<Ccpsm> {
                             color: status[0]["CCP1"] <= 0.0
                                 ? myColors["deactive"]
                                 : status[0]["CCP1"] >= 0.2 &&
-                                        double.parse(rows[3]["data1"]) > 2
+                                        (double.tryParse(rows[3]["data1"].toString()) ?? 0.0) > 2
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),
@@ -558,7 +559,7 @@ class CcpsmState extends State<Ccpsm> {
                             color: status[0]["CCP2"] <= 0.0
                                 ? myColors["deactive"]
                                 : status[0]["CCP2"] >= 0.2 &&
-                                        double.parse(rows[3]["data2"]) > 2
+                                        (double.tryParse(rows[3]["data2"].toString()) ?? 0.0) > 2
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),
@@ -579,7 +580,7 @@ class CcpsmState extends State<Ccpsm> {
                             color: status[0]["CCP3"] <= 0.0
                                 ? myColors["deactive"]
                                 : status[0]["CCP3"] >= 0.2 &&
-                                        double.parse(rows[3]["data3"]) > 2
+                                        (double.tryParse(rows[3]["data3"].toString()) ?? 0.0) > 2
                                     ? myColors["active"]
                                     : const Color.fromARGB(0, 98, 255, 7),
                           ),

@@ -6,6 +6,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:in.iisco.upv/Services/service_page.dart';
 import 'package:in.iisco.upv/Utils/colors.dart';
+import 'package:in.iisco.upv/Widgets/loader.dart';
 
 class Stoves extends StatefulWidget {
   const Stoves({super.key});
@@ -55,60 +56,81 @@ class StovesState extends State<Stoves> {
   stoveserviceWraper() async {
     if (mounted) {
       await stoveservice().then((data) {
+        if (!mounted) return;
         if (data != null) {
-          // print(data.body);
+          // print("Stove Data :" + data.body);
           setState(() {
             stovesData = json.decode(data.body);
             rows = [
               {
                 "head": "Stv 1 Gas Flow [Nm3/hr]",
-                "data1": stovesData["SMG1"].toStringAsFixed(0),
+                "data1": double.tryParse(stovesData["SMG1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "Stv 1 Dome Temp. [DegC]",
                 "data1": stovesData["SDT1"] != null
-                    ? stovesData["SDT1"].toStringAsFixed(0)
+                    ? double.tryParse(stovesData["SDT1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'
                     : "0",
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "Stv 2 Gas Flow [Nm3/hr]",
-                "data1": stovesData["SMG2"].toStringAsFixed(0),
+                "data1": double.tryParse(stovesData["SMG2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "Stv 2 Dome Temp. [DegC]",
-                "data1": stovesData["SDT2"].toStringAsFixed(0),
+                "data1": double.tryParse(stovesData["SDT2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Stv 3 Gas Flow [Nm3/hr]",
-                "data1": stovesData["SMG3"].toStringAsFixed(0),
+                "data1": double.tryParse(stovesData["SMG3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "Stv 3 Dome Temp.[DegC]",
-                "data1": stovesData["SDT3"].toStringAsFixed(0),
+                "data1": double.tryParse(stovesData["SDT3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 5,
               },
               {
-                "head": "BF Gas Total Cons[Nm3/hr]",
-                "data1": stovesData["TOTAL_BF_CONSUMPTION"].toStringAsFixed(0),
+                "head": "Stv 4 Gas Flow [Nm3/hr]",
+                "data1": double.tryParse(
+                            stovesData["MIX_GAS_FLOW_4"]?.toString() ?? '')
+                        ?.toStringAsFixed(0) ??
+                    '--',
                 "selected": false,
                 "i": 6,
               },
               {
-                "head": "Snort Position [%]",
-                "data1": stovesData["PBS_SNORT"].toStringAsFixed(2),
+                "head": "Stv 4 Dome Temp.[DegC]",
+                "data1": double.tryParse(
+                            stovesData["DOME_S_TYPE_TEMP_4"]?.toString() ?? '')
+                        ?.toStringAsFixed(0) ??
+                    '--',
                 "selected": false,
                 "i": 7,
+              },
+              {
+                "head": "BF Gas Total Cons[Nm3/hr]",
+                "data1":
+                    double.tryParse(stovesData["TOTAL_BF_CONSUMPTION"]?.toString() ?? '')?.toStringAsFixed(0) ??
+                        '--',
+                "selected": false,
+                "i": 8,
+              },
+              {
+                "head": "Snort Position [%]",
+                "data1": double.tryParse(stovesData["PBS_SNORT"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "selected": false,
+                "i": 9,
               },
             ];
             if (num != -1) {
@@ -121,7 +143,7 @@ class StovesState extends State<Stoves> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),
@@ -138,7 +160,10 @@ class StovesState extends State<Stoves> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 0),
       child: loading || !mounted
-          ? const Text(" ")
+          ? Container(
+              padding: const EdgeInsets.all(10),
+              child: const MyLoader(),
+            )
           : Column(children: [
               Container(
                 decoration: BoxDecoration(

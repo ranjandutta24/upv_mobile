@@ -145,7 +145,7 @@ class ColState extends State<Col> {
             },
             {
               "head": "Charge Volume[m3]",
-              "data": [double.parse(blastData["BURDENREPORT_CHRGVOL"])],
+              "data": [(double.tryParse(blastData["BURDENREPORT_CHRGVOL"].toString()) ?? 0.0)],
               "selected": false,
               "i": 12
             },
@@ -186,25 +186,25 @@ class ColState extends State<Col> {
             },
             {
               "head": "Runner#1 Hot Metal Temp [DegC]",
-              "data": [double.parse(blastData["NRUNNERBF_RUNNERTEMP1"])],
+              "data": [(double.tryParse(blastData["NRUNNERBF_RUNNERTEMP1"].toString()) ?? 0.0)],
               "selected": false,
               "i": 17
             },
             {
               "head": "Runner#2 Hot Metal Temp [DegC]",
-              "data": [double.parse(blastData["NRUNNERBF_RUNNERTEMP2"])],
+              "data": [(double.tryParse(blastData["NRUNNERBF_RUNNERTEMP2"].toString()) ?? 0.0)],
               "selected": false,
               "i": 18
             },
             {
               "head": "Runner#3 Hot Metal Temp [DegC]",
-              "data": [double.parse(blastData["NRUNNERBF_RUNNERTEMP3"])],
+              "data": [(double.tryParse(blastData["NRUNNERBF_RUNNERTEMP3"].toString()) ?? 0.0)],
               "selected": false,
               "i": 19
             },
             {
               "head": "Runner#4 Hot Metal Temp [DegC]",
-              "data": [double.parse(blastData["NRUNNERBF_RUNNERTEMP4"])],
+              "data": [(double.tryParse(blastData["NRUNNERBF_RUNNERTEMP4"].toString()) ?? 0.0)],
               "selected": false,
               "i": 20
             },
@@ -228,13 +228,13 @@ class ColState extends State<Col> {
             },
             {
               "head": "O2 Flow (new line) [Nm3/hr]",
-              "data": [(double.parse(blastData["OXY_FL_NL"]))],
+              "data": [((double.tryParse(blastData["OXY_FL_NL"].toString()) ?? 0.0))],
               "selected": false,
               "i": 24
             },
             {
               "head": "O2 Pressure (new line) [Kg/cm2]",
-              "data": [(double.parse(blastData["OXY_PR_NL"]))],
+              "data": [((double.tryParse(blastData["OXY_PR_NL"].toString()) ?? 0.0))],
               "selected": false,
               "i": 25
             },
@@ -250,7 +250,7 @@ class ColState extends State<Col> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 2),
             content: const Center(
               child: Text('somthing wrong'),
             ),
@@ -261,7 +261,10 @@ class ColState extends State<Col> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
+          SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text('Error: ${e.toString()}'),
+          ),
         );
       }
     }
@@ -431,7 +434,7 @@ Widget _row(h, d, color, i) {
                       const EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                   child: i == 2 || i == 7 || i == 13
                       ? Text(
-                          "${d[0].toStringAsFixed(0)}/${d[1].toStringAsFixed(0)}",
+                          "${d[0]?.toStringAsFixed(0) ?? '--'}/${d[1]?.toStringAsFixed(0) ?? '--'}",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             color: color,
@@ -440,7 +443,7 @@ Widget _row(h, d, color, i) {
                         )
                       : i == 15
                           ? Text(
-                              "${d[0].toStringAsFixed(0)}/${d[1].toStringAsFixed(0)}/${d[2].toStringAsFixed(0)}",
+                              "${d[0]?.toStringAsFixed(0) ?? '--'}/${d[1]?.toStringAsFixed(0) ?? '--'}/${d[2]?.toStringAsFixed(0) ?? '--'}",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: color,
@@ -449,7 +452,7 @@ Widget _row(h, d, color, i) {
                             )
                           : i == 16
                               ? Text(
-                                  "${d[0].toStringAsFixed(2)}@${d[1].toStringAsFixed(0)}:${d[2].toStringAsFixed(0)}",
+                                  "${d[0]?.toStringAsFixed(2) ?? '--'}@${d[1]?.toStringAsFixed(0) ?? '--'}:${d[2]?.toStringAsFixed(0) ?? '--'}",
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
                                     color:

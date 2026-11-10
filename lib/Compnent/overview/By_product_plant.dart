@@ -66,8 +66,8 @@ class BpplantState extends State<Bpplant> {
           rows = [
             {
               "head": "CO Gas Make [Nm3/hr]",
-              "data1": bpplantData["FT0600F003_C"].toStringAsFixed(0),
-              "data2": bpplantData["COB10_GASMAKEF"].toStringAsFixed(0),
+              "data1": double.tryParse(bpplantData["FT0600F003_C"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(bpplantData["COB10_GASMAKEF"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
               "selected": false,
               "i": 0,
             },
@@ -106,7 +106,7 @@ class BpplantState extends State<Bpplant> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 2),
             content: const Center(
               child: Text('Something wrong'),
             ),
@@ -117,7 +117,10 @@ class BpplantState extends State<Bpplant> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
+          SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text('Error: ${e.toString()}'),
+          ),
         );
       }
     }

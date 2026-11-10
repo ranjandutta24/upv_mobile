@@ -126,6 +126,11 @@ class LhfState extends State<Lhf> {
               "color1": lf1StatusColor,
               "color2": lf2StatusColor,
               "isStatus": true,
+//               "head": "Temp [DegC]",
+//               "data1":
+//                   "${lhfData["LF1_TEMP1"]?.toString() ?? '--'}/${lhfData["LF1_TEMP2"]?.toString() ?? '--'}/${lhfData["LF1_TEMP3"]?.toString() ?? '--'}",
+//               "data2":
+//                   "${lhfData["LF2_TEMP1"]?.toString() ?? '--'}/${lhfData["LF2_TEMP2"]?.toString() ?? '--'}/${lhfData["LF2_TEMP3"]?.toString() ?? '--'}",
               "selected": false,
               "i": 0,
             },
@@ -134,6 +139,11 @@ class LhfState extends State<Lhf> {
               "data1": _safe(lhfData["LF1_ARCHING_TIME"]),
               "data2": _safe(lhfData["LF2_ARCHING_TIME"]),
               "isStatus": false,
+//               "head": "CaSi/Fe Wire Spd SP/Act",
+//               "data1":
+//                   "${lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_SPEED_SP"]?.toString() ?? '--'}/${lhfData["ACTSPD1"] == null ? '0' : lhfData["ACTSPD1"]?.toString() ?? '--'}",
+//               "data2":
+//                   "${lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_SPEED_SP"]?.toString() ?? '--'}/${lhfData["ACTSPD3"] == null ? '0' : lhfData["ACTSPD3"]?.toString() ?? '--'}",
               "selected": false,
               "i": 1,
             },
@@ -142,6 +152,11 @@ class LhfState extends State<Lhf> {
               "data1": _safe(lhfData["LF1_TREATMENT_TIME"]),
               "data2": _safe(lhfData["LF2_TREATMENT_TIME"]),
               "isStatus": false,
+//               "head": "CaSi/Fe Wire Lth SP/Act",
+//               "data1":
+//                   "${lhfData["SPACTLENGTH1"] == null ? '0' : lhfData["SPACTLENGTH1"]?.toString() ?? '--'}/${lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_LENGTH_FEED"]?.toString() ?? '--'}",
+//               "data2":
+//                   "${lhfData["SPACTLENGTH3"] == null ? '0' : lhfData["SPACTLENGTH3"]?.toString() ?? '--'}/${lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_LENGTH_FEED"]?.toString() ?? '--'}",
               "selected": false,
               "i": 2,
             },
@@ -152,6 +167,9 @@ class LhfState extends State<Lhf> {
               "data2":
                   "${_safeRound(lhfData["LF2_TEMP1"])} / ${_safeRound(lhfData["LF2_TEMP2"])} / ${_safeRound(lhfData["LF2_TEMP3"])}",
               "isStatus": false,
+//                   "${lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_WEIGHT_SP"]?.toString() ?? '--'}/${lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD2_WEIGHT_PV"]?.toString() ?? '--'}",
+//               "data2":
+//                   "${lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_WEIGHT_SP"]?.toString() ?? '--'}/${lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD2_WEIGHT_PV"]?.toString() ?? '--'}",
               "selected": false,
               "i": 3,
             },
@@ -162,6 +180,9 @@ class LhfState extends State<Lhf> {
               "data2":
                   "${_safeRound(lhfData["LF2_TRAFO_PRIM_CUR_PH1"])} / ${_safeRound(lhfData["LF2_TRAFO_PRIM_CUR_PH2"])} / ${_safeRound(lhfData["LF2_TRAFO_PRIM_CUR_PH3"])}",
               "isStatus": false,
+//                   "${lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_SPEED_SP"]?.toString() ?? '--'}/${lhfData["ACTSPD2"] == null ? '0' : lhfData["ACTSPD2"]?.toString() ?? '--'}",
+//               "data2":
+//                   "${lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_SPEED_SP"]?.toString() ?? '--'}/${lhfData["ACTSPD4"] == null ? '0' : lhfData["ACTSPD4"]?.toString() ?? '--'}",
               "selected": false,
               "i": 4,
             },
@@ -172,6 +193,9 @@ class LhfState extends State<Lhf> {
               "data2":
                   "${_safeRound(lhfData["LF2_TRAFO_PRIM_VOLT_PH1"])} / ${_safeRound(lhfData["LF2_TRAFO_PRIM_VOLT_PH2"])} / ${_safeRound(lhfData["LF2_TRAFO_PRIM_VOLT_PH3"])}",
               "isStatus": false,
+//                   "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"]?.toString() ?? '--'}/${lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"] == null ? '0' : double.tryParse(lhfData["LF1_WIREFEEDER_STD1_LENGTH_FEED"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
+//               "data2":
+//                   "${lhfData["SPACTLENGTH4"] == null ? '0' : lhfData["SPACTLENGTH4"]?.toString() ?? '--'}/${lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"] == null ? '0' : double.tryParse(lhfData["LF2_WIREFEEDER_STD1_LENGTH_FEED"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
               "selected": false,
               "i": 5,
             },
@@ -180,6 +204,11 @@ class LhfState extends State<Lhf> {
               "data1": _safe(lhfData["LF1_TRAFO_TAP"]),
               "data2": _safe(lhfData["LF2_TRAFO_TAP"]),
               "isStatus": false,
+//               "head": "Al Wire Wt SP/Act ",
+//               "data1":
+//                   "${lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_WEIGHT_SP"]?.toString() ?? '--'}/${lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"] == null ? '0' : lhfData["LF1_WIREFEEDER_STD1_WEIGHT_PV"]?.toString() ?? '--'}",
+//               "data2":
+//                   "${lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_WEIGHT_SP"]?.toString() ?? '--'}/${lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"] == null ? '0' : lhfData["LF2_WIREFEEDER_STD1_WEIGHT_PV"]?.toString() ?? '--'}",
               "selected": false,
               "i": 6,
             },
@@ -224,7 +253,7 @@ class LhfState extends State<Lhf> {
         // ignore: use_build_context_synchronously
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            duration: const Duration(seconds: 3),
+            duration: const Duration(seconds: 2),
             content: const Center(
               child: Text('Something wrong'),
             ),
@@ -235,7 +264,10 @@ class LhfState extends State<Lhf> {
     } catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error: ${e.toString()}')),
+          SnackBar(
+            duration: const Duration(seconds: 2),
+            content: Text('Error: ${e.toString()}'),
+          ),
         );
       }
     }

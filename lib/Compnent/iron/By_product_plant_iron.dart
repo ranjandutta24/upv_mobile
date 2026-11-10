@@ -55,6 +55,7 @@ class BppiState extends State<Bppi> {
   byproductplantService() async {
     if (mounted) {
       await byproductplant().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -62,30 +63,30 @@ class BppiState extends State<Bppi> {
             rows = [
               {
                 "head": "CO Gas Make [Nm3/hr]",
-                "data1": bppiData["FT0600F003_C"].toStringAsFixed(0),
-                "data2": bppiData["COB10_GASMAKEF"].toStringAsFixed(0),
+                "data1": double.tryParse(bppiData["FT0600F003_C"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(bppiData["COB10_GASMAKEF"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "CO Pressure [mmwc]",
-                "data1": bppiData["COGASMAKEPRESSURE"].toStringAsFixed(0),
+                "data1": double.tryParse(bppiData["COGASMAKEPRESSURE"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": bppiData["COB10_COGSUPPLY"] == null
                     ? "0"
-                    : bppiData["COB10_COGSUPPLY"].toString(),
+                    : bppiData["COB10_COGSUPPLY"]?.toString() ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "Flare Stack Flow [Nm3/hr]",
-                "data1": bppiData["COFLARESTACKFLOW"].toStringAsFixed(0),
+                "data1": double.tryParse(bppiData["COFLARESTACKFLOW"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "Flare Stack Pressure [mmwc]",
-                "data1": bppiData["COFLARESTACKPRESSURE"].toStringAsFixed(2),
+                "data1": double.tryParse(bppiData["COFLARESTACKPRESSURE"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "data2": "",
                 "selected": false,
                 "i": 3,
@@ -107,12 +108,12 @@ class BppiState extends State<Bppi> {
             ];
             state = [
               {
-                "d1": bppiData["EX1"],
-                "d2": bppiData["EX2"],
+                "d1": bppiData["EX1"] ?? 0,
+                "d2": bppiData["EX2"] ?? 0,
               },
               {
-                "d1": bppiData["BPP_EX3ON"],
-                "d2": bppiData["BPP_EX4ON"],
+                "d1": bppiData["BPP_EX3ON"] ?? 0,
+                "d2": bppiData["BPP_EX4ON"] ?? 0,
               }
             ];
 
@@ -126,7 +127,7 @@ class BppiState extends State<Bppi> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

@@ -54,6 +54,7 @@ class BfshState extends State<Bfsh> {
   bfstockhouseService() async {
     if (mounted) {
       await bfstockhouse().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -61,127 +62,127 @@ class BfshState extends State<Bfsh> {
             rows = [
               {
                 "head": "Add Bin #1 [%]",
-                "data": "${bfshData["BF_ADD1"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_ADD1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "Add Bin #2 [%]",
-                "data": "${bfshData["BF_ADD2"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_ADD2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "Add Bin #3 [%]",
-                "data": "${bfshData["BF_ADD3"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_ADD3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "Add Bin #4 [%]",
-                "data": "${bfshData["BF_ADD4"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_ADD4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Coke Bin #1 [%]",
-                "data": "${bfshData["BF_C1"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_C1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "Coke Bin #2 [%]",
-                "data": "${bfshData["BF_C2"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_C2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 5,
               },
               {
                 "head": "Coke Bin #3 [%]",
-                "data": "${bfshData["BF_C3"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_C3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 6,
               },
               {
                 "head": "Coke Bin #4 [%]",
-                "data": "${bfshData["BF_C4"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_C4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 7,
               },
               {
                 "head": "Coke Bin #5 [%]",
-                "data": "${bfshData["BF_C5"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_C5"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 8,
               },
               {
                 "head": "Coke Bin #6 [%]",
-                "data": "${bfshData["BF_C6"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_C6"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 9,
               },
               {
                 "head": "Sinter Bin #1 [%]",
-                "data": "${bfshData["BF_SINT1"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_SINT1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 10,
               },
               {
                 "head": "Sinter Bin #2 [%]",
-                "data": "${bfshData["BF_SINT2"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_SINT2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 11,
               },
               {
                 "head": "Sinter Bin #3 [%]",
-                "data": "${bfshData["BF_SINT3"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_SINT3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 12,
               },
               {
                 "head": "Sinter Bin #4 [%]",
-                "data": "${bfshData["BF_SINT4"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_SINT4"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 13,
               },
               {
                 "head": "Sinter Bin #5 [%]",
-                "data": "${bfshData["BF_SINT5"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_SINT5"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 14,
               },
               {
                 "head": "Sinter Bin #6 [%]",
-                "data": "${bfshData["BF_SINT6"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_SINT6"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 15,
               },
               {
                 "head": "SMALL Sinter Bin #1 [%]",
-                "data": "${bfshData["BF_SS1"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_SS1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 16,
               },
               {
                 "head": "SMALL Sinter Bin #2 [%]",
-                "data": "${bfshData["BF_SS2"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_SS2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 17,
               },
               {
                 "head": "Ore Bin #1[%]",
-                "data": "${bfshData["BF_ORE1"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_ORE1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 18,
               },
               {
                 "head": "Ore Bin #2 [%]",
-                "data": "${bfshData["BF_ORE2"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_ORE2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 19,
               },
               {
                 "head": "Nut Coke Bin [%]",
-                "data": "${bfshData["BF_NC"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["BF_NC"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 20,
               },
@@ -197,7 +198,7 @@ class BfshState extends State<Bfsh> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

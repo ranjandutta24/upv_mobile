@@ -55,6 +55,7 @@ class BfiState extends State<Bfi> {
   blastfurnacedata() {
     if (mounted) {
       blastfurnace().then((data) {
+        if (!mounted) return;
         if (data != null) {
           setState(() {
             bfiData = json.decode(data.body);
@@ -62,171 +63,171 @@ class BfiState extends State<Bfi> {
             rows = [
               {
                 "head": "Blast Volume [Nm3/min]",
-                "data": bfiData["BF_COLDF"].toStringAsFixed(0),
+                "data": double.tryParse(bfiData["BF_COLDF"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "Blast Pressure [Kg/cm2]",
-                "data": "${bfiData["BF_COLDP"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["BF_COLDP"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 1
               },
               {
                 "head": "Top Pressure [Kg/cm2]",
-                "data": "${bfiData["BF_TOPP"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["BF_TOPP"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 2
               },
               {
                 "head": "Top Temperature [DegC]",
-                "data": "${bfiData["BF_TOPT"].toStringAsFixed(0)}",
+                "data": "${double.tryParse(bfiData["BF_TOPT"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}",
                 "selected": false,
                 "i": 3
               },
               {
                 "head": "Blast Temp [DegC] PV/SV",
                 "data":
-                    "${bfiData["HBTAVG"].toStringAsFixed(0)}/${bfiData["BTSP"].toStringAsFixed(0)}",
+                    "${double.tryParse(bfiData["HBTAVG"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}/${double.tryParse(bfiData["BTSP"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}",
                 "selected": false,
                 "i": 4
               },
               {
                 "head": "Runner#1 Hot Metal Temp [DegC]",
-                "data": "${bfiData["NRUNNERBF_RUNNERTEMP1"]}",
+                "data": bfiData["NRUNNERBF_RUNNERTEMP1"]?.toString() ?? '--',
                 "selected": false,
                 "i": 5
               },
               {
                 "head": "Runner#2 Hot Metal Temp [DegC]",
-                "data": "${bfiData["NRUNNERBF_RUNNERTEMP2"]}",
+                "data": bfiData["NRUNNERBF_RUNNERTEMP2"]?.toString() ?? '--',
                 "selected": false,
                 "i": 6
               },
               {
                 "head": "Runner#3 Hot Metal Temp [DegC]",
-                "data": "${bfiData["NRUNNERBF_RUNNERTEMP3"]}",
+                "data": bfiData["NRUNNERBF_RUNNERTEMP3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 7
               },
               {
                 "head": "Runner#4 Hot Metal Temp [DegC]",
-                "data": "${bfiData["NRUNNERBF_RUNNERTEMP4"]}",
+                "data": bfiData["NRUNNERBF_RUNNERTEMP4"]?.toString() ?? '--',
                 "selected": false,
                 "i": 8
               },
               {
                 "head": "CDI [TPH]",
-                "data": "${bfiData["CDI_INJRATE"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["CDI_INJRATE"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 9
               },
               {
                 "head": "Raft [DegC]",
-                "data": "${bfiData["RAFT"].toStringAsFixed(0)}",
+                "data": "${double.tryParse(bfiData["RAFT"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}",
                 "selected": false,
                 "i": 10
               },
               {
                 "head": "O2 Enrich [Nm3/hr]",
-                "data": bfiData["OF"].toStringAsFixed(2),
+                "data": double.tryParse(bfiData["OF"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 11
               },
 
               {
                 "head": "O2 Flow (new line) [Nm3/hr]",
-                "data": (double.parse(bfiData["OXY_FL_NL"])).toStringAsFixed(2),
+                "data": ((double.tryParse(bfiData["OXY_FL_NL"].toString()) ?? 0.0)).toStringAsFixed(2),
                 "selected": false,
                 "i": 12
               },
               {
                 "head": "O2 Pressure (new line) [Kg/cm2]",
-                "data": (double.parse(bfiData["OXY_PR_NL"])).toStringAsFixed(2),
+                "data": ((double.tryParse(bfiData["OXY_PR_NL"].toString()) ?? 0.0)).toStringAsFixed(2),
                 "selected": false,
                 "i": 13
               },
 
               {
                 "head": "Heat Load[Mcal]",
-                "data": "${bfiData["TOTAL_HEAT_LOAD"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["TOTAL_HEAT_LOAD"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 14
               },
               {
                 "head": "ETA CO [%]",
-                "data": "${bfiData["BF_CO"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["BF_CO"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 15
               },
               {
                 "head": "Charge Count",
-                "data": "${bfiData["BF_CHARGE"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["BF_CHARGE"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 16
               },
               {
                 "head": "Ore Coke Ratio",
-                "data": "${bfiData["OREBYCOKE"]?.toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["OREBYCOKE"]?.toString() ?? '')?.toStringAsFixed(2)}",
                 "selected": false,
                 "i": 17
               },
               {
                 "head": "Production rate",
-                "data": "${bfiData["PROD_RATE"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["PROD_RATE"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 18
               },
               {
                 "head": "Last Day HM Prod [Ton]",
-                "data": "${bfiData["LADLE_BFTLMSPROD"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfiData["LADLE_BFTLMSPROD"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 19
               },
               {
                 "head": "Flare Stack Flow [Nm3/hr]",
-                "data": "${bfiData["BF_FLAREF"].toStringAsFixed(0)}",
+                "data": "${double.tryParse(bfiData["BF_FLAREF"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}",
                 "selected": false,
                 "i": 20
               },
               {
                 "head": "Flare Stack Pressure [mmwc]",
-                "data": "${bfiData["BF_FLAREP"].toStringAsFixed(0)}",
+                "data": "${double.tryParse(bfiData["BF_FLAREP"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}",
                 "selected": false,
                 "i": 21
               },
               // {
               //   "head": "Snort Position[%]",
-              //   "data": "${bfiData["PBS_SNORT"].toStringAsFixed(0)}",
+              //   "data": "${double.tryParse(bfiData["PBS_SNORT"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}",
               //   "selected": false,
               //   "i": 23
               // },
               {
                 "head": "Silicon[%]@ Sample time",
                 "data":
-                    "${bfiData["LAB_SI"].toStringAsFixed(2)}@${bfiData["LAB_HR"] ?? "0"}:${bfiData["LAB_MIN"] ?? "0"}",
+                    "${double.tryParse(bfiData["LAB_SI"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}@${bfiData["LAB_HR"] ?? "0"}:${bfiData["LAB_MIN"] ?? "0"}",
                 "selected": false,
                 "i": 22
               },
               {
                 "head": "Toredo Car 1/2/3/4 Level [%]",
                 // "data": "dgrgr",
-                "data": "${bfiData["TORPEDO1"] != null ? bfiData["TORPEDO1"].toStringAsFixed(0) : "0"}/"
-                    "${bfiData["TORPEDO2"] != null ? bfiData["TORPEDO2"].toStringAsFixed(0) : "0"}/"
-                    "${bfiData["TORPEDO3"] != null ? bfiData["TORPEDO3"].toStringAsFixed(0) : "0"}/"
-                    "${bfiData["TORPEDO4"] != null ? bfiData["TORPEDO4"].toStringAsFixed(0) : "0"}",
+                "data": "${bfiData["TORPEDO1"] != null ? double.tryParse(bfiData["TORPEDO1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--' : "0"}/"
+                    "${bfiData["TORPEDO2"] != null ? double.tryParse(bfiData["TORPEDO2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--' : "0"}/"
+                    "${bfiData["TORPEDO3"] != null ? double.tryParse(bfiData["TORPEDO3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--' : "0"}/"
+                    "${bfiData["TORPEDO4"] != null ? double.tryParse(bfiData["TORPEDO4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--' : "0"}",
 
                 // "data":
-                //     "${bfiData["TORPEDO1"].toStringAsFixed(0)}/${bfiData["TORPEDO2"].toStringAsFixed(0)}/${bfiData["TORPEDO3"].toStringAsFixed(0)}/${bfiData["TORPEDO4"].toStringAsFixed(0)}",
+                //     "${double.tryParse(bfiData["TORPEDO1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}/${double.tryParse(bfiData["TORPEDO2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}/${double.tryParse(bfiData["TORPEDO3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}/${double.tryParse(bfiData["TORPEDO4"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}",
                 "selected": false,
                 "i": 23
               },
               {
                 "head": "Toredo Car 5/6/7/8 Level [%]",
-                "data": "${bfiData["TORPEDO5"] != null ? bfiData["TORPEDO5"].toStringAsFixed(0) : "0"}/"
-                    "${bfiData["TORPEDO6"] != null ? bfiData["TORPEDO6"].toStringAsFixed(0) : "0"}/"
-                    "${bfiData["TORPEDO7"] != null ? bfiData["TORPEDO7"].toStringAsFixed(0) : "0"}/"
-                    "${bfiData["TORPEDO8"] != null ? bfiData["TORPEDO8"].toStringAsFixed(0) : "0"}",
+                "data": "${bfiData["TORPEDO5"] != null ? double.tryParse(bfiData["TORPEDO5"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--' : "0"}/"
+                    "${bfiData["TORPEDO6"] != null ? double.tryParse(bfiData["TORPEDO6"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--' : "0"}/"
+                    "${bfiData["TORPEDO7"] != null ? double.tryParse(bfiData["TORPEDO7"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--' : "0"}/"
+                    "${bfiData["TORPEDO8"] != null ? double.tryParse(bfiData["TORPEDO8"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--' : "0"}",
                 "selected": false,
                 "i": 24
               },
@@ -242,7 +243,7 @@ class BfiState extends State<Bfi> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

@@ -55,6 +55,7 @@ class CoiState extends State<Coi> {
   cokeovensService() async {
     if (mounted) {
       await cokeovens().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -62,46 +63,46 @@ class CoiState extends State<Coi> {
             rows = [
               {
                 "head": "A Shift",
-                "data1": coiData["COB11_PUSHA"].toString(),
-                "data2": coiData["COB11_CHARGEA"].toString(),
-                "data3": coiData["COB10_PUSHA"].toString(),
-                "data4": coiData["COB10_CHARGEA"].toString(),
+                "data1": coiData["COB11_PUSHA"]?.toString() ?? '--',
+                "data2": coiData["COB11_CHARGEA"]?.toString() ?? '--',
+                "data3": coiData["COB10_PUSHA"]?.toString() ?? '--',
+                "data4": coiData["COB10_CHARGEA"]?.toString() ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "B Shift",
-                "data1": coiData["COB11_PUSHB"].toString(),
-                "data2": coiData["COB11_CHARGEB"].toString(),
-                "data3": coiData["COB10_PUSHB"].toString(),
-                "data4": coiData["COB10_CHARGEB"].toString(),
+                "data1": coiData["COB11_PUSHB"]?.toString() ?? '--',
+                "data2": coiData["COB11_CHARGEB"]?.toString() ?? '--',
+                "data3": coiData["COB10_PUSHB"]?.toString() ?? '--',
+                "data4": coiData["COB10_CHARGEB"]?.toString() ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "C Shift",
-                "data1": coiData["COB11_PUSHC"].toString(),
-                "data2": coiData["COB11_CHARGEC"].toString(),
-                "data3": coiData["COB10_PUSHC"].toString(),
-                "data4": coiData["COB10_CHARGEC"].toString(),
+                "data1": coiData["COB11_PUSHC"]?.toString() ?? '--',
+                "data2": coiData["COB11_CHARGEC"]?.toString() ?? '--',
+                "data3": coiData["COB10_PUSHC"]?.toString() ?? '--',
+                "data4": coiData["COB10_CHARGEC"]?.toString() ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "Total",
-                "data1": coiData["COB11_PUSHTOT"].toString(),
-                "data2": coiData["COB11_CHARGETOT"].toString(),
-                "data3": coiData["COB10_PUSHTOT"].toString(),
-                "data4": coiData["COB10_CHARGETOT"].toString(),
+                "data1": coiData["COB11_PUSHTOT"]?.toString() ?? '--',
+                "data2": coiData["COB11_CHARGETOT"]?.toString() ?? '--',
+                "data3": coiData["COB10_PUSHTOT"]?.toString() ?? '--',
+                "data4": coiData["COB10_CHARGETOT"]?.toString() ?? '--',
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Prev.Day Total",
-                "data1": coiData["PUSHING_TOTOLD"].toString(),
-                "data2": coiData["CHARGING_TOTOLD"].toString(),
-                "data3": coiData["COB10_PUSHTOTLD"].toString(),
-                "data4": coiData["COB10_CHARGETOTLD"].toString(),
+                "data1": coiData["PUSHING_TOTOLD"]?.toString() ?? '--',
+                "data2": coiData["CHARGING_TOTOLD"]?.toString() ?? '--',
+                "data3": coiData["COB10_PUSHTOTLD"]?.toString() ?? '--',
+                "data4": coiData["COB10_CHARGETOTLD"]?.toString() ?? '--',
                 "selected": false,
                 "i": 4,
               },
@@ -117,7 +118,7 @@ class CoiState extends State<Coi> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

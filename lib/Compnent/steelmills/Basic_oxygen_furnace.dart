@@ -55,6 +55,7 @@ class BOFsmState extends State<BOFsm> {
   bfService() async {
     if (mounted) {
       await basicoxygenfurnace().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -63,11 +64,11 @@ class BOFsmState extends State<BOFsm> {
               {
                 "head": "Heat A/B/C",
                 "data1":
-                    "${bofData["BOF1_A"].toStringAsFixed(0)}/${bofData["BOF1_B"].toString()}/${bofData["BOF1_C"].toString()}",
+                    "${double.tryParse(bofData["BOF1_A"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}/${bofData["BOF1_B"]?.toString() ?? '--'}/${bofData["BOF1_C"]?.toString() ?? '--'}",
                 "data2":
-                    "${bofData["BOF2_A"].toStringAsFixed(0)}/${bofData["BOF2_B"].toString()}/${bofData["BOF2_C"].toString()}",
+                    "${double.tryParse(bofData["BOF2_A"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}/${bofData["BOF2_B"]?.toString() ?? '--'}/${bofData["BOF2_C"]?.toString() ?? '--'}",
                 "data3":
-                    "${bofData["BOF3_A"].toStringAsFixed(0)}/${bofData["BOF3_B"].toString()}/${bofData["BOF3_C"].toString()}",
+                    "${double.tryParse(bofData["BOF3_A"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'}/${bofData["BOF3_B"]?.toString() ?? '--'}/${bofData["BOF3_C"]?.toString() ?? '--'}",
                 "selected": false,
                 "i": 0,
               },
@@ -83,7 +84,7 @@ class BOFsmState extends State<BOFsm> {
                 //         bofData["BOF3_B"] +
                 //         bofData["BOF3_C"])
                 //     .toString(),
-                "data1": bofData["TOTAL_HEAT"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["TOTAL_HEAT"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": " ",
                 "data3": " ",
                 "selected": false,
@@ -92,25 +93,25 @@ class BOFsmState extends State<BOFsm> {
               {
                 "head": "Prev. Day Heat",
                 "data1":
-                    "${(bofData["BOF1_PDAY"] + bofData["BOF2_PDAY"] + bofData["BOF3_PDAY"]).toString()} (${bofData["BOF1_PDAY"].toString()} + ${bofData["BOF2_PDAY"].toString()} + ${bofData["BOF3_PDAY"].toString()})",
-                "data2": bofData["BOF2_PDAY"].toString(),
-                "data3": bofData["BOF3_PDAY"].toString(),
+                    "${(bofData["BOF1_PDAY"] + bofData["BOF2_PDAY"] + bofData["BOF3_PDAY"]).toString()} (${bofData["BOF1_PDAY"]?.toString() ?? '--'} + ${bofData["BOF2_PDAY"]?.toString() ?? '--'} + ${bofData["BOF3_PDAY"]?.toString() ?? '--'})",
+                "data2": bofData["BOF2_PDAY"]?.toString() ?? '--',
+                "data3": bofData["BOF3_PDAY"]?.toString() ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "Heat No",
-                "data1": bofData["BOF1_HEAT"].toString(),
-                "data2": bofData["BOF2_HEAT"].toString(),
-                "data3": bofData["BOF3_HEAT"].toString(),
+                "data1": bofData["BOF1_HEAT"]?.toString() ?? '--',
+                "data2": bofData["BOF2_HEAT"]?.toString() ?? '--',
+                "data3": bofData["BOF3_HEAT"]?.toString() ?? '--',
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Status",
-                "data1": "${bofData["BOF1_STATUS"]}",
-                "data2": "${bofData["BOF2_STATUS"]}",
-                "data3": "${bofData["BOF3_STATUS"]}",
+                "data1": bofData["BOF1_STATUS"]?.toString() ?? '--',
+                "data2": bofData["BOF2_STATUS"]?.toString() ?? '--',
+                "data3": bofData["BOF3_STATUS"]?.toString() ?? '--',
                 "selected": false,
                 "i": 4,
               },
@@ -126,13 +127,13 @@ class BOFsmState extends State<BOFsm> {
                 "head": " Blow Duration(Mins)",
                 "data1": bofData["BOF1_LASTHEATDURATION"] == null
                     ? "N/A"
-                    : bofData["BOF1_LASTHEATDURATION"].toString(),
+                    : bofData["BOF1_LASTHEATDURATION"]?.toString() ?? '--',
                 "data2": bofData["BOF2_LASTHEATDURATION"] == null
                     ? "N/A"
-                    : bofData["BOF2_LASTHEATDURATION"].toString(),
+                    : bofData["BOF2_LASTHEATDURATION"]?.toString() ?? '--',
                 "data3": bofData["BOF3_LASTHEATDURATION"] == null
                     ? "N/A"
-                    : bofData["BOF3_LASTHEATDURATION"].toString(),
+                    : bofData["BOF3_LASTHEATDURATION"]?.toString() ?? '--',
                 "selected": false,
                 "i": 6,
               },
@@ -140,13 +141,13 @@ class BOFsmState extends State<BOFsm> {
                 "head": "Charge To Tap Duration (Mins)",
                 "data1": bofData["BOF1_LASTC2T"] == null
                     ? "N/A"
-                    : bofData["BOF1_LASTC2T"].toString(),
+                    : bofData["BOF1_LASTC2T"]?.toString() ?? '--',
                 "data2": bofData["BOF2_LASTC2T"] == null
                     ? "N/A"
-                    : bofData["BOF2_LASTC2T"].toString(),
+                    : bofData["BOF2_LASTC2T"]?.toString() ?? '--',
                 "data3": bofData["BOF3_LASTC2T"] == null
                     ? "N/A"
-                    : bofData["BOF3_LASTC2T"].toString(),
+                    : bofData["BOF3_LASTC2T"]?.toString() ?? '--',
                 "selected": false,
                 "i": 7,
               },
@@ -154,13 +155,13 @@ class BOFsmState extends State<BOFsm> {
                 "head": "Tap To Tap Duration(Mins)",
                 "data1": bofData["BOF1_LASTT2T"] == null
                     ? "N/A"
-                    : bofData["BOF1_LASTT2T"].toString(),
+                    : bofData["BOF1_LASTT2T"]?.toString() ?? '--',
                 "data2": bofData["BOF2_LASTT2T"] == null
                     ? "N/A"
-                    : bofData["BOF2_LASTT2T"].toString(),
+                    : bofData["BOF2_LASTT2T"]?.toString() ?? '--',
                 "data3": bofData["BOF3_LASTT2T"] == null
                     ? "N/A"
-                    : bofData["BOF3_LASTT2T"].toString(),
+                    : bofData["BOF3_LASTT2T"]?.toString() ?? '--',
                 "selected": false,
                 "i": 8,
               },
@@ -174,71 +175,71 @@ class BOFsmState extends State<BOFsm> {
               },
               {
                 "head": "Lance in Operation",
-                "data1": bofData["LANCESTATUS_1"].toString(),
-                "data2": bofData["LANCESTATUS_2"].toString(),
-                "data3": bofData["LANCESTATUS_3"].toString(),
+                "data1": bofData["LANCESTATUS_1"]?.toString() ?? '--',
+                "data2": bofData["LANCESTATUS_2"]?.toString() ?? '--',
+                "data3": bofData["LANCESTATUS_3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 10,
               },
               {
                 "head": "Lining Life",
-                "data1": bofData["LINING_1"].toString(),
-                "data2": bofData["LINING_2"].toString(),
-                "data3": bofData["LINING_3"].toString(),
+                "data1": bofData["LINING_1"]?.toString() ?? '--',
+                "data2": bofData["LINING_2"]?.toString() ?? '--',
+                "data3": bofData["LINING_3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 11,
               },
               {
                 "head": "Temp [DegC]",
-                "data1": bofData["TEMP_1"].toString(),
-                "data2": bofData["TEMP_2"].toString(),
-                "data3": bofData["TEMP_3"].toString(),
+                "data1": bofData["TEMP_1"]?.toString() ?? '--',
+                "data2": bofData["TEMP_2"]?.toString() ?? '--',
+                "data3": bofData["TEMP_3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 12,
               },
               {
                 "head": "O2 Flow [Nm3/min]",
-                "data1": bofData["O2FLOWL1"].toStringAsFixed(2),
-                "data2": bofData["O2FLOWL2"].toStringAsFixed(2),
-                "data3": bofData["O2FLOWL3"].toStringAsFixed(2),
+                "data1": double.tryParse(bofData["O2FLOWL1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(bofData["O2FLOWL2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data3": double.tryParse(bofData["O2FLOWL3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 13,
               },
               {
                 "head": "O2 Consm [Nm3]",
-                "data1": bofData["O2FLOWL11"].toStringAsFixed(0),
-                "data2": bofData["O2FLOWL22"].toStringAsFixed(0),
-                "data3": bofData["O2FLOWL33"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["O2FLOWL11"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(bofData["O2FLOWL22"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(bofData["O2FLOWL33"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 14,
               },
               {
                 "head": "Gas Recovery Status",
-                "data1": "${bofData["REC_1"]}",
-                "data2": "${bofData["REC_2"]}",
-                "data3": "${bofData["REC_3"]}",
+                "data1": bofData["REC_1"]?.toString() ?? '--',
+                "data2": bofData["REC_2"]?.toString() ?? '--',
+                "data3": bofData["REC_3"]?.toString() ?? '--',
                 "selected": false,
                 "i": 15,
               },
               {
                 "head": "Gas Recovery Per heat[Nm3]",
-                "data1": bofData["GASREC_1"].toStringAsFixed(0),
-                "data2": bofData["GASREC_2"].toStringAsFixed(0),
-                "data3": bofData["GASREC_3"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["GASREC_1"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(bofData["GASREC_2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(bofData["GASREC_3"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 16,
               },
               {
                 "head": "Gas Recovery [Nm3]x 1000",
-                "data1": bofData["BOF1_GASRECTOT"].toStringAsFixed(0),
-                "data2": bofData["BOF2_GASRECTOT"].toStringAsFixed(0),
-                "data3": bofData["BOF3_GASRECTOT"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["BOF1_GASRECTOT"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(bofData["BOF2_GASRECTOT"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(bofData["BOF3_GASRECTOT"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 17,
               },
               {
                 "head": "CBM Gas Consm (Flow)[Nm3/hr]",
-                "data1": bofData["BOF_CBMF"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["BOF_CBMF"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": " ",
                 "data3": " ",
                 "selected": false,
@@ -246,7 +247,7 @@ class BOFsmState extends State<BOFsm> {
               },
               {
                 "head": "CBM Gas Consm (Pressure) [mmwc]",
-                "data1": bofData["BOF_CBMP"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["BOF_CBMP"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": " ",
                 "data3": " ",
                 "selected": false,
@@ -254,31 +255,31 @@ class BOFsmState extends State<BOFsm> {
               },
               {
                 "head": "N2 Flow [Nm3/min]",
-                "data1": bofData["BOF1_N2CON"].toStringAsFixed(0),
-                "data2": bofData["BOF2_N2CON"].toStringAsFixed(0),
-                "data3": bofData["BOF3_N2CON"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["BOF1_N2CON"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(bofData["BOF2_N2CON"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(bofData["BOF3_N2CON"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 20,
               },
               {
                 "head": "Dry Gas O2[%]",
-                "data1": bofData["BOF1_O2"].toStringAsFixed(0),
-                "data2": bofData["BOF2_O2"].toStringAsFixed(0),
-                "data3": bofData["BOF3_O2"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["BOF1_O2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(bofData["BOF2_O2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data3": double.tryParse(bofData["BOF3_O2"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 21,
               },
               {
                 "head": "ID Fan RPM",
-                "data1": bofData["IDFAN_1"].toStringAsFixed(2),
-                "data2": bofData["IDFAN_2"].toStringAsFixed(2),
-                "data3": bofData["IDFAN_3"].toStringAsFixed(2),
+                "data1": double.tryParse(bofData["IDFAN_1"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data2": double.tryParse(bofData["IDFAN_2"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
+                "data3": double.tryParse(bofData["IDFAN_3"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 22,
               },
               {
                 "head": "PRS 1 N2 Flow[Nm3/hr]",
-                "data1": bofData["BOF_PRS1F"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["BOF_PRS1F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": " ",
                 "data3": " ",
                 "selected": false,
@@ -286,7 +287,7 @@ class BOFsmState extends State<BOFsm> {
               },
               {
                 "head": "PRS 2 N2 Flow[Nm3/hr]",
-                "data1": bofData["BOF_PRS2F"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["BOF_PRS2F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": "",
                 "data3": "",
                 "selected": false,
@@ -294,7 +295,7 @@ class BOFsmState extends State<BOFsm> {
               },
               {
                 "head": "PRS 3 N2 Flow[Nm3/hr]",
-                "data1": bofData["BOF_PRS3F"].toStringAsFixed(0),
+                "data1": double.tryParse(bofData["BOF_PRS3F"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "data2": "",
                 "data3": "",
                 "selected": false,
@@ -319,7 +320,7 @@ class BOFsmState extends State<BOFsm> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

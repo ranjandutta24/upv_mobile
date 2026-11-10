@@ -54,55 +54,56 @@ class wmdState extends State<wmd> {
   bfstockhouseService() async {
     if (mounted) {
       await wmdpumphouse().then((data) {
+        if (!mounted) return;
         if (data != null) {
           setState(() {
             bfshData = json.decode(data.body);
             rows = [
               {
                 "head": "Pump 1",
-                "data": "${bfshData["pump1_running"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["pump1_running"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "Pump 2",
-                "data": "${bfshData["pump2_running"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["pump2_running"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "Pump 3",
-                "data": "${bfshData["pump3_running"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["pump3_running"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "Pump 4",
-                "data": "${bfshData["pump4_running"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["pump4_running"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "Pump 5",
-                "data": "${bfshData["pump5_running"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["pump5_running"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "Total Flow [Nm3/hr]",
-                "data": "${bfshData["totalflow"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["totalflow"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 5,
               },
               {
                 "head": "Main Header Pressure [kg/cm2]",
-                "data": "${bfshData["mainheader_pressure"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["mainheader_pressure"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 6,
               },
               {
                 "head": "Settling Tanklevel [Meter]",
-                "data": "${bfshData["settling_tanklevel"].toStringAsFixed(2)}",
+                "data": "${double.tryParse(bfshData["settling_tanklevel"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 7,
               },
@@ -118,7 +119,7 @@ class wmdState extends State<wmd> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

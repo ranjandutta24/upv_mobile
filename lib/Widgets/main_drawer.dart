@@ -58,7 +58,7 @@ class MainDrawer extends StatelessWidget {
                   height: 8,
                 ),
                 Text(
-                  "${data["role"]}",
+                  data["role"]?.toString() ?? '--',
                   style: const TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.w600,

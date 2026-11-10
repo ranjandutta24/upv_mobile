@@ -73,6 +73,7 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
   bofgasholderService() async {
     if (mounted) {
       await bofgasholder().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
 
@@ -182,7 +183,7 @@ class BofGasHoldUtState extends State<BofGasHoldUt> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

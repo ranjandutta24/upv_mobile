@@ -53,6 +53,7 @@ class swwsmState extends State<swwsm> {
   swwsService() async {
     if (mounted) {
       await swws().then((data) {
+        if (!mounted) return;
         if (data != null) {
           setState(() {
             carData = json.decode(data.body);
@@ -83,7 +84,7 @@ class swwsmState extends State<swwsm> {
               },
               {
                 "head": "Blast Furnace",
-                "data1": carData["bf"]["Water_Flow_BF"].toString(),
+                "data1": carData["bf"]["Water_Flow_BF"]?.toString() ?? '--',
                 "data2": "-",
                 "data3": "-",
                 "selected": false,
@@ -107,34 +108,34 @@ class swwsmState extends State<swwsm> {
               },
               {
                 "head": "WRM /BAR Mill",
-                "data1": carData["mills"]["WRBM_MK_WS"].toString(),
+                "data1": carData["mills"]["WRBM_MK_WS"]?.toString() ?? '--',
                 "data2": "-",
-                "data3": carData["mills"]["WRBM_MK_WS_TOT"].toString(),
+                "data3": carData["mills"]["WRBM_MK_WS_TOT"]?.toString() ?? '--',
                 "selected": false,
                 "i": 6,
               },
               {
                 "head": "Mills Reheating Furnace (RHF)",
-                "data1": carData["mills"]["MILLS_RHF_WATER_FLOW"].toString(),
+                "data1": carData["mills"]["MILLS_RHF_WATER_FLOW"]?.toString() ?? '--',
                 "data2": "-",
                 "data3":
-                    carData["mills"]["MILLS_RHF_WATER_FLOW_TOT"].toString(),
+                    carData["mills"]["MILLS_RHF_WATER_FLOW_TOT"]?.toString() ?? '--',
                 "selected": false,
                 "i": 7,
               },
               {
                 "head": "USM",
-                "data1": carData["mills"]["USM_MK_WS"].toString(),
+                "data1": carData["mills"]["USM_MK_WS"]?.toString() ?? '--',
                 "data2": "-",
-                "data3": carData["mills"]["USM_MK_WS_TOT"].toString(),
+                "data3": carData["mills"]["USM_MK_WS_TOT"]?.toString() ?? '--',
                 "selected": false,
                 "i": 8,
               },
               {
                 "head": "Oxygen Plant",
-                "data1": carData["oxygen"]["oxywater"].toString(),
-                "data2": carData["oxygen"]["difference_oxy"].toString(),
-                "data3": carData["oxygen"]["waterflow_total"].toString(),
+                "data1": carData["oxygen"]["oxywater"]?.toString() ?? '--',
+                "data2": carData["oxygen"]["difference_oxy"]?.toString() ?? '--',
+                "data3": carData["oxygen"]["waterflow_total"]?.toString() ?? '--',
                 "selected": false,
                 "i": 9,
               },
@@ -159,7 +160,7 @@ class swwsmState extends State<swwsm> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),

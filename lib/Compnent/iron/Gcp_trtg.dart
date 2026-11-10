@@ -55,6 +55,7 @@ class GcpState extends State<Gcp> {
   gcpserviceWraper() async {
     if (mounted) {
       await gcpservice().then((data) {
+        if (!mounted) return;
         if (data != null) {
           // print(data.body);
           setState(() {
@@ -62,38 +63,38 @@ class GcpState extends State<Gcp> {
             rows = [
               {
                 "head": "TRTG Generation [MW]",
-                "data1": gcpData["TRTGMW"].toStringAsFixed(0),
+                "data1": double.tryParse(gcpData["TRTGMW"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 0,
               },
               {
                 "head": "TRTG Pressure[Kg/cm2]",
-                "data1": gcpData["TRTPRES"].toStringAsFixed(0),
+                "data1": double.tryParse(gcpData["TRTPRES"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 1,
               },
               {
                 "head": "TRTG Temp. [DegC]",
-                "data1": gcpData["TRTTEMP"].toStringAsFixed(0),
+                "data1": double.tryParse(gcpData["TRTTEMP"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 2,
               },
               {
                 "head": "TRTG Open [%]",
-                "data1": gcpData["TRTOPEN"].toStringAsFixed(2),
+                "data1": double.tryParse(gcpData["TRTOPEN"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
                 "selected": false,
                 "i": 3,
               },
               {
                 "head": "AG Element A/B/C[%]",
                 "data1":
-                    "${gcpData["AG_A"].toStringAsFixed(2)}/${gcpData["AG_B"].toStringAsFixed(2)}/${gcpData["AG_C"].toStringAsFixed(2)}",
+                    "${double.tryParse(gcpData["AG_A"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}/${double.tryParse(gcpData["AG_B"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}/${double.tryParse(gcpData["AG_C"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--'}",
                 "selected": false,
                 "i": 4,
               },
               {
                 "head": "Clean Gas flow High[Nm3/h]",
-                "data1": gcpData["CLEAN_GAS_FLOW"].toStringAsFixed(0),
+                "data1": double.tryParse(gcpData["CLEAN_GAS_FLOW"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
                 "selected": false,
                 "i": 5,
               },
@@ -108,7 +109,7 @@ class GcpState extends State<Gcp> {
           // ignore: use_build_context_synchronously
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              duration: const Duration(seconds: 3),
+              duration: const Duration(seconds: 2),
               content: const Center(
                 child: Text('Something wrong'),
               ),
