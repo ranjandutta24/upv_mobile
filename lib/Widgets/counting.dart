@@ -11,13 +11,20 @@ class Counting extends StatefulWidget {
 }
 
 class _CountingState extends State<Counting> {
+  double _parseVal(dynamic v) {
+    if (v == null) return 0.0;
+    if (v is num) return v.toDouble();
+    return double.tryParse(v.toString()) ?? 0.0;
+  }
+
   @override
   Widget build(BuildContext context) {
     return TweenAnimationBuilder<double>(
       tween: Tween<double>(
           begin: 0.0,
-          end: widget.value
-              .toDouble()), // Animate between old and new double values
+          end: _parseVal(widget.value)),
+          // end: widget.value
+          //     .toDouble()), // Animate between old and new double values
       duration: const Duration(seconds: 1), // Duration of the animation
       builder: (context, value, child) {
         return Text(
