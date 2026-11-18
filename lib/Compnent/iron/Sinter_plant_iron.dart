@@ -88,6 +88,13 @@ class SinterPlantState extends State<SinterPlant> {
                 "i": 3,
               },
               {
+                "head": "Prev. Day Production [Ton]",
+                "data1": double.tryParse(spiData["SP1_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data2": double.tryParse(spiData["SP2_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "selected": false,
+                "i": 4,
+              },
+              {
                 "head": "BF STOCK [Ton]",
                 "data1": spiData["SP1_BFSTOCK"]?.toString() ?? '--',
                 "data2": "",

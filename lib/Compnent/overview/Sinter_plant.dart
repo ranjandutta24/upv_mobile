@@ -139,11 +139,18 @@ class SinterPlantState extends State<SinterPlant> {
               "i": 10,
             },
             {
+              "head": "Prev. Day Production [Ton]",
+              "data1": double.tryParse(sinterData["SP1_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data2": double.tryParse(sinterData["SP2_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "selected": false,
+              "i": 11,
+            },
+            {
               "head": "Cooler Pressure [mbar]",
               "data1": double.tryParse(sinterData["SP1_COOLERPRESS"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "data2": double.tryParse(sinterData["SP2_COOLERPRESS"]?.toString() ?? '')?.toStringAsFixed(2) ?? '--',
               "selected": false,
-              "i": 11,
+              "i": 12,
             },
           ];
           if (num != -1) {
