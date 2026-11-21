@@ -140,8 +140,9 @@ class SinterPlantState extends State<SinterPlant> {
             },
             {
               "head": "Prev. Day Production [Ton]",
-              "data1": double.tryParse(sinterData["SP1_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
-              "data2": double.tryParse(sinterData["SP2_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+              "data1":
+                  "${((double.tryParse(sinterData["SP1_PDAY"]?.toString() ?? '0') ?? 0) + (double.tryParse(sinterData["SP2_PDAY"]?.toString() ?? '0') ?? 0)).toStringAsFixed(0)} (${double.tryParse(sinterData["SP1_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'} + ${double.tryParse(sinterData["SP2_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'})",
+              "data2": "",
               "selected": false,
               "i": 11,
             },
@@ -331,7 +332,7 @@ Widget _row(h, d1, d2, color, i) {
           ),
         ),
       ),
-      i == 0 || i == 1
+      i == 0 || i == 1 || i == 11
           ? Expanded(
               flex: 2,
               child: Container(
@@ -360,7 +361,7 @@ Widget _row(h, d1, d2, color, i) {
               ),
             ),
 
-      i == 0 || i == 1
+      i == 0 || i == 1 || i == 11
           ? const Text("")
           : Expanded(
               flex: 1,

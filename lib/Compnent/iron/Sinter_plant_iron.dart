@@ -89,8 +89,9 @@ class SinterPlantState extends State<SinterPlant> {
               },
               {
                 "head": "Prev. Day Production [Ton]",
-                "data1": double.tryParse(spiData["SP1_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
-                "data2": double.tryParse(spiData["SP2_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--',
+                "data1":
+                    "${((double.tryParse(spiData["SP1_PDAY"]?.toString() ?? '0') ?? 0) + (double.tryParse(spiData["SP2_PDAY"]?.toString() ?? '0') ?? 0)).toStringAsFixed(0)} (${double.tryParse(spiData["SP1_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'} + ${double.tryParse(spiData["SP2_PDAY"]?.toString() ?? '')?.toStringAsFixed(0) ?? '--'})",
+                "data2": "",
                 "selected": false,
                 "i": 4,
               },
@@ -492,37 +493,52 @@ Widget _row(h, d1, d2, color, i) {
           ),
         ),
       ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          height: 40,
-          decoration: BoxDecoration(
-            border: Border(
-              right: BorderSide(
-                color: borderColor,
-                width: 2.0,
+      d2 == ""
+          ? Expanded(
+              flex: 2,
+              child: Container(
+                height: 40,
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(
+                        color: color, fontSize: 12, fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.center),
+              ),
+            )
+          : Expanded(
+              flex: 1,
+              child: Container(
+                height: 40,
+                decoration: BoxDecoration(
+                  border: Border(
+                    right: BorderSide(
+                      color: borderColor,
+                      width: 2.0,
+                    ),
+                  ),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d1,
+                    style: TextStyle(
+                        color: color, fontSize: 12, fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.center),
               ),
             ),
-          ),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d1,
-              style: TextStyle(
-                  color: color, fontSize: 12, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.center),
-        ),
-      ),
-      Expanded(
-        flex: 1,
-        child: Container(
-          height: 40,
-          decoration: const BoxDecoration(),
-          padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
-          child: Text(d2,
-              style: TextStyle(
-                  color: color, fontSize: 12, fontWeight: FontWeight.w600),
-              textAlign: TextAlign.center),
-        ),
-      ),
+      d2 == ""
+          ? const Text("")
+          : Expanded(
+              flex: 1,
+              child: Container(
+                height: 40,
+                decoration: const BoxDecoration(),
+                padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 0),
+                child: Text(d2,
+                    style: TextStyle(
+                        color: color, fontSize: 12, fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.center),
+              ),
+            ),
 
       // Text(h, style: TextStyle(color: color)),
       // Text(d1, style: TextStyle(color: color)),
