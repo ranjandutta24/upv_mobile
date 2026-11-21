@@ -147,12 +147,23 @@ class CcpState extends State<Ccp> {
               "i": 9,
             },
             {
-              "head": "Prev. Day Cast",
-              "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
+              "head": "Total Cast",
+              "data1":
+                  "${(((ccpData["CCP1_A"] ?? 0) + (ccpData["CCP1_B"] ?? 0) + (ccpData["CCP1_C"] ?? 0)) + ((ccpData["CCP2_A"] ?? 0) + (ccpData["CCP2_B"] ?? 0) + (ccpData["CCP2_C"] ?? 0)) + ((ccpData["CCP3_A"] ?? 0) + (ccpData["CCP3_B"] ?? 0) + (ccpData["CCP3_C"] ?? 0))).toString()} (${((ccpData["CCP1_A"] ?? 0) + (ccpData["CCP1_B"] ?? 0) + (ccpData["CCP1_C"] ?? 0)).toString()} + ${((ccpData["CCP2_A"] ?? 0) + (ccpData["CCP2_B"] ?? 0) + (ccpData["CCP2_C"] ?? 0)).toString()} + ${((ccpData["CCP3_A"] ?? 0) + (ccpData["CCP3_B"] ?? 0) + (ccpData["CCP3_C"] ?? 0)).toString()})",
               "data2": "",
               "data3": "",
               "selected": false,
               "i": 10,
+            },
+            {
+              "head": "Prev. Day Cast",
+              // "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
+              "data1":
+                  "${ccpData["CCPPRETOTAL"]?.toString() ?? '--'} (${ccpData["CCP1_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP2_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP3_PDAY"]?.toString() ?? '--'})",
+              "data2": "",
+              "data3": "",
+              "selected": false,
+              "i": 11,
             },
           ];
           status = [
@@ -394,7 +405,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           ),
         ),
       ),
-      i == 10
+      i == 10 || i == 11
           ? Expanded(
               flex: 3,
               child: Container(
@@ -447,7 +458,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 10
+      i == 10 || i == 11
           ? const Text("")
           : Expanded(
               flex: 1,
@@ -491,7 +502,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i == 10
+      i == 10 || i == 11
           ? const Text("")
           : Expanded(
               flex: 1,

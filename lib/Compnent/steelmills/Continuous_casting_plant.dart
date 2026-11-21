@@ -272,12 +272,23 @@ class CcpsmState extends State<Ccpsm> {
                 "i": 22,
               },
               {
-                "head": "Prev. Day Cast",
-                "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
+                "head": "Total Cast",
+                "data1":
+                    "${(((ccpData["CCP1_A"] ?? 0) + (ccpData["CCP1_B"] ?? 0) + (ccpData["CCP1_C"] ?? 0)) + ((ccpData["CCP2_A"] ?? 0) + (ccpData["CCP2_B"] ?? 0) + (ccpData["CCP2_C"] ?? 0)) + ((ccpData["CCP3_A"] ?? 0) + (ccpData["CCP3_B"] ?? 0) + (ccpData["CCP3_C"] ?? 0))).toString()} (${((ccpData["CCP1_A"] ?? 0) + (ccpData["CCP1_B"] ?? 0) + (ccpData["CCP1_C"] ?? 0)).toString()} + ${((ccpData["CCP2_A"] ?? 0) + (ccpData["CCP2_B"] ?? 0) + (ccpData["CCP2_C"] ?? 0)).toString()} + ${((ccpData["CCP3_A"] ?? 0) + (ccpData["CCP3_B"] ?? 0) + (ccpData["CCP3_C"] ?? 0)).toString()})",
                 "data2": "",
                 "data3": "",
                 "selected": false,
                 "i": 23,
+              },
+              {
+                "head": "Prev. Day Cast",
+                // "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
+                "data1":
+                    "${ccpData["CCPPRETOTAL"]?.toString() ?? '--'} (${ccpData["CCP1_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP2_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP3_PDAY"]?.toString() ?? '--'})",
+                "data2": "",
+                "data3": "",
+                "selected": false,
+                "i": 24,
               },
               {
                 "head": "Ladle Running Count.",
@@ -285,7 +296,7 @@ class CcpsmState extends State<Ccpsm> {
                 "data2": ccpData["LADLENO_2"]?.toString() ?? '--',
                 "data3": ccpData["LADLENO_3"]?.toString() ?? '--',
                 "selected": false,
-                "i": 24,
+                "i": 25,
               },
 
               {
@@ -656,7 +667,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
           ),
         ),
       ),
-      i > 17 && i < 24
+      i > 17 && i < 25
           ? Expanded(
               flex: 9,
               child: Container(
@@ -717,7 +728,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i > 17 && i < 24
+      i > 17 && i < 25
           ? const Text("")
           : Expanded(
               flex: 3,
@@ -765,7 +776,7 @@ Widget _row(h, d1, d2, d3, color, i, status) {
                     textAlign: TextAlign.center),
               ),
             ),
-      i > 17 && i < 24
+      i > 17 && i < 25
           ? const Text("")
           : Expanded(
               flex: 3,
