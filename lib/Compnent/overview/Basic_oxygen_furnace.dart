@@ -174,16 +174,8 @@ class BOFState extends State<BOF> {
             },
             {
               "head": "Total Heat",
-              "data1": (bofData["BOF1_A"] +
-                      bofData["BOF1_B"] +
-                      bofData["BOF1_C"] +
-                      bofData["BOF2_A"] +
-                      bofData["BOF2_B"] +
-                      bofData["BOF2_C"] +
-                      bofData["BOF3_A"] +
-                      bofData["BOF3_B"] +
-                      bofData["BOF3_C"])
-                  .toString(),
+              "data1":
+                  "${(bofData["BOF1_A"] + bofData["BOF1_B"] + bofData["BOF1_C"] + bofData["BOF2_A"] + bofData["BOF2_B"] + bofData["BOF2_C"] + bofData["BOF3_A"] + bofData["BOF3_B"] + bofData["BOF3_C"]).toString()} (${(bofData["BOF1_A"] + bofData["BOF1_B"] + bofData["BOF1_C"]).toString()} + ${(bofData["BOF2_A"] + bofData["BOF2_B"] + bofData["BOF2_C"]).toString()} + ${(bofData["BOF3_A"] + bofData["BOF3_B"] + bofData["BOF3_C"]).toString()})",
               "data2": bofData["BOF2_PDAY"]?.toString() ?? '--',
               "data3": bofData["BOF3_PDAY"]?.toString() ?? '--',
               "selected": false,
