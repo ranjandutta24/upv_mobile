@@ -157,9 +157,9 @@ class CcpState extends State<Ccp> {
             },
             {
               "head": "Prev. Day Cast",
-              // "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
-              "data1":
-                  "${ccpData["CCPPRETOTAL"]?.toString() ?? '--'} (${ccpData["CCP1_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP2_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP3_PDAY"]?.toString() ?? '--'})",
+              "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
+              // "data1":
+              //     "${ccpData["CCPPRETOTAL"]?.toString() ?? '--'} (${ccpData["CCP1_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP2_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP3_PDAY"]?.toString() ?? '--'})",
               "data2": "",
               "data3": "",
               "selected": false,
