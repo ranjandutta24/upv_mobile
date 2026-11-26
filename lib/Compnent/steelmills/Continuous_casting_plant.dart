@@ -282,9 +282,11 @@ class CcpsmState extends State<Ccpsm> {
               },
               {
                 "head": "Prev. Day Cast",
-                "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
+                // "data1": ccpData["CCPPRETOTAL"]?.toString() ?? '--',
                 // "data1":
                 //     "${ccpData["CCPPRETOTAL"]?.toString() ?? '--'} (${ccpData["CCP1_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP2_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP3_PDAY"]?.toString() ?? '--'})",
+                "data1":
+                    "${((ccpData["CCP1_PDAY"] ?? 0) + (ccpData["CCP2_PDAY"] ?? 0) + (ccpData["CCP3_PDAY"] ?? 0)).toString()} (${ccpData["CCP1_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP2_PDAY"]?.toString() ?? '--'} + ${ccpData["CCP3_PDAY"]?.toString() ?? '--'})",
                 "data2": "",
                 "data3": "",
                 "selected": false,
