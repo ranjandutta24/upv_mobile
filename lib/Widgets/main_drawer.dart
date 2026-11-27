@@ -289,6 +289,8 @@ class MainDrawer extends StatelessWidget {
                 fontSize: 18,
                 fontFamily: "CustomFont"),
           ),
+          /*
+          // --- Old Sign Out Dialog (Commented) ---
           onTap: () {
             showDialog(
               context: context,
@@ -316,6 +318,134 @@ class MainDrawer extends StatelessWidget {
                   ),
                 ],
               ),
+            );
+          },
+          */
+          onTap: () {
+            showGeneralDialog(
+              context: context,
+              barrierDismissible: true,
+              barrierLabel: 'SignOutDialog',
+              transitionDuration: const Duration(milliseconds: 300),
+              pageBuilder: (ctx, anim1, anim2) => const SizedBox.shrink(),
+              transitionBuilder: (ctx, anim1, anim2, child) {
+                final curvedValue = Curves.easeOutBack.transform(anim1.value);
+                return Transform.scale(
+                  scale: curvedValue,
+                  child: Opacity(
+                    opacity: anim1.value.clamp(0.0, 1.0),
+                    child: Dialog(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(24),
+                      ),
+                      elevation: 16,
+                      backgroundColor: Colors.white,
+                      child: Container(
+                        padding: const EdgeInsets.all(24),
+                        constraints: const BoxConstraints(maxWidth: 360),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 64,
+                              height: 64,
+                              decoration: BoxDecoration(
+                                color: (myColors['theme'] as Color? ?? const Color(0xFF1A4580)).withOpacity(0.1),
+                                shape: BoxShape.circle,
+                              ),
+                              child: Icon(
+                                Icons.logout_rounded,
+                                size: 34,
+                                color: myColors['theme'] ?? const Color(0xFF1A4580),
+                              ),
+                            ),
+                            const SizedBox(height: 18),
+                            const Text(
+                              'Confirm',
+                              style: TextStyle(
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                color: Color(0xFF1E293B),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            const Text(
+                              'Do you want to sign out?',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 15,
+                                color: Color(0xFF64748B),
+                                height: 1.4,
+                              ),
+                            ),
+                            const SizedBox(height: 24),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: OutlinedButton(
+                                    style: OutlinedButton.styleFrom(
+                                      padding: const EdgeInsets.symmetric(vertical: 13),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                      side: BorderSide(
+                                        color: Colors.grey.shade300,
+                                        width: 1.5,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pop(ctx);
+                                    },
+                                    child: const Text(
+                                      'No',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xFF64748B),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 14),
+                                Expanded(
+                                  child: ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: myColors['theme'] ?? const Color(0xFF1A4580),
+                                      foregroundColor: Colors.white,
+                                      elevation: 2,
+                                      padding: const EdgeInsets.symmetric(vertical: 13),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(12),
+                                      ),
+                                    ),
+                                    onPressed: () async {
+                                      await deleteAllUsersData();
+                                      Navigator.popUntil(context, (route) => route.isFirst);
+
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => Login()),
+                                      );
+                                    },
+                                    child: const Text(
+                                      'Yes',
+                                      style: TextStyle(
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
             );
           },
         ),

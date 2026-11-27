@@ -127,11 +127,12 @@ class _LoginState extends ConsumerState<Login> {
             Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
-                  image: AssetImage('assets/images/OIP.jpg'),
+                  // image: AssetImage('assets/images/OIP.jpg'),
+                  image: AssetImage('assets/images/MobileAppBg.png'),
                   fit: BoxFit.cover,
                 ),
               ),
-            ),
+            ),            
             // Login Form
             SingleChildScrollView(
               child: Center(
